@@ -6,9 +6,17 @@ ERA5 test window.
 
 ## Download and install
 
-Download `weatherbridge-models-v1.0.0.tar.gz` and `SHA256SUMS` from
-[release v1.0.0](https://github.com/dsuhoi/weatherbridge/releases/tag/v1.0.0).
-Verify the checksum before extracting. From the extracted directory:
+Weights and the ERA5 test window are stored with Git LFS. From the repository
+root, obtain them and check their hashes:
+
+```bash
+git lfs install
+git lfs pull
+git lfs fsck
+cd weatherbridge-release
+```
+
+Then install the inference package:
 
 ```bash
 python -m venv .venv

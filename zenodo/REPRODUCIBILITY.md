@@ -2,6 +2,10 @@
 
 Checked on 16 September 2026 with Python 3.14 in a CPU-only environment.
 
+Code and seven checkpoint files are distributed through Git and Git LFS.
+GitHub Release attachment upload requires separate API permissions; the LFS
+files can be downloaded without a Release attachment.
+
 ## Completed
 
 - 93 tests passed; two tensor-level S-DYff tests were skipped because PyTorch

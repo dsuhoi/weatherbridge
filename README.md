@@ -58,11 +58,16 @@ PixelAttn-VFI and WeatherDCAE recipes differ from the paper's matched presets.
 
 ## Data and weights
 
-[Release v1.0.0](https://github.com/dsuhoi/weatherbridge/releases/tag/v1.0.0)
-provides the standalone model archive. It contains seven checkpoints:
+The [code and weights snapshot](https://github.com/dsuhoi/weatherbridge/tree/weights-v1.0.0)
+contains seven checkpoints through Git LFS:
 WeatherBridge at 6 h and 12 h, and five 6 h comparators, with normalization,
 static fields and one ERA5 test window. Other 12 h comparators, full-query
-controls and adapted HRES checkpoints are not included in that archive.
+controls and adapted HRES checkpoints are not included.
+
+Install Git LFS before cloning, or run `git lfs pull` in an existing clone.
+Weights are under `weatherbridge-release/weights/`. GitHub's ordinary source
+ZIP may contain LFS pointers rather than model bytes; use Git LFS to obtain
+and verify the binaries.
 
 The repository contains figure inputs, metric summaries and available
 per-window results. Obtain ERA5 and IFS HRES archives separately from
