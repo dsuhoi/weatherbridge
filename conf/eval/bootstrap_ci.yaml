@@ -1,0 +1,33 @@
+# Bootstrap 95% CIs on existing eval JSONs.
+# Routes to one of three legacy scripts based on `horizon`:
+#   horizon=6h     → tools/eval/bootstrap_ci_6h.main()
+#                    (24ch raw + 27ch ratio-to-bilinear)
+#   horizon=12h    → tools/eval/bootstrap_ci_12h.main()
+#                    (24ch + 5 channel classes × 4 τ-pairs)
+#   horizon=legacy → tools/eval/bootstrap_ci.main()
+#                    (paper-1 LaTeX A3 appendix table)
+#
+# Usage examples:
+#   python eval.py eval=bootstrap_ci eval.horizon=6h \
+#       eval.bs_metrics_dir=metrics/eval_0p5_2020_fast
+#   python eval.py eval=bootstrap_ci eval.horizon=12h \
+#       eval.bs_metrics_dir=metrics/eval_12h_2020_ep10 \
+#       ++eval.bs_write_tex=true
+name: bootstrap_ci
+kind: bootstrap_ci
+horizon: 6h
+# Input dir with per-model eval JSONs (overrides default in legacy script).
+bs_metrics_dir: null
+# Per-horizon output paths (use defaults from the legacy scripts if null).
+bs_out: null            # used by horizon=12h | legacy
+bs_out_24ch: null       # used by horizon=6h
+bs_out_27ch: null       # used by horizon=6h
+bs_bootstraps: 2000
+bs_seed: 20260610
+# horizon=12h optional LaTeX emission
+bs_write_tex: false
+bs_tex_out: paper/tab_main_12h.tex
+# placeholder (shared EvalConfig schema)
+memmap_dir: ${oc.env:MEMMAP_DIR,/tmp/wb2_0p5_cache}
+test_year: 2020
+out_dir: metrics/bootstrap_ci

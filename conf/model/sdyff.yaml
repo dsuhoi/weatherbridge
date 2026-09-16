@@ -1,0 +1,29 @@
+# S-DYff DYffusion — spherical-Fourier diffusion-style model, ~101M for 24ch.
+# Env vars SDYFF_NLAT/NLON/LAT_CROP read by trainer_weather_hermite.py;
+# we set them via cfg.model.env_vars below.
+name: sdyff
+kind: hermite
+model_type: sdyff_dyffusion_residual_linear
+latent_channels: 256
+lat_crop: -8
+sdyff_num_layers: 6
+sdyff_n_modes_lat: 16
+sdyff_n_modes_lon: 32
+sdyff_dropout: 0.1
+sdyff_drop_path: 0.1
+sdyff_inference_steps: 5
+sdyff_train_refine_steps: 1
+lat_weighted_loss: true
+lambda_residual: 1.0
+residual_scale_floor: 0.05
+residual_scale_init: 0.30
+lambda_anchor: 0.5
+anchor_every_n_batches: 4
+use_aurora_weights: true
+lr: 1e-4
+weight_decay: 1e-5
+# Resolved by train.py: env-vars set BEFORE WeatherHermiteLightningModule(...)
+env_vars:
+  SDYFF_NLAT: "360"
+  SDYFF_NLON: "720"
+  SDYFF_LAT_CROP: "0"

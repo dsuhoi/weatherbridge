@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "note": "WeatherBridge is the pair of WeatherBridgeModel checkpoints trained for 6 h and 12 h anchor gaps. The other entries are comparison architectures.",
+  "grid": {
+    "lat": 360,
+    "lon": 720,
+    "resolution_deg": 0.5
+  },
+  "channels": 24,
+  "models": {
+    "weatherbridge-6h": {
+      "weights": "weatherbridge_14m_6h_bare.pt",
+      "family": "weatherbridge",
+      "delta_t_hours": 6,
+      "display": "WeatherBridge",
+      "arch": "WeatherBridgeModel",
+      "parameters": 14260565,
+      "source_checkpoint": "capmatched_logs/exp_flow_pp3_spectral_14m_6h_refinev1_s202707_bs4/last.ckpt"
+    },
+    "weatherbridge-12h": {
+      "weights": "weatherbridge_14m_12h_bare.pt",
+      "family": "weatherbridge",
+      "delta_t_hours": 12,
+      "display": "WeatherBridge",
+      "arch": "WeatherBridgeModel",
+      "parameters": 14260565,
+      "source_checkpoint": "capmatched_logs/exp_flow_pp3_spectral_14m_12h_2017_19_refinev1_s202707_bs4/last.ckpt"
+    },
+    "weatherdcae-14m-6h": {
+      "weights": "weatherdcae_14m_6h_bare.pt",
+      "family": "weatherdcae",
+      "delta_t_hours": 6,
+      "display": "WeatherDCAE-14M",
+      "arch": "WeatherDCAEAdaLNModel",
+      "parameters": 14365049,
+      "source_checkpoint": "capmatched_logs/exp_weatherdcae_14m_6h_6yr_refinev1_s202707_bs4/last.ckpt"
+    },
+    "fuxi-6h": {
+      "weights": "fuxi_8m_6yr_bare.pt",
+      "family": "fuxi",
+      "delta_t_hours": 6,
+      "display": "FuXi SwinV2",
+      "arch": "WeatherFuXiSwinV2Model",
+      "parameters": 7841689,
+      "source_checkpoint": "logs/exp_fuxi_24ch_6yr_v2/epoch=7-step=17520.ckpt"
+    },
+    "modafno-6h": {
+      "weights": "modafno_37m_6yr_bare.pt",
+      "family": "modafno",
+      "delta_t_hours": 6,
+      "display": "ModAFNO",
+      "arch": "WeatherModAFNOResidualLinearModel",
+      "parameters": 36927041,
+      "source_checkpoint": "logs/exp_modafno_24ch_6yr/epoch=7-step=35032.ckpt"
+    },
+    "sdyff-6h": {
+      "weights": "sdyff_101m_6yr_bare.pt",
+      "family": "sdyff",
+      "delta_t_hours": 6,
+      "display": "S-DYff",
+      "arch": "WeatherSDyffusionDYffusionModel",
+      "parameters": 101307953,
+      "source_checkpoint": "logs/exp_sdyff_24ch_6yr/epoch=7-step=35032.ckpt",
+      "stochastic": true
+    },
+    "pixelattn-vfi-6h": {
+      "weights": "atmvfi_v2_6h_bare.pt",
+      "family": "pixelattn_vfi",
+      "delta_t_hours": 6,
+      "display": "PixelAttn-VFI",
+      "arch": "PixelAttentionVFI",
+      "parameters": 11701680,
+      "source_checkpoint": "capmatched_logs/exp_atmvfi_24ch_6h_2014_19_sparse135_lr1e4_matched/last.ckpt"
+    }
+  },
+  "stochastic_note": "S-DYff's DYffusion-style refiner samples noise inside its forward, so its output depends on the RNG state. Seed with torch.manual_seed(REFERENCE_SEED) to reproduce the recorded scores exactly; every other model is deterministic.",
+  "reference_seed": 0
+}

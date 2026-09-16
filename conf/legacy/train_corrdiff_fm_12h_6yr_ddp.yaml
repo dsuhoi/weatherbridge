@@ -1,0 +1,26 @@
+# @package _global_
+# Legacy: CorrDiff-FM head over WeatherDCAE NoSkip 12h 6yr (cloud.ru DDP).
+# Reproduces: train_corrdiff_fm_weatherdcae_12h.py.
+# Ckpt: logs/exp_corrdiff_fm_weatherdcae_12h_6yr_cloudru/last.ckpt
+defaults:
+  - override /data: era5_0p5_12h
+  - override /model: corrdiff_fm
+  - override /trainer: ddp_2gpu
+
+data:
+  years: [2014, 2015, 2016, 2017, 2018, 2019]
+  val_years: [2020]
+
+model:
+  base_ckpt: logs/exp_12h_oddskip_dcae_noskip_cloudru_2014_19/last.ckpt
+  hidden: 64
+  n_levels: 3
+  n_ode_steps: 5
+  lr: 2e-4
+
+trainer:
+  max_epochs: 10
+  batch_size: 2
+
+exp_name: exp_corrdiff_fm_weatherdcae_12h_6yr_cloudru
+out_dir: logs/${exp_name}

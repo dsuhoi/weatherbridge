@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "experiments": {
+    "weatherbridge_spectral_figure": {
+      "description": "Export the full-year WeatherBridge spectral arrays and compile the PGFPlots figure.",
+      "command": ["bash", "repro/scripts/build_weatherbridge_spectral_figure.sh"],
+      "inputs": [
+        "metrics/journal_spectra_v6/6h_2020",
+        "scripts/export_weatherbridge_spectral_latex_data.py"
+      ],
+      "outputs": [
+        "paper/images/fig_weatherbridge_spectra_tau23.pdf"
+      ]
+    },
+    "weatherbridge_case_figures": {
+      "description": "Render WeatherBridge for the Ida and Haishen case studies.",
+      "command": ["bash", "repro/scripts/build_case_figures.sh"],
+      "inputs": [
+        "metrics/case_studies_weatherbridge",
+        "scripts/make_fig_case_ida_wind.py",
+        "scripts/make_fig5_haishen_local.py",
+        "tools/eval/export_case_metrics_tex.py"
+      ],
+      "outputs": [
+        "paper/images/fig_case_ida_wind.pdf",
+        "paper/images/fig_haishen_mslp.pdf",
+        "paper/case_metrics_v2.tex"
+      ]
+    },
+    "comparison_figures": {
+      "description": "Render the full-year RMSE, ACC, field and spectral figures.",
+      "command": ["bash", "repro/scripts/build_comparison_figures.sh"],
+      "inputs": [
+        "metrics/journal_unified",
+        "metrics/journal_spectra_v6",
+        "scripts/paper_plot_style.py",
+        "scripts/make_fig1_rmse_per_tau.py",
+        "scripts/make_fig_main_scores.py",
+        "scripts/make_fig2_acc_per_tau.py",
+        "scripts/make_fig3_spectra.py",
+        "scripts/make_fig_specific_channels_phys.py"
+      ],
+      "outputs": [
+        "paper/images/fig1_rmse_per_tau.pdf",
+        "paper/images/fig_main_scores.pdf",
+        "paper/images/fig2_acc_per_tau.pdf",
+        "paper/images/fig_fields_6h_thermodynamic_phys.pdf",
+        "paper/images/fig_fields_6h_wind_phys.pdf",
+        "paper/images/fig_fields_6h_mass_surface_phys.pdf",
+        "paper/images/fig_channels_body_6h_phys.pdf",
+        "paper/images/fig_channels_body_12h_phys.pdf",
+        "paper/images/fig_channels_body_ood2021.pdf",
+        "paper/images/fig_channels_all_12h_2021_phys.pdf",
+        "paper/images/fig_channels_all_6h_2022_phys.pdf",
+        "paper/images/fig_channels_all_12h_2022_phys.pdf",
+        "paper/images/fig_spectra_ratio_hard.pdf"
+      ]
+    },
+    "npj_manuscript": {
+      "description": "Build the Nature Portfolio manuscript and run the PDF checks.",
+      "command": ["env", "FINAL_PUBLICATION=1", "bash", "paper/build_npj_submission.sh"],
+      "inputs": [
+        "paper/main.tex",
+        "paper/references.bib",
+        "paper/figs",
+        "paper/images",
+        "paper/supplementary_data_1_statistics.csv",
+        "paper/supplementary_data_1_statistics.manifest.json",
+        "paper/tab_downstream_physics_v2.tex",
+        "paper/tab_downstream_diurnal_v2.tex",
+        "paper/case_metrics_v2.tex",
+        "metrics/journal_champion_v1/final.json",
+        "tools/repro/preflight_npj_submission.py"
+      ],
+      "outputs": ["paper/main.pdf", "paper/manuscript_npj.pdf"]
+    },
+    "downstream_tables": {
+      "description": "Check the 2020 physical and diurnal diagnostics and export the manuscript tables.",
+      "command": [
+        "python",
+        "tools/eval/export_downstream_metrics_tex.py",
+        "--root",
+        "metrics/detailed_benchmark_v2",
+        "--physics-tex",
+        "paper/tab_downstream_physics_v2.tex",
+        "--diurnal-tex",
+        "paper/tab_downstream_diurnal_v2.tex"
+      ],
+      "inputs": [
+        "metrics/detailed_benchmark_v2/6h/2020",
+        "metrics/detailed_benchmark_v2/12h/2020",
+        "tools/eval/export_downstream_metrics_tex.py"
+      ],
+      "outputs": [
+        "paper/tab_downstream_physics_v2.tex",
+        "paper/tab_downstream_diurnal_v2.tex"
+      ]
+    },
+    "npj_submission_package": {
+      "description": "Build the deterministic npj submission archive.",
+      "command": [
+        "python",
+        "tools/repro/package_npj_submission.py",
+        "--paper-dir",
+        "paper",
+        "--out",
+        "paper/weatherbridge_npj_submission.zip"
+      ],
+      "inputs": [
+        "paper/manuscript_npj.pdf",
+        "paper/main.fls",
+        "paper/.journal_figures_verified",
+        "paper/supplementary_data_1_statistics.csv",
+        "paper/supplementary_data_1_statistics.manifest.json",
+        "tools/repro/package_npj_submission.py"
+      ],
+      "outputs": [
+        "paper/weatherbridge_npj_submission.zip",
+        "paper/weatherbridge_npj_submission.zip.sha256"
+      ]
+    },
+    "cloud_detailed_6h": {
+      "description": "Run the full-year 6 h field, spectrum and physics queue.",
+      "command": ["bash", "scripts/run_detailed_6h_benchmark_queue_cloudru.sh"],
+      "inputs": ["scripts/run_detailed_6h_benchmark_queue_cloudru.sh"],
+      "outputs": ["metrics/detailed_benchmark_v2/6h"]
+    },
+    "cloud_detailed_12h": {
+      "description": "Run the full-year 12 h field, spectrum and physics queue.",
+      "command": ["bash", "scripts/run_detailed_12h_benchmark_queue_cloudru.sh"],
+      "inputs": ["scripts/run_detailed_12h_benchmark_queue_cloudru.sh"],
+      "outputs": ["metrics/detailed_benchmark_v2/12h"]
+    },
+    "cloud_journal_spectra": {
+      "description": "Run scalar and vector SHT diagnostics on the WeatherBench 2 block-averaged grid.",
+      "command": ["bash", "scripts/run_journal_spectra_v6_queue_cloudru.sh"],
+      "inputs": ["scripts/run_journal_spectra_v6_queue_cloudru.sh"],
+      "outputs": ["metrics/journal_spectra_v6"]
+    },
+    "cloud_hres_finetune_6h": {
+      "description": "Fine-tune WeatherBridge and WeatherDCAE-14M on matched six-hour IFS HRES anchors.",
+      "command": ["bash", "scripts/run_hres_finetune_6h_cloudru.sh"],
+      "inputs": [
+        "repro/hres_finetune_protocol.json",
+        "scripts/run_hres_finetune_6h_cloudru.sh",
+        "weather_time_interp/hres_finetune_dataset.py",
+        "tools/train/train_capacity_matched_6h.py"
+      ],
+      "outputs": ["hres_finetune_6h_108x24_v2/.training_complete"]
+    },
+    "cloud_hres_finetune_confirmation_2022": {
+      "description": "Score the selected HRES checkpoints on the declared 2022 dates and apply the RMSE and spectral checks.",
+      "command": ["bash", "scripts/run_hres_finetune_confirmation_2022_cloudru.sh"],
+      "inputs": [
+        "repro/hres_finetune_protocol.json",
+        "scripts/run_hres_finetune_confirmation_2022_cloudru.sh",
+        "tools/eval/assess_hres_finetune_confirmation.py"
+      ],
+      "outputs": ["hres_finetune_confirmation_2022_108x24_v2/.complete"]
+    },
+    "cloud_champion_selection": {
+      "description": "Apply the declared model selector after the field, spectral and seed evaluations finish.",
+      "command": ["bash", "scripts/run_journal_champion_queue_cloudru.sh"],
+      "inputs": ["scripts/run_journal_champion_queue_cloudru.sh"],
+      "outputs": ["metrics/journal_champion_v1/final.json"]
+    },
+    "cloud_postselection_2022": {
+      "description": "Score the selected model on the explicit-date 2022 holdout.",
+      "command": ["bash", "scripts/run_postselection_2022_queue_cloudru.sh"],
+      "inputs": [
+        "scripts/run_postselection_2022_queue_cloudru.sh",
+        "repro/postselection_holdout_2022.json"
+      ],
+      "outputs": ["metrics/postselection_2022_v1/final.json"]
+    }
+  }
+}

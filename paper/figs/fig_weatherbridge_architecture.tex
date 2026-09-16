@@ -1,0 +1,397 @@
+\def\archtitle#1{{\sffamily\bfseries\fontsize{7.4}{7.8}\selectfont #1}}
+\def\archsmalltitle#1{{\sffamily\bfseries\fontsize{6.8}{7.2}\selectfont #1}}
+
+\begin{tikzpicture}[
+  x=1cm,
+  y=1cm,
+  >={Stealth[length=1.8mm, width=1.2mm]},
+  font=\sffamily\scriptsize,
+  box/.style={
+    rectangle,
+    draw=black!42,
+    rounded corners=1.2pt,
+    align=center,
+    inner xsep=2.0pt,
+    inner ysep=2.0pt,
+    line width=0.52pt
+  },
+  stage/.style={
+    box,
+    fill=blue!4,
+    draw=blue!58!black,
+    text width=18mm,
+    minimum height=16mm
+  },
+  decoder/.style={
+    stage,
+    fill=cyan!4,
+    draw=cyan!55!black
+  },
+  bottleneck/.style={
+    box,
+    fill=violet!5,
+    draw=violet!58!black,
+    text width=18mm,
+    minimum height=16mm
+  },
+  input/.style={
+    box,
+    fill=black!2,
+    text width=18mm,
+    minimum height=19mm
+  },
+  feature/.style={
+    box,
+    fill=blue!2,
+    draw=blue!48!black,
+    text width=16mm,
+    minimum height=12mm
+  },
+  time/.style={
+    box,
+    fill=violet!4,
+    draw=violet!55!black,
+    text width=22mm,
+    minimum height=7mm
+  },
+  operation/.style={
+    box,
+    fill=white,
+    text width=16mm,
+    minimum height=9mm,
+    inner xsep=1.5pt,
+    inner ysep=1.5pt
+  },
+  operation wide/.style={
+    operation,
+    text width=19mm
+  },
+  operation compact/.style={
+    operation,
+    text width=14mm,
+    minimum height=8mm,
+    inner xsep=1pt
+  },
+  operation compact wide/.style={
+    operation compact,
+    text width=17mm
+  },
+  interface/.style={
+    box,
+    fill=black!2,
+    text width=14mm,
+    minimum height=17mm
+  },
+  heads/.style={
+    box,
+    fill=orange!4,
+    draw=orange!70!black,
+    text width=21mm,
+    minimum height=20mm
+  },
+  warp/.style={
+    box,
+    fill=orange!2,
+    draw=orange!62!black,
+    text width=21mm,
+    minimum height=20mm
+  },
+  correction/.style={
+    box,
+    fill=green!4,
+    draw=green!48!black,
+    text width=44mm,
+    minimum height=9mm
+  },
+  synthesis/.style={
+    box,
+    fill=red!3,
+    draw=red!64!black,
+    text width=25mm,
+    minimum height=21mm,
+    line width=0.68pt
+  },
+  physics/.style={
+    box,
+    fill=green!3,
+    draw=green!48!black,
+    text width=17mm,
+    minimum height=16mm
+  },
+  output/.style={
+    box,
+    fill=red!8,
+    draw=red!72!black,
+    text width=22mm,
+    minimum height=15mm,
+    line width=0.78pt
+  },
+  flow/.style={
+    -Stealth,
+    draw=black!76,
+    line width=0.68pt,
+    line cap=round,
+    line join=round
+  },
+  blockflow/.style={
+    -{Stealth[length=2.2mm, width=1.45mm]},
+    draw=black!78,
+    line width=0.72pt,
+    line cap=round,
+    shorten <=1.0pt,
+    shorten >=1.4pt
+  },
+  skip/.style={
+    -Stealth,
+    draw=blue!58!black,
+    densely dashed,
+    line width=0.58pt,
+    line cap=round,
+    line join=round
+  },
+  condition/.style={
+    -Stealth,
+    draw=violet!68!black,
+    densely dashed,
+    line width=0.58pt,
+    line cap=round,
+    line join=round
+  },
+  panel/.style={
+    font=\sffamily\bfseries\footnotesize,
+    anchor=west
+  },
+  edge label/.style={
+    font=\sffamily\tiny,
+    fill=white,
+    inner sep=1pt,
+    text=black!58
+  }
+]
+
+% The large top panel exposes every resolution of the shared U-Net.
+\begin{scope}[on background layer]
+  \fill[blue!1.25, rounded corners=2pt] (-0.12,4.42)
+    rectangle (21.25,10.28);
+  \draw[black!14, rounded corners=2pt, line width=0.45pt] (-0.12,4.42)
+    rectangle (21.25,10.28);
+
+  \fill[black!0.8, rounded corners=2pt] (-0.12,2.18)
+    rectangle (10.95,4.18);
+  \draw[black!14, rounded corners=2pt, line width=0.45pt] (-0.12,2.18)
+    rectangle (10.95,4.18);
+
+  \fill[cyan!1.2, rounded corners=2pt] (11.12,2.18)
+    rectangle (21.25,4.18);
+  \draw[black!14, rounded corners=2pt, line width=0.45pt] (11.12,2.18)
+    rectangle (21.25,4.18);
+
+  \fill[orange!0.9, rounded corners=2pt] (-0.12,-3.30)
+    rectangle (21.25,1.95);
+  \draw[black!14, rounded corners=2pt, line width=0.45pt] (-0.12,-3.30)
+    rectangle (21.25,1.95);
+\end{scope}
+
+\node[panel, text=blue!58!black] at (0.10,9.98)
+  {\textbf{a)}\quad Three-scale lat--lon U-Net};
+\node[panel, text=black!70] at (0.10,3.88)
+  {\textbf{b)}\quad Convolution block};
+\node[panel, text=cyan!55!black] at (11.30,3.88)
+  {\textbf{c)}\quad Decoder stage};
+\node[panel, text=orange!72!black] at (0.10,1.65)
+  {\textbf{d)}\quad Prediction heads and state synthesis};
+
+% a) End-to-end encoder-decoder backbone.
+\node[input] (inputs) at (1.00,7.30)
+  {\archtitle{Input stack}\\[1.5pt]
+   $x_0,\;x_T$\\
+   $x_T-x_0$\\
+   static $S$\\[1pt]
+   $75\!{\times}\!360\!{\times}\!720$};
+
+\node[stage] (e0) at (3.30,7.30)
+  {\archtitle{Stem $E_0$}\\[1pt]
+   Conv block\\
+   $72\!{\times}\!360\!{\times}\!720$};
+\node[stage] (e1) at (5.65,7.30)
+  {\archtitle{Encoder $E_1$}\\[1pt]
+   Conv block $/2$\\
+   $144\!{\times}\!180\!{\times}\!360$};
+\node[stage] (e2) at (8.00,7.30)
+  {\archtitle{Encoder $E_2$}\\[1pt]
+   Conv block $/2$\\
+   $288\!{\times}\!90\!{\times}\!180$};
+\node[bottleneck] (e3) at (10.45,7.30)
+  {\archtitle{Bottleneck $E_3$}\\[1pt]
+   Conv block $/2$\\
+   AdaLN-Zero$(t)$\\
+   $576\!{\times}\!45\!{\times}\!90$};
+
+\node[decoder] (d2) at (12.95,7.30)
+  {\archtitle{Decoder $1/4$ res.}\\[1pt]
+   up $2{\times}$ + skip\\
+   Conv block\\
+   $288\!{\times}\!90\!{\times}\!180$};
+\node[decoder] (d1) at (15.35,7.30)
+  {\archtitle{Decoder $1/2$ res.}\\[1pt]
+   up $2{\times}$ + skip\\
+   Conv block\\
+   $144\!{\times}\!180\!{\times}\!360$};
+\node[decoder] (d0) at (18.10,7.30)
+  {\archtitle{Decoder full res.}\\[1pt]
+   up $2{\times}$ + skip\\
+   Conv block\\
+   $72\!{\times}\!360\!{\times}\!720$};
+\node[feature, text width=12mm] (features) at (20.35,7.30)
+  {\archtitle{Features}\\[1pt]$h_t^{(0)}$};
+
+\draw[flow] (inputs.east) -- (e0.west);
+\draw[flow] (e0.east) -- (e1.west);
+\draw[flow] (e1.east) -- (e2.west);
+\draw[flow] (e2.east) -- (e3.west);
+\draw[flow] (e3.east) -- (d2.west);
+\draw[flow] (d2.east) -- (d1.west);
+\draw[flow] (d1.east) -- node[above,inner sep=1pt] {$h_t^{(1)}$} (d0.west);
+\draw[flow] (d0.east) -- (features.west);
+
+\node[time] (time) at (10.45,9.48)
+  {\archtitle{Query time}\quad $t=\tau/\Delta$\qquad
+   sinusoidal basis $\rightarrow$ MLP$_{256}$};
+% A common conditioning bus keeps all decoder arrows vertical and separate.
+\draw[condition, -] (time.south) -- (10.45,8.73) -- (18.10,8.73);
+\draw[condition] (10.45,8.73) -- (e3.north);
+\draw[condition] (12.95,8.73) -- (d2.north);
+\draw[condition] (15.35,8.73) -- (d1.north);
+\draw[condition] (18.10,8.73) -- (d0.north);
+\node[edge label, text=violet!65!black] at (14.65,9.02)
+  {$t$ conditions all decoder gates};
+
+% Nested skip routes are deliberately separated vertically.
+\draw[skip] (e2.south) -- (8.00,5.82) -- (12.95,5.82) -- (d2.south);
+\draw[skip] (e1.south) -- (5.65,5.46) -- (15.35,5.46) -- (d1.south);
+\draw[skip] (e0.south) -- (3.30,5.10) -- (18.10,5.10) -- (d0.south);
+\node[edge label, text=blue!58!black] at (10.45,4.78)
+  {skip connections};
+
+% b) Reused convolution block.
+\node[anchor=west, font=\sffamily\bfseries\scriptsize] at (0.28,3.42)
+  {$B(c_{\rm in},c_{\rm out},s)$};
+\node[operation compact, text width=12mm] (pad1) at (1.10,2.78)
+  {\archtitle{Circular pad}};
+\node[operation compact wide, text width=15mm] (conv1) at (3.10,2.78)
+  {\archtitle{Conv $3{\times}3$}\\stride $s$};
+\node[operation compact, text width=14mm] (norm1) at (5.20,2.78)
+  {\archtitle{GroupNorm}\\SiLU};
+\node[operation compact wide, text width=15mm] (conv2) at (7.35,2.78)
+  {\archtitle{Conv $3{\times}3$}\\stride 1};
+\node[operation compact, text width=14mm] (norm2) at (9.55,2.78)
+  {\archtitle{GroupNorm}\\SiLU};
+\draw[blockflow] (pad1.east) -- (conv1.west);
+\draw[blockflow] (conv1.east) -- (norm1.west);
+\draw[blockflow] (norm1.east) -- (conv2.west);
+\draw[blockflow] (conv2.east) -- (norm2.west);
+
+% c) Reused decoder stage.
+\node[anchor=west, font=\sffamily\bfseries\scriptsize] at (11.30,3.42)
+  {Inputs: $u$, $E_i$, $t$};
+\node[operation wide] (up) at (12.55,2.78)
+  {\archtitle{Transposed conv}\\$4{\times}4$, stride 2};
+\node[operation, text width=28mm] (gate) at (15.65,2.78)
+  {\archtitle{Skip connection}\\
+   $u+\tanh(g_i(t))\odot$
+   $P_{3{\times}3}[u,E_i]$};
+\node[operation wide] (block) at (19.10,2.78)
+  {\archtitle{Conv block}\\$B(c_i,c_i,1)$};
+\draw[flow, shorten <=2pt, shorten >=2pt] (up.east) -- (gate.west);
+\draw[flow, shorten <=2pt, shorten >=2pt] (gate.east) -- (block.west);
+
+% d) Decoder features parameterise transport and additive correction.
+\begin{scope}[font=\sffamily\fontsize{6.0}{6.7}\selectfont]
+% Node widths follow their longest formula. Equal edge gaps keep every
+% main-path arrow horizontal despite the different aspect ratios.
+\node[feature, text width=22mm, minimum height=20mm] (head-input) at (1.52,0.00)
+  {\archsmalltitle{Decoder features}\\[1.5pt]
+   coarse $h_t^{(1)}$\\[1pt]
+   full-res. $h_t^{(0)}$};
+
+\node[heads, text width=36mm, minimum height=20mm,
+  font=\sffamily\fontsize{7.2}{8.0}\selectfont] (heads) at (4.96,0.00)
+  {\archsmalltitle{Motion and blend heads}\\[1.5pt]
+   Motion coefficients\\
+   $\Phi_{\rm mot}\rightarrow F_0,F_T,A_0,A_T$\\[3pt]
+   Anchor weights\\
+   $\Phi_\alpha\rightarrow\alpha_t$};
+
+\node[warp, text width=33mm, minimum height=20mm] (operators) at (8.95,0.00)
+  {\archsmalltitle{Anchor transport}\\[1.5pt]
+   anchors $x_0,x_T$\\[1pt]
+   $d_0=tF_0+\tfrac12t^2A_0$\\[1pt]
+   $d_T=(1-t)F_T+\tfrac12(1-t)^2A_T$\\[1pt]
+   $W_0=\mathcal W(x_0,d_0)$\\[1pt]
+   $W_T=\mathcal W(x_T,d_T)$\\[1pt]
+   $x_{\rm lin}=(1-t)x_0+t x_T$};
+
+\node[synthesis, text width=36mm, minimum height=20mm] (synthesis) at (12.94,0.00)
+  {\archsmalltitle{State synthesis}\\[1.5pt]
+   $\beta=\sigma(b)$\\[1pt]
+   $x_{\rm tr}=\alpha_t W_0+(1-\alpha_t)W_T$\\[1pt]
+   $x_{\rm mix}=\beta x_{\rm tr}+(1-\beta)x_{\rm lin}$\\[1pt]
+   $x_{\rm pre}=x_{\rm mix}+\tanh(\gamma)\odot\Delta_t$};
+
+\node[physics, text width=28mm, minimum height=20mm] (hydro) at (16.58,0.00)
+  {\archsmalltitle{Hydrostatic head}\\[1.5pt]
+   $H_T$: Conv $1{\times}1$\\[1pt]
+   4 temperatures $\rightarrow$ 5 corrections\\[1pt]
+   insert into $Z$, MSLP\\
+   $\rightarrow\Delta_{\rm hydro}$ (24 ch)};
+
+\node[output, text width=25mm, minimum height=20mm] (output) at (19.69,0.00)
+  {\archsmalltitle{WeatherBridge output}\\[1.5pt]
+   $\widehat{x}_t=x_{\rm pre}+\Delta_{\rm hydro}$\\[1pt]
+   $24{\times}360{\times}720$};
+
+\node[correction, text width=30mm, minimum height=14mm] (fine) at (3.90,-2.35)
+  {\archsmalltitle{Fine-grid residual}\\[1.5pt]
+   $h_t^{(0)}\rightarrow$ Conv $3{\times}3$\\
+   $\rightarrow\Delta_t^{\rm fine}$\\
+   24 fields, $360{\times}720$};
+\node[correction, text width=30mm, minimum height=14mm] (coarse) at (7.50,-2.35)
+  {\archsmalltitle{Coarse-grid residual}\\[1.5pt]
+   $h_t^{(1)}\rightarrow$ Conv $3{\times}3$\\
+   $\rightarrow\operatorname{up}(\Delta_t^{\rm coarse})$\\
+   $180{\times}360\rightarrow360{\times}720$};
+\node[correction, text width=30mm, minimum height=14mm] (global) at (11.10,-2.35)
+  {\archsmalltitle{Global spectral branch}\\[1.5pt]
+   $h_t^{(0)}\rightarrow$ SFNO\\
+   $\rightarrow G_t^{\rm SFNO}$\\
+   24 fields, $360{\times}720$};
+\node at (5.70,-2.35) {$+$};
+\node at (9.30,-2.35) {$+$};
+\node at (13.25,-2.35) {$=$};
+\node[correction, text width=24mm, minimum height=14mm] (correction) at (14.90,-2.35)
+  {\archsmalltitle{Additive residual}\\[1.5pt]
+   $\Delta_t$\\
+   24 fields, $360{\times}720$};
+
+\draw[flow, shorten <=2pt, shorten >=2pt] (head-input.east) -- (heads.west);
+\draw[flow, shorten <=2pt, shorten >=2pt] (heads.east) -- (operators.west);
+\draw[flow, shorten <=2pt, shorten >=2pt] (operators.east) -- (synthesis.west);
+\draw[flow, shorten <=2pt, shorten >=2pt] (synthesis.east) -- (hydro.west);
+\draw[flow, shorten <=2pt, shorten >=2pt] (hydro.east) -- (output.west);
+\draw[flow, -, draw=green!46!black]
+  (head-input.south) -- (1.52,-1.35) -- (11.10,-1.35);
+\foreach \name/\x in {fine/3.90,coarse/7.50,global/11.10}
+  \draw[flow, draw=green!46!black, shorten >=2pt]
+    (\x,-1.35) -- (\name.north);
+\draw[flow, draw=green!46!black, shorten >=2pt]
+  (correction.north) -- (14.90,-1.35) -| (synthesis.south);
+
+% Alpha bypasses the geometric warp but remains derived from the same
+% full-resolution decoder feature.
+\draw[flow, draw=orange!68!black, shorten <=2pt, shorten >=2pt]
+  (heads.north) -- ++(0,0.28) -|
+  node[edge label, near start, above, text=orange!65!black] {$\alpha_t$}
+  (synthesis.north);
+\end{scope}
+
+\end{tikzpicture}

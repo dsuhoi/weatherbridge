@@ -1,0 +1,19 @@
+# Ensemble CRPS eval (corrdiff_fm 16-member or sdyff_mc N-sample).
+# Routes to tools/eval/eval_ensemble_crps.main().
+name: crps_ensemble
+kind: crps_ensemble
+memmap_dir: ${oc.env:MEMMAP_DIR,/tmp/wb2_0p5_cache}
+test_year: 2020
+batch_size: 2
+num_workers: 4
+samples_per_date: 4
+max_tau_hours: 6
+crps_mode: corrdiff_fm
+ckpt: null
+fm_ckpt: ${oc.env:FM_CKPT,???}
+base_ckpt: ${oc.env:BASE_CKPT,???}
+n_ensemble: 16
+model_name: ${oc.env:MODEL_NAME,corrdiff_fm}
+out_dir: metrics/crps_0p5_2020
+out_rmse: ${eval.out_dir}/${eval.model_name}_rmse.json
+out_crps: ${eval.out_dir}/${eval.model_name}.json

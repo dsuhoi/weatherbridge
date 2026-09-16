@@ -1,0 +1,6 @@
+# Resolve supplementary references on a fresh Overleaf import.
+add_cus_dep('tex', 'aux', 0, 'build_external_aux');
+sub build_external_aux {
+    return system('latexmk', '-norc', '-pdf', '-interaction=nonstopmode',
+                  '-halt-on-error', "$_[0].tex");
+}

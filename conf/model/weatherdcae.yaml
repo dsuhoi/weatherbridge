@@ -1,0 +1,25 @@
+# WeatherDCAE-14M architecture with the legacy Hermite training recipe.
+# For the paper's L1-only recipe and scalar gain initialised at 0.10, use
+# repro/scripts/train_paper_matched.sh weatherdcae 6 (or 12).
+# The historical 37.5M model is pinned by
+# conf/legacy/train_weatherdcae_noskip_24ch_6yr.yaml.
+name: weatherdcae_14m
+kind: hermite
+model_type: dcae_adaln_residual_linear
+latent_channels: 256
+lat_crop: -8
+block_out_channels: [64, 128, 256]
+layers_per_block: [3, 3, 3]
+freeze_skip_gates: false
+direct_prediction: false
+lat_weighted_loss: true
+lambda_residual: 1.0
+residual_scale_floor: 0.05
+residual_scale_init: 0.30
+lambda_anchor: 0.5
+anchor_every_n_batches: 4
+use_aurora_weights: true
+use_physical_scales_loss: false
+lr: 1e-4
+weight_decay: 1e-5
+env_vars: {}

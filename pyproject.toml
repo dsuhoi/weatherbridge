@@ -1,0 +1,13 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+    "ignore::UserWarning",
+]
+markers = [
+    "smoke: marks tests as smoke tests (deselect with '-m \"not smoke\"')",
+    "gpu: marks tests requiring a CUDA GPU",
+    "prod_grid: requires real 360x720 ERA5 memmap (run with '-m prod_grid'); skipped by default",
+]

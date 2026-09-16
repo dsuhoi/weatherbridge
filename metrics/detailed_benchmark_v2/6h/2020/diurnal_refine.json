@@ -1,0 +1,1727 @@
+{
+  "model_name": "refine",
+  "year": 2020,
+  "delta_t_hours": 6,
+  "taus": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "regions": {
+    "sahel": {
+      "lat": [
+        10.0,
+        15.0
+      ],
+      "lon": [
+        0.0,
+        5.0
+      ]
+    },
+    "amazon": {
+      "lat": [
+        -5.0,
+        0.0
+      ],
+      "lon": [
+        295.0,
+        300.0
+      ]
+    },
+    "congo": {
+      "lat": [
+        -2.0,
+        3.0
+      ],
+      "lon": [
+        22.0,
+        27.0
+      ]
+    },
+    "se_aus": {
+      "lat": [
+        -35.0,
+        -30.0
+      ],
+      "lon": [
+        145.0,
+        150.0
+      ]
+    }
+  },
+  "surface_channels": [
+    "t2m",
+    "u10",
+    "v10"
+  ],
+  "normalization": {
+    "scheme": "(x - mean) / std",
+    "stats": {
+      "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+      "size_bytes": 6656,
+      "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7"
+    },
+    "surface_stats": {
+      "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+      "size_bytes": 275,
+      "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2"
+    },
+    "static_features": {
+      "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+      "size_bytes": 3111640,
+      "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c"
+    },
+    "channels": [
+      "T1000",
+      "T925",
+      "T850",
+      "T700",
+      "U1000",
+      "U925",
+      "U850",
+      "U700",
+      "V1000",
+      "V925",
+      "V850",
+      "V700",
+      "Q1000",
+      "Q925",
+      "Q850",
+      "Q700",
+      "Z1000",
+      "Z925",
+      "Z850",
+      "Z700",
+      "t2m",
+      "u10",
+      "v10",
+      "mslp"
+    ]
+  },
+  "coverage": {
+    "anchor_hours_utc": [
+      0,
+      6,
+      12,
+      18
+    ],
+    "months": 12,
+    "last_anchor_interval_included": true,
+    "month_windows": {
+      "2020-01": {
+        "n_hours": 744,
+        "n_complete_days": 31,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-02": {
+        "n_hours": 696,
+        "n_complete_days": 29,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-03": {
+        "n_hours": 744,
+        "n_complete_days": 31,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-04": {
+        "n_hours": 720,
+        "n_complete_days": 30,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-05": {
+        "n_hours": 744,
+        "n_complete_days": 31,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-06": {
+        "n_hours": 720,
+        "n_complete_days": 30,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-07": {
+        "n_hours": 744,
+        "n_complete_days": 31,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-08": {
+        "n_hours": 744,
+        "n_complete_days": 31,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-09": {
+        "n_hours": 720,
+        "n_complete_days": 30,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-10": {
+        "n_hours": 744,
+        "n_complete_days": 31,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-11": {
+        "n_hours": 720,
+        "n_complete_days": 30,
+        "dropped_tail_hours_without_right_anchor": 0
+      },
+      "2020-12": {
+        "n_hours": 720,
+        "n_complete_days": 30,
+        "dropped_tail_hours_without_right_anchor": 24
+      }
+    },
+    "time_basis": "approximate local solar time"
+  },
+  "model_provenance": {
+    "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/weights/detailed_benchmark_v2/weatherbridge_refine_6h_bare.pt",
+    "size_bytes": 55298648,
+    "sha256": "ea2c126013271e34b2f0ba2940bd7d917e18722bb6b491261d668ad35497a83f"
+  },
+  "monthly": {
+    "sahel": {
+      "2020-01": {
+        "t2m": {
+          "amp_true": 12.98345947265625,
+          "amp_recon": 12.657684326171875,
+          "amp_ratio": 0.9749084481550951,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 2.699688196182251,
+          "amp_recon": 2.6302528381347656,
+          "amp_ratio": 0.9742802305297045,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 1.1202595233917236,
+          "amp_recon": 1.0778164863586426,
+          "amp_ratio": 0.9621132102456228,
+          "peak_hour_true": 12,
+          "peak_hour_recon": 12,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-02": {
+        "t2m": {
+          "amp_true": 13.43853759765625,
+          "amp_recon": 13.31500244140625,
+          "amp_ratio": 0.9908073958678699,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 3.0745911598205566,
+          "amp_recon": 3.186596632003784,
+          "amp_ratio": 1.0364293873107229,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 19,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 1.1129752397537231,
+          "amp_recon": 1.0815075635910034,
+          "amp_ratio": 0.9717265263064767,
+          "peak_hour_true": 12,
+          "peak_hour_recon": 12,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-03": {
+        "t2m": {
+          "amp_true": 13.811431884765625,
+          "amp_recon": 13.502655029296875,
+          "amp_ratio": 0.9776433857079411,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 0.9402374625205994,
+          "amp_recon": 0.9349685311317444,
+          "amp_ratio": 0.994396169479644,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 19,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 1.029024600982666,
+          "amp_recon": 1.0202306509017944,
+          "amp_ratio": 0.9914540915032801,
+          "peak_hour_true": 9,
+          "peak_hour_recon": 9,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-04": {
+        "t2m": {
+          "amp_true": 11.862762451171875,
+          "amp_recon": 11.750030517578125,
+          "amp_ratio": 0.9904969913999573,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 2.6152687072753906,
+          "amp_recon": 2.638467311859131,
+          "amp_ratio": 1.0088704478125725,
+          "peak_hour_true": 9,
+          "peak_hour_recon": 9,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 2.073878049850464,
+          "amp_recon": 2.2036242485046387,
+          "amp_ratio": 1.062562115773167,
+          "peak_hour_true": 8,
+          "peak_hour_recon": 8,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-05": {
+        "t2m": {
+          "amp_true": 10.3016357421875,
+          "amp_recon": 10.01104736328125,
+          "amp_ratio": 0.9717920157362752,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 2.7716927528381348,
+          "amp_recon": 2.842991590499878,
+          "amp_ratio": 1.0257239326360164,
+          "peak_hour_true": 9,
+          "peak_hour_recon": 9,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 2.2468223571777344,
+          "amp_recon": 2.3286352157592773,
+          "amp_ratio": 1.03641269560995,
+          "peak_hour_true": 8,
+          "peak_hour_recon": 8,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-06": {
+        "t2m": {
+          "amp_true": 8.865142822265625,
+          "amp_recon": 8.70245361328125,
+          "amp_ratio": 0.9816484390329543,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 2.740384101867676,
+          "amp_recon": 2.76417875289917,
+          "amp_ratio": 1.0086829620034934,
+          "peak_hour_true": 9,
+          "peak_hour_recon": 9,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 2.0841214656829834,
+          "amp_recon": 2.158698797225952,
+          "amp_ratio": 1.0357835820852836,
+          "peak_hour_true": 2,
+          "peak_hour_recon": 1,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-07": {
+        "t2m": {
+          "amp_true": 6.922607421875,
+          "amp_recon": 6.66973876953125,
+          "amp_ratio": 0.9634720507846941,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 2.048185348510742,
+          "amp_recon": 1.9185221195220947,
+          "amp_ratio": 0.9366936058384916,
+          "peak_hour_true": 10,
+          "peak_hour_recon": 9,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 1.3622498512268066,
+          "amp_recon": 1.470977544784546,
+          "amp_ratio": 1.0798147956924509,
+          "peak_hour_true": 8,
+          "peak_hour_recon": 8,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-08": {
+        "t2m": {
+          "amp_true": 5.9736328125,
+          "amp_recon": 5.7655029296875,
+          "amp_ratio": 0.9651585744646068,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 1.9730329513549805,
+          "amp_recon": 1.8710947036743164,
+          "amp_ratio": 0.9483342396229835,
+          "peak_hour_true": 10,
+          "peak_hour_recon": 11,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 1.1156604290008545,
+          "amp_recon": 1.1897372007369995,
+          "amp_ratio": 1.0663972386315481,
+          "peak_hour_true": 9,
+          "peak_hour_recon": 8,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-09": {
+        "t2m": {
+          "amp_true": 7.323028564453125,
+          "amp_recon": 7.140716552734375,
+          "amp_ratio": 0.9751042877800976,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 1.6982762813568115,
+          "amp_recon": 1.7247415781021118,
+          "amp_ratio": 1.0155836226624777,
+          "peak_hour_true": 9,
+          "peak_hour_recon": 9,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 1.1676779985427856,
+          "amp_recon": 1.231234073638916,
+          "amp_ratio": 1.054429453304289,
+          "peak_hour_true": 23,
+          "peak_hour_recon": 21,
+          "peak_hour_shift": -2,
+          "peak_hour_error": 2,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-10": {
+        "t2m": {
+          "amp_true": 11.05902099609375,
+          "amp_recon": 10.609466552734375,
+          "amp_ratio": 0.9593495261905944,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 1.847396969795227,
+          "amp_recon": 1.796628713607788,
+          "amp_ratio": 0.9725190324453837,
+          "peak_hour_true": 8,
+          "peak_hour_recon": 8,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 1.148516297340393,
+          "amp_recon": 1.1750428676605225,
+          "amp_ratio": 1.023096381289109,
+          "peak_hour_true": 0,
+          "peak_hour_recon": 1,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-11": {
+        "t2m": {
+          "amp_true": 13.830841064453125,
+          "amp_recon": 13.361724853515625,
+          "amp_ratio": 0.9660818739257164,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 2.2565908432006836,
+          "amp_recon": 2.1990089416503906,
+          "amp_ratio": 0.9744827903898517,
+          "peak_hour_true": 17,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 1.0892863273620605,
+          "amp_recon": 1.0700854063034058,
+          "amp_ratio": 0.9823729348506981,
+          "peak_hour_true": 12,
+          "peak_hour_recon": 12,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        }
+      },
+      "2020-12": {
+        "t2m": {
+          "amp_true": 15.12579345703125,
+          "amp_recon": 14.41607666015625,
+          "amp_ratio": 0.953079036885494,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        },
+        "u10": {
+          "amp_true": 1.5898829698562622,
+          "amp_recon": 1.5971417427062988,
+          "amp_ratio": 1.0045656019893672,
+          "peak_hour_true": 17,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 0
+        },
+        "v10": {
+          "amp_true": 0.8072957396507263,
+          "amp_recon": 0.8251213431358337,
+          "amp_ratio": 1.0220806361406287,
+          "peak_hour_true": 12,
+          "peak_hour_recon": 12,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 0
+        }
+      }
+    },
+    "amazon": {
+      "2020-01": {
+        "t2m": {
+          "amp_true": 6.81988525390625,
+          "amp_recon": 6.708099365234375,
+          "amp_ratio": 0.9836088314524285,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.6692277193069458,
+          "amp_recon": 0.7182860970497131,
+          "amp_ratio": 1.0733059559959237,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": 2,
+          "peak_hour_error": 2,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 1.0455050468444824,
+          "amp_recon": 1.1182935237884521,
+          "amp_ratio": 1.0696203974946445,
+          "peak_hour_true": 2,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": 3,
+          "peak_hour_error": 3,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-02": {
+        "t2m": {
+          "amp_true": 6.7725830078125,
+          "amp_recon": 6.672332763671875,
+          "amp_ratio": 0.985197635226474,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.9451102018356323,
+          "amp_recon": 0.928053617477417,
+          "amp_ratio": 0.9819528089686395,
+          "peak_hour_true": 18,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 1.3493952751159668,
+          "amp_recon": 1.3668572902679443,
+          "amp_ratio": 1.0129406227174442,
+          "peak_hour_true": 0,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 3,
+          "peak_hour_error": 3,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-03": {
+        "t2m": {
+          "amp_true": 5.846282958984375,
+          "amp_recon": 5.80279541015625,
+          "amp_ratio": 0.9925615046118671,
+          "peak_hour_true": 13,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.880695641040802,
+          "amp_recon": 0.8737527132034302,
+          "amp_ratio": 0.9921165411592514,
+          "peak_hour_true": 2,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 1.1652679443359375,
+          "amp_recon": 1.1987941265106201,
+          "amp_ratio": 1.02877122153548,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-04": {
+        "t2m": {
+          "amp_true": 4.679168701171875,
+          "amp_recon": 4.611175537109375,
+          "amp_ratio": 0.9854689650224683,
+          "peak_hour_true": 13,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.46382880210876465,
+          "amp_recon": 0.49413639307022095,
+          "amp_ratio": 1.0653421926876145,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.5141541361808777,
+          "amp_recon": 0.5237517356872559,
+          "amp_ratio": 1.0186667748657414,
+          "peak_hour_true": 4,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-05": {
+        "t2m": {
+          "amp_true": 4.698089599609375,
+          "amp_recon": 4.612152099609375,
+          "amp_ratio": 0.9817079904122847,
+          "peak_hour_true": 13,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.6381603479385376,
+          "amp_recon": 0.6774566173553467,
+          "amp_ratio": 1.0615774225768628,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.322618693113327,
+          "amp_recon": 0.33676522970199585,
+          "amp_ratio": 1.0438490914836716,
+          "peak_hour_true": 4,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-06": {
+        "t2m": {
+          "amp_true": 5.99029541015625,
+          "amp_recon": 5.962982177734375,
+          "amp_ratio": 0.9954404197870498,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.671546459197998,
+          "amp_recon": 0.6788369417190552,
+          "amp_ratio": 1.010856259341705,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.6018642783164978,
+          "amp_recon": 0.587128221988678,
+          "amp_ratio": 0.9755159811626656,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 19,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-07": {
+        "t2m": {
+          "amp_true": 7.119110107421875,
+          "amp_recon": 7.11029052734375,
+          "amp_ratio": 0.9987611400940505,
+          "peak_hour_true": 13,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.872617244720459,
+          "amp_recon": 0.8613107204437256,
+          "amp_ratio": 0.9870429740586258,
+          "peak_hour_true": 5,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.5564156770706177,
+          "amp_recon": 0.5122543573379517,
+          "amp_ratio": 0.9206325027268035,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 19,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-08": {
+        "t2m": {
+          "amp_true": 7.50177001953125,
+          "amp_recon": 7.656036376953125,
+          "amp_ratio": 1.020563994499996,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 1.0524040460586548,
+          "amp_recon": 1.0666638612747192,
+          "amp_ratio": 1.0135497533190496,
+          "peak_hour_true": 5,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.9415421485900879,
+          "amp_recon": 0.9200206995010376,
+          "amp_ratio": 0.9771423412947816,
+          "peak_hour_true": 16,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-09": {
+        "t2m": {
+          "amp_true": 7.7044677734375,
+          "amp_recon": 7.80035400390625,
+          "amp_ratio": 1.0124455359264835,
+          "peak_hour_true": 13,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 1.0251227617263794,
+          "amp_recon": 1.0457600355148315,
+          "amp_ratio": 1.0201315145453385,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.40450313687324524,
+          "amp_recon": 0.4608718454837799,
+          "amp_ratio": 1.139352957918342,
+          "peak_hour_true": 17,
+          "peak_hour_recon": 17,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-10": {
+        "t2m": {
+          "amp_true": 7.16998291015625,
+          "amp_recon": 7.170013427734375,
+          "amp_ratio": 1.0000042562971916,
+          "peak_hour_true": 13,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 1.126145601272583,
+          "amp_recon": 1.1656602621078491,
+          "amp_ratio": 1.0350884120051733,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.3341218829154968,
+          "amp_recon": 0.35137686133384705,
+          "amp_ratio": 1.051642766608957,
+          "peak_hour_true": 7,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": -2,
+          "peak_hour_error": 2,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-11": {
+        "t2m": {
+          "amp_true": 5.913238525390625,
+          "amp_recon": 5.869384765625,
+          "amp_ratio": 0.9925837999638738,
+          "peak_hour_true": 13,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.611275315284729,
+          "amp_recon": 0.6330822706222534,
+          "amp_ratio": 1.0356745230704545,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.5298276543617249,
+          "amp_recon": 0.4189036786556244,
+          "amp_ratio": 0.7906414004762948,
+          "peak_hour_true": 17,
+          "peak_hour_recon": 17,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        }
+      },
+      "2020-12": {
+        "t2m": {
+          "amp_true": 6.0289306640625,
+          "amp_recon": 5.949615478515625,
+          "amp_ratio": 0.9868442365708964,
+          "peak_hour_true": 13,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "u10": {
+          "amp_true": 0.7249406576156616,
+          "amp_recon": 0.7618695497512817,
+          "amp_ratio": 1.0509405725112448,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        },
+        "v10": {
+          "amp_true": 0.5287322402000427,
+          "amp_recon": 0.5195412039756775,
+          "amp_ratio": 0.9826168417101104,
+          "peak_hour_true": 5,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": -4
+        }
+      }
+    },
+    "congo": {
+      "2020-01": {
+        "t2m": {
+          "amp_true": 10.060699462890625,
+          "amp_recon": 9.673828125,
+          "amp_ratio": 0.9615462782366555,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.28971433639526367,
+          "amp_recon": 0.25848913192749023,
+          "amp_ratio": 0.8922207134921615,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 1.5143535137176514,
+          "amp_recon": 1.537657380104065,
+          "amp_ratio": 1.0153886567273211,
+          "peak_hour_true": 2,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-02": {
+        "t2m": {
+          "amp_true": 9.6544189453125,
+          "amp_recon": 9.35980224609375,
+          "amp_ratio": 0.96948374615939,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.4644382894039154,
+          "amp_recon": 0.504840075969696,
+          "amp_ratio": 1.0869906454475027,
+          "peak_hour_true": 1,
+          "peak_hour_recon": 1,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 1.3309613466262817,
+          "amp_recon": 1.3820513486862183,
+          "amp_ratio": 1.0383857894817452,
+          "peak_hour_true": 1,
+          "peak_hour_recon": 1,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-03": {
+        "t2m": {
+          "amp_true": 7.83917236328125,
+          "amp_recon": 7.718963623046875,
+          "amp_ratio": 0.9846656337348272,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.6299630999565125,
+          "amp_recon": 0.5744409561157227,
+          "amp_ratio": 0.9118644507200142,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.903001606464386,
+          "amp_recon": 0.8338485956192017,
+          "amp_ratio": 0.9234187288813958,
+          "peak_hour_true": 11,
+          "peak_hour_recon": 11,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-04": {
+        "t2m": {
+          "amp_true": 7.558502197265625,
+          "amp_recon": 7.47833251953125,
+          "amp_ratio": 0.989393443880538,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.5239293575286865,
+          "amp_recon": 0.49258923530578613,
+          "amp_ratio": 0.9401825422214779,
+          "peak_hour_true": 16,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.727676272392273,
+          "amp_recon": 0.6644902229309082,
+          "amp_ratio": 0.913167363209965,
+          "peak_hour_true": 11,
+          "peak_hour_recon": 11,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-05": {
+        "t2m": {
+          "amp_true": 6.822540283203125,
+          "amp_recon": 6.866607666015625,
+          "amp_ratio": 1.006459087228989,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.5791996717453003,
+          "amp_recon": 0.5787874460220337,
+          "amp_ratio": 0.999288283914208,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.3002333641052246,
+          "amp_recon": 0.3146136403083801,
+          "amp_ratio": 1.0478969958785647,
+          "peak_hour_true": 20,
+          "peak_hour_recon": 21,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-06": {
+        "t2m": {
+          "amp_true": 7.913726806640625,
+          "amp_recon": 7.8134765625,
+          "amp_ratio": 0.987332107035019,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.6655952334403992,
+          "amp_recon": 0.679330587387085,
+          "amp_ratio": 1.0206361963797261,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.6327868700027466,
+          "amp_recon": 0.5989474654197693,
+          "amp_ratio": 0.9465232194485477,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-07": {
+        "t2m": {
+          "amp_true": 7.449310302734375,
+          "amp_recon": 7.36279296875,
+          "amp_ratio": 0.9883858598355585,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.4949705898761749,
+          "amp_recon": 0.5637492537498474,
+          "amp_ratio": 1.1389550516342366,
+          "peak_hour_true": 12,
+          "peak_hour_recon": 12,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.722063422203064,
+          "amp_recon": 0.6845687031745911,
+          "amp_ratio": 0.9480728176008778,
+          "peak_hour_true": 16,
+          "peak_hour_recon": 16,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-08": {
+        "t2m": {
+          "amp_true": 7.141448974609375,
+          "amp_recon": 6.949127197265625,
+          "amp_ratio": 0.9730696420253748,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.49050143361091614,
+          "amp_recon": 0.5208848118782043,
+          "amp_ratio": 1.0619435055339501,
+          "peak_hour_true": 12,
+          "peak_hour_recon": 13,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.44303804636001587,
+          "amp_recon": 0.36274948716163635,
+          "amp_ratio": 0.8187772814140291,
+          "peak_hour_true": 18,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-09": {
+        "t2m": {
+          "amp_true": 7.16973876953125,
+          "amp_recon": 7.128265380859375,
+          "amp_ratio": 0.9942154951519124,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.5979281663894653,
+          "amp_recon": 0.5231693983078003,
+          "amp_ratio": 0.8749703187038519,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.42411428689956665,
+          "amp_recon": 0.30627769231796265,
+          "amp_ratio": 0.7221583940427158,
+          "peak_hour_true": 18,
+          "peak_hour_recon": 20,
+          "peak_hour_shift": 2,
+          "peak_hour_error": 2,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-10": {
+        "t2m": {
+          "amp_true": 7.000518798828125,
+          "amp_recon": 6.8966064453125,
+          "amp_ratio": 0.9851564781837283,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.7708895206451416,
+          "amp_recon": 0.7626281976699829,
+          "amp_ratio": 0.9892833891836472,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.37874704599380493,
+          "amp_recon": 0.3489674925804138,
+          "amp_ratio": 0.9213735031642248,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 19,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-11": {
+        "t2m": {
+          "amp_true": 6.76202392578125,
+          "amp_recon": 6.80792236328125,
+          "amp_ratio": 1.006787677477006,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.40259718894958496,
+          "amp_recon": 0.4023027718067169,
+          "amp_ratio": 0.9992687054183458,
+          "peak_hour_true": 16,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 0.6172297596931458,
+          "amp_recon": 0.6055067181587219,
+          "amp_ratio": 0.9810070053325817,
+          "peak_hour_true": 7,
+          "peak_hour_recon": 7,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        }
+      },
+      "2020-12": {
+        "t2m": {
+          "amp_true": 8.313140869140625,
+          "amp_recon": 8.309600830078125,
+          "amp_ratio": 0.9995741634698335,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "u10": {
+          "amp_true": 0.3263586461544037,
+          "amp_recon": 0.28928136825561523,
+          "amp_ratio": 0.8863910046947345,
+          "peak_hour_true": 3,
+          "peak_hour_recon": 3,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        },
+        "v10": {
+          "amp_true": 1.5629267692565918,
+          "amp_recon": 1.443383812904358,
+          "amp_ratio": 0.923513398897701,
+          "peak_hour_true": 5,
+          "peak_hour_recon": 5,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 2
+        }
+      }
+    },
+    "se_aus": {
+      "2020-01": {
+        "t2m": {
+          "amp_true": 12.850067138671875,
+          "amp_recon": 12.87957763671875,
+          "amp_ratio": 1.002296524814105,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 3.042428493499756,
+          "amp_recon": 3.0028116703033447,
+          "amp_ratio": 0.9869785524027751,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 2.2160706520080566,
+          "amp_recon": 2.1489245891571045,
+          "amp_ratio": 0.9697003961538371,
+          "peak_hour_true": 20,
+          "peak_hour_recon": 20,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-02": {
+        "t2m": {
+          "amp_true": 10.224212646484375,
+          "amp_recon": 10.293182373046875,
+          "amp_ratio": 1.0067457249714202,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 1.49973464012146,
+          "amp_recon": 1.4858498573303223,
+          "amp_ratio": 0.9907418403098209,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 0.9999396800994873,
+          "amp_recon": 1.0030564069747925,
+          "amp_ratio": 1.0031169148873011,
+          "peak_hour_true": 17,
+          "peak_hour_recon": 17,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-03": {
+        "t2m": {
+          "amp_true": 10.4447021484375,
+          "amp_recon": 11.119110107421875,
+          "amp_ratio": 1.0645693816252353,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 1.4501711130142212,
+          "amp_recon": 1.4929146766662598,
+          "amp_ratio": 1.0294748414641874,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 1.1489970684051514,
+          "amp_recon": 1.12166428565979,
+          "amp_ratio": 0.9762116166377167,
+          "peak_hour_true": 17,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-04": {
+        "t2m": {
+          "amp_true": 9.96044921875,
+          "amp_recon": 10.16046142578125,
+          "amp_ratio": 1.0200806412079024,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 1.898911476135254,
+          "amp_recon": 2.0286500453948975,
+          "amp_ratio": 1.0683226000211938,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 1.0920464992523193,
+          "amp_recon": 1.137821078300476,
+          "amp_ratio": 1.0419163278115875,
+          "peak_hour_true": 20,
+          "peak_hour_recon": 20,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-05": {
+        "t2m": {
+          "amp_true": 10.4501953125,
+          "amp_recon": 10.272186279296875,
+          "amp_ratio": 0.9829659611251285,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 1.5516326427459717,
+          "amp_recon": 1.4728870391845703,
+          "amp_ratio": 0.949249840850188,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 0.7661173939704895,
+          "amp_recon": 0.8165115118026733,
+          "amp_ratio": 1.065778584625276,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-06": {
+        "t2m": {
+          "amp_true": 10.070404052734375,
+          "amp_recon": 9.83868408203125,
+          "amp_ratio": 0.9769900026364675,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 1.299177646636963,
+          "amp_recon": 1.2961264848709106,
+          "amp_ratio": 0.9976514668537052,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 0.7088717222213745,
+          "amp_recon": 0.6161478161811829,
+          "amp_ratio": 0.8691950840560758,
+          "peak_hour_true": 18,
+          "peak_hour_recon": 17,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-07": {
+        "t2m": {
+          "amp_true": 10.343231201171875,
+          "amp_recon": 10.391265869140625,
+          "amp_ratio": 1.0046440678966266,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 1.1719715595245361,
+          "amp_recon": 1.160750389099121,
+          "amp_ratio": 0.9904253901605194,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 0.417328417301178,
+          "amp_recon": 0.42463910579681396,
+          "amp_ratio": 1.017517830544379,
+          "peak_hour_true": 16,
+          "peak_hour_recon": 17,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-08": {
+        "t2m": {
+          "amp_true": 10.239654541015625,
+          "amp_recon": 10.70367431640625,
+          "amp_ratio": 1.0453159599800914,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 1.815159559249878,
+          "amp_recon": 1.8099262714385986,
+          "amp_ratio": 0.997116899291519,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 0.4433080554008484,
+          "amp_recon": 0.5023144483566284,
+          "amp_ratio": 1.1331047163183743,
+          "peak_hour_true": 17,
+          "peak_hour_recon": 17,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-09": {
+        "t2m": {
+          "amp_true": 11.79608154296875,
+          "amp_recon": 12.47802734375,
+          "amp_ratio": 1.0578112145374017,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 2.1248300075531006,
+          "amp_recon": 2.171084403991699,
+          "amp_ratio": 1.0217685161985566,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 1.6971253156661987,
+          "amp_recon": 1.6088454723358154,
+          "amp_ratio": 0.9479827196521846,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 19,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-10": {
+        "t2m": {
+          "amp_true": 12.076751708984375,
+          "amp_recon": 12.476776123046875,
+          "amp_ratio": 1.0331235106676,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 2.331929922103882,
+          "amp_recon": 2.2848422527313232,
+          "amp_ratio": 0.9798074252033802,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 1.8697612285614014,
+          "amp_recon": 1.800919532775879,
+          "amp_ratio": 0.9631815577658066,
+          "peak_hour_true": 19,
+          "peak_hour_recon": 19,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-11": {
+        "t2m": {
+          "amp_true": 13.757354736328125,
+          "amp_recon": 13.8291015625,
+          "amp_ratio": 1.0052151614570508,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 2.7917327880859375,
+          "amp_recon": 2.81357479095459,
+          "amp_ratio": 1.0078238157182757,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 2.0666933059692383,
+          "amp_recon": 2.0456440448760986,
+          "amp_ratio": 0.9898150049490445,
+          "peak_hour_true": 18,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        }
+      },
+      "2020-12": {
+        "t2m": {
+          "amp_true": 12.396728515625,
+          "amp_recon": 12.325714111328125,
+          "amp_ratio": 0.994271520570337,
+          "peak_hour_true": 15,
+          "peak_hour_recon": 14,
+          "peak_hour_shift": -1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "u10": {
+          "amp_true": 2.468677520751953,
+          "amp_recon": 2.428605318069458,
+          "amp_ratio": 0.983767745140609,
+          "peak_hour_true": 14,
+          "peak_hour_recon": 15,
+          "peak_hour_shift": 1,
+          "peak_hour_error": 1,
+          "utc_offset_hours": 10
+        },
+        "v10": {
+          "amp_true": 1.3955345153808594,
+          "amp_recon": 1.3328579664230347,
+          "amp_ratio": 0.9550877830200284,
+          "peak_hour_true": 18,
+          "peak_hour_recon": 18,
+          "peak_hour_shift": 0,
+          "peak_hour_error": 0,
+          "utc_offset_hours": 10
+        }
+      }
+    }
+  }
+}

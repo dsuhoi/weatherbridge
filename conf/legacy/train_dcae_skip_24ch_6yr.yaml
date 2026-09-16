@@ -1,0 +1,25 @@
+# @package _global_
+# Legacy: historical DC-AE Skip 14.4M, 24ch, 6yr comparison.
+# Reproduces: scripts/run_dcae_skip_0p5.sh (cloud.ru 2x A100 DDP).
+# Ckpt: logs/exp_dcae_skip_24ch_true_0p5_6h_6yr/epoch=7-step=*.ckpt
+defaults:
+  - override /data: era5_0p5_6h
+  - override /model: dcae_skip
+  - override /trainer: ddp_2gpu
+
+data:
+  years: [2014, 2015, 2016, 2017, 2018, 2019]
+  val_years: [2020]
+  keep_24ch: true
+
+model:
+  block_out_channels: [128, 128, 256, 256]
+  layers_per_block: [2, 2, 2, 2]
+
+trainer:
+  max_epochs: 8
+  batch_size: 4
+  precision: bf16-mixed
+
+exp_name: exp_dcae_skip_24ch_true_0p5_6h_6yr
+out_dir: logs/${exp_name}

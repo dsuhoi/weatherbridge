@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_nwp_model_evaluation",
+  "frozen_on": "2026-08-14",
+  "parent_manifest": "repro/postselection_holdout_2022.json",
+  "parent_manifest_sha256": "4cb4e66e23455e9ad981251a59ac03cbba3f89088876de882850830f39d17492",
+  "year": 2022,
+  "source": "gs://weatherbench2/datasets/era5/1959-2023_01_10-full_37-1h-0p25deg-chunk-1.zarr",
+  "grid": "2x2 arithmetic coarsening to 360x720 cell-centred latitude-longitude",
+  "init_times": [
+    "2022-01-01T00", "2022-01-22T00", "2022-02-15T00", "2022-03-08T00",
+    "2022-04-01T00", "2022-04-22T00", "2022-05-15T00", "2022-06-08T00",
+    "2022-07-08T00", "2022-08-01T00", "2022-08-22T00", "2022-09-15T00",
+    "2022-10-08T00", "2022-11-01T00", "2022-11-22T00", "2022-12-15T00"
+  ],
+  "initialization_selection": "round(linspace(0,46,16)) over the first 47 chronological parent windows; the last window is excluded because its 240 h trajectory crosses the year boundary",
+  "anchor_spacing_hours": 6,
+  "maximum_forecast_lead_hours": 240,
+  "query_hours": [1, 2, 3, 4, 5],
+  "held_query_hours": [2, 4],
+  "lead_bins_hours": [[0, 48], [48, 120], [120, 240]],
+  "fields": [
+    "T1000", "T925", "T850", "T700",
+    "U1000", "U925", "U850", "U700",
+    "V1000", "V925", "V850", "V700",
+    "Q1000", "Q925", "Q850", "Q700",
+    "Z1000", "Z925", "Z850", "Z700",
+    "t2m", "u10", "v10", "mslp"
+  ],
+  "development_policy": "The lead-aware adapter is fit on 2017-2019 HRES/ERA5 pairs, selected on 2020, and inspected on 2021. No 2022 model prediction or metric may change its coefficients or lead bins.",
+  "primary_endpoint": "Paired mean normalized RMSE over all 24 fields and five interior query hours.",
+  "secondary_endpoints": [
+    "held-query-hour normalized RMSE",
+    "field-by-hour RMSE with Holm correction",
+    "forecast-lead-bin normalized RMSE",
+    "scalar spherical-harmonic energy, shape, coherence, and signed cospectrum"
+  ]
+}

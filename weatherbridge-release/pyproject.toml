@@ -1,0 +1,39 @@
+[project]
+name = "weatherbridge"
+version = "1.0.0"
+description = "Released checkpoints and inference code for WeatherBridge, a global weather time-interpolation model"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Daniil Sukhorukov" },
+  { name = "Andrei Zakharov" },
+  { name = "Ilya Makarov" },
+]
+
+dependencies = [
+  "torch>=2.1",
+  # 0.7.3 honours mmax > lmax in RealSHT; 0.9.x clamps mmax to lmax, which
+  # breaks the S-DYff baseline's (lmax=16, mmax=32) spectral weights.
+  "torch-harmonics==0.7.3",
+  # Only the WeatherDCAE family needs these: it reuses the upstream DC-AE
+  # encoder and decoder blocks, and FuXi uses torchvision's drop-path.
+  "diffusers>=0.27",
+  "torchvision>=0.16",
+  "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+# Only needed to regenerate the shipped sample from the raw ERA5 memmap.
+data = ["xarray>=2023.1", "netCDF4>=1.6"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["weatherbridge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

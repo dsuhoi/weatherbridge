@@ -1,0 +1,53 @@
+\subsubsection{Full-weight adaptation across forecast leads}
+\label{sec:hres_finetuning}
+
+Unlike the coefficient adapter below, this experiment updates the network
+weights. Its 24-initialisation 2022 index is distinct from both the
+16-initialisation coefficient-adapter test and the 48-window ERA5
+calendar-transfer sample. The row labelled ``fine-tuned WeatherDCAE-14M'' in
+Table~\ref{tab:hres-retrospective-2022} denotes full-weight optimisation, not
+the WeatherBridge coefficient adapter.
+
+Lead coverage was inspected on the 2021 development archive. Fine-tuning on
+the short deployment range improves mean field--hour RMSE over linear
+interpolation by $1.70\%$. Extending training to $0$--$216\,$h on a $24\,$h
+lead grid raises the gain to $7.63\%$; using the native $6\,$h lead grid raises
+it to $12.35\%$.
+
+The two full-range checkpoints specialise by lead. Routing the coarse-grid
+checkpoint below $48\,$h and the dense-grid checkpoint thereafter gives mean
+RMSE 0.4671, compared with 0.5567 for Linear, 0.5143 for the coarse checkpoint
+and 0.4880 for the dense checkpoint. Relative to each comparator, the routed
+result improves by $16.10\%$, $9.18\%$ and $4.29\%$, respectively. These
+development results define the routing rule but provide no confirmation
+evidence.
+
+On the fixed 2022 dates, the full-range coarse-grid checkpoint reduces
+the mean of the 120 field--hour RMSE values from $0.2902$ to $0.2691$
+($7.28\%$). The lead-routed ensemble reaches $0.2675$ ($7.83\%$), but its
+spectral promotion audit is incomplete. We therefore retain the coarse-grid
+checkpoint as the adapted model of record and report the ensemble as a
+secondary result. Because the full-range branch postdates inspection of 2022,
+these values are retrospective rather than independent confirmation evidence.
+
+Statistical resampling uses the 24 forecast initialisations as blocks; the 600
+window--hour records remain grouped within them.
+
+\input{tab_hres_confirmation_2022}
+
+The corresponding spectral audit covers Q850 and U850 at query hours 2 and 3
+over spherical-harmonic degrees 80--180. The coarse-grid checkpoint satisfies
+the predeclared shape and coherence margins in all four cells. The dense-grid
+checkpoint fails, with coherence changes of $-0.038$ for Q850 and $-0.035$ for
+U850 at query hour 2. The channels were selected during development, so this
+audit can promote a checkpoint but cannot confirm performance on an
+independently chosen spectral panel.
+
+A final experiment isolates temporal reconstruction from forecast--analysis
+mismatch by taking both anchors and the target from one HRES run. A twelve-hour
+checkpoint reconstructs the archived six-hour state. On 16 initialisations,
+WeatherBridge gives the lowest point estimate among the three evaluated neural
+models, reducing RMSE by $42.6\%$ relative to linear interpolation
+(Supplementary Table~\ref{S-tab:hres-same-trajectory} and Supplementary
+Fig.~\ref{S-fig:hres-best-fields}).
+This small 2021 sample is exploratory and has no training-seed uncertainty.

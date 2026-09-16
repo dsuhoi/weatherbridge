@@ -1,0 +1,17 @@
+# CorrDiff + Flow Matching head over frozen WeatherDCAE base.
+# Custom Lightning class (CorrDiffFMVFI) — separate dispatch in train.py.
+# REQUIRED: model.base_ckpt = path to frozen 24ch WeatherDCAE NoSkip baseline.
+name: corrdiff_fm
+kind: corrdiff_fm
+base_ckpt: ${oc.env:CORRDIFF_BASE_CKPT,???}
+hidden: 64
+n_levels: 3
+n_ode_steps: 5
+scale_init: 0.10
+lr: 2e-4
+weight_decay: 1e-4
+# placeholder fields for schema compatibility
+model_type: corrdiff_fm
+latent_channels: 0
+lat_crop: 0
+env_vars: {}

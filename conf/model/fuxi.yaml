@@ -1,0 +1,22 @@
+# SwinV2 interpolation baseline inspired by FuXi (~8M).
+name: fuxi
+kind: hermite
+model_type: fuxi_swinv2_residual_linear
+latent_channels: 256
+lat_crop: -8
+fuxi_depth: 8
+fuxi_num_heads: 8
+fuxi_window_size_h: 5
+fuxi_window_size_w: 9
+fuxi_patch_size: 4
+fuxi_drop_path: 0.1
+lat_weighted_loss: true
+lambda_residual: 1.0
+residual_scale_floor: 0.05
+residual_scale_init: 0.30
+lambda_anchor: 0.5
+anchor_every_n_batches: 4
+use_aurora_weights: true
+lr: 1e-4
+weight_decay: 1e-5
+env_vars: {}

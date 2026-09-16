@@ -1,0 +1,24 @@
+\begin{table*}[!htbp]
+\centering
+\caption{Densifying a numerical forecast trajectory: both anchors and the target
+are states of one IFS HRES run, separated by twelve hours, and the model
+reconstructs the archived six-hour state between them. Sixteen 2021
+initialisations, 39 windows each, 24 prognostic fields; scores are
+latitude-weighted normalised RMSE and per-group columns give the reduction
+relative to linear interpolation. All models are twelve-hour checkpoints
+evaluated on the identical index. Internal architecture variants appear in the
+separate ablation study.}
+\label{tab:hres-same-trajectory}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccccccc}
+\toprule
+Method & RMSE & vs.\ linear & T & U & V & Q & Z & surface \\
+\midrule
+Linear interpolation   & $0.2897$          & ---                & ---     & ---     & ---     & ---     & ---     & ---     \\
+PixelAttn-VFI          & $0.2033$          & $+29.8\%$          & $+10.4$ & $+30.2$ & $+41.1$ & $+5.7$  & $-4.2$  & $+29.6$ \\
+WeatherDCAE-14M        & $0.1765$          & $+39.1\%$          & $+20.1$ & $+39.3$ & $+49.4$ & $+13.5$ & $+15.5$ & $+38.3$ \\
+\textbf{WeatherBridge} & $\mathbf{0.1664}$ & $\mathbf{+42.6\%}$ & $+25.1$ & $+42.5$ & $+50.0$ & $+32.2$ & $+20.7$ & $+40.4$ \\
+\bottomrule
+\end{tabular}
+\end{table*}

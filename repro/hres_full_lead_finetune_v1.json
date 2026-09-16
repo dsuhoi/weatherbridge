@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_optimizer_step",
+  "frozen_on": "2026-08-16",
+  "scope": "six_hour_hres_full_forecast_lead_development",
+  "parent_protocol": {
+    "path": "repro/hres_forecast_error_augmentation_v1.json",
+    "sha256": "dd0625e140ee46ef5c814a4ddb27370cd538bbb90dcd73f4d3c89e1eabeab51f"
+  },
+  "motivation": {
+    "diagnostic_year": 2021,
+    "status": "opened_development_diagnostic",
+    "observed_normalized_rmse_by_lead_bin": {
+      "fresh_0_48h": 0.18595720038454133,
+      "medium_48_120h": 0.3540387357385479,
+      "long_120_240h": 0.7126227816282529
+    },
+    "confound_removed": "The parent model was optimized only for left anchor leads below 120 h but evaluated through 234 h."
+  },
+  "data": {
+    "training_initializations": 108,
+    "validation_initializations": 24,
+    "training_years": [2017, 2018, 2019],
+    "validation_years": [2020],
+    "training_query_hours": [1, 3, 5],
+    "validation_query_hours": [1, 2, 3, 4, 5],
+    "left_forecast_lead_stride_hours": 24,
+    "maximum_left_forecast_lead_hours_exclusive": 240,
+    "trained_left_forecast_leads_hours": [0, 24, 48, 72, 96, 120, 144, 168, 192, 216],
+    "anchor_spacing_hours": 6,
+    "forecast_error_augmentation_repeats": 1,
+    "new_initialization_dates_added": false
+  },
+  "model": {
+    "internal_arch": "flow_pp3_hres_aug",
+    "public_development_name": "WeatherBridge-HRES-FullLead",
+    "forecast_lead_conditioning": true,
+    "trainable_scope": "all"
+  },
+  "initialization": {
+    "fulllead_rmse": {
+      "parent_arm": "lead_fea_rmse",
+      "checkpoint_sha256": "d7d329845f8639454edc3eb074c81fa41f69ed4a98202b6c9326b502fecd94dd"
+    },
+    "fulllead_sht": {
+      "parent_arm": "lead_fea_sht",
+      "checkpoint_sha256": "91ca7bccd8d9342897643be2ab2a82723d7587b0ed8715a2a6ecedb6fa0879b5"
+    }
+  },
+  "optimization": {
+    "seed": 202707,
+    "epochs": 8,
+    "learning_rate": 0.00001,
+    "batch_size_per_device": 2,
+    "gradient_accumulation": 4,
+    "microbatches_per_epoch": 808,
+    "optimizer_steps_per_epoch": 202,
+    "warmup_steps": 10,
+    "lambda_highpass": 0.05,
+    "lambda_fft_magnitude": 0.02
+  },
+  "arms": {
+    "fulllead_rmse": {"lambda_sht": 0.0},
+    "fulllead_sht": {
+      "lambda_sht": 0.01,
+      "sht_ell_min": 80,
+      "sht_lmax": 180,
+      "sht_start_fraction": 0.4,
+      "sht_every_n_steps": 8
+    }
+  },
+  "selection": {
+    "criterion": "minimum 2020 validation RMSE over all five interior hours and all ten trained lead states",
+    "development_only": true,
+    "opened_years_not_eligible_for_confirmation": [2021, 2022],
+    "next_confirmation_year": 2023
+  }
+}

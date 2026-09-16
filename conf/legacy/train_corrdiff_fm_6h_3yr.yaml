@@ -1,0 +1,27 @@
+# @package _global_
+# Legacy: CorrDiff-FM head over WeatherDCAE NoSkip 24ch 3yr (fibo run).
+# Reproduces: train_corrdiff_fm_weatherdcae.py (root) with default args.
+# Ckpt: logs/exp_corrdiff_fm_weatherdcae_3yr_fibo/last.ckpt
+defaults:
+  - override /data: era5_0p5_6h
+  - override /model: corrdiff_fm
+  - override /trainer: default
+
+data:
+  years: [2017, 2018, 2019]
+  val_years: [2020]
+
+model:
+  base_ckpt: logs/exp_dcae_noskip_24ch_6yr_10ep_cloudru/last.ckpt
+  hidden: 64
+  n_levels: 3
+  n_ode_steps: 5
+  lr: 2e-4
+
+trainer:
+  max_epochs: 10
+  batch_size: 4
+  num_workers: 6
+
+exp_name: exp_corrdiff_fm_weatherdcae_3yr_fibo
+out_dir: logs/${exp_name}

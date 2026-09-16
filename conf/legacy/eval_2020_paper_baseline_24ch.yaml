@@ -1,0 +1,26 @@
+# @package _global_
+# Legacy: 0.5° 2020 RMSE+ACC paper eval (7 models, 24ch).
+# Reproduces: scripts/run_eval_2021_ood_6h_cloudru.sh (year=2020 baseline).
+defaults:
+  - override /eval: memmap_6h
+  - override /data: era5_0p5_6h
+  - override /model: weatherdcae
+
+eval:
+  test_year: 2020
+  out_dir: metrics/eval_0p5_2020_fast
+  out_acc_dir: metrics/acc_0p5_2020_fast
+  paper_tag: 0p5_2020
+  keep_n_channels: 24
+  batch_size: 4
+  num_workers: 2
+  samples_per_date: 4
+  eval_days_per_month: 4
+  # Paper 24ch 6yr ep8 lineup. NAME:CKPT[:ENVS] (comma-separated).
+  models: |
+    weatherdcae_noskip_24ch_6yr_ep8:logs/exp_dcae_noskip_24ch_6yr_10ep_cloudru/epoch=7-step=70064.ckpt:,
+    dcae_skip_24ch_6yr_ep8:logs/exp_dcae_skip_24ch_true_0p5_6h_6yr/epoch=7-step=70064.ckpt:,
+    atm_vfi_v2_24ch_6yr_ep8:logs/exp_atm_vfi_24ch_v2_static_3yr_135only_fibo/last.ckpt:,
+    fuxi_24ch_6yr_ep8:logs/exp_fuxi_24ch_6yr_v2/last.ckpt:,
+    sdyff_24ch_6yr_ep8:logs/exp_sdyff_24ch_6yr/last.ckpt:SDYFF_NLAT=360 SDYFF_NLON=720 SDYFF_LAT_CROP=0,
+    modafno_24ch_6yr_ep8:logs/exp_modafno_24ch_6yr/last.ckpt:MODAFNO_INP_H=360 MODAFNO_INP_W=720 MODAFNO_NATIVE_H=360 MODAFNO_NATIVE_W=720

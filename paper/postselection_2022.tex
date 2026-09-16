@@ -1,0 +1,27 @@
+The 2022 sample contains 48 disjoint 00 UTC windows on days 1, 8, 15 and 22 of
+each month. We fixed this index before generating its predictions. The
+comparison tests calendar transfer of both the all-hour aggregate and the
+query hours omitted from optimisation.
+\begin{table}[t]
+\centering
+\caption{Fixed 2022 comparison against WeatherDCAE-14M. Negative relative
+differences favour WeatherBridge. Confidence intervals are for the paired
+difference in mean normalised RMSE and use 10,000 seven-day block-bootstrap
+draws.}
+\label{tab:postselection-2022}
+\small
+\begin{tabular}{llrr}
+\toprule
+Horizon & Query hours & Relative $\Delta$ (\%) & 95\% CI for $\Delta$RMSE \\
+\midrule
+6 h & all & -12.62 & [-0.00887, -0.00839] \\
+6 h & held out & -11.09 & [-0.00899, -0.00843] \\
+12 h & all & -7.06 & [-0.00841, -0.00805] \\
+12 h & held out & -5.69 & [-0.00823, -0.00779] \\
+\bottomrule
+\end{tabular}
+\end{table}
+All four upper confidence bounds are below zero. The result supports aggregate
+and held-query calendar transfer. Ten six-hour and seven twelve-hour
+field--hour cells nevertheless show Holm-significant regressions, so we make
+no claim of universal dominance.

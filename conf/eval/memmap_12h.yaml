@@ -1,0 +1,25 @@
+# 12h batch eval: RMSE on year 2020, lat-weighted, oddskip-aware.
+# Routes to tools/eval/batch_eval_12h_memmap.main().
+name: memmap_12h
+kind: memmap_12h
+memmap_dir: ${oc.env:MEMMAP_DIR,/tmp/wb2_0p5_cache}
+test_year: 2020
+climatology: ${oc.env:CLIMATOLOGY,/workspace-SR006.nfs2/weather_data/time_interpolation_0p5/climatology_1990-2019_0p5_canonical_v2.zarr}
+stats_path: data/json_stats_0p5.nc
+surface_stats_path: data/surface_stats_0p5.json
+static_path: data/static_features_0p5.pt
+batch_size: 4
+num_workers: 2
+samples_per_date: 2
+eval_days_per_month: 4
+max_tau_hours: 12
+keep_n_channels: 24
+out_dir: metrics/eval_12h_2020_ep10
+out_acc_dir: null
+paper_tag: 12h_2020
+eval_hours: "1,2,3,4,5,6,7,8,9,10,11"
+seen_tau: "1,2,3,5,7,9,10,11"
+unseen_tau: "4,6,8"
+no_acc: true
+device: null
+models: ""

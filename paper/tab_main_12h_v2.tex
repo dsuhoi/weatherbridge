@@ -1,0 +1,21 @@
+\begin{table}[!htbp]
+\centering
+\caption{Matched-v2 12\,h interpolation on 2020 ERA5. Entries are mean $\pm$ standard deviation of the 24-channel macro RMSE across the indicated query hours. The standard deviation describes hour-to-hour variation, not sampling uncertainty over dates.}
+\label{tab:main-12h}
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrr}
+\toprule
+Model & Params (M) & Seen & Held out & All hours \\
+\midrule
+WeatherBridge & 14.3 & $\mathbf{0.099\pm0.033}$ & $\mathbf{0.133\pm0.008}$ & $\mathbf{0.108\pm0.032}$ \\
+WeatherDCAE-14M & 14.4 & \underline{$0.107\pm0.034$} & \underline{$0.141\pm0.008$} & \underline{$0.117\pm0.033$} \\
+PixelAttn-VFI & 14.7 & $0.122\pm0.038$ & $0.160\pm0.007$ & $0.133\pm0.037$ \\
+SwinV2 & 7.9 & $0.168\pm0.058$ & $0.226\pm0.011$ & $0.184\pm0.056$ \\
+S-DYff & 85.5 & $0.178\pm0.061$ & $0.240\pm0.012$ & $0.195\pm0.059$ \\
+ModAFNO & 151.7 & $0.162\pm0.056$ & $0.369\pm0.018$ & $0.218\pm0.108$ \\
+\midrule
+\textit{Linear Interp.} & -- & $0.202\pm0.074$ & $0.278\pm0.015$ & $0.223\pm0.072$ \\
+\bottomrule
+\end{tabular}
+\end{table}

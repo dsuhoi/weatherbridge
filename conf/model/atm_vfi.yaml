@@ -1,0 +1,15 @@
+# PixelAttn-VFI width used by the matched model in the paper.
+# Custom Lightning class (PixelAttentionVFI) — separate dispatch in train.py.
+# This legacy training path omits static encoder inputs; for the paper recipe
+# use repro/scripts/train_paper_matched.sh pixelattn_vfi 6 (or 12).
+name: atm_vfi
+kind: atm_vfi
+hidden: 72
+n_levels: 3
+lr: 2e-4
+weight_decay: 1e-4
+# Not a hermite model — these fields ignored by ATM-VFI but kept for schema.
+model_type: pixel_attn_vfi
+latent_channels: 0
+lat_crop: 0
+env_vars: {}

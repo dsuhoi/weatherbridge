@@ -1,0 +1,32 @@
+# @package _global_
+# Legacy: historical WeatherDCAE NoSkip 37.5M, 24ch, 6yr checkpoint.
+# Reproduces: cloud.ru DDP 2x A100, MODEL_TYPE=dcae_adaln_residual_linear.
+# Ckpt: logs/exp_dcae_noskip_24ch_6yr_10ep_cloudru/epoch=7-step=*.ckpt
+#
+# NOTE on lr=5e-5:
+#   The historical ep8 ckpt (weatherdcae_noskip_24ch_6yr_ep8.ckpt) was trained
+#   with lr=5e-5 on cloud.ru, even though `conf/model/weatherdcae.yaml` ships
+#   a default of 1e-4. We pin model.lr=5e-5 here so the legacy entry point
+#   reproduces the paper-headline ckpt without command-line overrides.
+#   See docs/HYDRA_PRODUCTION_VERIFY.md (follow-up #1).
+defaults:
+  - override /data: era5_0p5_6h
+  - override /model: weatherdcae
+  - override /trainer: ddp_2gpu
+
+data:
+  years: [2014, 2015, 2016, 2017, 2018, 2019]
+  val_years: [2020]
+  keep_24ch: true
+
+model:
+  block_out_channels: [128, 128, 256, 256]
+  layers_per_block: [2, 2, 2, 2]
+  lr: 5e-5  # paper ckpt lr, not the 1e-4 default in conf/model/weatherdcae.yaml
+
+trainer:
+  max_epochs: 10
+  batch_size: 4
+
+exp_name: exp_dcae_noskip_24ch_6yr_10ep_cloudru
+out_dir: logs/${exp_name}

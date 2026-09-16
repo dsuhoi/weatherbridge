@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_optimizer_step",
+  "frozen_on": "2026-08-16",
+  "scope": "six_hour_hres_residual_adapter_development",
+  "parent_protocol": {
+    "path": "repro/hres_forecast_error_augmentation_v1.json",
+    "sha256": "dd0625e140ee46ef5c814a4ddb27370cd538bbb90dcd73f4d3c89e1eabeab51f"
+  },
+  "initialization": {
+    "architecture": "flow_pp3_hres_aug",
+    "selection": "lead_fea_rmse_epoch4_2020_development_validation",
+    "checkpoint_sha256": "d7d329845f8639454edc3eb074c81fa41f69ed4a98202b6c9326b502fecd94dd",
+    "validation_rmse_mean": 0.36476898193359375
+  },
+  "hypothesis": "A zero-initialized endpoint-tapered residual head can learn state- and forecast-lead-dependent HRES trajectory bias while preserving the selected WeatherBridge-HRES-FEA prediction at initialization.",
+  "data": {
+    "training_years": [2017, 2018, 2019],
+    "validation_years": [2020],
+    "training_query_hours": [1, 3, 5],
+    "validation_query_hours": [1, 2, 3, 4, 5],
+    "left_forecast_leads_hours": [0, 24, 48, 72, 96],
+    "anchor_spacing_hours": 6,
+    "forecast_error_augmentation": {
+      "repeats": 3,
+      "scale_min": 0.5,
+      "scale_max": 1.5,
+      "includes_exact_hres_scale": true
+    }
+  },
+  "model": {
+    "internal_arch": "flow_pp3_hres_residual",
+    "public_development_name": "WeatherBridge-HRES-Residual",
+    "trainable_scope": "hres_residual_adapter",
+    "adapter_inputs": [
+      "final_decoder_features",
+      "base_prediction_minus_linear_scaffold",
+      "right_anchor_minus_left_anchor"
+    ],
+    "adapter_output": "zero-initialized 1x1 channel mixer multiplied by 4*tau*(1-tau)",
+    "base_model_frozen": true
+  },
+  "optimization": {
+    "seed": 202707,
+    "epochs": 6,
+    "learning_rate": 0.0001,
+    "batch_size_per_device": 2,
+    "gradient_accumulation": 4,
+    "microbatches_per_epoch": 808,
+    "optimizer_steps_per_epoch": 202,
+    "warmup_steps": 5,
+    "lambda_highpass": 0.05,
+    "lambda_fft_magnitude": 0.02,
+    "lambda_sht": 0.0
+  },
+  "selection": {
+    "criterion": "minimum 2020 validation RMSE over all five interior hours",
+    "development_only": true,
+    "opened_2022_confirmation_may_not_be_used_for_tuning": true,
+    "next_confirmation_year": 2023
+  }
+}

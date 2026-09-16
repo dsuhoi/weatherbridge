@@ -1,0 +1,18 @@
+# Dockerfiles copy only the runtime service and inference source trees. Keeping
+# the research workspace out of the context avoids shipping checkpoints,
+# metrics, datasets, paper builds, and cluster mirrors to the Docker daemon.
+**
+!production
+!production/**
+!weather_time_interp
+!weather_time_interp/**
+!examples
+!examples/**
+!tools
+!tools/**
+
+**/__pycache__
+**/.pytest_cache
+**/*.ckpt
+**/*.npz
+production/runtime

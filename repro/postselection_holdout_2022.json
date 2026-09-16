@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "frozen_before_data_access",
+  "frozen_on": "2026-08-09",
+  "year": 2022,
+  "source": "gs://weatherbench2/datasets/era5/1959-2023_01_10-full_37-1h-0p25deg-chunk-1.zarr",
+  "grid": "2x2 arithmetic coarsening to 360x720 cell-centred latitude-longitude",
+  "day_of_month": [1, 8, 15, 22],
+  "anchor_hours_utc": [0],
+  "maximum_anchor_spacing_hours": 12,
+  "horizons_hours": [6, 12],
+  "query_hours": {
+    "6": [1, 2, 3, 4, 5],
+    "12": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  },
+  "held_query_hours": {
+    "6": [2, 4],
+    "12": [4, 6, 8]
+  },
+  "fields": [
+    "T1000", "T925", "T850", "T700",
+    "U1000", "U925", "U850", "U700",
+    "V1000", "V925", "V850", "V700",
+    "Q1000", "Q925", "Q850", "Q700",
+    "Z1000", "Z925", "Z850", "Z700",
+    "t2m", "u10", "v10", "mslp"
+  ],
+  "models": [
+    "weatherbridge_detail",
+    "flow_spectral",
+    "refine",
+    "weatherdcae_14m",
+    "linear"
+  ],
+  "selection_policy": "The journal champion is selected without 2022. The frozen 2022 sample is confirmatory and cannot change model weights, architecture, losses, or the sampled dates.",
+  "primary_endpoint": "Paired difference in mean normalized RMSE over all 24 fields and all interior query hours, separately at 6 h and 12 h.",
+  "primary_inference": "Two-sided paired seven-day block bootstrap with 95% confidence intervals; the candidate must have an upper confidence bound below zero against WeatherDCAE-14M.",
+  "secondary_endpoints": [
+    "held-query-hour normalized RMSE",
+    "anomaly correlation coefficient",
+    "field-by-hour RMSE with Holm correction",
+    "scalar and vector spherical-harmonic energy, shape, coherence, and signed cospectrum",
+    "temporal-curvature and physical-balance diagnostics"
+  ],
+  "failure_policy": "If either primary horizon fails, the manuscript must report the limitation and may not claim universal post-selection dominance."
+}

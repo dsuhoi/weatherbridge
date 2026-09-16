@@ -1,0 +1,24 @@
+# ModAFNO — modulated adaptive Fourier ops, ~127M for full.
+# Env vars MODAFNO_INP_H/W and MODAFNO_NATIVE_H/W resolved from cfg.model.env_vars.
+name: modafno
+kind: hermite
+model_type: modafno_residual_linear
+latent_channels: 256
+lat_crop: -8
+modafno_depth: 12
+modafno_num_blocks: 8
+modafno_drop_rate: 0.0
+lat_weighted_loss: true
+lambda_residual: 1.0
+residual_scale_floor: 0.05
+residual_scale_init: 0.30
+lambda_anchor: 0.5
+anchor_every_n_batches: 4
+use_aurora_weights: true
+lr: 1e-4
+weight_decay: 1e-5
+env_vars:
+  MODAFNO_INP_H: "360"
+  MODAFNO_INP_W: "720"
+  MODAFNO_NATIVE_H: "360"
+  MODAFNO_NATIVE_W: "720"

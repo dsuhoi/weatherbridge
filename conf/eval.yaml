@@ -1,0 +1,21 @@
+# Hydra 1.3 entry-point for `python eval.py`.
+#
+# Examples:
+#   python eval.py eval=memmap_6h ++eval.models='dcae_skip:logs/.../last.ckpt'
+#   python eval.py +legacy=eval_2020_paper_baseline_24ch
+#   python eval.py eval=crps_ensemble model=corrdiff_fm \
+#       eval.fm_ckpt=logs/.../last.ckpt eval.base_ckpt=logs/.../base.ckpt
+#
+defaults:
+  - _self_
+  - data: era5_0p5_6h
+  - model: weatherdcae
+  - eval: memmap_6h
+
+exp_name: ${eval.name}_${data.name}
+
+hydra:
+  run:
+    dir: ${eval.out_dir}/_hydra_eval/${now:%Y-%m-%d_%H-%M-%S}
+  job:
+    chdir: false

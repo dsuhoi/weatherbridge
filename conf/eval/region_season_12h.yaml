@@ -1,0 +1,28 @@
+# Region × season RMSE breakdown at 12h horizon (paper-2 leaderboard).
+# Routes to tools/eval/region_season_12h_eval.main().
+#
+# 7 regions: Tropics, N-Extra, S-Extra, Arctic, Antarctic, North_Atlantic, West_Pacific
+# 4 seasons: DJF, MAM, JJA, SON
+# Per-channel weighted RMSE aggregated across τ ∈ eval_hours.
+#
+# Output: ${out_dir}/${model_name}.json per model in `models` list.
+name: region_season_12h
+kind: region_season_12h
+memmap_dir: ${oc.env:MEMMAP_DIR,/tmp/wb2_0p5_cache}
+test_year: 2020
+stats_path: data/json_stats_0p5.nc
+surface_stats_path: data/surface_stats_0p5.json
+static_path: data/static_features_0p5.pt
+batch_size: 4
+num_workers: 2
+samples_per_date: 2
+eval_days_per_month: 4
+max_tau_hours: 12
+keep_n_channels: 24
+eval_hours: "1,2,3,4,5,6,7,8,9,10,11"
+device: null
+out_dir: metrics/region_season_12h
+# set via CLI: ++eval.models='name1:ckpt1[:ENV=val],...'
+models: ""
+# unused for this kind but needed for shared EvalConfig schema
+climatology: ${oc.env:CLIMATOLOGY,/workspace-SR006.nfs2/weather_data/time_interpolation_0p5/climatology_1990-2019_0p5_canonical_v2.zarr}

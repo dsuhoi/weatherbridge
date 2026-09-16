@@ -1,0 +1,5145 @@
+{
+  "schema_version": 2,
+  "left": "refine",
+  "left_path": "metrics/journal_spectra_v6/12h_2020/refine_tau6.npz",
+  "left_sha256": "df6602ce0fdefd59ae812c23ec4be1d27bf6ee208aa680030d149eeb4e63ee31",
+  "right_sha256": {
+    "weatherbridge": "73125c315b1a056ab6aa63301550948fd78d762ec0e799f9df0e428088065555",
+    "flow_spectral": "4de65839b2e141515d9bfdd43df56f56c84b912200f8f02679b7e9ea109d2d8a",
+    "weatherdcae_14m": "61d34114196e5895e9d916b7da8e3dd0b4845549fa3e026235124a05b3d21f27",
+    "fuxi": "d988840c90362c6cbe49ee4d76fe58e54993a77768b2683a5efb51c4fff4c631",
+    "modafno": "641fee2f1bd720aea6e378062dbf0be26391ad944c4ddd5c7e1e24fb257f4ead",
+    "sdyff": "f89e48e0aafd75d2f6f50582a176dd221f25b8d4e09cec3ef2b3769228ebd146",
+    "pixelattn_vfi": "6920b9517a160883deea1a961297e76a38d7cdaf8c93f024fe12997ac883f322",
+    "linear": "a6b05618805aa90206975034db17101b72017d202916ebbeca0e8d82eaf19099"
+  },
+  "right_paths": {
+    "weatherbridge": "metrics/journal_spectra_v6/12h_2020/weatherbridge_tau6.npz",
+    "flow_spectral": "metrics/journal_spectra_v6/12h_2020/flow_spectral_tau6.npz",
+    "weatherdcae_14m": "metrics/journal_spectra_v6/12h_2020/weatherdcae_14m_tau6.npz",
+    "fuxi": "metrics/journal_spectra_v6/12h_2020/fuxi_tau6.npz",
+    "modafno": "metrics/journal_spectra_v6/12h_2020/modafno_tau6.npz",
+    "sdyff": "metrics/journal_spectra_v6/12h_2020/sdyff_tau6.npz",
+    "pixelattn_vfi": "metrics/journal_spectra_v6/12h_2020/pixelattn_vfi_tau6.npz",
+    "linear": "metrics/journal_spectra_v6/12h_2020/linear_tau6.npz"
+  },
+  "channels": [
+    "wind1000:spheroidal",
+    "wind1000:toroidal",
+    "wind925:spheroidal",
+    "wind925:toroidal",
+    "wind850:spheroidal",
+    "wind850:toroidal",
+    "wind700:spheroidal",
+    "wind700:toroidal",
+    "wind10:spheroidal",
+    "wind10:toroidal"
+  ],
+  "comparisons": {
+    "weatherbridge": {
+      "tau": 6,
+      "n_windows": 731,
+      "n_blocks": 53,
+      "block_days": 7,
+      "block_definition": "calendar_bins_over_dense_evaluation_windows",
+      "n_unique_days": 366,
+      "median_windows_per_block": 14.0,
+      "draws": 10000,
+      "energy_log_error": {
+        "better": "lower",
+        "left": 0.4137475647094,
+        "right": 0.43737931506506195,
+        "delta_left_minus_right": -0.02363175035566195,
+        "delta_ci95": [
+          -0.024652273298439574,
+          -0.02363470329730341,
+          -0.022597386646463487
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "shape_log_error": {
+        "better": "lower",
+        "left": 0.1448659460018255,
+        "right": 0.1557480867488358,
+        "delta_left_minus_right": -0.0108821407470103,
+        "delta_ci95": [
+          -0.011458320549777303,
+          -0.01087606899878557,
+          -0.010332933549734828
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "coherence": {
+        "better": "higher",
+        "left": 0.5277439160111951,
+        "right": 0.5306474834323827,
+        "delta_left_minus_right": -0.0029035674211875806,
+        "delta_ci95": [
+          -0.0031212651477109804,
+          -0.002903341542975335,
+          -0.002687277492534798
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "signed_cospectrum": {
+        "better": "higher",
+        "left": 0.7044445760354462,
+        "right": 0.706858198096015,
+        "delta_left_minus_right": -0.002413622060568832,
+        "delta_ci95": [
+          -0.0025862259633104346,
+          -0.0024141647757279228,
+          -0.0022402890875192873
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "per_channel": {
+        "wind1000:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.16896988072243363,
+            "right": 0.18833359577195463,
+            "delta_left_minus_right": -0.019363715049521002,
+            "delta_ci95": [
+              -0.020404879644332984,
+              -0.019362612797608078,
+              -0.01831943286126305
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13653260060724906,
+            "right": 0.14451104788830765,
+            "delta_left_minus_right": -0.007978447281058593,
+            "delta_ci95": [
+              -0.008511379505628674,
+              -0.007978534064762108,
+              -0.007435015723288012
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8063530712382085,
+            "right": 0.8070530238295058,
+            "delta_left_minus_right": -0.0006999525912972926,
+            "delta_ci95": [
+              -0.000961773412212999,
+              -0.0007020492948586199,
+              -0.00042196300931726124
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8978924439804662,
+            "right": 0.8982785279708424,
+            "delta_left_minus_right": -0.000386083990376207,
+            "delta_ci95": [
+              -0.0005320031152052124,
+              -0.0003878936612891626,
+              -0.00023150469793172538
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind1000:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.49637589231080864,
+            "right": 0.5284325453304825,
+            "delta_left_minus_right": -0.03205665301967381,
+            "delta_ci95": [
+              -0.033891270839150896,
+              -0.03206754259563377,
+              -0.030177197172608642
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13917904238123574,
+            "right": 0.15275280310093298,
+            "delta_left_minus_right": -0.013573760719697237,
+            "delta_ci95": [
+              -0.014895572861737157,
+              -0.013578805945069605,
+              -0.012308658734075438
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4517736597198142,
+            "right": 0.4547614725523217,
+            "delta_left_minus_right": -0.002987812832507486,
+            "delta_ci95": [
+              -0.00344262962114647,
+              -0.002988547891002752,
+              -0.002535236297663364
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6718250682676866,
+            "right": 0.6740608122378139,
+            "delta_left_minus_right": -0.0022357439701272686,
+            "delta_ci95": [
+              -0.0025751929570410337,
+              -0.0022372351462472406,
+              -0.0018985260986182223
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1687016894075351,
+            "right": 0.18343756130108604,
+            "delta_left_minus_right": -0.01473587189355094,
+            "delta_ci95": [
+              -0.015925588242582688,
+              -0.014748673069886309,
+              -0.013499831589180026
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.14457456464847362,
+            "right": 0.15375097883832112,
+            "delta_left_minus_right": -0.009176414189847493,
+            "delta_ci95": [
+              -0.009785623761761696,
+              -0.009174748296244456,
+              -0.008571097478220305
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7872504978434332,
+            "right": 0.789413708179333,
+            "delta_left_minus_right": -0.0021632103358998345,
+            "delta_ci95": [
+              -0.0024279988689849485,
+              -0.002161554811457078,
+              -0.0019006145960319273
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8871450130655729,
+            "right": 0.8883735723436775,
+            "delta_left_minus_right": -0.0012285592781046129,
+            "delta_ci95": [
+              -0.001377813732085223,
+              -0.0012274363528079202,
+              -0.0010808649532496523
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.5292355426760141,
+            "right": 0.5593773869685948,
+            "delta_left_minus_right": -0.03014184429258071,
+            "delta_ci95": [
+              -0.03224051009691187,
+              -0.030154838546458562,
+              -0.028030065235895997
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.12362526427500878,
+            "right": 0.13295599898748947,
+            "delta_left_minus_right": -0.009330734712480693,
+            "delta_ci95": [
+              -0.0105958648680643,
+              -0.009317485587582212,
+              -0.00811485131191456
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.3750798900786242,
+            "right": 0.37580013099838705,
+            "delta_left_minus_right": -0.0007202409197628601,
+            "delta_ci95": [
+              -0.0013167203766657198,
+              -0.0007283428336488929,
+              -0.00010672713368298368
+            ],
+            "p_paired_block_permutation": 0.027497250274972504,
+            "p_holm": 0.027497250274972504
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6118531374696504,
+            "right": 0.6124706964649351,
+            "delta_left_minus_right": -0.000617558995284706,
+            "delta_ci95": [
+              -0.0011046077784983926,
+              -0.0006245094587668532,
+              -0.00011522874093415904
+            ],
+            "p_paired_block_permutation": 0.021897810218978103,
+            "p_holm": 0.021897810218978103
+          }
+        },
+        "wind850:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.27659665726602956,
+            "right": 0.28387797032154116,
+            "delta_left_minus_right": -0.007281313055511607,
+            "delta_ci95": [
+              -0.008602725248555146,
+              -0.00729580727877624,
+              -0.005896017781519564
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.18051916191662712,
+            "right": 0.18660222970346746,
+            "delta_left_minus_right": -0.0060830677868403404,
+            "delta_ci95": [
+              -0.006704451684474004,
+              -0.006078124314705002,
+              -0.005478457964388833
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7027618382763112,
+            "right": 0.7048670554943841,
+            "delta_left_minus_right": -0.0021052172180728856,
+            "delta_ci95": [
+              -0.002447384201409186,
+              -0.002104328528788557,
+              -0.0017722746395542916
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.838147335763506,
+            "right": 0.8394127784121053,
+            "delta_left_minus_right": -0.001265442648599291,
+            "delta_ci95": [
+              -0.0014689754374713898,
+              -0.0012649912638543204,
+              -0.0010666155965970675
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.6015601924844359,
+            "right": 0.6257860875905845,
+            "delta_left_minus_right": -0.024225895106148587,
+            "delta_ci95": [
+              -0.02582473562735068,
+              -0.02421678512211506,
+              -0.02260763729726036
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1239001485742068,
+            "right": 0.13297941219749596,
+            "delta_left_minus_right": -0.00907926362328916,
+            "delta_ci95": [
+              -0.009793234058455969,
+              -0.009086935081494982,
+              -0.008380931302415852
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.27400456760307995,
+            "right": 0.27258220166171787,
+            "delta_left_minus_right": 0.0014223659413620804,
+            "delta_ci95": [
+              0.000984225826302787,
+              0.0014230885292183804,
+              0.0018711015968748423
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.5226537425850712,
+            "right": 0.5212981785289567,
+            "delta_left_minus_right": 0.0013555640561145887,
+            "delta_ci95": [
+              0.0009296025719020301,
+              0.0013556246799906746,
+              0.001788829893596766
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.4652520068457891,
+            "right": 0.47531884128224866,
+            "delta_left_minus_right": -0.01006683443645956,
+            "delta_ci95": [
+              -0.011443558167696584,
+              -0.01005536363437215,
+              -0.008730641782809538
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.21589665239225822,
+            "right": 0.2405531493852631,
+            "delta_left_minus_right": -0.024656496993004873,
+            "delta_ci95": [
+              -0.025673053184047688,
+              -0.02465862449559239,
+              -0.023627015298439396
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.49941510369774417,
+            "right": 0.5114587216794736,
+            "delta_left_minus_right": -0.012043617981729426,
+            "delta_ci95": [
+              -0.012593693470249396,
+              -0.012036837784814625,
+              -0.011504917543370675
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.7062114833480846,
+            "right": 0.7147209446994452,
+            "delta_left_minus_right": -0.008509461351360659,
+            "delta_ci95": [
+              -0.008912525814539541,
+              -0.008505606426382928,
+              -0.00811571695117487
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.7983840752611867,
+            "right": 0.8456290239642531,
+            "delta_left_minus_right": -0.04724494870306639,
+            "delta_ci95": [
+              -0.04932199361608154,
+              -0.04725783850192189,
+              -0.0450917438072171
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1071084142342801,
+            "right": 0.1121484502518063,
+            "delta_left_minus_right": -0.0050400360175262005,
+            "delta_ci95": [
+              -0.005815185200661892,
+              -0.005035263900044003,
+              -0.0042961386464489305
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.10902057249206036,
+            "right": 0.11455861984582671,
+            "delta_left_minus_right": -0.005538047353766354,
+            "delta_ci95": [
+              -0.005969348533776892,
+              -0.005536967415299882,
+              -0.005097303788538735
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.32816499712203007,
+            "right": 0.3365451668461762,
+            "delta_left_minus_right": -0.008380169724146125,
+            "delta_ci95": [
+              -0.009044474875428907,
+              -0.008376369707354725,
+              -0.007700515173055367
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1574744766696985,
+            "right": 0.17735106069917994,
+            "delta_left_minus_right": -0.019876584029481448,
+            "delta_ci95": [
+              -0.021077721454590987,
+              -0.019875994756024237,
+              -0.01867382910107887
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13859557029160527,
+            "right": 0.1469256890843407,
+            "delta_left_minus_right": -0.00833011879273543,
+            "delta_ci95": [
+              -0.00889522097408758,
+              -0.008332014195877618,
+              -0.007757041903004733
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8022702782326945,
+            "right": 0.8034817956377804,
+            "delta_left_minus_right": -0.00121151740508596,
+            "delta_ci95": [
+              -0.0014639147287977467,
+              -0.0012114394929595984,
+              -0.0009419235127512003
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8956078457277875,
+            "right": 0.8962845082322158,
+            "delta_left_minus_right": -0.000676662504428327,
+            "delta_ci95": [
+              -0.0008168584976709692,
+              -0.0006768344691285844,
+              -0.0005270471269229638
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.47492523345006876,
+            "right": 0.5062490774206939,
+            "delta_left_minus_right": -0.031323843970625154,
+            "delta_ci95": [
+              -0.03320349089613612,
+              -0.031343519066306225,
+              -0.02938729450371686
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13872804069731043,
+            "right": 0.15430110805093344,
+            "delta_left_minus_right": -0.015573067353623016,
+            "delta_ci95": [
+              -0.017012527401076546,
+              -0.015578510043275151,
+              -0.014172578421341724
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4695096809299798,
+            "right": 0.4724981044450961,
+            "delta_left_minus_right": -0.0029884235151163008,
+            "delta_ci95": [
+              -0.00344874040232155,
+              -0.002987960037195425,
+              -0.0025418032318377222
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6849446930246053,
+            "right": 0.6871367952239823,
+            "delta_left_minus_right": -0.002192102199377044,
+            "delta_ci95": [
+              -0.002527866805640064,
+              -0.002191452238616942,
+              -0.0018654763419988622
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        }
+      },
+      "cellwise_family": {
+        "energy_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "shape_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "coherence": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 1,
+          "n_significant_left_better_holm": 1,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "signed_cospectrum": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 1,
+          "n_significant_left_better_holm": 1,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        }
+      }
+    },
+    "flow_spectral": {
+      "tau": 6,
+      "n_windows": 731,
+      "n_blocks": 53,
+      "block_days": 7,
+      "block_definition": "calendar_bins_over_dense_evaluation_windows",
+      "n_unique_days": 366,
+      "median_windows_per_block": 14.0,
+      "draws": 10000,
+      "energy_log_error": {
+        "better": "lower",
+        "left": 0.4137475647094,
+        "right": 0.4969625023522083,
+        "delta_left_minus_right": -0.0832149376428083,
+        "delta_ci95": [
+          -0.08412756380916357,
+          -0.08321992569030082,
+          -0.0823083849415307
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "shape_log_error": {
+        "better": "lower",
+        "left": 0.1448659460018255,
+        "right": 0.17267023040498983,
+        "delta_left_minus_right": -0.02780428440316432,
+        "delta_ci95": [
+          -0.0287573068886333,
+          -0.0278087633867488,
+          -0.02684684707122623
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "coherence": {
+        "better": "higher",
+        "left": 0.5277439160111951,
+        "right": 0.5301981662131244,
+        "delta_left_minus_right": -0.0024542502019293533,
+        "delta_ci95": [
+          -0.002667635785506281,
+          -0.002453575390308216,
+          -0.0022373934488803203
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "signed_cospectrum": {
+        "better": "higher",
+        "left": 0.7044445760354462,
+        "right": 0.7067290994031648,
+        "delta_left_minus_right": -0.0022845233677185606,
+        "delta_ci95": [
+          -0.002440977404722536,
+          -0.00228504668379953,
+          -0.002127044695308578
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "per_channel": {
+        "wind1000:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.16896988072243363,
+            "right": 0.26660108719065956,
+            "delta_left_minus_right": -0.09763120646822593,
+            "delta_ci95": [
+              -0.09873123937719279,
+              -0.09763891286260783,
+              -0.09654005432118692
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13653260060724906,
+            "right": 0.18252966129991816,
+            "delta_left_minus_right": -0.045997060692669095,
+            "delta_ci95": [
+              -0.047006803333277336,
+              -0.04600425984929589,
+              -0.04494672364360373
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8063530712382085,
+            "right": 0.8054381504593731,
+            "delta_left_minus_right": 0.0009149207788354818,
+            "delta_ci95": [
+              0.0006101786682609245,
+              0.0009150306249885998,
+              0.0012363581581864014
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8978924439804662,
+            "right": 0.8973853525319602,
+            "delta_left_minus_right": 0.0005070914485060252,
+            "delta_ci95": [
+              0.00033538795696759494,
+              0.0005071618570022807,
+              0.0006887694635006852
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind1000:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.49637589231080864,
+            "right": 0.5812413047165376,
+            "delta_left_minus_right": -0.08486541240572892,
+            "delta_ci95": [
+              -0.08626641687577437,
+              -0.08486641548897847,
+              -0.08349933438573681
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13917904238123574,
+            "right": 0.17163001852958537,
+            "delta_left_minus_right": -0.03245097614834963,
+            "delta_ci95": [
+              -0.03382825522559979,
+              -0.03244681539813178,
+              -0.031085641582112536
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4517736597198142,
+            "right": 0.4540363714486238,
+            "delta_left_minus_right": -0.0022627117288095966,
+            "delta_ci95": [
+              -0.002668855181307843,
+              -0.0022648547216245762,
+              -0.0018452311783172678
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6718250682676866,
+            "right": 0.6735235459990443,
+            "delta_left_minus_right": -0.0016984777313576727,
+            "delta_ci95": [
+              -0.001999906536864454,
+              -0.0017003740070729578,
+              -0.0013907381511351431
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1687016894075351,
+            "right": 0.2653282112343404,
+            "delta_left_minus_right": -0.09662652182680531,
+            "delta_ci95": [
+              -0.09812521228575798,
+              -0.09663433332975775,
+              -0.09511867483122985
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.14457456464847362,
+            "right": 0.1849656646049463,
+            "delta_left_minus_right": -0.040391099956472665,
+            "delta_ci95": [
+              -0.0415872683359839,
+              -0.04039727208918645,
+              -0.039194285412472135
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7872504978434332,
+            "right": 0.7864940799212162,
+            "delta_left_minus_right": 0.0007564179222169232,
+            "delta_ci95": [
+              0.00038773284239313757,
+              0.0007552773311342298,
+              0.0011258808444834178
+            ],
+            "p_paired_block_permutation": 0.00039996000399960006,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8871450130655729,
+            "right": 0.8867209802410997,
+            "delta_left_minus_right": 0.00042403282447323054,
+            "delta_ci95": [
+              0.00021703803750393325,
+              0.00042339901870225294,
+              0.0006327021025415769
+            ],
+            "p_paired_block_permutation": 0.00029997000299970003,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.5292355426760141,
+            "right": 0.6099812065241572,
+            "delta_left_minus_right": -0.08074566384814308,
+            "delta_ci95": [
+              -0.08273648591978355,
+              -0.08074972421015025,
+              -0.07875555544872984
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.12362526427500878,
+            "right": 0.1435904635674487,
+            "delta_left_minus_right": -0.019965199292439922,
+            "delta_ci95": [
+              -0.02141327981323655,
+              -0.019943036400495023,
+              -0.018590162849377336
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.3750798900786242,
+            "right": 0.37482968433447966,
+            "delta_left_minus_right": 0.0002502057441445271,
+            "delta_ci95": [
+              -0.0002771449492623243,
+              0.0002474671308710652,
+              0.0007813211839874711
+            ],
+            "p_paired_block_permutation": 0.3595640435956404,
+            "p_holm": 0.3595640435956404
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6118531374696504,
+            "right": 0.6116670042317152,
+            "delta_left_minus_right": 0.00018613323793525982,
+            "delta_ci95": [
+              -0.00025191359252513533,
+              0.00018462942688363126,
+              0.0006243032519879482
+            ],
+            "p_paired_block_permutation": 0.39966003399660033,
+            "p_holm": 0.39966003399660033
+          }
+        },
+        "wind850:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.27659665726602956,
+            "right": 0.345121029224258,
+            "delta_left_minus_right": -0.06852437195822847,
+            "delta_ci95": [
+              -0.06981144183856011,
+              -0.06852505778565282,
+              -0.06721209634736479
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.18051916191662712,
+            "right": 0.19912158368631852,
+            "delta_left_minus_right": -0.018602421769691402,
+            "delta_ci95": [
+              -0.019520656744424866,
+              -0.018595449025099325,
+              -0.017677279542999514
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7027618382763112,
+            "right": 0.7055792921055847,
+            "delta_left_minus_right": -0.002817453829273453,
+            "delta_ci95": [
+              -0.003230608554508252,
+              -0.0028208174939398645,
+              -0.0024005558557249258
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.838147335763506,
+            "right": 0.8398423761577841,
+            "delta_left_minus_right": -0.0016950403942781467,
+            "delta_ci95": [
+              -0.0019426617982055,
+              -0.0016966518804573116,
+              -0.0014443396797686942
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.6015601924844359,
+            "right": 0.6554961453136451,
+            "delta_left_minus_right": -0.053935952829209155,
+            "delta_ci95": [
+              -0.05515088002168135,
+              -0.053942304959487875,
+              -0.052716806369126706
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1239001485742068,
+            "right": 0.1407360956786269,
+            "delta_left_minus_right": -0.016835947104420115,
+            "delta_ci95": [
+              -0.01782504613928795,
+              -0.01684095192960089,
+              -0.01584307884468753
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.27400456760307995,
+            "right": 0.2757071136368283,
+            "delta_left_minus_right": -0.0017025460337483644,
+            "delta_ci95": [
+              -0.0020742476016604324,
+              -0.0016996916534122997,
+              -0.0013238374841703481
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.5226537425850712,
+            "right": 0.524260087272537,
+            "delta_left_minus_right": -0.0016063446874657883,
+            "delta_ci95": [
+              -0.0019683499504483367,
+              -0.0016034183717481554,
+              -0.0012370758237655573
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.4652520068457891,
+            "right": 0.5303961394640223,
+            "delta_left_minus_right": -0.06514413261823321,
+            "delta_ci95": [
+              -0.06623340041914155,
+              -0.06513651051890276,
+              -0.06406070735005491
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.21589665239225822,
+            "right": 0.23209523066124088,
+            "delta_left_minus_right": -0.01619857826898266,
+            "delta_ci95": [
+              -0.016998081868623515,
+              -0.0162009111845286,
+              -0.0154439185420623
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.49941510369774417,
+            "right": 0.5114216519527331,
+            "delta_left_minus_right": -0.01200654825498898,
+            "delta_ci95": [
+              -0.012574194496046447,
+              -0.012007100249794095,
+              -0.011458108156674834
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.7062114833480846,
+            "right": 0.7147266146422411,
+            "delta_left_minus_right": -0.008515131294156486,
+            "delta_ci95": [
+              -0.008941443685839457,
+              -0.008513612687748362,
+              -0.008104045218808944
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.7983840752611867,
+            "right": 0.8921620811096527,
+            "delta_left_minus_right": -0.09377800584846596,
+            "delta_ci95": [
+              -0.09581705244622528,
+              -0.09380128482109612,
+              -0.09169099031258647
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1071084142342801,
+            "right": 0.11271100566708438,
+            "delta_left_minus_right": -0.0056025914328042825,
+            "delta_ci95": [
+              -0.006426577046747483,
+              -0.005596297570085423,
+              -0.004788086787218727
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.10902057249206036,
+            "right": 0.11508359998036508,
+            "delta_left_minus_right": -0.006063027488304715,
+            "delta_ci95": [
+              -0.006478194604618711,
+              -0.006058628102044654,
+              -0.005664585958248665
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.32816499712203007,
+            "right": 0.33729411659586445,
+            "delta_left_minus_right": -0.00912911947383438,
+            "delta_ci95": [
+              -0.00973477931451132,
+              -0.009121958231981059,
+              -0.00854198329776163
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1574744766696985,
+            "right": 0.26045887708851195,
+            "delta_left_minus_right": -0.10298440041881346,
+            "delta_ci95": [
+              -0.10411429491004583,
+              -0.1029959774388433,
+              -0.10184524525706046
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13859557029160527,
+            "right": 0.18680676779163194,
+            "delta_left_minus_right": -0.04821119750002667,
+            "delta_ci95": [
+              -0.04930031831224774,
+              -0.04821923661484141,
+              -0.04707434493872635
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8022702782326945,
+            "right": 0.8015396054400954,
+            "delta_left_minus_right": 0.0007306727925990852,
+            "delta_ci95": [
+              0.0003941486029995944,
+              0.0007307409717534075,
+              0.0010735467076301575
+            ],
+            "p_paired_block_permutation": 0.00029997000299970003,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8956078457277875,
+            "right": 0.8952047431844041,
+            "delta_left_minus_right": 0.00040310254338338236,
+            "delta_ci95": [
+              0.00021472149340290568,
+              0.0004030236305423429,
+              0.0005961674403629602
+            ],
+            "p_paired_block_permutation": 0.00019998000199980003,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.47492523345006876,
+            "right": 0.562838941656299,
+            "delta_left_minus_right": -0.08791370820623023,
+            "delta_ci95": [
+              -0.08939330464169162,
+              -0.08791687872045553,
+              -0.08644107216420883
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13872804069731043,
+            "right": 0.17251581256309712,
+            "delta_left_minus_right": -0.03378777186578669,
+            "delta_ci95": [
+              -0.03536333630243816,
+              -0.03378851820807777,
+              -0.03221785595618206
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4695096809299798,
+            "right": 0.4718521128519452,
+            "delta_left_minus_right": -0.0023424319219654266,
+            "delta_ci95": [
+              -0.002747581549353646,
+              -0.002343795652088476,
+              -0.0019341158960800256
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6849446930246053,
+            "right": 0.6866661731749977,
+            "delta_left_minus_right": -0.0017214801503924182,
+            "delta_ci95": [
+              -0.002015289359015582,
+              -0.0017221311537903294,
+              -0.0014246739840342417
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        }
+      },
+      "cellwise_family": {
+        "energy_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "shape_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "coherence": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 4,
+          "n_significant_left_better_holm": 3,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "signed_cospectrum": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 4,
+          "n_significant_left_better_holm": 3,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        }
+      }
+    },
+    "weatherdcae_14m": {
+      "tau": 6,
+      "n_windows": 731,
+      "n_blocks": 53,
+      "block_days": 7,
+      "block_definition": "calendar_bins_over_dense_evaluation_windows",
+      "n_unique_days": 366,
+      "median_windows_per_block": 14.0,
+      "draws": 10000,
+      "energy_log_error": {
+        "better": "lower",
+        "left": 0.4137475647094,
+        "right": 0.4992972247531199,
+        "delta_left_minus_right": -0.08554966004371989,
+        "delta_ci95": [
+          -0.08751037229838159,
+          -0.085549715666214,
+          -0.08360337066990653
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "shape_log_error": {
+        "better": "lower",
+        "left": 0.1448659460018255,
+        "right": 0.1482019107294474,
+        "delta_left_minus_right": -0.003335964727621904,
+        "delta_ci95": [
+          -0.004075243759202164,
+          -0.003341855609539715,
+          -0.0025877408477204093
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "coherence": {
+        "better": "higher",
+        "left": 0.5277439160111951,
+        "right": 0.5094385061754492,
+        "delta_left_minus_right": 0.01830540983574591,
+        "delta_ci95": [
+          0.01749403384763137,
+          0.018314464525803098,
+          0.019124744858309117
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "signed_cospectrum": {
+        "better": "higher",
+        "left": 0.7044445760354462,
+        "right": 0.6929575698422179,
+        "delta_left_minus_right": 0.011487006193228289,
+        "delta_ci95": [
+          0.010814751670425532,
+          0.011498411245473794,
+          0.01215792448661318
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "per_channel": {
+        "wind1000:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.16896988072243363,
+            "right": 0.22036274074952472,
+            "delta_left_minus_right": -0.05139286002709109,
+            "delta_ci95": [
+              -0.0532581506206616,
+              -0.05139910426424915,
+              -0.049597883726468804
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13653260060724906,
+            "right": 0.11824436335940368,
+            "delta_left_minus_right": 0.018288237247845382,
+            "delta_ci95": [
+              0.01717558297366963,
+              0.018282926216242903,
+              0.019445687907044103
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8063530712382085,
+            "right": 0.7799016286997397,
+            "delta_left_minus_right": 0.026451442538468872,
+            "delta_ci95": [
+              0.025676798869829855,
+              0.026455129703119196,
+              0.027245817299305378
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8978924439804662,
+            "right": 0.8830358970670792,
+            "delta_left_minus_right": 0.014856546913387003,
+            "delta_ci95": [
+              0.014412210394517528,
+              0.01485999480970257,
+              0.015316387641116147
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind1000:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.49637589231080864,
+            "right": 0.6055666935560503,
+            "delta_left_minus_right": -0.10919080124524166,
+            "delta_ci95": [
+              -0.11195550761462669,
+              -0.109197081607884,
+              -0.10644758742003471
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13917904238123574,
+            "right": 0.1337726681038391,
+            "delta_left_minus_right": 0.005406374277396653,
+            "delta_ci95": [
+              0.0035912477736594244,
+              0.005392645473147675,
+              0.007278088973527596
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4517736597198142,
+            "right": 0.44727091460645446,
+            "delta_left_minus_right": 0.004502745113359741,
+            "delta_ci95": [
+              0.003552728411721383,
+              0.0045035172384382816,
+              0.005449714723658727
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6718250682676866,
+            "right": 0.6684942926329888,
+            "delta_left_minus_right": 0.003330775634697858,
+            "delta_ci95": [
+              0.0026239189276637707,
+              0.0033329160203685593,
+              0.0040379009314129
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1687016894075351,
+            "right": 0.22623688329326275,
+            "delta_left_minus_right": -0.05753519388572764,
+            "delta_ci95": [
+              -0.0597488396260801,
+              -0.05753923264806071,
+              -0.055332023885154
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.14457456464847362,
+            "right": 0.14206450839212265,
+            "delta_left_minus_right": 0.0025100562563509787,
+            "delta_ci95": [
+              0.0012090800897371391,
+              0.002508272830810815,
+              0.003834257830846123
+            ],
+            "p_paired_block_permutation": 0.0008999100089991,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7872504978434332,
+            "right": 0.7469863803539981,
+            "delta_left_minus_right": 0.040264117489435036,
+            "delta_ci95": [
+              0.039268838625436904,
+              0.04026304820305909,
+              0.0412679811273298
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8871450130655729,
+            "right": 0.8641502552254255,
+            "delta_left_minus_right": 0.022994757840147373,
+            "delta_ci95": [
+              0.022411909564887707,
+              0.022993229645547786,
+              0.023585311812680636
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.5292355426760141,
+            "right": 0.5845363335980341,
+            "delta_left_minus_right": -0.055300790922020004,
+            "delta_ci95": [
+              -0.05955907938554671,
+              -0.05531949909151074,
+              -0.05104138467749553
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.12362526427500878,
+            "right": 0.10822800496942205,
+            "delta_left_minus_right": 0.015397259305586733,
+            "delta_ci95": [
+              0.013982655054210546,
+              0.01539574090060037,
+              0.01681760041858602
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.3750798900786242,
+            "right": 0.3380878910157325,
+            "delta_left_minus_right": 0.03699199906289169,
+            "delta_ci95": [
+              0.035604133844529394,
+              0.037002408318770386,
+              0.03842073662530559
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6118531374696504,
+            "right": 0.5808054407709438,
+            "delta_left_minus_right": 0.03104769669870666,
+            "delta_ci95": [
+              0.02990011760599739,
+              0.031062236758393535,
+              0.03222807448808362
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.27659665726602956,
+            "right": 0.33822697483763836,
+            "delta_left_minus_right": -0.061630317571608806,
+            "delta_ci95": [
+              -0.0637648262169775,
+              -0.06161296070213401,
+              -0.059529640147304407
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.18051916191662712,
+            "right": 0.19256791392934958,
+            "delta_left_minus_right": -0.012048752012722458,
+            "delta_ci95": [
+              -0.013397499291315802,
+              -0.012046629290329597,
+              -0.01067501214706912
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7027618382763112,
+            "right": 0.6567626836035712,
+            "delta_left_minus_right": 0.04599915467274007,
+            "delta_ci95": [
+              0.044679360519180145,
+              0.04599060595006327,
+              0.04737748998374872
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.838147335763506,
+            "right": 0.810236063848279,
+            "delta_left_minus_right": 0.02791127191522702,
+            "delta_ci95": [
+              0.027108874780728758,
+              0.027906200956462845,
+              0.02875112919111775
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.6015601924844359,
+            "right": 0.670171904720624,
+            "delta_left_minus_right": -0.06861171223618812,
+            "delta_ci95": [
+              -0.07117551666674046,
+              -0.06858492807293964,
+              -0.0661004820789119
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1239001485742068,
+            "right": 0.10307837144131536,
+            "delta_left_minus_right": 0.020821777132891434,
+            "delta_ci95": [
+              0.0189956592358247,
+              0.02082849588119489,
+              0.0226275291121301
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.27400456760307995,
+            "right": 0.2576279375197623,
+            "delta_left_minus_right": 0.016376630083317634,
+            "delta_ci95": [
+              0.014828128997028813,
+              0.01638316554956612,
+              0.017951647595784673
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.5226537425850712,
+            "right": 0.5067895714055987,
+            "delta_left_minus_right": 0.015864171179472586,
+            "delta_ci95": [
+              0.014382939758607601,
+              0.015872018709880698,
+              0.017375254985275677
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.4652520068457891,
+            "right": 0.5422941020158776,
+            "delta_left_minus_right": -0.07704209517008848,
+            "delta_ci95": [
+              -0.07978392431681797,
+              -0.07703506103649713,
+              -0.0744145297511772
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.21589665239225822,
+            "right": 0.22151569176144215,
+            "delta_left_minus_right": -0.005619039369183926,
+            "delta_ci95": [
+              -0.00785450439051298,
+              -0.005635471126526986,
+              -0.0032742631564744713
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.49941510369774417,
+            "right": 0.5026054527870444,
+            "delta_left_minus_right": -0.003190349089300215,
+            "delta_ci95": [
+              -0.0055510218885308354,
+              -0.003187679707379598,
+              -0.0007292967460331987
+            ],
+            "p_paired_block_permutation": 0.0122987701229877,
+            "p_holm": 0.0122987701229877
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.7062114833480846,
+            "right": 0.7085815373752088,
+            "delta_left_minus_right": -0.002370054027124202,
+            "delta_ci95": [
+              -0.0040468899623184425,
+              -0.0023701313852942385,
+              -0.000622678993927489
+            ],
+            "p_paired_block_permutation": 0.0103989601039896,
+            "p_holm": 0.0103989601039896
+          }
+        },
+        "wind700:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.7983840752611867,
+            "right": 1.0259020721657404,
+            "delta_left_minus_right": -0.22751799690455365,
+            "delta_ci95": [
+              -0.2313163410171476,
+              -0.22752072735737938,
+              -0.22376307589115804
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1071084142342801,
+            "right": 0.20139400612068567,
+            "delta_left_minus_right": -0.09428559188640558,
+            "delta_ci95": [
+              -0.09833426216512754,
+              -0.09426649493222936,
+              -0.09020370285748731
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.10902057249206036,
+            "right": 0.11745897680521011,
+            "delta_left_minus_right": -0.008438404313149753,
+            "delta_ci95": [
+              -0.01014835635872255,
+              -0.008435410285368476,
+              -0.0066680504985635715
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.32816499712203007,
+            "right": 0.3409201348488373,
+            "delta_left_minus_right": -0.012755137726807253,
+            "delta_ci95": [
+              -0.01528013143790057,
+              -0.012755889175446983,
+              -0.010164629062380803
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1574744766696985,
+            "right": 0.20046534276524372,
+            "delta_left_minus_right": -0.04299086609554523,
+            "delta_ci95": [
+              -0.044661764209808885,
+              -0.042998557973803,
+              -0.04131892756134861
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13859557029160527,
+            "right": 0.12661467869695983,
+            "delta_left_minus_right": 0.011980891594645438,
+            "delta_ci95": [
+              0.010728794000482248,
+              0.011980715709634951,
+              0.013268876863721319
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8022702782326945,
+            "right": 0.7809066217183741,
+            "delta_left_minus_right": 0.021363656514320373,
+            "delta_ci95": [
+              0.02058602534737141,
+              0.021365205312996238,
+              0.022177705101454715
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8956078457277875,
+            "right": 0.8836019498215818,
+            "delta_left_minus_right": 0.01200589590620571,
+            "delta_ci95": [
+              0.011561937511074798,
+              0.012006089251960395,
+              0.012469899501393798
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.47492523345006876,
+            "right": 0.5792091998292034,
+            "delta_left_minus_right": -0.10428396637913462,
+            "delta_ci95": [
+              -0.10722986572718791,
+              -0.10428188671821198,
+              -0.10138552277457706
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13872804069731043,
+            "right": 0.13453890051993397,
+            "delta_left_minus_right": 0.004189140177376455,
+            "delta_ci95": [
+              0.0021968710656440384,
+              0.004173223449202942,
+              0.006250916934717599
+            ],
+            "p_paired_block_permutation": 0.00019998000199980003,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4695096809299798,
+            "right": 0.46677657464460537,
+            "delta_left_minus_right": 0.0027331062853744315,
+            "delta_ci95": [
+              0.0017168046075498225,
+              0.002740149529314395,
+              0.003748436544279076
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6849446930246053,
+            "right": 0.6829605554262362,
+            "delta_left_minus_right": 0.001984137598369018,
+            "delta_ci95": [
+              0.0012404385857244043,
+              0.001989890247980519,
+              0.002729336148921968
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        }
+      },
+      "cellwise_family": {
+        "energy_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "shape_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 3,
+          "n_significant_left_better_holm": 3,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "coherence": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 8,
+          "n_significant_left_better_holm": 8,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "signed_cospectrum": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 8,
+          "n_significant_left_better_holm": 8,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        }
+      }
+    },
+    "fuxi": {
+      "tau": 6,
+      "n_windows": 731,
+      "n_blocks": 53,
+      "block_days": 7,
+      "block_definition": "calendar_bins_over_dense_evaluation_windows",
+      "n_unique_days": 366,
+      "median_windows_per_block": 14.0,
+      "draws": 10000,
+      "energy_log_error": {
+        "better": "lower",
+        "left": 0.4137475647094,
+        "right": 0.5740387958094371,
+        "delta_left_minus_right": -0.16029123110003707,
+        "delta_ci95": [
+          -0.16483670879333212,
+          -0.16030348409120923,
+          -0.15560483945372658
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "shape_log_error": {
+        "better": "lower",
+        "left": 0.1448659460018255,
+        "right": 0.10439636576436612,
+        "delta_left_minus_right": 0.04046958023745939,
+        "delta_ci95": [
+          0.039473038622485176,
+          0.04047144247856581,
+          0.041473132288943074
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "coherence": {
+        "better": "higher",
+        "left": 0.5277439160111951,
+        "right": 0.20007807228404637,
+        "delta_left_minus_right": 0.3276658437271487,
+        "delta_ci95": [
+          0.3242158057803744,
+          0.3276998167593398,
+          0.33111728145890756
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "signed_cospectrum": {
+        "better": "higher",
+        "left": 0.7044445760354462,
+        "right": 0.4270686547586595,
+        "delta_left_minus_right": 0.2773759212767867,
+        "delta_ci95": [
+          0.2738477415732132,
+          0.27739933216617985,
+          0.2808503096786673
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "per_channel": {
+        "wind1000:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.16896988072243363,
+            "right": 0.5094736797859241,
+            "delta_left_minus_right": -0.34050379906349043,
+            "delta_ci95": [
+              -0.34646439033673176,
+              -0.34055424295229997,
+              -0.3341186517661488
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13653260060724906,
+            "right": 0.09521542698471067,
+            "delta_left_minus_right": 0.041317173622538395,
+            "delta_ci95": [
+              0.039964751388567185,
+              0.04131674038336553,
+              0.042631428251259554
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8063530712382085,
+            "right": 0.37136221596545627,
+            "delta_left_minus_right": 0.4349908552727523,
+            "delta_ci95": [
+              0.429713762976468,
+              0.4349973359376108,
+              0.44013746571136697
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8978924439804662,
+            "right": 0.6085826029692727,
+            "delta_left_minus_right": 0.2893098410111935,
+            "delta_ci95": [
+              0.2849329419546186,
+              0.2893074070869164,
+              0.2935601901754002
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind1000:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.49637589231080864,
+            "right": 0.5950624846659427,
+            "delta_left_minus_right": -0.09868659235513405,
+            "delta_ci95": [
+              -0.10323969580409044,
+              -0.09867532051120093,
+              -0.09399570654591727
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13917904238123574,
+            "right": 0.1030740782659292,
+            "delta_left_minus_right": 0.036104964115306545,
+            "delta_ci95": [
+              0.03420510566312766,
+              0.03608845763915233,
+              0.03805854582793917
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4517736597198142,
+            "right": 0.16074838184543902,
+            "delta_left_minus_right": 0.29102527787437515,
+            "delta_ci95": [
+              0.28725296315135435,
+              0.29102647172289337,
+              0.29482592128826707
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6718250682676866,
+            "right": 0.3996928514436234,
+            "delta_left_minus_right": 0.27213221682406324,
+            "delta_ci95": [
+              0.2675911412742686,
+              0.27214404297967487,
+              0.2766339636529793
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1687016894075351,
+            "right": 0.5805180350093958,
+            "delta_left_minus_right": -0.4118163456018607,
+            "delta_ci95": [
+              -0.419119963748747,
+              -0.41190296703231477,
+              -0.404121844670775
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.14457456464847362,
+            "right": 0.10798760830703741,
+            "delta_left_minus_right": 0.036586956341436216,
+            "delta_ci95": [
+              0.03466493973378525,
+              0.036593357965798656,
+              0.03848837414825216
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7872504978434332,
+            "right": 0.3109778952459956,
+            "delta_left_minus_right": 0.47627260259743753,
+            "delta_ci95": [
+              0.470553824189342,
+              0.4763218788957613,
+              0.4818477908834795
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8871450130655729,
+            "right": 0.5565112963339209,
+            "delta_left_minus_right": 0.330633716731652,
+            "delta_ci95": [
+              0.3254957189074464,
+              0.3306548838790455,
+              0.33566793639811704
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.5292355426760141,
+            "right": 0.5688786022204604,
+            "delta_left_minus_right": -0.039643059544446246,
+            "delta_ci95": [
+              -0.04398071601653376,
+              -0.03968659013644904,
+              -0.03521345092152554
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.12362526427500878,
+            "right": 0.11299702115407884,
+            "delta_left_minus_right": 0.010628243120929942,
+            "delta_ci95": [
+              0.008910186666154634,
+              0.010637050466934882,
+              0.012370930106996568
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.3750798900786242,
+            "right": 0.12073439978847915,
+            "delta_left_minus_right": 0.254345490290145,
+            "delta_ci95": [
+              0.25114316223795535,
+              0.25437191981229823,
+              0.2574225905562182
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6118531374696504,
+            "right": 0.3457364014129469,
+            "delta_left_minus_right": 0.2661167360567035,
+            "delta_ci95": [
+              0.2615828675197209,
+              0.2661446959297691,
+              0.270608724063586
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.27659665726602956,
+            "right": 0.5784958151322418,
+            "delta_left_minus_right": -0.30189915786621224,
+            "delta_ci95": [
+              -0.3079484471977831,
+              -0.30193506605672826,
+              -0.29582732392789735
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.18051916191662712,
+            "right": 0.10300780266074899,
+            "delta_left_minus_right": 0.07751135925587813,
+            "delta_ci95": [
+              0.07544993958799946,
+              0.07753213380520849,
+              0.07960012838927323
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7027618382763112,
+            "right": 0.24164019408858753,
+            "delta_left_minus_right": 0.4611216441877237,
+            "delta_ci95": [
+              0.4560679217544873,
+              0.4611320614364731,
+              0.466146427396474
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.838147335763506,
+            "right": 0.49040827607651905,
+            "delta_left_minus_right": 0.34773905968698693,
+            "delta_ci95": [
+              0.34302379400986766,
+              0.3477326178888992,
+              0.35236529727638394
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.6015601924844359,
+            "right": 0.5407934759167544,
+            "delta_left_minus_right": 0.06076671656768151,
+            "delta_ci95": [
+              0.056441916595472735,
+              0.06082543540146734,
+              0.06474575315027592
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1239001485742068,
+            "right": 0.09949642479949708,
+            "delta_left_minus_right": 0.024403723774709715,
+            "delta_ci95": [
+              0.02286352160180478,
+              0.024400701826674275,
+              0.025960256859608403
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.27400456760307995,
+            "right": 0.1012785325919962,
+            "delta_left_minus_right": 0.17272603501108375,
+            "delta_ci95": [
+              0.16928885768144103,
+              0.17274454290980593,
+              0.1761205318595993
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.5226537425850712,
+            "right": 0.3167131960636614,
+            "delta_left_minus_right": 0.20594054652140986,
+            "delta_ci95": [
+              0.20151080211039596,
+              0.2059575231024733,
+              0.21040556065939545
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.4652520068457891,
+            "right": 0.6466454399970871,
+            "delta_left_minus_right": -0.18139343315129802,
+            "delta_ci95": [
+              -0.18713269258022994,
+              -0.181399147867069,
+              -0.1757919262333129
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.21589665239225822,
+            "right": 0.11231491780965991,
+            "delta_left_minus_right": 0.10358173458259831,
+            "delta_ci95": [
+              0.10102409905018078,
+              0.10357141967674288,
+              0.10621974180827329
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.49941510369774417,
+            "right": 0.1160556118981212,
+            "delta_left_minus_right": 0.383359491799623,
+            "delta_ci95": [
+              0.37859241456771764,
+              0.38334994176568316,
+              0.3880145511651631
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.7062114833480846,
+            "right": 0.3387597101943111,
+            "delta_left_minus_right": 0.3674517731537735,
+            "delta_ci95": [
+              0.363026278763029,
+              0.36747647466191513,
+              0.3717999089183095
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.7983840752611867,
+            "right": 0.615613300284184,
+            "delta_left_minus_right": 0.18277077497700267,
+            "delta_ci95": [
+              0.17848092025945586,
+              0.18277465391303727,
+              0.1870036040960994
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1071084142342801,
+            "right": 0.10962066457959761,
+            "delta_left_minus_right": -0.0025122503453175182,
+            "delta_ci95": [
+              -0.00396154716728875,
+              -0.002503368676424776,
+              -0.0010916593788584787
+            ],
+            "p_paired_block_permutation": 0.0014998500149985001,
+            "p_holm": 0.0014998500149985001
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.10902057249206036,
+            "right": 0.0385586905762013,
+            "delta_left_minus_right": 0.07046188191585906,
+            "delta_ci95": [
+              0.06865528759807005,
+              0.07045730025197974,
+              0.07232773089742928
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.32816499712203007,
+            "right": 0.1930979173503072,
+            "delta_left_minus_right": 0.13506707977172286,
+            "delta_ci95": [
+              0.13210434629267945,
+              0.13505848442307777,
+              0.1381231981486327
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1574744766696985,
+            "right": 0.5235921475993861,
+            "delta_left_minus_right": -0.3661176709296876,
+            "delta_ci95": [
+              -0.37222114274243817,
+              -0.3661851083308091,
+              -0.3594642151018467
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13859557029160527,
+            "right": 0.09784483080971909,
+            "delta_left_minus_right": 0.04075073948188618,
+            "delta_ci95": [
+              0.039283589195084574,
+              0.040754236598157294,
+              0.04212479923325928
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8022702782326945,
+            "right": 0.36144231347476735,
+            "delta_left_minus_right": 0.4408279647579271,
+            "delta_ci95": [
+              0.4356803558397371,
+              0.4408628092515309,
+              0.4459220317734408
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8956078457277875,
+            "right": 0.6003510288272446,
+            "delta_left_minus_right": 0.29525681690054295,
+            "delta_ci95": [
+              0.29093058144773026,
+              0.2952669340404217,
+              0.29958000019954156
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.47492523345006876,
+            "right": 0.5813149774829941,
+            "delta_left_minus_right": -0.10638974403292534,
+            "delta_ci95": [
+              -0.11124453949300298,
+              -0.10639961793768474,
+              -0.10154845730856167
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13872804069731043,
+            "right": 0.1024048822726825,
+            "delta_left_minus_right": 0.036323158424627924,
+            "delta_ci95": [
+              0.034511394816847,
+              0.036317201021067995,
+              0.03821694765959741
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4695096809299798,
+            "right": 0.17798248736542,
+            "delta_left_minus_right": 0.2915271935645598,
+            "delta_ci95": [
+              0.28754921040178494,
+              0.29151837677562437,
+              0.29557578958344566
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6849446930246053,
+            "right": 0.4208332669147878,
+            "delta_left_minus_right": 0.26411142610981747,
+            "delta_ci95": [
+              0.25964075218666066,
+              0.26409658361557564,
+              0.26865075388937065
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        }
+      },
+      "cellwise_family": {
+        "energy_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 8,
+          "n_significant_left_better_holm": 8,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "shape_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 1,
+          "n_significant_left_better_holm": 1,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "coherence": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "signed_cospectrum": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        }
+      }
+    },
+    "modafno": {
+      "tau": 6,
+      "n_windows": 731,
+      "n_blocks": 53,
+      "block_days": 7,
+      "block_definition": "calendar_bins_over_dense_evaluation_windows",
+      "n_unique_days": 366,
+      "median_windows_per_block": 14.0,
+      "draws": 10000,
+      "energy_log_error": {
+        "better": "lower",
+        "left": 0.4137475647094,
+        "right": 0.5961537911562691,
+        "delta_left_minus_right": -0.1824062264468691,
+        "delta_ci95": [
+          -0.18623080837078573,
+          -0.1824049016958789,
+          -0.17856786167183714
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "shape_log_error": {
+        "better": "lower",
+        "left": 0.1448659460018255,
+        "right": 0.1016954928218666,
+        "delta_left_minus_right": 0.043170453179958906,
+        "delta_ci95": [
+          0.0423384893191507,
+          0.0431743933681098,
+          0.04399894161384282
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "coherence": {
+        "better": "higher",
+        "left": 0.5277439160111951,
+        "right": 0.19796781907044095,
+        "delta_left_minus_right": 0.32977609694075416,
+        "delta_ci95": [
+          0.32601151660690675,
+          0.3298065525900649,
+          0.3334617195170048
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "signed_cospectrum": {
+        "better": "higher",
+        "left": 0.7044445760354462,
+        "right": 0.42858784679226614,
+        "delta_left_minus_right": 0.27585672924318005,
+        "delta_ci95": [
+          0.2720674495531543,
+          0.27588171432176734,
+          0.27958669714115225
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "per_channel": {
+        "wind1000:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.16896988072243363,
+            "right": 0.43699292668376616,
+            "delta_left_minus_right": -0.26802304596133253,
+            "delta_ci95": [
+              -0.27257921833269155,
+              -0.26802018778297576,
+              -0.2632426420754928
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13653260060724906,
+            "right": 0.09391742412678683,
+            "delta_left_minus_right": 0.04261517648046223,
+            "delta_ci95": [
+              0.04153701929571731,
+              0.042609757533559396,
+              0.04368773210870445
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8063530712382085,
+            "right": 0.348189783773083,
+            "delta_left_minus_right": 0.4581632874651255,
+            "delta_ci95": [
+              0.45215161157908523,
+              0.45818613237886274,
+              0.46395002192169144
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8978924439804662,
+            "right": 0.5889513168468684,
+            "delta_left_minus_right": 0.3089411271335978,
+            "delta_ci95": [
+              0.303841443757102,
+              0.3089459841277919,
+              0.3139000502056358
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind1000:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.49637589231080864,
+            "right": 0.6127585600892204,
+            "delta_left_minus_right": -0.11638266777841172,
+            "delta_ci95": [
+              -0.12090177212341115,
+              -0.11636993191945386,
+              -0.11190573456008353
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13917904238123574,
+            "right": 0.10219808657705866,
+            "delta_left_minus_right": 0.03698095580417708,
+            "delta_ci95": [
+              0.03556127571667134,
+              0.036975622724281336,
+              0.03836875645084306
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4517736597198142,
+            "right": 0.17053736414041792,
+            "delta_left_minus_right": 0.2812362955793963,
+            "delta_ci95": [
+              0.27747427320960666,
+              0.2812372244360097,
+              0.28505778875973425
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6718250682676866,
+            "right": 0.41172563124616235,
+            "delta_left_minus_right": 0.26009943702152427,
+            "delta_ci95": [
+              0.2556411581329821,
+              0.26010359088784224,
+              0.26456146886943416
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1687016894075351,
+            "right": 0.5430109659748429,
+            "delta_left_minus_right": -0.3743092765673078,
+            "delta_ci95": [
+              -0.3805443278534172,
+              -0.3743578713638185,
+              -0.36786152303036473
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.14457456464847362,
+            "right": 0.09596604610272211,
+            "delta_left_minus_right": 0.04860851854575152,
+            "delta_ci95": [
+              0.04751096375366908,
+              0.04860472131848079,
+              0.04973295371065966
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7872504978434332,
+            "right": 0.27661693540545723,
+            "delta_left_minus_right": 0.5106335624379759,
+            "delta_ci95": [
+              0.5040425035812053,
+              0.510675145557278,
+              0.5169269925695936
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8871450130655729,
+            "right": 0.5243314878477443,
+            "delta_left_minus_right": 0.3628135252178286,
+            "delta_ci95": [
+              0.356660552400073,
+              0.3628245802827692,
+              0.3688876225647456
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.5292355426760141,
+            "right": 0.6575842311566191,
+            "delta_left_minus_right": -0.128348688480605,
+            "delta_ci95": [
+              -0.13260214710833096,
+              -0.12836359060525515,
+              -0.12404999621714305
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.12362526427500878,
+            "right": 0.10080599145793066,
+            "delta_left_minus_right": 0.022819272817078115,
+            "delta_ci95": [
+              0.021523783124405515,
+              0.022815055476694983,
+              0.02416631687905309
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.3750798900786242,
+            "right": 0.1298774303218653,
+            "delta_left_minus_right": 0.2452024597567589,
+            "delta_ci95": [
+              0.2420640064399649,
+              0.24522225618322213,
+              0.24822453019696206
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6118531374696504,
+            "right": 0.3586353242356539,
+            "delta_left_minus_right": 0.2532178132339965,
+            "delta_ci95": [
+              0.24879996099624566,
+              0.2532390036541433,
+              0.25760120617774684
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.27659665726602956,
+            "right": 0.5637301042494266,
+            "delta_left_minus_right": -0.28713344698339704,
+            "delta_ci95": [
+              -0.2917971410688771,
+              -0.2871054557072637,
+              -0.28254108087653085
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.18051916191662712,
+            "right": 0.1022315757137643,
+            "delta_left_minus_right": 0.07828758620286282,
+            "delta_ci95": [
+              0.0765205982338673,
+              0.07829176621300088,
+              0.08004812278029248
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7027618382763112,
+            "right": 0.2426608871622712,
+            "delta_left_minus_right": 0.46010095111404004,
+            "delta_ci95": [
+              0.4545529526429794,
+              0.46011705437460415,
+              0.46567055198495183
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.838147335763506,
+            "right": 0.49128775928480356,
+            "delta_left_minus_right": 0.3468595764787024,
+            "delta_ci95": [
+              0.3416401655658688,
+              0.346876262150996,
+              0.352011022267803
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.6015601924844359,
+            "right": 0.6282518925972546,
+            "delta_left_minus_right": -0.026691700112818628,
+            "delta_ci95": [
+              -0.02985084728735899,
+              -0.026657452955216154,
+              -0.02371761320470929
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1239001485742068,
+            "right": 0.10747999965981485,
+            "delta_left_minus_right": 0.016420148914391947,
+            "delta_ci95": [
+              0.015256276098716614,
+              0.016419300533319234,
+              0.017598549365132176
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.27400456760307995,
+            "right": 0.11764174232975402,
+            "delta_left_minus_right": 0.15636282527332593,
+            "delta_ci95": [
+              0.1530352621270604,
+              0.15637267124748036,
+              0.15968483981172302
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.5226537425850712,
+            "right": 0.3415972107738542,
+            "delta_left_minus_right": 0.18105653181121706,
+            "delta_ci95": [
+              0.1769262069131035,
+              0.18106222023043925,
+              0.18523272504350582
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.4652520068457891,
+            "right": 0.6751592289982655,
+            "delta_left_minus_right": -0.20990722215247642,
+            "delta_ci95": [
+              -0.21506078847298968,
+              -0.20988857810339864,
+              -0.2049129486702718
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.21589665239225822,
+            "right": 0.10928014154187958,
+            "delta_left_minus_right": 0.10661651085037864,
+            "delta_ci95": [
+              0.10439883924398966,
+              0.10660923144345817,
+              0.10888304389532188
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.49941510369774417,
+            "right": 0.1252099311567853,
+            "delta_left_minus_right": 0.37420517254095886,
+            "delta_ci95": [
+              0.36936543133161476,
+              0.3742085159718589,
+              0.37887689416018133
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.7062114833480846,
+            "right": 0.3518780135586552,
+            "delta_left_minus_right": 0.35433346978942937,
+            "delta_ci95": [
+              0.3496976438400763,
+              0.3543632799824775,
+              0.35879512479543846
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.7983840752611867,
+            "right": 0.7781363515894758,
+            "delta_left_minus_right": 0.020247723671710904,
+            "delta_ci95": [
+              0.016649131567274607,
+              0.020254768412143742,
+              0.023861989293130246
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1071084142342801,
+            "right": 0.10844083630802204,
+            "delta_left_minus_right": -0.0013324220737419429,
+            "delta_ci95": [
+              -0.0023221009453599857,
+              -0.0013328550431862055,
+              -0.0003383095806443195
+            ],
+            "p_paired_block_permutation": 0.012698730126987301,
+            "p_holm": 0.012698730126987301
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.10902057249206036,
+            "right": 0.042899206295996785,
+            "delta_left_minus_right": 0.06612136619606357,
+            "delta_ci95": [
+              0.06434724492599016,
+              0.06611358258478646,
+              0.06796005364475911
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.32816499712203007,
+            "right": 0.2037538225200695,
+            "delta_left_minus_right": 0.12441117460196058,
+            "delta_ci95": [
+              0.12140494548242982,
+              0.12439862064341455,
+              0.12747692296691696
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1574744766696985,
+            "right": 0.4580584441820888,
+            "delta_left_minus_right": -0.3005839675123903,
+            "delta_ci95": [
+              -0.3054156374355506,
+              -0.3006180976195644,
+              -0.2954020501233515
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13859557029160527,
+            "right": 0.0952573567221168,
+            "delta_left_minus_right": 0.04333821356948847,
+            "delta_ci95": [
+              0.042200198232484394,
+              0.043324833707596426,
+              0.04450140471427105
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8022702782326945,
+            "right": 0.33475055304010654,
+            "delta_left_minus_right": 0.46751972519258794,
+            "delta_ci95": [
+              0.46153271042765615,
+              0.46756094917024477,
+              0.4733274407611609
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8956078457277875,
+            "right": 0.5773705895149267,
+            "delta_left_minus_right": 0.3182372562128608,
+            "delta_ci95": [
+              0.3129874775287597,
+              0.3182423931038591,
+              0.32338185785196555
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.47492523345006876,
+            "right": 0.6078552060417304,
+            "delta_left_minus_right": -0.13292997259166162,
+            "delta_ci95": [
+              -0.13793126136680914,
+              -0.13292769434329313,
+              -0.1279641684047441
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13872804069731043,
+            "right": 0.10137747000857025,
+            "delta_left_minus_right": 0.037350570688740176,
+            "delta_ci95": [
+              0.03588068346372853,
+              0.03735489476842885,
+              0.03880147646689456
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4695096809299798,
+            "right": 0.19129435707867226,
+            "delta_left_minus_right": 0.27821532385130754,
+            "delta_ci95": [
+              0.2742944323649779,
+              0.27821108144318885,
+              0.28230499604860404
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6849446930246053,
+            "right": 0.4363473120939226,
+            "delta_left_minus_right": 0.24859738093068268,
+            "delta_ci95": [
+              0.24425555775035201,
+              0.24860281349193525,
+              0.25302059026753526
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        }
+      },
+      "cellwise_family": {
+        "energy_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 9,
+          "n_significant_left_better_holm": 9,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "shape_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 1,
+          "n_significant_left_better_holm": 1,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "coherence": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "signed_cospectrum": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        }
+      }
+    },
+    "sdyff": {
+      "tau": 6,
+      "n_windows": 731,
+      "n_blocks": 53,
+      "block_days": 7,
+      "block_definition": "calendar_bins_over_dense_evaluation_windows",
+      "n_unique_days": 366,
+      "median_windows_per_block": 14.0,
+      "draws": 10000,
+      "energy_log_error": {
+        "better": "lower",
+        "left": 0.4137475647094,
+        "right": 0.5692324067553586,
+        "delta_left_minus_right": -0.15548484204595858,
+        "delta_ci95": [
+          -0.1604231729723298,
+          -0.15549548075360456,
+          -0.15049142211782876
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "shape_log_error": {
+        "better": "lower",
+        "left": 0.1448659460018255,
+        "right": 0.09770431042064069,
+        "delta_left_minus_right": 0.047161635581184816,
+        "delta_ci95": [
+          0.04632850071769258,
+          0.04716061541986449,
+          0.04798852682699537
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "coherence": {
+        "better": "higher",
+        "left": 0.5277439160111951,
+        "right": 0.17969033146071953,
+        "delta_left_minus_right": 0.3480535845504755,
+        "delta_ci95": [
+          0.34432549259333045,
+          0.3480930868652013,
+          0.3517107547997309
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "signed_cospectrum": {
+        "better": "higher",
+        "left": 0.7044445760354462,
+        "right": 0.4059275863526539,
+        "delta_left_minus_right": 0.2985169896827923,
+        "delta_ci95": [
+          0.29455578759632356,
+          0.298558436926323,
+          0.30236409862282
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "per_channel": {
+        "wind1000:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.16896988072243363,
+            "right": 0.4997524077440505,
+            "delta_left_minus_right": -0.33078252702161687,
+            "delta_ci95": [
+              -0.33734612036576084,
+              -0.3308212641768782,
+              -0.3238186979576366
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13653260060724906,
+            "right": 0.08882722724356501,
+            "delta_left_minus_right": 0.04770537336368405,
+            "delta_ci95": [
+              0.04662847503598055,
+              0.04771097119446594,
+              0.04871693045641017
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8063530712382085,
+            "right": 0.32948162837817796,
+            "delta_left_minus_right": 0.4768714428600306,
+            "delta_ci95": [
+              0.47094301506378444,
+              0.4769350040675133,
+              0.48259859637720437
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8978924439804662,
+            "right": 0.5728614174145518,
+            "delta_left_minus_right": 0.3250310265659144,
+            "delta_ci95": [
+              0.3198077414271444,
+              0.32506603894208,
+              0.3301066443741888
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind1000:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.49637589231080864,
+            "right": 0.5642510231476323,
+            "delta_left_minus_right": -0.06787513083682367,
+            "delta_ci95": [
+              -0.07273594555808383,
+              -0.0678642919744509,
+              -0.06307157934235327
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13917904238123574,
+            "right": 0.096622674179387,
+            "delta_left_minus_right": 0.04255636820184874,
+            "delta_ci95": [
+              0.041171974323519225,
+              0.042555954929872984,
+              0.043967323916164994
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4517736597198142,
+            "right": 0.15391425321594635,
+            "delta_left_minus_right": 0.2978594065038679,
+            "delta_ci95": [
+              0.2940086318554533,
+              0.29785032055646177,
+              0.3017321588769657
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6718250682676866,
+            "right": 0.39089139708905146,
+            "delta_left_minus_right": 0.28093367117863516,
+            "delta_ci95": [
+              0.2763129138118917,
+              0.28093999092213595,
+              0.2855551671050489
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1687016894075351,
+            "right": 0.575639550637421,
+            "delta_left_minus_right": -0.4069378612298859,
+            "delta_ci95": [
+              -0.41523176573351794,
+              -0.4069833287198054,
+              -0.3983144895358878
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.14457456464847362,
+            "right": 0.09384501230088858,
+            "delta_left_minus_right": 0.05072955234758504,
+            "delta_ci95": [
+              0.04952835739295924,
+              0.05073329190865292,
+              0.05192119185219884
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7872504978434332,
+            "right": 0.26353665476947735,
+            "delta_left_minus_right": 0.5237138430739559,
+            "delta_ci95": [
+              0.5172831747139393,
+              0.5237698044456572,
+              0.5298156459070743
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8871450130655729,
+            "right": 0.5116750609776879,
+            "delta_left_minus_right": 0.37546995208788503,
+            "delta_ci95": [
+              0.3692849356441235,
+              0.37551559441574817,
+              0.3815082808328928
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.5292355426760141,
+            "right": 0.5466824964856933,
+            "delta_left_minus_right": -0.0174469538096792,
+            "delta_ci95": [
+              -0.022509716022460304,
+              -0.017416183958200104,
+              -0.012700614151736372
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.12362526427500878,
+            "right": 0.10147093274157938,
+            "delta_left_minus_right": 0.022154331533429397,
+            "delta_ci95": [
+              0.020813562694057614,
+              0.022161173484227144,
+              0.02353496014073022
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.3750798900786242,
+            "right": 0.11564043281464831,
+            "delta_left_minus_right": 0.2594394572639759,
+            "delta_ci95": [
+              0.2564847035267398,
+              0.25945729665778616,
+              0.26231319688956384
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6118531374696504,
+            "right": 0.33822616325276006,
+            "delta_left_minus_right": 0.27362697421689036,
+            "delta_ci95": [
+              0.26939685760374,
+              0.273652861000232,
+              0.2777674012366581
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.27659665726602956,
+            "right": 0.5908134059457293,
+            "delta_left_minus_right": -0.31421674867969973,
+            "delta_ci95": [
+              -0.3206166914688786,
+              -0.3142462057630604,
+              -0.3078214001371677
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.18051916191662712,
+            "right": 0.09827583312743665,
+            "delta_left_minus_right": 0.08224332878919047,
+            "delta_ci95": [
+              0.0802888630871784,
+              0.08226277289428732,
+              0.0842240376855103
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7027618382763112,
+            "right": 0.2107053496422585,
+            "delta_left_minus_right": 0.4920564886340527,
+            "delta_ci95": [
+              0.48656543283128284,
+              0.49205350290646976,
+              0.4974769239711454
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.838147335763506,
+            "right": 0.4575182990401616,
+            "delta_left_minus_right": 0.38062903672334436,
+            "delta_ci95": [
+              0.3751779358802215,
+              0.38063658250673543,
+              0.38593133306685745
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.6015601924844359,
+            "right": 0.6108423523943257,
+            "delta_left_minus_right": -0.009282159909889787,
+            "delta_ci95": [
+              -0.013184241984559286,
+              -0.009227569692533577,
+              -0.0056821625312573456
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1239001485742068,
+            "right": 0.10289023000181292,
+            "delta_left_minus_right": 0.02100991857239387,
+            "delta_ci95": [
+              0.019849805593701027,
+              0.021008736262511873,
+              0.022157709615062554
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.27400456760307995,
+            "right": 0.10106410814395682,
+            "delta_left_minus_right": 0.17294045945912312,
+            "delta_ci95": [
+              0.1695770004070787,
+              0.17295309700472966,
+              0.17630583559774907
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.5226537425850712,
+            "right": 0.3163483164868179,
+            "delta_left_minus_right": 0.20630542609825336,
+            "delta_ci95": [
+              0.20197450662662986,
+              0.20634125787614171,
+              0.21072152197748295
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.4652520068457891,
+            "right": 0.6056699831617814,
+            "delta_left_minus_right": -0.14041797631599234,
+            "delta_ci95": [
+              -0.14646567997686738,
+              -0.14037752078635596,
+              -0.1345270796892333
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.21589665239225822,
+            "right": 0.1047336233094355,
+            "delta_left_minus_right": 0.11116302908282272,
+            "delta_ci95": [
+              0.10890216025254963,
+              0.11116184342851027,
+              0.11349853121442399
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.49941510369774417,
+            "right": 0.09830423484259526,
+            "delta_left_minus_right": 0.4011108688551489,
+            "delta_ci95": [
+              0.3961272815391658,
+              0.40112433835980577,
+              0.4059982939620748
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.7062114833480846,
+            "right": 0.3112691419273003,
+            "delta_left_minus_right": 0.39494234142078427,
+            "delta_ci95": [
+              0.3900338947537169,
+              0.39497314782531745,
+              0.39972494902958794
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.7983840752611867,
+            "right": 0.6249448712436164,
+            "delta_left_minus_right": 0.1734392040175703,
+            "delta_ci95": [
+              0.16933746042971182,
+              0.1734444258416335,
+              0.17751502602718688
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1071084142342801,
+            "right": 0.10357291314613314,
+            "delta_left_minus_right": 0.0035355010881469584,
+            "delta_ci95": [
+              0.002548359106116998,
+              0.0035319097611219777,
+              0.004569269417640259
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.10902057249206036,
+            "right": 0.036246676003705666,
+            "delta_left_minus_right": 0.0727738964883547,
+            "delta_ci95": [
+              0.07084287573033349,
+              0.07276421469775132,
+              0.07474764031817763
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.32816499712203007,
+            "right": 0.1867783493712728,
+            "delta_left_minus_right": 0.14138664775075727,
+            "delta_ci95": [
+              0.13809732930150273,
+              0.14137912581420486,
+              0.1447859312193623
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1574744766696985,
+            "right": 0.517884914160241,
+            "delta_left_minus_right": -0.36041043749054247,
+            "delta_ci95": [
+              -0.36736996719303616,
+              -0.3604797274159909,
+              -0.3529856390387136
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13859557029160527,
+            "right": 0.09063585117846605,
+            "delta_left_minus_right": 0.04795971911313922,
+            "delta_ci95": [
+              0.04683578077782163,
+              0.04795775059102158,
+              0.04906968063292978
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8022702782326945,
+            "right": 0.3182441886570483,
+            "delta_left_minus_right": 0.4840260895756462,
+            "delta_ci95": [
+              0.47801199258138233,
+              0.4840783590975327,
+              0.48977799312364695
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8956078457277875,
+            "right": 0.5629271267213835,
+            "delta_left_minus_right": 0.33268071900640406,
+            "delta_ci95": [
+              0.3272737935317933,
+              0.332694797611071,
+              0.3379154058950462
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.47492523345006876,
+            "right": 0.5558430626330952,
+            "delta_left_minus_right": -0.08091782918302648,
+            "delta_ci95": [
+              -0.08594557267855715,
+              -0.0809076401714168,
+              -0.07593031314450652
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13872804069731043,
+            "right": 0.09616880697770255,
+            "delta_left_minus_right": 0.042559233719607875,
+            "delta_ci95": [
+              0.04112031743220326,
+              0.042558948691582714,
+              0.044001583636996515
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4695096809299798,
+            "right": 0.16976578813938045,
+            "delta_left_minus_right": 0.2997438927905993,
+            "delta_ci95": [
+              0.2956686718503516,
+              0.29974632262164136,
+              0.30387318435197297
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6849446930246053,
+            "right": 0.4107805912455521,
+            "delta_left_minus_right": 0.27416410177905315,
+            "delta_ci95": [
+              0.26951804815927105,
+              0.27416503828543304,
+              0.2788231891571639
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        }
+      },
+      "cellwise_family": {
+        "energy_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 9,
+          "n_significant_left_better_holm": 9,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "shape_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 0,
+          "n_significant_left_better_holm": 0,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "coherence": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "signed_cospectrum": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        }
+      }
+    },
+    "pixelattn_vfi": {
+      "tau": 6,
+      "n_windows": 731,
+      "n_blocks": 53,
+      "block_days": 7,
+      "block_definition": "calendar_bins_over_dense_evaluation_windows",
+      "n_unique_days": 366,
+      "median_windows_per_block": 14.0,
+      "draws": 10000,
+      "energy_log_error": {
+        "better": "lower",
+        "left": 0.4137475647094,
+        "right": 0.7182156895169418,
+        "delta_left_minus_right": -0.3044681248075418,
+        "delta_ci95": [
+          -0.3076263700768859,
+          -0.30447621418708104,
+          -0.30135886245289856
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "shape_log_error": {
+        "better": "lower",
+        "left": 0.1448659460018255,
+        "right": 0.20221728900633495,
+        "delta_left_minus_right": -0.05735134300450945,
+        "delta_ci95": [
+          -0.058921480184588294,
+          -0.0573607535009453,
+          -0.05575930073787211
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "coherence": {
+        "better": "higher",
+        "left": 0.5277439160111951,
+        "right": 0.44333780907583714,
+        "delta_left_minus_right": 0.08440610693535794,
+        "delta_ci95": [
+          0.08322232360856209,
+          0.08440367128447554,
+          0.08563492690751126
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "signed_cospectrum": {
+        "better": "higher",
+        "left": 0.7044445760354462,
+        "right": 0.6435141652435186,
+        "delta_left_minus_right": 0.060930410791927625,
+        "delta_ci95": [
+          0.06004758050490901,
+          0.060927753793757644,
+          0.061855854069489555
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "per_channel": {
+        "wind1000:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.16896988072243363,
+            "right": 0.32532951893452233,
+            "delta_left_minus_right": -0.1563596382120887,
+            "delta_ci95": [
+              -0.16079988259154754,
+              -0.15636708077435812,
+              -0.1519768670263354
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13653260060724906,
+            "right": 0.17746953139267607,
+            "delta_left_minus_right": -0.04093693078542701,
+            "delta_ci95": [
+              -0.042409316869850056,
+              -0.04094124496182197,
+              -0.03944372253999555
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8063530712382085,
+            "right": 0.7280255501475771,
+            "delta_left_minus_right": 0.07832752109063146,
+            "delta_ci95": [
+              0.07684348541532325,
+              0.07833423166229203,
+              0.07983729024941866
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8978924439804662,
+            "right": 0.8531109093804365,
+            "delta_left_minus_right": 0.04478153460002965,
+            "delta_ci95": [
+              0.04386967253344715,
+              0.044783735967928284,
+              0.045701866617019644
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind1000:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.49637589231080864,
+            "right": 0.7954342947733798,
+            "delta_left_minus_right": -0.29905840246257115,
+            "delta_ci95": [
+              -0.303116668201376,
+              -0.29905444430705386,
+              -0.29500809419933594
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13917904238123574,
+            "right": 0.2425558473073996,
+            "delta_left_minus_right": -0.10337680492616386,
+            "delta_ci95": [
+              -0.10638352609625079,
+              -0.10339609815682752,
+              -0.10037631168222823
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4517736597198142,
+            "right": 0.3957732173062545,
+            "delta_left_minus_right": 0.056000442413559726,
+            "delta_ci95": [
+              0.054722642086060966,
+              0.055994598849963995,
+              0.05731618958563017
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6718250682676866,
+            "right": 0.6287224350647463,
+            "delta_left_minus_right": 0.04310263320294028,
+            "delta_ci95": [
+              0.042038537307085705,
+              0.04309969170148986,
+              0.044181807761397685
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1687016894075351,
+            "right": 0.35565664248667905,
+            "delta_left_minus_right": -0.18695495307914395,
+            "delta_ci95": [
+              -0.19141265058203366,
+              -0.1869818253142689,
+              -0.18246938648940172
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.14457456464847362,
+            "right": 0.19396892576268204,
+            "delta_left_minus_right": -0.04939436111420842,
+            "delta_ci95": [
+              -0.05160190408321404,
+              -0.04940134879814165,
+              -0.047179471395844094
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7872504978434332,
+            "right": 0.6809899533822338,
+            "delta_left_minus_right": 0.10626054446119937,
+            "delta_ci95": [
+              0.10450829245282596,
+              0.10626486471809343,
+              0.10807399534677518
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8871450130655729,
+            "right": 0.8250152091973457,
+            "delta_left_minus_right": 0.062129803868227196,
+            "delta_ci95": [
+              0.061027030226716336,
+              0.0621334128941351,
+              0.06326859379653584
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.5292355426760141,
+            "right": 0.8287440929946907,
+            "delta_left_minus_right": -0.2995085503186765,
+            "delta_ci95": [
+              -0.3037028509061738,
+              -0.2995233819459254,
+              -0.29527042175061147
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.12362526427500878,
+            "right": 0.14796348496068845,
+            "delta_left_minus_right": -0.024338220685679673,
+            "delta_ci95": [
+              -0.027199869609189575,
+              -0.024325633033614708,
+              -0.021537330464789974
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.3750798900786242,
+            "right": 0.2961135235718272,
+            "delta_left_minus_right": 0.078966366506797,
+            "delta_ci95": [
+              0.07788968398178406,
+              0.07896495523292807,
+              0.08005998549633501
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6118531374696504,
+            "right": 0.5434817580452695,
+            "delta_left_minus_right": 0.06837137942438087,
+            "delta_ci95": [
+              0.06730947089821568,
+              0.06837414674533099,
+              0.06944755011355629
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.27659665726602956,
+            "right": 0.5458127800721294,
+            "delta_left_minus_right": -0.26921612280609986,
+            "delta_ci95": [
+              -0.2738381992753214,
+              -0.26922508708927695,
+              -0.26468742946477053
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.18051916191662712,
+            "right": 0.26373691216783873,
+            "delta_left_minus_right": -0.08321775025121161,
+            "delta_ci95": [
+              -0.08543281389603374,
+              -0.08322359799458572,
+              -0.08097892960867296
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7027618382763112,
+            "right": 0.544633232006133,
+            "delta_left_minus_right": 0.15812860627017822,
+            "delta_ci95": [
+              0.15582711477219563,
+              0.15812112520460114,
+              0.1604632998489878
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.838147335763506,
+            "right": 0.7377245250054815,
+            "delta_left_minus_right": 0.1004228107580245,
+            "delta_ci95": [
+              0.0989141694311466,
+              0.10042123127139452,
+              0.10194875182448374
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.6015601924844359,
+            "right": 1.0301252406612909,
+            "delta_left_minus_right": -0.4285650481768549,
+            "delta_ci95": [
+              -0.4331921201228075,
+              -0.428576883037268,
+              -0.4238087865573852
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1239001485742068,
+            "right": 0.14830716453727064,
+            "delta_left_minus_right": -0.02440701596306384,
+            "delta_ci95": [
+              -0.026681859464186285,
+              -0.024428553922786894,
+              -0.022188086627659732
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.27400456760307995,
+            "right": 0.21198663011539814,
+            "delta_left_minus_right": 0.06201793748768181,
+            "delta_ci95": [
+              0.059797169516207935,
+              0.06201964790035212,
+              0.06423426038006562
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.5226537425850712,
+            "right": 0.4596099826200227,
+            "delta_left_minus_right": 0.06304375996504857,
+            "delta_ci95": [
+              0.06080123756688334,
+              0.06304798687766172,
+              0.06530726659017826
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.4652520068457891,
+            "right": 0.8666631019612231,
+            "delta_left_minus_right": -0.401411095115434,
+            "delta_ci95": [
+              -0.40539801673387155,
+              -0.4014467283872702,
+              -0.39735350686812965
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.21589665239225822,
+            "right": 0.3055338383373255,
+            "delta_left_minus_right": -0.08963718594506728,
+            "delta_ci95": [
+              -0.09203951762665558,
+              -0.08966763591758206,
+              -0.08714955608823204
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.49941510369774417,
+            "right": 0.33515843777584803,
+            "delta_left_minus_right": 0.16425666592189614,
+            "delta_ci95": [
+              0.1608947960368928,
+              0.1642338767283787,
+              0.1677805412640605
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.7062114833480846,
+            "right": 0.5783201091592843,
+            "delta_left_minus_right": 0.12789137418880026,
+            "delta_ci95": [
+              0.12563650393683246,
+              0.1278790846885095,
+              0.1303129588163934
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.7983840752611867,
+            "right": 1.35512143980569,
+            "delta_left_minus_right": -0.5567373645445034,
+            "delta_ci95": [
+              -0.5642187819120991,
+              -0.556791136474968,
+              -0.5492322089074729
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1071084142342801,
+            "right": 0.11823400509544991,
+            "delta_left_minus_right": -0.01112559086116982,
+            "delta_ci95": [
+              -0.012365156773273196,
+              -0.0111347892412103,
+              -0.009879818932477118
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.10902057249206036,
+            "right": 0.09933613445074711,
+            "delta_left_minus_right": 0.009684438041313248,
+            "delta_ci95": [
+              0.008445382820231453,
+              0.00968978408879291,
+              0.010925392854641057
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.32816499712203007,
+            "right": 0.31309410740102855,
+            "delta_left_minus_right": 0.015070889721001512,
+            "delta_ci95": [
+              0.013109604619683546,
+              0.015072883094021383,
+              0.01704444815877773
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1574744766696985,
+            "right": 0.3175994177686746,
+            "delta_left_minus_right": -0.16012494109897613,
+            "delta_ci95": [
+              -0.16410687362822723,
+              -0.16013649168236122,
+              -0.15629104901224683
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13859557029160527,
+            "right": 0.1855637076656078,
+            "delta_left_minus_right": -0.046968137374002544,
+            "delta_ci95": [
+              -0.04853096620382969,
+              -0.04695735307661203,
+              -0.04541382757970695
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8022702782326945,
+            "right": 0.7260833202406417,
+            "delta_left_minus_right": 0.07618695799205277,
+            "delta_ci95": [
+              0.07482933095201968,
+              0.076195887314148,
+              0.0775671157688522
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8956078457277875,
+            "right": 0.8519646018213515,
+            "delta_left_minus_right": 0.043643243906436036,
+            "delta_ci95": [
+              0.042802821921079884,
+              0.04364885964162263,
+              0.044495187758910176
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.47492523345006876,
+            "right": 0.7616703657111382,
+            "delta_left_minus_right": -0.28674513226106946,
+            "delta_ci95": [
+              -0.29035583297755374,
+              -0.2867231705191493,
+              -0.2831765572174888
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13872804069731043,
+            "right": 0.23883947283641094,
+            "delta_left_minus_right": -0.10011143213910051,
+            "delta_ci95": [
+              -0.10328833911850195,
+              -0.10013189455575174,
+              -0.09693435528070946
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4695096809299798,
+            "right": 0.4152780917617104,
+            "delta_left_minus_right": 0.05423158916826942,
+            "delta_ci95": [
+              0.052858851796013545,
+              0.05421830631070318,
+              0.05565171697662405
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6849446930246053,
+            "right": 0.6440980147402199,
+            "delta_left_minus_right": 0.040846678284385374,
+            "delta_ci95": [
+              0.03976546623168705,
+              0.04083977609529188,
+              0.04196184381804321
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        }
+      },
+      "cellwise_family": {
+        "energy_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "shape_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "coherence": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "signed_cospectrum": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        }
+      }
+    },
+    "linear": {
+      "tau": 6,
+      "n_windows": 731,
+      "n_blocks": 53,
+      "block_days": 7,
+      "block_definition": "calendar_bins_over_dense_evaluation_windows",
+      "n_unique_days": 366,
+      "median_windows_per_block": 14.0,
+      "draws": 10000,
+      "energy_log_error": {
+        "better": "lower",
+        "left": 0.4137475647094,
+        "right": 0.5366944469130798,
+        "delta_left_minus_right": -0.12294688220367977,
+        "delta_ci95": [
+          -0.12739066027739152,
+          -0.12296038336639759,
+          -0.11838180205111765
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "shape_log_error": {
+        "better": "lower",
+        "left": 0.1448659460018255,
+        "right": 0.0973843389146142,
+        "delta_left_minus_right": 0.0474816070872113,
+        "delta_ci95": [
+          0.046613875407042,
+          0.04748189816761308,
+          0.04834728316425251
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "coherence": {
+        "better": "higher",
+        "left": 0.5277439160111951,
+        "right": 0.16040932617345177,
+        "delta_left_minus_right": 0.3673345898377433,
+        "delta_ci95": [
+          0.36329474291810954,
+          0.3673752843420799,
+          0.37128123802145113
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "signed_cospectrum": {
+        "better": "higher",
+        "left": 0.7044445760354462,
+        "right": 0.3861130546110844,
+        "delta_left_minus_right": 0.3183315214243618,
+        "delta_ci95": [
+          0.31384926848202455,
+          0.3183511302479026,
+          0.32270504986086396
+        ],
+        "p_paired_block_permutation": 9.999000099990002e-05
+      },
+      "per_channel": {
+        "wind1000:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.16896988072243363,
+            "right": 0.4459591366240465,
+            "delta_left_minus_right": -0.2769892559016129,
+            "delta_ci95": [
+              -0.28208597897177967,
+              -0.2770316708150844,
+              -0.2715241941787886
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13653260060724906,
+            "right": 0.09038216497356687,
+            "delta_left_minus_right": 0.046150435633682194,
+            "delta_ci95": [
+              0.04503949297778053,
+              0.046154459552266644,
+              0.047212511377113825
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8063530712382085,
+            "right": 0.2841595278189055,
+            "delta_left_minus_right": 0.522193543419303,
+            "delta_ci95": [
+              0.5158003494651536,
+              0.5222345972701234,
+              0.5283944204020691
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8978924439804662,
+            "right": 0.531597366778208,
+            "delta_left_minus_right": 0.3662950772022582,
+            "delta_ci95": [
+              0.36022427890159353,
+              0.3663258221681773,
+              0.3721638689652923
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind1000:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.49637589231080864,
+            "right": 0.5556714842240926,
+            "delta_left_minus_right": -0.059295591913283985,
+            "delta_ci95": [
+              -0.0641287365739036,
+              -0.05928566406832114,
+              -0.05444606813079808
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13917904238123574,
+            "right": 0.09629424723571041,
+            "delta_left_minus_right": 0.04288479514552533,
+            "delta_ci95": [
+              0.04146644489003868,
+              0.04288195944886607,
+              0.04429570417489465
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4517736597198142,
+            "right": 0.13806162813293624,
+            "delta_left_minus_right": 0.313712031586878,
+            "delta_ci95": [
+              0.3095963839941842,
+              0.31369812834180066,
+              0.3178999518379365
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6718250682676866,
+            "right": 0.3699325447043381,
+            "delta_left_minus_right": 0.3018925235633485,
+            "delta_ci95": [
+              0.2965888663904883,
+              0.3019020880128174,
+              0.30707083429727294
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1687016894075351,
+            "right": 0.4961914162254416,
+            "delta_left_minus_right": -0.3274897268179065,
+            "delta_ci95": [
+              -0.3335025197932384,
+              -0.3275657120732349,
+              -0.32113039981862607
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.14457456464847362,
+            "right": 0.09529377093026478,
+            "delta_left_minus_right": 0.04928079371820884,
+            "delta_ci95": [
+              0.04805380155301709,
+              0.04928499705449681,
+              0.05053821526827772
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7872504978434332,
+            "right": 0.21714298135604806,
+            "delta_left_minus_right": 0.5701075164873851,
+            "delta_ci95": [
+              0.5633002945744162,
+              0.5701741430484526,
+              0.5765392325905342
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8871450130655729,
+            "right": 0.46380980861170673,
+            "delta_left_minus_right": 0.4233352044538662,
+            "delta_ci95": [
+              0.4161751270924767,
+              0.42340159862380267,
+              0.4302033204026277
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind925:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.5292355426760141,
+            "right": 0.5629558380630268,
+            "delta_left_minus_right": -0.03372029538701271,
+            "delta_ci95": [
+              -0.03839083949944182,
+              -0.03375357876394408,
+              -0.028995814110378874
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.12362526427500878,
+            "right": 0.09862007275121809,
+            "delta_left_minus_right": 0.025005191523790687,
+            "delta_ci95": [
+              0.023626979630879678,
+              0.02501215167702353,
+              0.02637200752559377
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.3750798900786242,
+            "right": 0.10859120336505196,
+            "delta_left_minus_right": 0.26648868671357223,
+            "delta_ci95": [
+              0.263027767195727,
+              0.2665232949315337,
+              0.2697629873467624
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6118531374696504,
+            "right": 0.3273858741516943,
+            "delta_left_minus_right": 0.28446726331795613,
+            "delta_ci95": [
+              0.27932323253370833,
+              0.2844949255867609,
+              0.2894766640950755
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.27659665726602956,
+            "right": 0.5275715260903017,
+            "delta_left_minus_right": -0.2509748688242721,
+            "delta_ci95": [
+              -0.25607999030116385,
+              -0.2509948827391331,
+              -0.24585364115036087
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.18051916191662712,
+            "right": 0.09821777806073305,
+            "delta_left_minus_right": 0.08230138385589407,
+            "delta_ci95": [
+              0.08033817115713826,
+              0.08232423158973573,
+              0.08427491222193563
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.7027618382763112,
+            "right": 0.19136865662280902,
+            "delta_left_minus_right": 0.5113931816535022,
+            "delta_ci95": [
+              0.5056130103573625,
+              0.5114177454461365,
+              0.5170799217862321
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.838147335763506,
+            "right": 0.4357935777278018,
+            "delta_left_minus_right": 0.40235375803570417,
+            "delta_ci95": [
+              0.3964319262023312,
+              0.4023866768765517,
+              0.4081499517524536
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind850:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.6015601924844359,
+            "right": 0.5712671059430082,
+            "delta_left_minus_right": 0.030293086541427705,
+            "delta_ci95": [
+              0.026153083484891388,
+              0.03034954388980743,
+              0.03414655821432811
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1239001485742068,
+            "right": 0.0994845477790252,
+            "delta_left_minus_right": 0.024415600795181597,
+            "delta_ci95": [
+              0.023129438765336803,
+              0.024419211253788826,
+              0.02572005846277076
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.27400456760307995,
+            "right": 0.10443386463537588,
+            "delta_left_minus_right": 0.16957070296770407,
+            "delta_ci95": [
+              0.1660224225878395,
+              0.1695785193904869,
+              0.1730664747399391
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.5226537425850712,
+            "right": 0.32158610754724076,
+            "delta_left_minus_right": 0.20106763503783048,
+            "delta_ci95": [
+              0.19646330155037997,
+              0.20108385135487442,
+              0.20569880816023248
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.4652520068457891,
+            "right": 0.5920807276011989,
+            "delta_left_minus_right": -0.1268287207554098,
+            "delta_ci95": [
+              -0.1327096314666099,
+              -0.12677880970045888,
+              -0.12112586198531147
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.21589665239225822,
+            "right": 0.10454463740624742,
+            "delta_left_minus_right": 0.1113520149860108,
+            "delta_ci95": [
+              0.1090883183800126,
+              0.11135238364358957,
+              0.11368817396486272
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.49941510369774417,
+            "right": 0.09643427151090958,
+            "delta_left_minus_right": 0.40298083218683456,
+            "delta_ci95": [
+              0.3978966008192793,
+              0.4029903642537017,
+              0.4079529764734439
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.7062114833480846,
+            "right": 0.3082467776846788,
+            "delta_left_minus_right": 0.3979647056634058,
+            "delta_ci95": [
+              0.39295418230875556,
+              0.39799577774119577,
+              0.40283907042400946
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind700:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.7983840752611867,
+            "right": 0.614549718106008,
+            "delta_left_minus_right": 0.1838343571551787,
+            "delta_ci95": [
+              0.17874841252881377,
+              0.1838547271621137,
+              0.18878488797504064
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.1071084142342801,
+            "right": 0.10312901335359435,
+            "delta_left_minus_right": 0.003979400880685741,
+            "delta_ci95": [
+              0.002967345927843233,
+              0.003974136552602293,
+              0.00503122104073151
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.10902057249206036,
+            "right": 0.038028771685826225,
+            "delta_left_minus_right": 0.07099180080623413,
+            "delta_ci95": [
+              0.06912743856247498,
+              0.07098733217654586,
+              0.0729293752704927
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.32816499712203007,
+            "right": 0.19151291456048042,
+            "delta_left_minus_right": 0.13665208256154965,
+            "delta_ci95": [
+              0.13350792996123476,
+              0.1366429901334169,
+              0.1399479168192959
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:spheroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.1574744766696985,
+            "right": 0.4563969561128883,
+            "delta_left_minus_right": -0.2989224794431898,
+            "delta_ci95": [
+              -0.3041522938966433,
+              -0.29899785102905574,
+              -0.2933295845665507
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13859557029160527,
+            "right": 0.09224155984523358,
+            "delta_left_minus_right": 0.04635401044637169,
+            "delta_ci95": [
+              0.04523193260091681,
+              0.04635187206858649,
+              0.04748194462995879
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.8022702782326945,
+            "right": 0.27082683374307714,
+            "delta_left_minus_right": 0.5314434444896173,
+            "delta_ci95": [
+              0.525086556459197,
+              0.531483658217772,
+              0.5375888603102404
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.8956078457277875,
+            "right": 0.5188736560488204,
+            "delta_left_minus_right": 0.3767341896789671,
+            "delta_ci95": [
+              0.3706462308483304,
+              0.37675743341045587,
+              0.3826445243712998
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        },
+        "wind10:toroidal": {
+          "energy_log_error": {
+            "better": "lower",
+            "left": 0.47492523345006876,
+            "right": 0.5443005601407854,
+            "delta_left_minus_right": -0.06937532669071667,
+            "delta_ci95": [
+              -0.07441080533366294,
+              -0.06937700141954842,
+              -0.06434199244317249
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "shape_log_error": {
+            "better": "lower",
+            "left": 0.13872804069731043,
+            "right": 0.09563559681054831,
+            "delta_left_minus_right": 0.043092443886762116,
+            "delta_ci95": [
+              0.0416692847024354,
+              0.04308819337305899,
+              0.04454447924650166
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "coherence": {
+            "better": "higher",
+            "left": 0.4695096809299798,
+            "right": 0.1550455228635779,
+            "delta_left_minus_right": 0.31446415806640193,
+            "delta_ci95": [
+              0.3101796862150805,
+              0.31445588110378353,
+              0.318778356725472
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          },
+          "signed_cospectrum": {
+            "better": "higher",
+            "left": 0.6849446930246053,
+            "right": 0.39239191829587466,
+            "delta_left_minus_right": 0.2925527747287306,
+            "delta_ci95": [
+              0.28735615754988425,
+              0.29253389964720766,
+              0.29774763207834043
+            ],
+            "p_paired_block_permutation": 9.999000099990002e-05,
+            "p_holm": 0.000999900009999
+          }
+        }
+      },
+      "cellwise_family": {
+        "energy_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 8,
+          "n_significant_left_better_holm": 8,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "shape_log_error": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 0,
+          "n_significant_left_better_holm": 0,
+          "all_pointwise_left_better": false,
+          "all_left_better_holm": false
+        },
+        "coherence": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        },
+        "signed_cospectrum": {
+          "correction": "Holm-Bonferroni",
+          "alpha": 0.05,
+          "n_hypotheses": 10,
+          "n_pointwise_left_better": 10,
+          "n_significant_left_better_holm": 10,
+          "all_pointwise_left_better": true,
+          "all_left_better_holm": true
+        }
+      }
+    }
+  },
+  "diagnostic_space": "vector_sht"
+}

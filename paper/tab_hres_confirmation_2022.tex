@@ -1,0 +1,28 @@
+\begin{table}[t]
+\centering
+\caption{Six-hour interpolation from IFS HRES forecast anchors to ERA5 on a
+fixed 2022 retrospective set (24 initialisations; left-anchor leads
+$\{0,24,48,72,96\}\,$h; right endpoint through $102\,$h). Scores are the
+arithmetic mean of 120 latitude-weighted field--hour RMSE values. This index is
+distinct from the coefficient-adapter and ERA5 calendar-transfer samples. The
+lead-routed ensemble gives the lowest point estimate, but its spectral
+promotion audit has not been run; bold therefore marks the
+coarse-stride model of record, which passes the separately reported spectral
+criterion. The full-range branch postdates inspection of 2022, so this table is
+descriptive rather than independent confirmation.}
+\label{tab:hres-retrospective-2022}
+\begin{tabular}{lcc}
+\toprule
+Method & RMSE & vs.\ linear \\
+\midrule
+Linear interpolation                     & $0.2902$          & ---                 \\
+WeatherBridge, no adaptation              & $0.2866$          & $+1.23\%$           \\
+WeatherDCAE-14M, no adaptation            & $0.2876$          & $+0.91\%$           \\
+WeatherDCAE-14M, short-range fine-tuned   & $0.2740$          & $+5.60\%$           \\
+WeatherBridge, short-range fine-tuned     & $0.2711$          & $+6.59\%$           \\
+\textbf{WeatherBridge, full-range coarse grid} & $\mathbf{0.2691}$ & $\mathbf{+7.28\%}$ \\
+WeatherBridge, full-range dense grid      & $0.2715$          & $+6.45\%$           \\
+WeatherBridge, lead-routed ensemble       & $0.2675$          & $+7.83\%$           \\
+\bottomrule
+\end{tabular}
+\end{table}

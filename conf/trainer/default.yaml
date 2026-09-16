@@ -1,0 +1,21 @@
+# Single-GPU default trainer (fibo / cloud.ru single-card runs).
+name: default
+max_epochs: 8
+batch_size: 4
+val_batch_size: 4
+num_workers: 8
+val_num_workers: 4
+precision: bf16-mixed
+devices: 1
+strategy: auto
+accelerator: gpu
+log_every_n_steps: 20
+ckpt_every_n_epochs: 2
+save_top_k: -1
+val_every_n_epochs: 1
+limit_train_batches: 1.0
+limit_val_batches: 1.0
+sanity_val_steps: 0
+resume_ckpt: null
+enable_progress_bar: false
+gradient_clip_val: 1.0

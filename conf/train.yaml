@@ -1,0 +1,27 @@
+# Hydra 1.3 entry-point for `python train.py`.
+# Compose data + model + trainer groups via `defaults`.
+#
+# Examples:
+#   python train.py model=corrdiff_fm trainer=ddp_2gpu \
+#       model.base_ckpt=logs/exp_dcae_noskip_24ch_6yr_10ep_cloudru/last.ckpt
+#   python train.py +legacy=train_dcae_skip_24ch_6yr
+#
+defaults:
+  - _self_
+  - data: era5_0p5_6h
+  - model: weatherdcae
+  - trainer: default
+
+exp_name: ${model.name}_${data.name}
+out_dir: logs/${exp_name}
+seed: 42
+
+# Hydra working-directory pattern: logs/<exp_name>/<timestamp>/
+hydra:
+  run:
+    dir: ${out_dir}/${now:%Y-%m-%d_%H-%M-%S}
+  sweep:
+    dir: ${out_dir}/multirun
+    subdir: ${hydra.job.num}
+  job:
+    chdir: false

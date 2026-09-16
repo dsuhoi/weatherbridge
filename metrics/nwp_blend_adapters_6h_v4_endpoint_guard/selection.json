@@ -1,0 +1,167 @@
+{
+  "adapters": {
+    "flow": {
+      "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/adapters/nwp_blend_6h_v4_endpoint_guard/flow.json",
+      "sha256": "474daebaae0df97c466b4811c7748a4cf2a2400ce674ce0261f243b102b03fc1"
+    }
+  },
+  "base_selection": {
+    "path": "/home/dsuhoi/documents/codex_work/projects/active/weather_time_interpolation/remote_weather_time_interp/metrics/nwp_blend_adapters_6h_v3_guarded/selection.json",
+    "sha256": "6779f21e6423d8d0be06d1d632d59d2ff1cfe17c54ee8b1df573da00c0adb481",
+    "size_bytes": 1097
+  },
+  "confirmatory_years_unopened": [
+    2022
+  ],
+  "created_at": "2026-08-14T02:24:28.687082+00:00",
+  "criterion": "2020_validation_lead_guard_then_2021_development_endpoint_guard",
+  "development_years_opened_before_selection": [
+    2021
+  ],
+  "lead_bin_policy": {
+    "fresh_0_48h": 1.0,
+    "long_120_240h": 0.0,
+    "medium_48_120h": 1.0,
+    "minimum_relative_validation_rmse_gain": 0.001
+  },
+  "postselection_query_guard": {
+    "diagnostics": {
+      "all_regressions_removed_by_exact_linear_guard": true,
+      "evaluated_taus": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guard_taus": [
+        1,
+        5
+      ],
+      "regressions_after_guard": [],
+      "regressions_before_guard": [
+        {
+          "channel": "T925",
+          "relative_rmse_gain": -2.1152289670815766e-05,
+          "tau": 1
+        },
+        {
+          "channel": "T850",
+          "relative_rmse_gain": -9.129134641258608e-05,
+          "tau": 1
+        },
+        {
+          "channel": "T700",
+          "relative_rmse_gain": -6.412904375401478e-05,
+          "tau": 1
+        },
+        {
+          "channel": "U1000",
+          "relative_rmse_gain": -1.5045304353374177e-05,
+          "tau": 1
+        },
+        {
+          "channel": "U925",
+          "relative_rmse_gain": -3.422796260466979e-05,
+          "tau": 1
+        },
+        {
+          "channel": "U850",
+          "relative_rmse_gain": -3.0576438092891676e-05,
+          "tau": 1
+        },
+        {
+          "channel": "U700",
+          "relative_rmse_gain": -2.874418813161903e-05,
+          "tau": 1
+        },
+        {
+          "channel": "V1000",
+          "relative_rmse_gain": -4.6468361930167785e-06,
+          "tau": 1
+        },
+        {
+          "channel": "V925",
+          "relative_rmse_gain": -3.3389932196365078e-06,
+          "tau": 1
+        },
+        {
+          "channel": "u10",
+          "relative_rmse_gain": -1.6399031121804247e-05,
+          "tau": 1
+        },
+        {
+          "channel": "v10",
+          "relative_rmse_gain": -5.300647060811126e-06,
+          "tau": 1
+        },
+        {
+          "channel": "T850",
+          "relative_rmse_gain": -4.1673048670535036e-06,
+          "tau": 5
+        },
+        {
+          "channel": "U850",
+          "relative_rmse_gain": -2.2112346194733387e-05,
+          "tau": 5
+        },
+        {
+          "channel": "U700",
+          "relative_rmse_gain": -2.5333512569079456e-06,
+          "tau": 5
+        },
+        {
+          "channel": "V1000",
+          "relative_rmse_gain": -1.2949822213672503e-06,
+          "tau": 5
+        },
+        {
+          "channel": "V925",
+          "relative_rmse_gain": -6.40107320840402e-07,
+          "tau": 5
+        },
+        {
+          "channel": "V700",
+          "relative_rmse_gain": -1.1034699025145145e-06,
+          "tau": 5
+        },
+        {
+          "channel": "v10",
+          "relative_rmse_gain": -6.438975161628055e-07,
+          "tau": 5
+        }
+      ],
+      "scores": {
+        "all": {
+          "adapted_after_guard_rmse": 0.7582287833597584,
+          "adapted_before_guard_rmse": 0.7582039023839224,
+          "linear_rmse": 0.7590324833337216
+        },
+        "held_tau_2_4": {
+          "adapted_after_guard_rmse": 0.7562504715694374,
+          "adapted_before_guard_rmse": 0.7562504715694374,
+          "linear_rmse": 0.7572154143598653
+        }
+      }
+    },
+    "guard_taus": [
+      1,
+      5
+    ],
+    "split": "2021_development",
+    "tool": {
+      "path": "/home/dsuhoi/documents/codex_work/projects/active/weather_time_interpolation/remote_weather_time_interp/tools/train/guard_nwp_blend_adapter.py",
+      "sha256": "efc104f8778c6ac970817ee9be2c3009963c490fc64380a58e8cc6428bec98ed",
+      "size_bytes": 8646
+    }
+  },
+  "schema_version": 2,
+  "selection_split": "2020_validation",
+  "validation_scores": {
+    "dcae_v2": 0.5343555258146128,
+    "detail_v2": 0.5340610889585444,
+    "flow_guarded": 0.5340119135527079,
+    "linear": 0.5349959491024455
+  },
+  "winner": "flow"
+}

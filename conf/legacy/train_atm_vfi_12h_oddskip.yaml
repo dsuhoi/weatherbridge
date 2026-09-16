@@ -1,0 +1,25 @@
+# @package _global_
+# Legacy: ATM-VFI 12h oddskip (paper 12h SOTA, fibo).
+# Reproduces: scripts/train_atm_vfi_12h_oddskip.py with default args.
+# Ckpt: logs/exp_atmvfi_12h_oddskip/epoch=9-step=43740.ckpt
+defaults:
+  - override /data: era5_0p5_12h
+  - override /model: atm_vfi
+  - override /trainer: default
+
+data:
+  years: [2017, 2018, 2019]
+  val_years: [2020]
+
+model:
+  hidden: 64
+  n_levels: 3
+  lr: 2e-4
+
+trainer:
+  max_epochs: 10
+  batch_size: 4
+  val_batch_size: 4
+
+exp_name: exp_atmvfi_12h_oddskip
+out_dir: logs/${exp_name}

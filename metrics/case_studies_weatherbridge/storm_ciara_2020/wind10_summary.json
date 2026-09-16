@@ -1,0 +1,213 @@
+{
+  "event": "Storm Ciara",
+  "init_time": "2020-02-09T09:00:00",
+  "display_tau_hours": 3,
+  "field": "10-m wind vector",
+  "evaluation_bbox": {
+    "lat_min": 45.0,
+    "lat_max": 65.0,
+    "lon_min": -25.0,
+    "lon_max": 20.0
+  },
+  "taus_hours": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "metrics": {
+    "Linear Interp.": {
+      "per_tau_vector_rmse_ms-1": {
+        "1": 1.5410877466201782,
+        "2": 2.036020517349243,
+        "3": 2.20279860496521,
+        "4": 1.91470468044281,
+        "5": 1.2086280584335327
+      },
+      "mean_all_tau_vector_rmse_ms-1": 1.7806479930877686
+    },
+    "WeatherDCAE-14M": {
+      "per_tau_vector_rmse_ms-1": {
+        "1": 1.379597783088684,
+        "2": 1.3973647356033325,
+        "3": 1.390054702758789,
+        "4": 1.2100811004638672,
+        "5": 0.760590672492981
+      },
+      "mean_all_tau_vector_rmse_ms-1": 1.227537751197815
+    },
+    "PixelAttn-VFI": {
+      "per_tau_vector_rmse_ms-1": {
+        "1": 1.4546308517456055,
+        "2": 1.6523092985153198,
+        "3": 1.7665332555770874,
+        "4": 1.603079080581665,
+        "5": 1.026512861251831
+      },
+      "mean_all_tau_vector_rmse_ms-1": 1.5006132125854492
+    },
+    "WeatherBridge": {
+      "per_tau_vector_rmse_ms-1": {
+        "1": 1.349308729171753,
+        "2": 1.3735284805297852,
+        "3": 1.3785125017166138,
+        "4": 1.1951178312301636,
+        "5": 0.7661499977111816
+      },
+      "mean_all_tau_vector_rmse_ms-1": 1.2125235795974731
+    }
+  },
+  "selection_note": "Event and 09-15 UTC window fixed from meteorological impact before model-error inspection.",
+  "source_provenance": {
+    "metrics/case_studies_weatherdcae_14m/storm_ciara_2020/wind10.npz": "f92f1a5bee30872e1849243b93f5d00a7f2f7c616576163a4f2556c42cc39272",
+    "metrics/case_studies_pixelattn_vfi/storm_ciara_2020/wind10.npz": "1fcc7375abc2172ce2659f438f31b179a17e8afb3abed67d5905940f90efdf65",
+    "metrics/case_studies_weatherbridge/storm_ciara_2020/wind10.npz": "4ef85197a0b8c7c2c122336c56c642ea4ec2bec91d5b8fecb042060bbfdca316"
+  },
+  "model_provenance": {
+    "WeatherDCAE-14M": {
+      "checkpoint": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_weatherdcae_14m_6h_6yr_refinev1_s202707_bs4/last.ckpt",
+        "sha256": "3a432daa70870d02c12cef3e21f3d0a998719cf54e555f4d0b8fb0faf45fdf5e",
+        "size_bytes": 172664520
+      },
+      "event": "Storm Ciara",
+      "exporter": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_spectral_v6/tools/eval/export_laura_wind_comparator_case.py",
+        "sha256": "27e5fa61508d3f60bfea5d05b21e71e6cfc0d5dbe187e365478ef4cd615362fe",
+        "size_bytes": 6693
+      },
+      "grid_convention": "wb2_0p25_pair_average_cell_centres_v1",
+      "latitude_sha256": "2352c83ad604dc6389ae1ce27c623faa2df2f02b720af53817a1f1e8df4e9805",
+      "linear_u_sha256": "efaf865582f96eca3b7023426b90fe0bb81e65f93e6172856d0e4bcd72ce8029",
+      "linear_v_sha256": "03ca58591671b19cbad2b65d35c8d3643f114b6a73e4778d6714d938ab0a74e4",
+      "longitude_sha256": "3dfd8efe003ff3bad57abb0351e58894d0e3c4f1f81c27758d86b65d1d99a8c7",
+      "memmap": {
+        "mtime_ns": 1784321353474176596,
+        "path": "/tmp/wb2_0p5_cache/wb2_2020.bin",
+        "size_bytes": 245895782400
+      },
+      "model_arch": "dcae_14m",
+      "model_label": "WeatherDCAE-14M",
+      "model_type": "capmatched_dcae_14m",
+      "schema_version": 1,
+      "static": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+        "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c",
+        "size_bytes": 3111640
+      },
+      "stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+        "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7",
+        "size_bytes": 6656
+      },
+      "surface_stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+        "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2",
+        "size_bytes": 275
+      },
+      "t0_index": 945,
+      "truth_u_sha256": "c23a8ab60784e9adc999ccba8c412d945e588f32760373f6dbc7324bdff1e3cc",
+      "truth_v_sha256": "16c00dc03f8c7e28f0ca026615885e9c24cce9e53cac736eabe8f9109ab20217",
+      "x0_24_sha256": "a8e45e1559ae248f28c4551f93f0e9c5c6d5c04dbe6cbf556f28309b95bc454c",
+      "xT_24_sha256": "0cafd61e08af10777c9f6009b49a63b70ac7a1711a3d35782e2b1b2581752a2d",
+      "year": 2020
+    },
+    "PixelAttn-VFI": {
+      "checkpoint": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_atmvfi_24ch_6h_2014_19_sparse135_lr1e4_matched/last.ckpt",
+        "sha256": "ca0eb0588812766bab183b7833d3d7ebe63efc52030d7c1fcae7023fb8ac72dc",
+        "size_bytes": 176201736
+      },
+      "event": "Storm Ciara",
+      "exporter": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_spectral_v6/tools/eval/export_laura_wind_comparator_case.py",
+        "sha256": "27e5fa61508d3f60bfea5d05b21e71e6cfc0d5dbe187e365478ef4cd615362fe",
+        "size_bytes": 6693
+      },
+      "grid_convention": "wb2_0p25_pair_average_cell_centres_v1",
+      "latitude_sha256": "2352c83ad604dc6389ae1ce27c623faa2df2f02b720af53817a1f1e8df4e9805",
+      "linear_u_sha256": "efaf865582f96eca3b7023426b90fe0bb81e65f93e6172856d0e4bcd72ce8029",
+      "linear_v_sha256": "03ca58591671b19cbad2b65d35c8d3643f114b6a73e4778d6714d938ab0a74e4",
+      "longitude_sha256": "3dfd8efe003ff3bad57abb0351e58894d0e3c4f1f81c27758d86b65d1d99a8c7",
+      "memmap": {
+        "mtime_ns": 1784321353474176596,
+        "path": "/tmp/wb2_0p5_cache/wb2_2020.bin",
+        "size_bytes": 245895782400
+      },
+      "model_arch": "atmvfi",
+      "model_label": "PixelAttn-VFI",
+      "model_type": "capmatched_atmvfi",
+      "schema_version": 1,
+      "static": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+        "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c",
+        "size_bytes": 3111640
+      },
+      "stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+        "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7",
+        "size_bytes": 6656
+      },
+      "surface_stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+        "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2",
+        "size_bytes": 275
+      },
+      "t0_index": 945,
+      "truth_u_sha256": "c23a8ab60784e9adc999ccba8c412d945e588f32760373f6dbc7324bdff1e3cc",
+      "truth_v_sha256": "16c00dc03f8c7e28f0ca026615885e9c24cce9e53cac736eabe8f9109ab20217",
+      "x0_24_sha256": "a8e45e1559ae248f28c4551f93f0e9c5c6d5c04dbe6cbf556f28309b95bc454c",
+      "xT_24_sha256": "0cafd61e08af10777c9f6009b49a63b70ac7a1711a3d35782e2b1b2581752a2d",
+      "year": 2020
+    },
+    "WeatherBridge": {
+      "checkpoint": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_flow_pp3_spectral_14m_6h_refinev1_s202707_bs4/last.ckpt",
+        "sha256": "2c2f909325a03924653f168f4ecc2acc300a94b1b892df60d235780a4eac7089",
+        "size_bytes": 173178600
+      },
+      "event": "Storm Ciara",
+      "exporter": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_spectral_v6/tools/eval/export_laura_wind_comparator_case.py",
+        "sha256": "27e5fa61508d3f60bfea5d05b21e71e6cfc0d5dbe187e365478ef4cd615362fe",
+        "size_bytes": 6693
+      },
+      "grid_convention": "wb2_0p25_pair_average_cell_centres_v1",
+      "latitude_sha256": "2352c83ad604dc6389ae1ce27c623faa2df2f02b720af53817a1f1e8df4e9805",
+      "linear_u_sha256": "efaf865582f96eca3b7023426b90fe0bb81e65f93e6172856d0e4bcd72ce8029",
+      "linear_v_sha256": "03ca58591671b19cbad2b65d35c8d3643f114b6a73e4778d6714d938ab0a74e4",
+      "longitude_sha256": "3dfd8efe003ff3bad57abb0351e58894d0e3c4f1f81c27758d86b65d1d99a8c7",
+      "memmap": {
+        "mtime_ns": 1784321353474176596,
+        "path": "/tmp/wb2_0p5_cache/wb2_2020.bin",
+        "size_bytes": 245895782400
+      },
+      "model_arch": "flow_pp3",
+      "model_label": "WeatherBridge",
+      "model_type": "weatherbridge",
+      "schema_version": 1,
+      "static": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+        "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c",
+        "size_bytes": 3111640
+      },
+      "stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+        "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7",
+        "size_bytes": 6656
+      },
+      "surface_stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+        "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2",
+        "size_bytes": 275
+      },
+      "t0_index": 945,
+      "truth_u_sha256": "c23a8ab60784e9adc999ccba8c412d945e588f32760373f6dbc7324bdff1e3cc",
+      "truth_v_sha256": "16c00dc03f8c7e28f0ca026615885e9c24cce9e53cac736eabe8f9109ab20217",
+      "x0_24_sha256": "a8e45e1559ae248f28c4551f93f0e9c5c6d5c04dbe6cbf556f28309b95bc454c",
+      "xT_24_sha256": "0cafd61e08af10777c9f6009b49a63b70ac7a1711a3d35782e2b1b2581752a2d",
+      "year": 2020
+    }
+  }
+}

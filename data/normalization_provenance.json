@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "source": {
+    "name": "Frozen project normalization artifacts",
+    "historical_source": "WeatherBench-2 ERA5 hourly climatology",
+    "historical_source_url": "gs://weatherbench2/datasets/era5-hourly-climatology/1990-2019_6h_1440x721.zarr",
+    "declared_period": [1990, 2019],
+    "climatology_path": "/workspace-SR006.nfs2/weather_data/time_interpolation_0p5/climatology_1990-2019_0p5.zarr",
+    "sampling": {
+      "hours_utc": [0, 6, 12, 18],
+      "days_per_year": 366,
+      "latitude_weighting": "cosine",
+      "standard_deviation_multiplier": 1.3,
+      "legacy_constant_channels": ["tcwv", "tisr"]
+    },
+    "generator_retained": false,
+    "source_evidence": "historical project scripts and run documentation; the original artifact generator is unavailable",
+    "independent_reconstruction": {
+      "path": "tools/data/generate_normalization_0p5.py",
+      "generator_sha256": "6b5a845d9402d63c58f1aa814281341ee27db50822cb34bb64af98224d84f683",
+      "report": "metrics/normalization_replay_v1/report.json",
+      "report_sha256": "68454dfcbed199ba21f2efb13cfc9c20bcd5c0fbf382ffb89cdb8e93ef1959ee",
+      "status": "not_bit_exact",
+      "max_pressure_mean_relative_difference": 2.4520832286089455e-07,
+      "max_pressure_std_relative_difference": 2.303050270754585e-05,
+      "surface_difference": "MSLP std differs by 0.3 Pa after historical rounding"
+    }
+  },
+  "artifacts": {
+    "pressure_level_stats": {
+      "path": "data/json_stats_0p5.nc",
+      "size_bytes": 6656,
+      "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7"
+    },
+    "surface_stats": {
+      "path": "data/surface_stats_0p5.json",
+      "size_bytes": 275,
+      "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2"
+    }
+  },
+  "expected_pressure_channels": [
+    "T1000", "T925", "T850", "T700",
+    "U1000", "U925", "U850", "U700",
+    "V1000", "V925", "V850", "V700",
+    "Q1000", "Q925", "Q850", "Q700",
+    "Z1000", "Z925", "Z850", "Z700"
+  ],
+  "expected_surface_channels": [
+    "t2m", "u10", "v10", "mslp", "sst", "tcc", "tcwv", "tisr"
+  ],
+  "selection_year": 2020,
+  "temporal_ood_year": 2021,
+  "provenance_status": "hash-bound artifacts; original generator unavailable; independent reconstruction recorded but not bit-exact"
+}

@@ -1,0 +1,80 @@
+{
+  "name": "hres_degradation_aware_v1",
+  "status": "frozen_before_optimizer_step",
+  "question": "Does an explicit, spatially resolved estimate of anchor degradation improve six-hour interpolation from IFS HRES forecast anchors?",
+  "method": {
+    "architecture": "flow_pp3_degrade",
+    "parent_architecture": "flow_pp3_hres_aug",
+    "parameters_total": 14428200,
+    "parameters_added": 99500,
+    "reliability_branch": {
+      "inputs": "decoder features, FiLM-modulated by the forecast-lead embedding",
+      "output": "per-channel, per-pixel predicted anchor error magnitude in normalized units, via softplus",
+      "supervision": "measured anchor error 0.5*(|x0-ERA5(t0)| + |xT-ERA5(t0+6h)|), train split only",
+      "loss_weight": 0.05,
+      "consumers": [
+        "anchor trust gate: beta_logits -= softplus(anchor_trust_gain) * (predicted_error - reference)",
+        "residual gain: delta *= 1 + tanh(anchor_residual_gain) * (predicted_error - reference)"
+      ],
+      "anchor_error_reference": 0.35,
+      "initialisation": "output bias set to softplus^-1(reference) so the predicted excess is exactly zero and both consumers are neutral; verified bit-identical to the parent on real weights at leads 0, 96 and 216 h"
+    }
+  },
+  "arms": {
+    "degrade_rmse": {
+      "arch": "flow_pp3_degrade",
+      "gpu": 0,
+      "role": "proposed"
+    },
+    "augcontrol_rmse": {
+      "arch": "flow_pp3_hres_aug",
+      "gpu": 1,
+      "role": "control: identical run without the reliability branch"
+    }
+  },
+  "matched_configuration": {
+    "warm_start": "capmatched_logs/hres_full_lead_finetune_6h_v1/fulllead_rmse/epoch=5-step=1212.ckpt",
+    "forecast_archive": "/tmp/wti_hres_finetune_2017_2020_108x24_v2",
+    "train_years": [2017, 2018, 2019],
+    "validation_years": [2020],
+    "train_tau_hours": [1, 3, 5],
+    "held_out_tau_hours": [2, 4],
+    "eval_tau_hours": [1, 2, 3, 4, 5],
+    "forecast_lead_stride_hours": 24,
+    "forecast_maximum_left_lead_hours": 240,
+    "forecast_error_augmentation_repeats": 3,
+    "forecast_error_scale_range": [0.5, 1.5],
+    "forecast_error_augmentation_seed": 202707,
+    "seed": 202707,
+    "max_epochs": 8,
+    "train_batches_per_epoch": 808,
+    "batch_size": 2,
+    "accumulate": 4,
+    "learning_rate": 1e-05,
+    "warmup_steps": 10,
+    "precision": "bf16-mixed",
+    "trainable_scope": "all",
+    "anchor_swap_probability": 0,
+    "loss_weights": {
+      "highpass": 0.05,
+      "spectral": 0.02,
+      "band": 0,
+      "sht": 0,
+      "spectral_mask_profile": "advected"
+    }
+  },
+  "baselines_on_the_same_2021_index": {
+    "index": "memmap_hres_2021_canonical_v3, 16 initialisations, 120 field-hour cells",
+    "linear": 0.556732,
+    "forecast_error_augmentation": 0.547272,
+    "full_lead": 0.514274,
+    "full_lead_gain_over_linear_percent": 7.626,
+    "full_lead_cells_won": "120/120"
+  },
+  "promotion_rule": {
+    "primary": "degrade_rmse must beat augcontrol_rmse on the 2021 development index without systematic per-field regressions",
+    "secondary": "no loss of the full-lead gain over Linear",
+    "spectral": "Q850 and U850 log-shape error at tau 2 and 3 over degrees 80-180 must not worsen by more than 0.02 relative to the parent",
+    "on_failure": "report as a negative result; the full-lead checkpoint remains the model of record"
+  }
+}

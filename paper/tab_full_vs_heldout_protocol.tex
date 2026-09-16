@@ -1,0 +1,32 @@
+\begin{table*}[!htbp]
+\centering
+\caption{Provenance of the six-hour sparse-query and full-query checkpoints.
+The sparse-query runs draw $\tau\in\{1,3,5\}$; the full-query runs draw
+$\tau\in\{1,2,3,4,5\}$. Both variants use the same 2014--2019 ERA5 pool and
+are evaluated on identical 2020 and 2021 windows. Only the WeatherBridge pair
+matches both optimiser budget and verified seed.}
+\label{tab:full-query-protocol}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{
+  >{\raggedright\arraybackslash}p{31mm}
+  >{\centering\arraybackslash}p{29mm}
+  >{\raggedright\arraybackslash}p{38mm}
+  >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{Architecture} & \textbf{Updates, sparse/full} &
+\textbf{Seed evidence} & \textbf{Use in this control} \\
+\midrule
+WeatherBridge & 13,136 / 13,136 & Verified and matched &
+Primary matched self-comparison \\
+WeatherDCAE-14M & 13,136 / 21,888 & Same seed &
+Diagnostic; extra optimisation confounds the query set \\
+PixelAttn-VFI & 13,136 / 21,888 & Sparse seed not checkpoint-verified &
+Diagnostic; update budget and seed evidence differ \\
+SwinV2 & 17,520 / 17,520 & Sparse seed not checkpoint-verified &
+Diagnostic despite matched update counts \\
+S-DYff & 35,032 / 35,032 & Sparse seed not checkpoint-verified &
+Diagnostic despite matched update counts \\
+\bottomrule
+\end{tabularx}
+\end{table*}

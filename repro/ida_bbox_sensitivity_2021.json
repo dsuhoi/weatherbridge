@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "selection_policy": "Sensitivity analysis of the fixed Hurricane Ida window. The three nested boxes include the published figure box, a storm-centred box, and the full legacy export box; none was selected from model errors.",
+  "events": [
+    {
+      "id": "ida_published_figure_box",
+      "label": "Hurricane Ida, published figure box",
+      "init_time": "2021-08-29T12:00:00",
+      "bbox": [20.0, 32.0, 260.0, 285.0],
+      "channels": ["mslp", "u10", "v10"],
+      "extremes": [
+        {"name": "minimum_mslp", "kind": "min", "channel": "mslp", "scale": 0.01, "units": "hPa"},
+        {"name": "maximum_surface_wind", "kind": "max", "derived": "wind_speed", "units": "m s-1"}
+      ],
+      "source": {"authority": "NOAA National Hurricane Center", "url": "https://www.nhc.noaa.gov/archive/2021/IDA.shtml"}
+    },
+    {
+      "id": "ida_event_centred_box",
+      "label": "Hurricane Ida, event-centred box",
+      "init_time": "2021-08-29T12:00:00",
+      "bbox": [19.0, 39.0, 257.5, 282.5],
+      "channels": ["mslp", "u10", "v10"],
+      "extremes": [
+        {"name": "minimum_mslp", "kind": "min", "channel": "mslp", "scale": 0.01, "units": "hPa"},
+        {"name": "maximum_surface_wind", "kind": "max", "derived": "wind_speed", "units": "m s-1"}
+      ],
+      "source": {"authority": "NOAA National Hurricane Center", "url": "https://www.nhc.noaa.gov/archive/2021/IDA.shtml"}
+    },
+    {
+      "id": "ida_legacy_export_box",
+      "label": "Hurricane Ida, legacy export box",
+      "init_time": "2021-08-29T12:00:00",
+      "bbox": [19.875, 59.875, 230.125, 300.125],
+      "channels": ["mslp", "u10", "v10"],
+      "extremes": [
+        {"name": "minimum_mslp", "kind": "min", "channel": "mslp", "scale": 0.01, "units": "hPa"},
+        {"name": "maximum_surface_wind", "kind": "max", "derived": "wind_speed", "units": "m s-1"}
+      ],
+      "source": {"authority": "NOAA National Hurricane Center", "url": "https://www.nhc.noaa.gov/archive/2021/IDA.shtml"}
+    }
+  ]
+}

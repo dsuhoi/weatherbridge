@@ -1,0 +1,122 @@
+# Canonical 12 h model registry for the npj manuscript.
+#
+# All entries use the same 24 prognostic channels and the 2017--2019
+# oddskip protocol. Training observes tau={1,2,3,5,7,9,10,11}; evaluation
+# reports every interior hour and treats tau={4,6,8} as held out.
+
+schema_version: 2
+protocol:
+  horizon_hours: 12
+  train_years: [2017, 2018, 2019]
+  test_years: [2020, 2021]
+  seen_tau: [1, 2, 3, 5, 7, 9, 10, 11]
+  held_out_tau: [4, 6, 8]
+  scored_tau: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  channels:
+    - T1000
+    - T925
+    - T850
+    - T700
+    - U1000
+    - U925
+    - U850
+    - U700
+    - V1000
+    - V925
+    - V850
+    - V700
+    - Q1000
+    - Q925
+    - Q850
+    - Q700
+    - Z1000
+    - Z925
+    - Z850
+    - Z700
+    - t2m
+    - u10
+    - v10
+    - mslp
+
+models:
+  - paper_name: WeatherBridge
+    eval_name: weatherbridge_14m_3yr_ep10
+    architecture: weatherbridge
+    checkpoint: /home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_flow_pp3_spectral_14m_12h_2017_19_refinev1_s202707_bs4/last.ckpt
+    epochs: 10
+    learning_rate: 1.0e-4
+
+  - paper_name: Refine
+    eval_name: weatherbridge_refine_14m_3yr_ep10
+    architecture: weatherbridge_universal_latent_refine
+    checkpoint: /home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_flow_universal_latent_refine_14m_12h_2017_19_s202707_v1_bs4/last.ckpt
+    epochs: 10
+    learning_rate: 1.0e-4
+
+  - paper_name: WeatherDCAE-14M
+    eval_name: weatherdcae_14m_3yr_ep10
+    architecture: weatherdcae
+    checkpoint: /home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_weatherdcae_14m_24ch_12h_2017_19_lr1e4_protocol_v3/last.ckpt
+    epochs: 10
+    learning_rate: 1.0e-4
+    status: queued
+
+  - paper_name: SwinV2
+    eval_name: fuxi_3yr_ep10
+    architecture: fuxi
+    checkpoint: /home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_fuxi_24ch_12h_2017_19_lr1e4/epoch=9-step=5470.ckpt
+    epochs: 10
+    global_step: 5470
+    learning_rate: 1.0e-4
+
+  - paper_name: ModAFNO
+    eval_name: modafno_3yr_ep10
+    architecture: modafno
+    checkpoint: /home/jovyan/dsuhoi/weather_time_interpolation/logs/_12h_migrated/modafno_12h.ckpt
+    epochs: 10
+    learning_rate: 1.0e-4
+    environment:
+      MODAFNO_INP_H: 362
+      MODAFNO_INP_W: 720
+      MODAFNO_NATIVE_H: 360
+      MODAFNO_NATIVE_W: 720
+
+  - paper_name: S-DYff
+    eval_name: sdyff_3yr_ep10
+    architecture: sdyff
+    checkpoint: /home/jovyan/dsuhoi/weather_time_interpolation/logs/_12h_migrated/sdyff_12h.ckpt
+    epochs: 10
+    learning_rate: 1.0e-4
+    environment:
+      SDYFF_NLAT: 360
+      SDYFF_NLON: 720
+      SDYFF_LAT_CROP: 0
+
+  - paper_name: PixelAttn-VFI
+    eval_name: atm_vfi_3yr_ep10
+    architecture: atmvfi
+    checkpoint: /home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_atmvfi_24ch_12h_2017_19_oddskip_lr1e4_protocol_v3/last.ckpt
+    epochs: 10
+    learning_rate: 1.0e-4
+    status: queued
+
+baselines:
+  - paper_name: Linear Interp.
+    eval_name: bilinear
+    formula: "(1 - tau/12) * x0 + (tau/12) * x12"
+
+  - paper_name: Cubic Interp.
+    eval_name: bicubic
+    formula: "Catmull-Rom(x_minus_12, x0, x12, x24)"
+    note: Falls back to linear interpolation when an outer anchor is unavailable.
+
+evaluation:
+  evaluator: tools/eval/batch_eval_12h_memmap.py
+  spectral_evaluator: tools/eval/sh_energy_spectra_12h.py
+  output_root: metrics/journal_unified/12h_2020
+  require_full_year: true
+  require_window_metrics: true
+  uncertainty:
+    method: paired_block_bootstrap
+    block_days: 7
+    draws: 5000

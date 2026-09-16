@@ -1,0 +1,22 @@
+# SH spectra ensemble eval (alias of sh_spectra) — kept for naming consistency
+# with sh_spectra_12h. Routes to tools/eval/sh_spectra_ens_sdyff.main().
+#
+# This is identical to `conf/eval/sh_spectra.yaml` but with a more explicit
+# name in the migration table.
+name: sh_spectra_ens
+kind: sh_spectra_ens
+memmap_dir: ${oc.env:MEMMAP_DIR,/tmp/wb2_0p5_cache}
+test_year: 2020
+batch_size: 2
+num_workers: 2
+samples_per_date: 4
+max_tau_hours: 6
+ckpt: ${oc.env:SDYFF_CKPT,???}
+n_ensemble: 16
+sh_n_dates: 24
+sh_tau_hours: 3
+sh_channels: t2m,u10,v10,mslp,T850,U850,Q850,Z700
+sh_lmax: 180
+sh_envs: "SDYFF_NLAT=360 SDYFF_NLON=720 SDYFF_LAT_CROP=0"
+model_name: sdyff
+out_dir: metrics/sh_spectra_ens

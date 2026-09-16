@@ -1,0 +1,20 @@
+# 0.5° ERA5 memmap, 12-hour oddskip protocol.
+# Train tau {1,2,3,5,7,9,10,11}; held-out {4,6,8} (3 middle evens).
+name: era5_0p5_12h
+memmap_dir: ${oc.env:MEMMAP_DIR,/tmp/wb2_0p5_cache}
+static_path: ${oc.env:STATIC_PATH,data/static_features_0p5.pt}
+stats_path: ${oc.env:STATS_PATH,data/json_stats_0p5.nc}
+surface_stats_path: ${oc.env:SURFACE_STATS_PATH,data/surface_stats_0p5.json}
+years: [2017, 2018, 2019]
+val_years: [2020]
+max_tau_hours: 12
+delta_t_hours: 12.0
+samples_per_date: 2
+samples_per_date_train: 2
+samples_per_date_val: 1
+train_hours: [1, 2, 3, 5, 7, 9, 10, 11]
+eval_hours: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+keep_24ch: true
+n_pl_channels: 20
+n_surface_channels: 4
+n_static_features: 3

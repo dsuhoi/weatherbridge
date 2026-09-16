@@ -1,0 +1,206 @@
+{
+  "schema_version": 2,
+  "status": "frozen_before_hres_weight_finetuning",
+  "frozen_on": "2026-08-14",
+  "protocol_revision": 4,
+  "preflight_amendments": [
+    {
+      "date": "2026-08-14",
+      "optimizer_steps_completed_before_amendment": 0,
+      "reason": "Bind each fine-tuning objective to the effective loss weights recorded in its ERA5 warm-start checkpoint."
+    },
+    {
+      "date": "2026-08-14",
+      "optimizer_steps_completed_before_amendment": 0,
+      "reason": "Increase independent optimisation and validation initialisations to 108 and 24 before model fitting."
+    },
+    {
+      "date": "2026-08-14",
+      "optimizer_steps_completed_before_amendment": 0,
+      "reason": "Retain the frozen calendar index and permit finite-only 2x2 averaging with two available native values only when the per-channel non-finite fraction is at most 1e-6."
+    }
+  ],
+  "scope": "six_hour_forecast_anchor_weight_finetuning",
+  "models": {
+    "weatherbridge": {
+      "public_name": "WeatherBridge",
+      "internal_arch": "flow_pp3",
+      "initialization": "ERA5-trained six-year checkpoint",
+      "fine_tuning_objective": {
+        "lambda_highpass": 0.05,
+        "lambda_fft_magnitude": 0.02,
+        "lambda_multiband": 0.0,
+        "lambda_sht": 0.0,
+        "spectral_mask_profile": "advected"
+      }
+    },
+    "weatherdcae": {
+      "public_name": "WeatherDCAE-14M",
+      "internal_arch": "dcae_14m",
+      "initialization": "ERA5-trained six-year checkpoint",
+      "fine_tuning_objective": {
+        "lambda_highpass": 0.0,
+        "lambda_fft_magnitude": 0.0,
+        "lambda_multiband": 0.0,
+        "lambda_sht": 0.0,
+        "spectral_mask_profile": "all"
+      }
+    }
+  },
+  "data_contract": {
+    "left_and_right_anchors": "same IFS HRES forecast trajectory",
+    "anchor_spacing_hours": 6,
+    "target": "ERA5 at the intermediate valid time",
+    "future_analysis_as_input": false,
+    "fields": [
+      "T1000", "T925", "T850", "T700",
+      "U1000", "U925", "U850", "U700",
+      "V1000", "V925", "V850", "V700",
+      "Q1000", "Q925", "Q850", "Q700",
+      "Z1000", "Z925", "Z850", "Z700",
+      "t2m", "u10", "v10", "mslp"
+    ],
+    "grid": "WB2 0.25-degree source coarsened by finite 2x2 block average to 360x720",
+    "normalization": "unchanged ERA5 training mean and standard deviation",
+    "left_forecast_leads_hours": [0, 24, 48, 72, 96],
+    "maximum_left_forecast_lead_hours_exclusive": 120,
+    "source_quality_policy": {
+      "coarsening": "finite-only unweighted 2x2 block mean",
+      "minimum_finite_native_values_per_block": 2,
+      "maximum_nonfinite_fraction_per_channel_and_initialisation": 0.000001,
+      "output_nonfinite_values": 0
+    }
+  },
+  "splits": {
+    "optimization": {
+      "years": [2017, 2018, 2019],
+      "query_hours": [1, 3, 5],
+      "init_times": [
+        "2017-01-01T00", "2017-01-11T00", "2017-01-21T00",
+        "2017-02-01T00", "2017-02-11T00", "2017-02-21T00",
+        "2017-03-01T00", "2017-03-11T00", "2017-03-21T00",
+        "2017-04-01T00", "2017-04-11T00", "2017-04-21T00",
+        "2017-05-01T00", "2017-05-11T00", "2017-05-21T00",
+        "2017-06-01T00", "2017-06-11T00", "2017-06-21T00",
+        "2017-07-01T00", "2017-07-11T00", "2017-07-21T00",
+        "2017-08-01T00", "2017-08-11T00", "2017-08-21T00",
+        "2017-09-01T00", "2017-09-11T00", "2017-09-21T00",
+        "2017-10-01T00", "2017-10-11T00", "2017-10-21T00",
+        "2017-11-01T00", "2017-11-11T00", "2017-11-21T00",
+        "2017-12-01T00", "2017-12-11T00", "2017-12-21T00",
+        "2018-01-01T00", "2018-01-11T00", "2018-01-21T00",
+        "2018-02-01T00", "2018-02-11T00", "2018-02-21T00",
+        "2018-03-01T00", "2018-03-11T00", "2018-03-21T00",
+        "2018-04-01T00", "2018-04-11T00", "2018-04-21T00",
+        "2018-05-01T00", "2018-05-11T00", "2018-05-21T00",
+        "2018-06-01T00", "2018-06-11T00", "2018-06-21T00",
+        "2018-07-01T00", "2018-07-11T00", "2018-07-21T00",
+        "2018-08-01T00", "2018-08-11T00", "2018-08-21T00",
+        "2018-09-01T00", "2018-09-11T00", "2018-09-21T00",
+        "2018-10-01T00", "2018-10-11T00", "2018-10-21T00",
+        "2018-11-01T00", "2018-11-11T00", "2018-11-21T00",
+        "2018-12-01T00", "2018-12-11T00", "2018-12-21T00",
+        "2019-01-01T00", "2019-01-11T00", "2019-01-21T00",
+        "2019-02-01T00", "2019-02-11T00", "2019-02-21T00",
+        "2019-03-01T00", "2019-03-11T00", "2019-03-21T00",
+        "2019-04-01T00", "2019-04-11T00", "2019-04-21T00",
+        "2019-05-01T00", "2019-05-11T00", "2019-05-21T00",
+        "2019-06-01T00", "2019-06-11T00", "2019-06-21T00",
+        "2019-07-01T00", "2019-07-11T00", "2019-07-21T00",
+        "2019-08-01T00", "2019-08-11T00", "2019-08-21T00",
+        "2019-09-01T00", "2019-09-11T00", "2019-09-21T00",
+        "2019-10-01T00", "2019-10-11T00", "2019-10-21T00",
+        "2019-11-01T00", "2019-11-11T00", "2019-11-21T00",
+        "2019-12-01T00", "2019-12-11T00", "2019-12-21T00"
+      ]
+    },
+    "validation_and_checkpoint_selection": {
+      "years": [2020],
+      "query_hours": [1, 2, 3, 4, 5],
+      "init_times": [
+        "2020-01-01T00", "2020-01-16T00",
+        "2020-02-01T00", "2020-02-16T00",
+        "2020-03-01T00", "2020-03-16T00",
+        "2020-04-01T00", "2020-04-16T00",
+        "2020-05-01T00", "2020-05-16T00",
+        "2020-06-01T00", "2020-06-16T00",
+        "2020-07-01T00", "2020-07-16T00",
+        "2020-08-01T00", "2020-08-16T00",
+        "2020-09-01T00", "2020-09-16T00",
+        "2020-10-01T00", "2020-10-16T00",
+        "2020-11-01T00", "2020-11-16T00",
+        "2020-12-01T00", "2020-12-16T00"
+      ]
+    },
+    "development_only": {
+      "years": [2021],
+      "reason": "already inspected during architecture and adapter development"
+    },
+    "date_level_confirmation": {
+      "year": 2022,
+      "strength": "disjoint precommitted dates, not an independent calendar year",
+      "init_times": [
+        "2022-01-05T00", "2022-01-19T00",
+        "2022-02-05T00", "2022-02-19T00",
+        "2022-03-05T00", "2022-03-19T00",
+        "2022-04-05T00", "2022-04-19T00",
+        "2022-05-05T00", "2022-05-19T00",
+        "2022-06-05T00", "2022-06-19T00",
+        "2022-07-05T00", "2022-07-19T00",
+        "2022-08-05T00", "2022-08-19T00",
+        "2022-09-05T00", "2022-09-19T00",
+        "2022-10-05T00", "2022-10-19T00",
+        "2022-11-05T00", "2022-11-19T00",
+        "2022-12-05T00", "2022-12-19T00"
+      ],
+      "excluded_opened_days_of_month": [1, 8, 15, 22]
+    }
+  },
+  "optimization": {
+    "seeds": [202707, 202708, 202709],
+    "primary_seed": 202707,
+    "epochs": 10,
+    "learning_rate": 0.00002,
+    "batch_size_per_device": 2,
+    "gradient_accumulation": 4,
+    "warmup_steps": 10,
+    "trainable_scope": "all",
+    "anchor_swap_probability": 0.0,
+    "twelve_hour_training": false,
+    "test_time_adapter_in_primary_comparison": false
+  },
+  "primary_endpoints": [
+    "mean latitude-weighted normalized RMSE over all 24 fields and hours 1-5",
+    "mean latitude-weighted normalized RMSE at held query hours 2 and 4"
+  ],
+  "promotion_rule": {
+    "required_comparators": [
+      "raw WeatherBridge",
+      "fine-tuned WeatherDCAE-14M",
+      "Linear Interp."
+    ],
+    "requirements": [
+      "lower all-hour RMSE than raw WeatherBridge, Linear Interp. and the matched-seed fine-tuned WeatherDCAE-14M, with no held-hour regression, for at least two of three seeds",
+      "non-positive mean RMSE change over the three seeds against each required comparator",
+      "for primary seed 202707, Holm-adjusted paired initialisation-block sign-flip p below 0.05 against the strongest required comparator",
+      "primary seed passes the predeclared high-wavenumber spectral non-inferiority margins against raw WeatherBridge",
+      "all model, data-index and source hashes present"
+    ],
+    "spectral_gate": {
+      "primary_seed": 202707,
+      "fields": ["Q850", "U850"],
+      "query_hours": [2, 3],
+      "ell_min": 80,
+      "ell_max": 180,
+      "max_shape_error_increase": 0.02,
+      "max_coherence_decrease": 0.01,
+      "comparison": "fine-tuned WeatherBridge versus raw WeatherBridge on the identical 2022 date-level confirmation index"
+    }
+  },
+  "reporting_policy": {
+    "current_adapter_is_not_weight_finetuning": true,
+    "include_in_main_manuscript_only_after_confirmation": true,
+    "negative_and_mixed_results_are_retained": true,
+    "no_claim_of_independent_year_confirmation": true
+  }
+}

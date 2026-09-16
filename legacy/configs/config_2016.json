@@ -1,0 +1,49 @@
+{
+  "start_time": "2016-01-01T00",
+  "end_time": "2016-12-31T23",
+  "step": 1,
+  "split_by_year": true,
+  "split_by_month": true,
+  "split_by_day": true,
+  "levels_per_request": 1,
+  "zarr_out_template": "~/data/weather_data/time_interpolation/zarr_{year}.zarr",
+  "save_plan": "~/data/weather_data/time_interpolation/plan_era5_2016.csv",
+
+  "surface": {
+    "dataset": "reanalysis-era5-single-levels",
+    "product_type": "reanalysis",
+    "variables": [
+      "2m_temperature",
+      "10m_u_component_of_wind",
+      "10m_v_component_of_wind",
+      "mean_sea_level_pressure"
+    ],
+    "grid": [1.5, 1.5],
+    "format": "netcdf"
+  },
+
+  "upperair": {
+    "dataset": "reanalysis-era5-pressure-levels",
+    "product_type": "reanalysis",
+    "variables": [
+      "geopotential",
+      "u_component_of_wind",
+      "v_component_of_wind",
+      "temperature",
+      "specific_humidity"
+    ],
+    "levels": [1000, 950, 900, 850],
+    "level_param": "pressure_level",
+    "grid": [1.5, 1.5],
+    "format": "netcdf"
+  },
+
+  "tmp_dir": null,
+  "chunks": { "time": 240, "lat": 121, "lon": 241, "level": 1 },
+  "compressor": { "cname": "zstd", "clevel": 5, "shuffle": 2 },
+  "log_level": "INFO",
+  "dry_run": false,
+  "verify_each_block": true,
+  "show_sizes": true,
+  "strict_time": false
+}

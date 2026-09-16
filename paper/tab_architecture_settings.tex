@@ -1,0 +1,24 @@
+\begin{table*}[!htbp]
+\centering
+\caption{Per-variant architecture settings. Parameter counts come from the
+reported checkpoint state dictionaries; \emph{n-modes} gives the
+spherical-FNO truncation (latitude$\times$longitude).}
+\label{tab:hyperparams}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{p{0.22\textwidth}r p{0.62\textwidth}}
+\toprule
+\textbf{Variant} & \textbf{Params} & \textbf{Hyperparameters} \\
+\midrule
+WeatherBridge & 14.3\,M & hidden 72; three-level circular-padded U-Net; second-order transport, blend, pyramid residual, SFNO and mass-field heads; replicated-latitude high-pass boundary; FFT-magnitude term on the advected-channel mask \\
+WeatherDCAE-14M & 14.4\,M & block-out 64/128/256, layers 3/3/3, latent 256; longitude-periodic, scalar-style pole-reflected convolutions \\
+\midrule
+SwinV2 & 7.9\,M & embed 256, depth 8, heads 8, window $5{\times}9$, patch 4 \\
+ModAFNO (6\,h) & 36.9\,M & embed 256, depth 8, blocks 8, MLP ratio 2 \\
+ModAFNO (12\,h) & 151.7\,M & embed 512, depth 12, blocks 8, MLP ratio 2 \\
+S-DYff (6\,h) & 101.3\,M & embed 128, depth 4, n-modes $16{\times}32$, $K{=}5$ refine \\
+S-DYff (12\,h) & 85.5\,M & embed 96, depth 6, n-modes $16{\times}32$, $K{=}5$ refine \\
+PixelAttn-VFI & 14.7\,M & hidden 72; three levels; shared anchor encoder; bottleneck self-attention and AdaLN-Zero; mean-endpoint decoder skips \\
+\bottomrule
+\end{tabular}
+\end{table*}

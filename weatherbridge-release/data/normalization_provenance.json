@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "source": {
+    "name": "LadCast ERA5 statistics",
+    "url": "https://github.com/tonyzyl/ladcast",
+    "declared_period": [1979, 2019],
+    "generator_retained": false
+  },
+  "artifacts": {
+    "pressure_level_stats": {
+      "path": "data/json_stats_0p5.nc",
+      "size_bytes": 6656,
+      "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7"
+    },
+    "surface_stats": {
+      "path": "data/surface_stats_0p5.json",
+      "size_bytes": 275,
+      "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2"
+    }
+  },
+  "expected_pressure_channels": [
+    "T1000", "T925", "T850", "T700",
+    "U1000", "U925", "U850", "U700",
+    "V1000", "V925", "V850", "V700",
+    "Q1000", "Q925", "Q850", "Q700",
+    "Z1000", "Z925", "Z850", "Z700"
+  ],
+  "expected_surface_channels": [
+    "t2m", "u10", "v10", "mslp", "sst", "tcc", "tcwv", "tisr"
+  ],
+  "selection_year": 2020,
+  "temporal_ood_year": 2021,
+  "provenance_status": "declared period and artifact identity; original generator unavailable"
+}

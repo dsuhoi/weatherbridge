@@ -1,0 +1,443 @@
+{
+  "schema_version": 1,
+  "years": [
+    2020,
+    2021
+  ],
+  "trained_hours": [
+    1,
+    3,
+    5
+  ],
+  "held_out_hours": [
+    2,
+    4
+  ],
+  "pairs": {
+    "WeatherBridge": {
+      "comparability": "optimizer_budget_and_seed_matched",
+      "heldout_steps": 13136,
+      "full_steps": 13136,
+      "years": {
+        "2020": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2020/weatherbridge_heldout.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2020/weatherbridge_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_query_generalization_matchedbudget_s202707/exp_weatherbridge_6h_sparse135_matchedbudget13136_s202707/last.ckpt",
+            "size_bytes": 173182184,
+            "mtime_ns": 1787735378497761540,
+            "sha256": "1be38b13770e607599791d492f78d373351d8631e75c0215d3d3f977fe7fd5de",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_query_generalization_matchedbudget_s202707/exp_weatherbridge_6h_fullhours_matchedbudget13136_s202707/last.ckpt",
+            "size_bytes": 173182184,
+            "mtime_ns": 1787747708625109038,
+            "sha256": "39c358ee0d3ad39d643b2a9437649e48200df9dbc771c4af8c911419a125d635",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        },
+        "2021": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2021/weatherbridge_heldout.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2021/weatherbridge_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_query_generalization_matchedbudget_s202707/exp_weatherbridge_6h_sparse135_matchedbudget13136_s202707/last.ckpt",
+            "size_bytes": 173182184,
+            "mtime_ns": 1787735378497761540,
+            "sha256": "1be38b13770e607599791d492f78d373351d8631e75c0215d3d3f977fe7fd5de",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_query_generalization_matchedbudget_s202707/exp_weatherbridge_6h_fullhours_matchedbudget13136_s202707/last.ckpt",
+            "size_bytes": 173182184,
+            "mtime_ns": 1787747708625109038,
+            "sha256": "39c358ee0d3ad39d643b2a9437649e48200df9dbc771c4af8c911419a125d635",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        }
+      }
+    },
+    "WeatherDCAE-14M": {
+      "comparability": "same_seed_full_has_more_optimizer_steps",
+      "heldout_steps": 13136,
+      "full_steps": 21888,
+      "years": {
+        "2020": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2020/weatherdcae_heldout.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2020/weatherdcae_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_weatherdcae_14m_6h_6yr_refinev1_s202707_bs4/last.ckpt",
+            "size_bytes": 172664520,
+            "mtime_ns": 1785745459546419949,
+            "sha256": "3a432daa70870d02c12cef3e21f3d0a998719cf54e555f4d0b8fb0faf45fdf5e",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_full_hours_compile_6a4728b/exp_weatherdcae_14m_6h_fullhours_s202707/last.ckpt",
+            "size_bytes": 172668360,
+            "mtime_ns": 1787712515052129622,
+            "sha256": "5fd3e355ae0dce59261a457d39cf5225685cff30d19b6cb972a857867d9df40a",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        },
+        "2021": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2021/weatherdcae_heldout.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2021/weatherdcae_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_weatherdcae_14m_6h_6yr_refinev1_s202707_bs4/last.ckpt",
+            "size_bytes": 172664520,
+            "mtime_ns": 1785745459546419949,
+            "sha256": "3a432daa70870d02c12cef3e21f3d0a998719cf54e555f4d0b8fb0faf45fdf5e",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_full_hours_compile_6a4728b/exp_weatherdcae_14m_6h_fullhours_s202707/last.ckpt",
+            "size_bytes": 172668360,
+            "mtime_ns": 1787712515052129622,
+            "sha256": "5fd3e355ae0dce59261a457d39cf5225685cff30d19b6cb972a857867d9df40a",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        }
+      }
+    },
+    "PixelAttn-VFI": {
+      "comparability": "eight_epochs_but_full_has_more_optimizer_steps_seed_unverified_for_heldout",
+      "heldout_steps": 13136,
+      "full_steps": 21888,
+      "years": {
+        "2020": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/corrected_baselines_v1/6h/2020/full_year/pixelattn_vfi.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2020/pixelattn_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_atmvfi_24ch_6h_2014_19_sparse135_lr1e4_matched/last.ckpt",
+            "size_bytes": 176201736,
+            "mtime_ns": 1785035926910104956,
+            "sha256": "ca0eb0588812766bab183b7833d3d7ebe63efc52030d7c1fcae7023fb8ac72dc",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_full_hours_compile_6a4728b/exp_pixelattn_vfi_14m_6h_fullhours_s202707/last.ckpt",
+            "size_bytes": 176210824,
+            "mtime_ns": 1787690193765695365,
+            "sha256": "aed6132f98f1517845ec77bafd40b88781d998e4d30e24d845404b9b394829ae",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        },
+        "2021": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/corrected_baselines_v1/6h/2021/full_year/pixelattn_vfi.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2021/pixelattn_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_atmvfi_24ch_6h_2014_19_sparse135_lr1e4_matched/last.ckpt",
+            "size_bytes": 176201736,
+            "mtime_ns": 1785035926910104956,
+            "sha256": "ca0eb0588812766bab183b7833d3d7ebe63efc52030d7c1fcae7023fb8ac72dc",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_full_hours_compile_6a4728b/exp_pixelattn_vfi_14m_6h_fullhours_s202707/last.ckpt",
+            "size_bytes": 176210824,
+            "mtime_ns": 1787690193765695365,
+            "sha256": "aed6132f98f1517845ec77bafd40b88781d998e4d30e24d845404b9b394829ae",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        }
+      }
+    },
+    "SwinV2": {
+      "comparability": "optimizer_steps_matched_seed_not_checkpoint_verified",
+      "heldout_steps": 17520,
+      "full_steps": 17520,
+      "years": {
+        "2020": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/corrected_baselines_v1/6h/2020/full_year/swinv2.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2020/swinv2_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/dsuhoi/weather_time_interpolation/logs/exp_fuxi_24ch_6yr_v2/epoch=7-step=17520.ckpt",
+            "size_bytes": 94214584,
+            "mtime_ns": 1780040147814382606,
+            "sha256": "4792f5db95bee5b9eb3e4afa1b84e4601b6e9319b5eb01e53e16d3843be287c1",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_full_hours_compile_6a4728b/exp_swinv2_8m_6h_fullhours_s202707/last.ckpt",
+            "size_bytes": 94214840,
+            "mtime_ns": 1787719754587034632,
+            "sha256": "5d2447371d98fcd368464471fad55ade974ece7f796fcd70a16635b72db42b35",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        },
+        "2021": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/corrected_baselines_v1/6h/2021/full_year/swinv2.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2021/swinv2_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/dsuhoi/weather_time_interpolation/logs/exp_fuxi_24ch_6yr_v2/epoch=7-step=17520.ckpt",
+            "size_bytes": 94214584,
+            "mtime_ns": 1780040147814382606,
+            "sha256": "4792f5db95bee5b9eb3e4afa1b84e4601b6e9319b5eb01e53e16d3843be287c1",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_full_hours_compile_6a4728b/exp_swinv2_8m_6h_fullhours_s202707/last.ckpt",
+            "size_bytes": 94214840,
+            "mtime_ns": 1787719754587034632,
+            "sha256": "5d2447371d98fcd368464471fad55ade974ece7f796fcd70a16635b72db42b35",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        }
+      }
+    },
+    "S-DYff": {
+      "comparability": "optimizer_steps_matched_seed_not_checkpoint_verified",
+      "heldout_steps": 35032,
+      "full_steps": 35032,
+      "years": {
+        "2020": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/corrected_baselines_v1/6h/2020/full_year/sdyff.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2020/sdyff_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/dsuhoi/weather_time_interpolation/logs/exp_sdyff_24ch_6yr/epoch=7-step=35032.ckpt",
+            "size_bytes": 1215803160,
+            "mtime_ns": 1780125623142416061,
+            "sha256": "ffcd25513bd7a286a4edb583e07ebb3dab9f761f4d5b41e8f99cd3ee076bc760",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_full_hours_s202707_58819a5/exp_sdyff_101m_6h_fullhours_s202707/last.ckpt",
+            "size_bytes": 1215803160,
+            "mtime_ns": 1787656982283277199,
+            "sha256": "63c66e2953a2cf83cbeef4ae6df148e04d67ef83eb4cbb083c40ed37819f0862",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        },
+        "2021": {
+          "heldout_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/corrected_baselines_v1/6h/2021/full_year/sdyff.json",
+          "full_json": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/metrics/full_vs_heldout_6h_s202707/2021/sdyff_full.json",
+          "heldout_checkpoint": {
+            "path": "/home/jovyan/dsuhoi/weather_time_interpolation/logs/exp_sdyff_24ch_6yr/epoch=7-step=35032.ckpt",
+            "size_bytes": 1215803160,
+            "mtime_ns": 1780125623142416061,
+            "sha256": "ffcd25513bd7a286a4edb583e07ebb3dab9f761f4d5b41e8f99cd3ee076bc760",
+            "eval_git_commit": null
+          },
+          "full_checkpoint": {
+            "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/6h_full_hours_s202707_58819a5/exp_sdyff_101m_6h_fullhours_s202707/last.ckpt",
+            "size_bytes": 1215803160,
+            "mtime_ns": 1787656982283277199,
+            "sha256": "63c66e2953a2cf83cbeef4ae6df148e04d67ef83eb4cbb083c40ed37819f0862",
+            "eval_git_commit": null
+          },
+          "evaluation_protocol": {
+            "rmse_reduction": "spherical_strip_area_weighted_spatial_mean",
+            "samples_per_date": 4,
+            "sample_strategy": "all_valid_anchor_windows",
+            "full_year": true,
+            "eval_hours": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "latitude_grid": "wb2_0p25_2x2_block_average_v1"
+          },
+          "evaluation_code_sha256": {
+            "batch_eval_12h_memmap.py": "7d718da33d89607e1232867ff8a11b6d7c9c02918549e56751a51c0c0c6ca54c",
+            "grid.py": "cabff96649a12c9a550cc868a83595299581d6dbbaca92c55442879c38cf9eb5",
+            "normalization.py": "12f500170655e7357f07ce222e42c98a21964e3e630da1bae0b26fe2785ccf07",
+            "physical_consistency.py": "99df60ceea7b6ec67a100634ffeacad6726cc559adcb4df7f6948cd6db3ac62b",
+            "capmatched_loader.py": "31e91d4db0bd23c03c06ec3c0656c487e9ca230f99b8090dbbe799d71e1c34a4"
+          }
+        }
+      }
+    }
+  }
+}

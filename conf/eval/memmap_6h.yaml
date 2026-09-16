@@ -1,0 +1,21 @@
+# 6h batch eval: ACC + RMSE on year 2020, lat-weighted. Headline paper eval.
+# Routes to tools/eval/batch_eval_memmap.main().
+name: memmap_6h
+kind: memmap_6h
+memmap_dir: ${oc.env:MEMMAP_DIR,/tmp/wb2_0p5_cache}
+test_year: 2020
+climatology: ${oc.env:CLIMATOLOGY,/workspace-SR006.nfs2/weather_data/time_interpolation_0p5/climatology_1990-2019_0p5_canonical_v2.zarr}
+stats_path: data/json_stats_0p5.nc
+surface_stats_path: data/surface_stats_0p5.json
+static_path: data/static_features_0p5.pt
+batch_size: 4
+num_workers: 2
+samples_per_date: 4
+eval_days_per_month: 4
+max_tau_hours: 6
+keep_n_channels: 24
+out_dir: metrics/eval_0p5_2020_fast
+out_acc_dir: metrics/acc_0p5_2020_fast
+paper_tag: 0p5_2020
+no_acc: false
+models: ""  # set via CLI: ++eval.models='name1:ckpt1,name2:ckpt2'

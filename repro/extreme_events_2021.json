@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "selection_policy": "Events and six-hour windows were fixed from authoritative event reports before model errors were inspected. Bounding boxes are event-centred and do not depend on either model.",
+  "events": [
+    {
+      "id": "texas_freeze",
+      "label": "Texas cold outbreak",
+      "init_time": "2021-02-15T06:00:00",
+      "bbox": [25.0, 37.5, 253.0, 267.0],
+      "channels": ["t2m", "T850", "Z700"],
+      "extremes": [
+        {"name": "minimum_t2m", "kind": "min", "channel": "t2m", "units": "K"}
+      ],
+      "source": {
+        "authority": "NOAA NCEI",
+        "url": "https://www.ncei.noaa.gov/news/great-texas-freeze-february-2021",
+        "evidence": "The historical cold event affected Texas on 11-20 February 2021; the coldest night followed 15 February."
+      }
+    },
+    {
+      "id": "typhoon_surigae",
+      "label": "Typhoon Surigae rapid intensification",
+      "init_time": "2021-04-17T12:00:00",
+      "bbox": [3.0, 23.0, 118.0, 143.0],
+      "channels": ["mslp", "u10", "v10"],
+      "extremes": [
+        {"name": "minimum_mslp", "kind": "min", "channel": "mslp", "scale": 0.01, "units": "hPa"},
+        {"name": "maximum_surface_wind", "kind": "max", "derived": "wind_speed", "units": "m s-1"}
+      ],
+      "source": {
+        "authority": "JMA RSMC Tokyo",
+        "url": "https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/AnnualReport/2021/Text/Text2021.pdf",
+        "evidence": "Surigae reached 895 hPa and 120 kt at 18 UTC on 17 April 2021."
+      }
+    },
+    {
+      "id": "pacific_northwest_heatwave",
+      "label": "Pacific Northwest heatwave",
+      "init_time": "2021-06-28T18:00:00",
+      "bbox": [40.0, 55.0, 230.0, 250.0],
+      "channels": ["t2m", "T850", "Z700"],
+      "extremes": [
+        {"name": "maximum_t2m", "kind": "max", "channel": "t2m", "units": "K"}
+      ],
+      "source": {
+        "authority": "NOAA Climate.gov",
+        "url": "https://www.climate.gov/news-features/event-tracker/astounding-heat-obliterates-all-time-records-across-pacific-northwest",
+        "evidence": "The record heat peaked west of the Cascades on 28 June 2021."
+      }
+    },
+    {
+      "id": "hurricane_ida",
+      "label": "Hurricane Ida landfall",
+      "init_time": "2021-08-29T12:00:00",
+      "bbox": [19.0, 39.0, 257.5, 282.5],
+      "channels": ["mslp", "u10", "v10"],
+      "extremes": [
+        {"name": "minimum_mslp", "kind": "min", "channel": "mslp", "scale": 0.01, "units": "hPa"},
+        {"name": "maximum_surface_wind", "kind": "max", "derived": "wind_speed", "units": "m s-1"}
+      ],
+      "source": {
+        "authority": "NOAA National Hurricane Center",
+        "url": "https://www.nhc.noaa.gov/archive/2021/IDA.shtml",
+        "evidence": "The evaluation window covers the 12-18 UTC intensification and landfall period on 29 August 2021."
+      }
+    },
+    {
+      "id": "typhoon_chanthu",
+      "label": "Typhoon Chanthu peak intensity",
+      "init_time": "2021-09-10T12:00:00",
+      "bbox": [10.0, 30.0, 112.0, 137.0],
+      "channels": ["mslp", "u10", "v10"],
+      "extremes": [
+        {"name": "minimum_mslp", "kind": "min", "channel": "mslp", "scale": 0.01, "units": "hPa"},
+        {"name": "maximum_surface_wind", "kind": "max", "derived": "wind_speed", "units": "m s-1"}
+      ],
+      "source": {
+        "authority": "JMA RSMC Tokyo",
+        "url": "https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/AnnualReport/2021/Text/Text2021.pdf",
+        "evidence": "Chanthu deepened from 910 hPa at 06 UTC to 905 hPa at 18 UTC on 10 September 2021."
+      }
+    },
+    {
+      "id": "typhoon_rai",
+      "label": "Typhoon Rai first peak",
+      "init_time": "2021-12-16T00:00:00",
+      "bbox": [0.0, 20.0, 113.5, 138.5],
+      "channels": ["mslp", "u10", "v10"],
+      "extremes": [
+        {"name": "minimum_mslp", "kind": "min", "channel": "mslp", "scale": 0.01, "units": "hPa"},
+        {"name": "maximum_surface_wind", "kind": "max", "derived": "wind_speed", "units": "m s-1"}
+      ],
+      "source": {
+        "authority": "JMA RSMC Tokyo",
+        "url": "https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/AnnualReport/2021/Text/Text2021.pdf",
+        "evidence": "Rai reached its first 915 hPa, 105 kt peak at 06 UTC on 16 December 2021."
+      }
+    }
+  ]
+}

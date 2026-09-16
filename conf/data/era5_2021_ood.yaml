@@ -1,0 +1,20 @@
+# 0.5° ERA5 memmap, OOD test on year 2021. Identical layout to era5_0p5_6h
+# but `val_years=[2021]` (memmap already cached at /tmp/wb2_0p5_cache/wb2_2021.{bin,json}).
+name: era5_2021_ood
+memmap_dir: ${oc.env:MEMMAP_DIR,/tmp/wb2_0p5_cache}
+static_path: ${oc.env:STATIC_PATH,data/static_features_0p5.pt}
+stats_path: ${oc.env:STATS_PATH,data/json_stats_0p5.nc}
+surface_stats_path: ${oc.env:SURFACE_STATS_PATH,data/surface_stats_0p5.json}
+years: [2014, 2015, 2016, 2017, 2018, 2019]  # not used for OOD eval; placeholder
+val_years: [2021]
+max_tau_hours: 6
+delta_t_hours: 6.0
+samples_per_date: 4
+samples_per_date_train: 4
+samples_per_date_val: 4
+train_hours: [1, 3, 5]
+eval_hours: [1, 2, 3, 4, 5]
+keep_24ch: true
+n_pl_channels: 20
+n_surface_channels: 4
+n_static_features: 3

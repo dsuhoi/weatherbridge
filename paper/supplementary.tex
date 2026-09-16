@@ -1,0 +1,480 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[referee,pdflatex,sn-nature]{sn-jnl}
+\usepackage{graphicx}
+\usepackage{microtype}
+\usepackage{placeins}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage{capt-of}
+\newenvironment{supplementlandscape}
+  {\clearpage\begin{landscape}}
+  {\end{landscape}\clearpage}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{12pt plus 2pt minus 2pt}
+\setlength{\intextsep}{12pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{6pt}
+\setlength{\belowcaptionskip}{4pt}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.75}
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+\title[WeatherBridge interpolation: Supplementary Information]{Supplementary Information for WeatherBridge and the limits of global weather interpolation at held-out query times}
+
+\author*[1,2]{\fnm{Daniil} \sur{Sukhorukov}}
+\email{suhorukov.dan0@gmail.com}
+\author[1]{\fnm{Andrei} \sur{Zakharov}}
+\author[3]{\fnm{Yuri} \sur{Maximov}}
+\author[1,4]{\fnm{Ilya} \sur{Makarov}}
+\author[1]{\fnm{Ivan} \sur{Oseledets}}
+\affil[1]{\orgname{AI Research Institute},
+\orgaddress{\city{Moscow}, \country{Russia}}}
+\affil[2]{\orgname{AI Talent Hub, ITMO University},
+\orgaddress{\city{Saint Petersburg}, \country{Russia}}}
+\affil[3]{\orgname{International Center for Corporate Data Analysis},
+\orgaddress{\city{Astana}, \country{Kazakhstan}}}
+\affil[4]{\orgname{Trusted AI Center, RAS},
+\orgaddress{\city{Moscow}, \country{Russia}}}
+
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+
+\begin{document}
+\maketitle
+\setstretch{1.15}
+\raggedbottom
+
+\section{Secondary cyclone diagnostic}
+
+Supplementary Fig.~\ref{fig:supp_laura_wind} compares the 10-m wind vector
+during Hurricane Laura. This development-time case lies outside the 2021 event
+audit. All learned rows use the checkpoints reported in the main comparison.
+
+\FloatBarrier
+\begin{supplementlandscape}
+\centering
+\includegraphics[width=0.94\linewidth,height=0.78\textheight,keepaspectratio]{images/fig_laura_wind10.pdf}
+\captionof{figure}{10-m wind reconstruction during Hurricane Laura on 27 August 2020.
+The left column shows ERA5 wind speed and direction at $\tau=3$ h and the
+five-hour vector-RMSE trajectories. The right $2\times2$ block shows vector
+error magnitude and direction for Linear Interp., WeatherDCAE-14M,
+PixelAttn-VFI and WeatherBridge at the same query hour. Panel annotations give
+cosine-latitude-weighted vector RMSE (vRMSE) over the fixed
+$20{-}35^\circ$N, $80{-}105^\circ$W box. WeatherBridge has lower vRMSE than
+both learned comparators at four of five interior hours; WeatherDCAE-14M is
+lower at $\tau=5$ h.}
+\label{fig:supp_laura_wind}
+\end{supplementlandscape}
+
+\FloatBarrier
+\section{Twelve-hour per-channel errors}
+
+Supplementary Figs.~\ref{fig:supp_channels_12h_body} and
+\ref{fig:supp_channels_12h} resolve the twelve-hour interval-length ablation by
+field. Model colours, markers and line styles match the six-hour comparison;
+values should be compared within a field because the physical scales differ.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{images/fig_channels_body_12h_phys.pdf}
+\caption{Twelve-hour interval-length ablation for the 850-hPa and surface
+fields in physical units. Shading marks hours excluded from training;
+upward arrows mark clipped ModAFNO values beyond the displayed range.}
+\label{fig:supp_channels_12h_body}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{images/fig_channels_app_12h_phys.pdf}
+\caption{Twelve-hour interval-length ablation for the remaining pressure-level
+fields in physical units. Shading marks hours excluded from training;
+upward arrows mark clipped ModAFNO values beyond the displayed range.}
+\label{fig:supp_channels_12h}
+\end{figure}
+
+\input{tab_main_12h_v2.tex}
+
+Supplementary Fig.~\ref{fig:hres-best-fields} resolves four representative
+same-trajectory results by forecast-lead bin; the aggregate and variable-group
+scores are reported in Supplementary Table~\ref{tab:hres-same-trajectory} and
+summarised in the main text.
+
+\input{tab_hres_same_trajectory.tex}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.94\textwidth]{images/fig_hres_best_fields.pdf}
+\caption{Lead-resolved normalised RMSE for four representative fields in the
+same-trajectory HRES experiment. The $x$ axis bins the forecast lead of the
+left anchor; all curves use the same 16 initialisations and archived targets.
+The panels were selected after evaluation as one field from each of four
+physical families with a large WeatherBridge margin over the strongest plotted
+competitor, so they are illustrative rather than a separate confirmatory test.
+The main text retains the aggregate 24-field result.}
+\label{fig:hres-best-fields}
+\end{figure*}
+
+\FloatBarrier
+\section{Calendar-year transfer audit}
+
+Supplementary Figs.~\ref{fig:supp_ood2021_body}--\ref{fig:supp_ood2021_levels}
+use the same window construction, normalisation and query-hour split as the
+2020 comparison. No learned model was trained on 2021, although these results
+were inspected during development and are not a post-selection test.
+
+\input{tab_6h_2021_transfer.tex}
+
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=\textwidth]{images/fig_channels_body_ood2021.pdf}
+\caption{Six-hour per-channel RMSE in physical units in 2021 for representative
+pressure-level and surface fields. Shading marks query hours excluded from
+training. WeatherBridge is red.}
+\label{fig:supp_ood2021_body}
+\end{figure*}
+
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=\textwidth]{images/fig_channels_app_ood2021.pdf}
+\caption{Six-hour RMSE in physical units in 2021 for the remaining pressure-level
+channels. Shading marks query hours excluded from training.}
+\label{fig:supp_ood2021_levels}
+\end{figure*}
+
+\FloatBarrier
+\section{Full-query supervision control}
+\label{sec:full-query-control}
+
+The principal experiment withholds query hours 2 and 4 during optimisation.
+Performance at those hours measures transfer. A counterpart trained on all
+five interior hours estimates the benefit of direct supervision. Both
+counterparts use the same 2014--2019 ERA5 pool, six-hour anchor construction,
+24 fields and full-year 2020 and 2021 evaluation windows. Supplementary
+Table~\ref{tab:full-query-protocol} records the checkpoint-level differences
+that determine which comparisons support a causal interpretation.
+
+For WeatherBridge, seed, optimiser-step budget, effective batch size,
+precision and loss weights are matched; only the sampled query-hour set
+changes. Full-query training reduces mean normalised RMSE at hours 2 and 4 by
+8.77\% in 2020 and 8.78\% in 2021 (Supplementary
+Fig.~\ref{fig:full-query-summary}). At the trained hours 1, 3 and 5, it changes
+RMSE by $-0.35\%$ and $-0.34\%$, respectively. Thus the extra supervision
+primarily improves the two hours omitted from sparse-query training.
+The full-query WeatherBridge remains the best model in absolute
+RMSE: 0.06015 in 2020 and 0.05991 in 2021 over all five hours, compared with
+0.06466 and 0.06436 for WeatherDCAE-14M.
+
+The WeatherBridge improvement at hours 2 and 4 is present in all 24 fields in
+both years. The largest reductions occur for geopotential (18.0--18.8\%), MSLP
+(17.3--17.5\%) and 2-m temperature (15.1--16.1\%); wind fields improve by
+6.5--10.5\%, pressure-level temperature by 3.5--9.3\% and specific humidity by
+2.8--7.6\%. The paired bootstrap defined in Methods gives a 95\%
+interval of $[0.00650,0.00655]$ for sparse-minus-full nRMSE in 2020 and
+$[0.00648,0.00653]$ in 2021. No draw is non-positive, so the corresponding
+Monte Carlo tail probability is reported at its $1/5001$ resolution rather
+than as zero.
+
+The response depends on the architecture (Supplementary
+Fig.~\ref{fig:full-query-field-hour}). SwinV2 gains about 2.1\% at hours 2 and
+4, whereas S-DYff shows no gain. WeatherDCAE-14M and PixelAttn-VFI show
+larger gains, but their full-query checkpoints receive 21,888 updates rather
+than 13,136; those differences cannot be assigned to query-hour supervision
+alone. WeatherBridge provides the matched comparison.
+ModAFNO is omitted because its full-query run did not produce a complete
+checkpoint. Linear interpolation has no training condition and therefore no
+sparse-versus-full self-comparison.
+The S-DYff comparison uses single stochastic reconstructions from each
+checkpoint, with stochastic depth active at inference. It does not estimate
+an ensemble-mean effect; the inference protocol and its difference from
+original DYffusion are described in Methods.
+
+\input{tab_full_vs_heldout_protocol.tex}
+
+\begin{figure*}[!htbp]
+\centering
+\includegraphics[width=0.98\textwidth]{images/fig_full_vs_heldout_summary.pdf}
+\caption{Sparse-query versus full-query training on six-hour ERA5 intervals.
+Open circles denote checkpoints trained at hours 1, 3 and 5; filled symbols
+denote checkpoints trained at all five interior hours. Arrows point from the
+sparse-query score to the full-query score, and labels give the relative RMSE
+reduction. Lower normalised RMSE is better. Only WeatherBridge matches both
+the verified seed and update budget. The other architectures show diagnostic
+full-query sensitivity under the provenance constraints in Supplementary
+Table~\ref{tab:full-query-protocol}.}
+\label{fig:full-query-summary}
+\end{figure*}
+
+\begin{supplementlandscape}
+\centering
+\includegraphics[width=0.96\linewidth,height=0.78\textheight,keepaspectratio]{images/fig_full_vs_heldout_field_hour.pdf}
+\captionof{figure}{Field-by-hour change from sparse-query to full-query training.
+Cells show $100(\mathrm{RMSE}_{\rm sparse}-\mathrm{RMSE}_{\rm full})/
+\mathrm{RMSE}_{\rm sparse}$; red is an improvement and blue a regression.
+Stars mark hours 2 and 4, which are absent from sparse-query training. Each
+architecture contains the 2020 and 2021 results on the same colour scale.
+WeatherBridge is the matched control; the remaining columns are diagnostic
+because their seed or update-budget provenance is incomplete or unequal.}
+\label{fig:full-query-field-hour}
+\end{supplementlandscape}
+
+\FloatBarrier
+\section{Assimilation-window stratification}
+
+The full-year six-hour comparison contains four anchor starts. Pairs beginning
+at 00 and 12 UTC remain within one ERA5 4D-Var window, whereas those beginning
+at 06 and 18 UTC cross the 09 or 21 UTC boundary. The ordering is unchanged in
+all eight year--start strata, although WeatherBridge's advantage over
+WeatherDCAE-14M is smaller for boundary-crossing pairs. This audit limits the
+assimilation-window confound for RMSE. The spectral sample remains restricted
+to 00/12 UTC, and the 2022 sample to 00 UTC.
+
+\input{tab_utc_start_strata.tex}
+
+\FloatBarrier
+\section{Conservative robustness sensitivity}
+
+The internal sensitivity defined in Methods checks fieldwise regressions
+against WeatherDCAE-14M alongside aggregate accuracy, parameter count,
+latency and HRES transfer. It was defined during development; it is
+reported separately from the primary held-out query-hour comparison.
+
+This rule retains WeatherDCAE-14M because WeatherBridge has local regressions
+despite lower aggregate and held-out RMSE. Supplementary
+Table~\ref{tab:selector-diagnostics} gives the temporal-curvature
+outcomes. Supplementary Table~\ref{tab:vector-sht} gives representative
+vector-SHT values; Supplementary Data~1 contains the complete families.
+
+\input{tab_selector_diagnostics.tex}
+
+\input{tab_vector_sht.tex}
+
+\FloatBarrier
+\section{Architecture ablation study}
+
+\input{tab_architecture_ablation.tex}
+
+The retrained Refine variant, defined in Methods, lowered aggregate six-hour
+ERA5 RMSE, but two field--hour regressions remained in the inspected 2021
+transfer year: temperature (T2m) regressions at $\tau=1$ and $\tau=5$, with
+one-sided Holm-adjusted $p=0.024$ each. It also lost all three paired IFS HRES
+seeds, and the conservative robustness sensitivity rejects it.
+Supplementary Data~1 retains its configuration, checkpoints and paired
+statistics.
+
+The same sensitivity also rejects Detail, the anchor-detail bypass variant
+defined in Methods.
+
+Refine and Detail lower six-hour full-year ERA5 RMSE by less than one per cent
+relative to WeatherBridge, but transfer less reliably across data sources.
+Refine loses all three paired IFS HRES seeds at both horizons; Detail loses its
+only completed seed pair at both horizons, leaving its cross-source evidence
+incomplete. WeatherBridge has the lowest twelve-hour ERA5 RMSE of the three and
+wins all three twelve-hour HRES seed pairs. We retain it as the representative
+transport formulation. The stricter multi-metric rule retains
+WeatherDCAE-14M as the conservative reference.
+
+The retrained branches above change several mechanisms at once. To isolate
+components used by the retained checkpoint, we also apply
+same-checkpoint inference lesions. Disabling the acceleration term increases
+aggregate RMSE by 2.16\%, while forcing the warped-anchor gate to zero
+increases it by 60.54\%. Disabling the hydrostatic head increases aggregate
+RMSE by only 0.04\%, as it changes five of 24 channels, but all 25 affected
+geopotential/MSLP field--hour cells worsen after Holm correction. Averaged
+over the five query hours, hydrostatic-balance MSE increases by 1.06\%
+(Supplementary Table~\ref{tab:component-lesions}, panel b). The transport-off arm
+retains the learned residual corrections and isolates warped-anchor transport
+without reducing the model to linear interpolation. No arm is retrained.
+
+\input{tab_component_lesions.tex}
+
+\FloatBarrier
+\section{Anchor-order diagnostic}
+
+Neither principal architecture is equivariant to exchanging the two anchors.
+For WeatherBridge, the exchange RMSE is 0.287 in 2020 and 0.285 in 2021,
+respectively 3.49 and 3.44 times its forward reconstruction error. The
+corresponding WeatherDCAE-14M ratios are 3.01 and 2.98. ``Bidirectional''
+refers to the two predicted transport directions. The complete interpolation
+map is not reversible because the input stack and learned path assign distinct
+roles to the left and right anchors.
+
+\input{tab_anchor_exchange.tex}
+
+\FloatBarrier
+\section{Twelve-hour spectral amplitude}
+
+Supplementary Fig.~\ref{fig:supp_spectra_12h} shows spectral amplitude. The
+scalar and vector-SHT tables below report the signed cospectrum and vector-field
+tests needed to assess coefficient alignment.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=\textwidth]{images/fig_spectra_ratio_hard.pdf}
+\caption{Twelve-hour spectral power retention. Rows show Q850 and V850; columns
+compare a trained query hour ($\tau=5$) with a held-out hour ($\tau=6$). Curves
+show the model-to-ERA5 power ratio over $\ell\in[80,180]$; one is ideal.
+WeatherBridge has the lowest mean absolute log-ratio error for Q850 in both
+columns and is shown in solid red.}
+\label{fig:supp_spectra_12h}
+\end{figure}
+
+\input{tab_sh_per_channel_6h_v6.tex}
+
+\input{tab_sh_per_channel_12h_v6.tex}
+
+\FloatBarrier
+\section{Diagnostic physical and regional summaries}
+
+The balance ratios use 180 uniformly spaced windows, while the diurnal errors
+aggregate four regions, 12 months and three surface fields. These reduced-sample
+diagnostics are descriptive; the full-year physical suite supplies the paired
+robustness analysis.
+
+\input{tab_downstream_physics_v2.tex}
+
+\input{tab_downstream_diurnal_v2.tex}
+
+\FloatBarrier
+\section{Training and architecture inventory}
+
+Tables~\ref{tab:protocol_summary} and \ref{tab:hyperparams} record
+the training budgets and architecture settings of the reported checkpoints.
+
+\input{tab_training_protocol.tex}
+
+\input{tab_architecture_settings.tex}
+
+\FloatBarrier
+\section{Forecast-anchor spectral audit}
+
+The four-cell audit below accompanies the adapted IFS HRES result in the main
+text. It separates small-scale amplitude from coefficient alignment: improved
+coherence and signed cospectrum do not imply uniformly improved spectral
+energy or shape.
+
+\input{tab_hres_spectral_2022.tex}
+
+\FloatBarrier
+\section{Coefficient adapter by field}
+
+Supplementary Fig.~\ref{fig:nwp_adapter_2022} uses 16 IFS HRES
+initialisations chosen before the 2022 evaluation. Pairs of states separated by
+six hours are drawn from the same forecast trajectory and used as the two
+anchors. Linear interpolation, WeatherDCAE-14M, WeatherBridge and its frozen
+coefficient adapter reconstruct the five intervening hourly states; each
+prediction is compared with ERA5 at the same valid time. Here, $\tau$ denotes
+the offset within an HRES anchor pair rather than forecast lead time. These
+scores include both interpolation error and the mismatch between HRES and
+ERA5, so they are not conventional HRES forecast-skill curves.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth,height=0.84\textheight,keepaspectratio]{images/fig_nwp_adapter_2022_6h.pdf}
+\caption{IFS HRES anchor interpolation against ERA5 for 16 independent 2022
+initialisations. The 24 panels follow the five hours inside a six-hour anchor
+interval; $\tau$ is interior offset, not forecast lead. Curves show Linear
+Interp., WeatherDCAE-14M, raw WeatherBridge and the frozen coefficient
+adapter. Grey bands mark the held-out hours $\tau\in\{2,4\}$; ranges are
+panel-specific. Only the adapter-versus-Linear comparison is confirmatory.
+The endpoint guard ties $\tau\in\{1,5\}$ exactly; T700 at $\tau=2$ and 4
+contains the only regressions.}
+\label{fig:nwp_adapter_2022}
+\end{figure}
+
+\FloatBarrier
+\newgeometry{margin=18mm}
+\begin{supplementlandscape}
+\noindent
+\begin{minipage}{\linewidth}
+\setstretch{1}
+\setlength{\abovecaptionskip}{3pt}
+\section{Reference architecture schematics}
+
+Supplementary Fig.~\ref{fig:reference_architectures} summarises the
+comparator architectures defined in Methods.
+
+\centering
+\includegraphics[width=0.98\linewidth,height=0.74\textheight,keepaspectratio]{images/fig_reference_architectures.pdf}
+\captionof{figure}{Reference architectures used in the principal comparison.
+\textbf{a)} SwinV2 alternates windowed and shifted-window attention on patch
+tokens, with time-conditioned FiLM after each block.
+\textbf{b)} PixelAttn-VFI shares the endpoint encoder, mixes deepest tokens
+through attention, and conditions the bottleneck on time. Mean endpoint
+features supply decoder skips.
+\textbf{c)} WeatherDCAE-14M has no cross-scale encoder--decoder skips.
+Read stages top to bottom: Conv--PixelUnshuffle halves height and width,
+then three blocks run sequentially. Channel counts denote feature width.
+Teal $R$ blocks occur at 64 and 128 channels in both encoder and decoder;
+the deepest stage uses EfficientViT multiscale linear attention.
+The inset expands one $R$: Conv--SiLU, FiLM, Conv and RMSNorm act sequentially,
+then add the unchanged input $h$ through the identity skip. FiLM applies
+channelwise scale and shift derived from time embedding $e(t)$.
+Convolutions in $R$ use pole-aware boundaries. Purple dashed arrows carry
+time conditioning; blue carries endpoint skips. Each model adds a scaled
+correction to linear interpolation.}
+\label{fig:reference_architectures}
+\end{minipage}
+\end{supplementlandscape}
+\restoregeometry
+
+\FloatBarrier
+\section{S-DYff ensemble averaging}
+\label{sec:sdyff-ensemble}
+
+S-DYff-ENS averages 21 stochastic reconstructions from the S-DYff checkpoint.
+The plotted S-DYff curve retains the original single reconstruction used in
+the tables. For a paired estimate of the averaging effect, we also recomputed
+$N=1,4,16,21$ using nested prefixes of the same random draws. Relative to
+this paired $N=1$ control, $N=21$ reduces aggregate normalised RMSE by
+0.69--0.89\% across the six year--interval combinations and by
+0.67--0.87\% at held-out hours. The paired control is a new draw, so these
+percentages need not equal the difference from the archived S-DYff curve.
+Seven-day block-bootstrap intervals describe variation across evaluation
+dates conditional on the sampling seed, not variation across sampling seeds.
+
+All 24 fields are shown for full-year 2020 and 2021 and the fixed 48-anchor
+2022 sample. The six-hour 2020, twelve-hour 2020 and six-hour 2021 panels
+appear earlier in the main text and Supplementary Information; the remaining
+three comparisons appear in Supplementary Figs.~\ref{fig:supp_ens_12h_2021},
+\ref{fig:supp_ens_6h_2022} and \ref{fig:supp_ens_12h_2022}.
+Ensemble results cover RMSE and ACC only. The
+spectral, HRES and full-query supervision experiments retain their original
+inference settings.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.80\textheight,keepaspectratio]{images/fig_channels_all_12h_2021_phys.pdf}
+\caption{Twelve-hour physical-unit RMSE for all 24 fields over full-year 2021.
+S-DYff ($N=1$) and S-DYff-ENS ($N=21$) use the same checkpoint. Shading marks
+held-out query hours; upward arrows mark clipped ModAFNO values.}
+\label{fig:supp_ens_12h_2021}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.80\textheight,keepaspectratio]{images/fig_channels_all_6h_2022_phys.pdf}
+\caption{Six-hour physical-unit RMSE for all 24 fields on the fixed
+48-anchor 2022 sample. S-DYff ($N=1$) is the archived single reconstruction;
+S-DYff-ENS ($N=21$) averages outputs from the same checkpoint. Shading marks
+held-out query hours.}
+\label{fig:supp_ens_6h_2022}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=\textwidth,height=0.80\textheight,keepaspectratio]{images/fig_channels_all_12h_2022_phys.pdf}
+\caption{Twelve-hour physical-unit RMSE for all 24 fields on the fixed
+48-anchor 2022 sample. Model labels follow Supplementary
+Fig.~\ref{fig:supp_ens_6h_2022}. Shading marks held-out query hours; upward
+arrows mark clipped ModAFNO values.}
+\label{fig:supp_ens_12h_2022}
+\end{figure}
+
+\FloatBarrier
+\end{document}

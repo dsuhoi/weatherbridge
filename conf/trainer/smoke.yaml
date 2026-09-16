@@ -1,0 +1,21 @@
+# Smoke trainer: 1 epoch, 2 train batches, 1 val batch. For pytest + CI.
+name: smoke
+max_epochs: 1
+batch_size: 1
+val_batch_size: 1
+num_workers: 0
+val_num_workers: 0
+precision: bf16-mixed
+devices: 1
+strategy: auto
+accelerator: gpu
+log_every_n_steps: 1
+ckpt_every_n_epochs: 1
+save_top_k: -1
+val_every_n_epochs: 1
+limit_train_batches: 2
+limit_val_batches: 1
+sanity_val_steps: 0
+resume_ckpt: null
+enable_progress_bar: false
+gradient_clip_val: 1.0

@@ -1,0 +1,183 @@
+{
+  "field": "10m_wind_speed",
+  "units": "m s-1",
+  "event": "Hurricane Ida",
+  "date": "2021-08-29",
+  "anchor_hours_utc": [
+    12,
+    18
+  ],
+  "evaluation_bbox": {
+    "lat_min": 20.0,
+    "lat_max": 32.0,
+    "lon_min": 260.0,
+    "lon_max": 285.0
+  },
+  "taus_hours": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "truth_max_tau3": {
+    "latitude": 29.375,
+    "longitude": 270.625,
+    "speed_m_s": 30.158077239990234
+  },
+  "metrics": {
+    "Linear Interp.": {
+      "per_tau_m_s": {
+        "1": 0.662158727645874,
+        "2": 1.0675768852233887,
+        "3": 1.0783188343048096,
+        "4": 0.8818758130073547,
+        "5": 0.5561690330505371
+      },
+      "mean_all_tau_m_s": 0.8492199182510376,
+      "tau3_error_at_truth_max_m_s": -9.54527473449707
+    },
+    "FuXi": {
+      "per_tau_m_s": {
+        "1": 0.5381247997283936,
+        "2": 0.8816412687301636,
+        "3": 0.863021194934845,
+        "4": 0.6795450448989868,
+        "5": 0.4147651791572571
+      },
+      "mean_all_tau_m_s": 0.6754194498062134,
+      "tau3_error_at_truth_max_m_s": -9.518455505371094
+    },
+    "S-DYff": {
+      "per_tau_m_s": {
+        "1": 0.5368511080741882,
+        "2": 0.8736887574195862,
+        "3": 0.8137316703796387,
+        "4": 0.7201050519943237,
+        "5": 0.41907423734664917
+      },
+      "mean_all_tau_m_s": 0.6726901531219482,
+      "tau3_error_at_truth_max_m_s": -6.492023468017578
+    },
+    "WeatherDCAE-14M": {
+      "per_tau_m_s": {
+        "1": 0.36089950799942017,
+        "2": 0.5802621841430664,
+        "3": 0.5284397006034851,
+        "4": 0.4435538053512573,
+        "5": 0.25776582956314087
+      },
+      "mean_all_tau_m_s": 0.4341842234134674,
+      "tau3_error_at_truth_max_m_s": -5.036529541015625
+    },
+    "WeatherBridge": {
+      "per_tau_m_s": {
+        "1": 0.4654942750930786,
+        "2": 0.7164115905761719,
+        "3": 0.663695216178894,
+        "4": 0.6078729629516602,
+        "5": 0.40760689973831177
+      },
+      "mean_all_tau_m_s": 0.5722161531448364,
+      "tau3_error_at_truth_max_m_s": -7.323392868041992
+    }
+  },
+  "source_provenance": {
+    "demo/precomputed_2021/hurricane_ida_2021/North_America__u10.npz": "bd715aac971d4eba4ac55c46ac816ed8c2812f395d409db543ef72e4fea5a012",
+    "demo/precomputed_2021/hurricane_ida_2021/North_America__v10.npz": "cc69bad90d86ff6ccf0078c927ebbccc449b299c1ed535e51f5232e770d9c406",
+    "metrics/case_studies_weatherbridge/hurricane_ida_2021/u10.npz": "97ff77a11dd3faf7092377d819e66148809a6b8617b9548a470ffb0df0eb642d",
+    "metrics/case_studies_weatherbridge/hurricane_ida_2021/v10.npz": "c1668405f3cd8bdce41d0ad1af4b5a79e7a35d0fdb0b6a90982a4be2a8851a8b"
+  },
+  "model_provenance": {
+    "WeatherBridge": {
+      "u10": {
+        "checkpoint": {
+          "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_flow_pp3_spectral_14m_6h_refinev1_s202707_bs4/last.ckpt",
+          "sha256": "2c2f909325a03924653f168f4ecc2acc300a94b1b892df60d235780a4eac7089",
+          "size_bytes": 173178600
+        },
+        "exporter": {
+          "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_spectral_v6/tools/eval/export_weatherbridge_cases.py",
+          "sha256": "1376a07ad04866ec608e68b7a90331ff576ce6acd739efd22bf20fbe78b4d252",
+          "size_bytes": 9908
+        },
+        "grid_convention": "wb2_0p25_pair_average_cell_centres_v1",
+        "latitude_sha256": "00bf3d94b25b681e3c073d37af9a747a4169ce00713ffa53d48f6a734777d615",
+        "longitude_sha256": "f8d03f19c8a934b001b05f740f2daa8af00cb6b7652b1041c062528fcfc3e3b8",
+        "memmap": {
+          "mtime_ns": 1784785726143714188,
+          "path": "/tmp/wb2_0p5_cache/wb2_2021.bin",
+          "size_bytes": 245223936000
+        },
+        "model_arch": "flow_pp3",
+        "model_label": "WeatherBridge",
+        "model_type": "weatherbridge",
+        "schema_version": 3,
+        "static": {
+          "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+          "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c",
+          "size_bytes": 3111640
+        },
+        "stats": {
+          "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+          "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7",
+          "size_bytes": 6656
+        },
+        "surface_stats": {
+          "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+          "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2",
+          "size_bytes": 275
+        },
+        "t0_index": 5772,
+        "target_crop_sha256": "1b5622a26ba85fe6528bed27e12b58f2bd5d16beb3e10a32eef2193ef0196abd",
+        "x0_24_sha256": "0570ee677155ffcd949c90b97b9aedf26debc4597a792cf436cbaf8fba046ec3",
+        "xT_24_sha256": "142d755734e5cfe058d03e8833a2fad9f4f35523a5f035a7ece2e157833ccd89",
+        "year": 2021
+      },
+      "v10": {
+        "checkpoint": {
+          "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_flow_pp3_spectral_14m_6h_refinev1_s202707_bs4/last.ckpt",
+          "sha256": "2c2f909325a03924653f168f4ecc2acc300a94b1b892df60d235780a4eac7089",
+          "size_bytes": 173178600
+        },
+        "exporter": {
+          "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_spectral_v6/tools/eval/export_weatherbridge_cases.py",
+          "sha256": "1376a07ad04866ec608e68b7a90331ff576ce6acd739efd22bf20fbe78b4d252",
+          "size_bytes": 9908
+        },
+        "grid_convention": "wb2_0p25_pair_average_cell_centres_v1",
+        "latitude_sha256": "00bf3d94b25b681e3c073d37af9a747a4169ce00713ffa53d48f6a734777d615",
+        "longitude_sha256": "f8d03f19c8a934b001b05f740f2daa8af00cb6b7652b1041c062528fcfc3e3b8",
+        "memmap": {
+          "mtime_ns": 1784785726143714188,
+          "path": "/tmp/wb2_0p5_cache/wb2_2021.bin",
+          "size_bytes": 245223936000
+        },
+        "model_arch": "flow_pp3",
+        "model_label": "WeatherBridge",
+        "model_type": "weatherbridge",
+        "schema_version": 3,
+        "static": {
+          "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+          "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c",
+          "size_bytes": 3111640
+        },
+        "stats": {
+          "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+          "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7",
+          "size_bytes": 6656
+        },
+        "surface_stats": {
+          "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+          "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2",
+          "size_bytes": 275
+        },
+        "t0_index": 5772,
+        "target_crop_sha256": "f2225ac34af95dd09a5f85b696b03de689e9b209ec43ded9d46cf79d57e4f6aa",
+        "x0_24_sha256": "0570ee677155ffcd949c90b97b9aedf26debc4597a792cf436cbaf8fba046ec3",
+        "xT_24_sha256": "142d755734e5cfe058d03e8833a2fad9f4f35523a5f035a7ece2e157833ccd89",
+        "year": 2021
+      }
+    }
+  }
+}

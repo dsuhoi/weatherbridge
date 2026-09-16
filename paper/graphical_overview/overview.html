@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WeatherBridge research workflow</title>
+  <style>
+    :root {
+      --ink: #171717;
+      --muted: #63686e;
+      --rule: #d8dadd;
+      --soft: #f6f7f8;
+      --weatherbridge: #d62728;
+      --training: #00796b;
+      --testing: #6f1d75;
+      --gold: #b35400;
+      --page-width: 3600px;
+      --page-height: 2210px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html,
+    body {
+      width: var(--page-width);
+      height: var(--page-height);
+      margin: 0;
+      overflow: hidden;
+      background: #fff;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+    }
+
+    main {
+      width: 100%;
+      height: 100%;
+      padding: 54px 76px 46px;
+    }
+
+    .panel-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 20px;
+      height: 86px;
+      font-size: 72px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .panel-letter {
+      color: var(--weatherbridge);
+      font-size: 76px;
+    }
+
+    .panel-context {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 52px;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .interpolation {
+      height: 820px;
+      border-bottom: 3px solid var(--ink);
+    }
+
+    .interpolation-stage {
+      position: relative;
+      height: 720px;
+      padding-top: 82px;
+    }
+
+    .trajectory-intro {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      color: var(--weatherbridge);
+      font-size: 64px;
+      font-weight: 700;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .trajectory-strip {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 70px minmax(0, 1fr) 70px minmax(0, 1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+      width: 100%;
+    }
+
+    .trajectory-card {
+      position: relative;
+      z-index: 2;
+      min-width: 0;
+      padding-top: 4px;
+    }
+
+    .trajectory-gap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 540px;
+      color: #8c9197;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 78px;
+      line-height: 1;
+    }
+
+    .trajectory-label {
+      min-height: 126px;
+      color: var(--ink);
+      font-size: 64px;
+      line-height: 1.05;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .trajectory-label span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 38px;
+      font-weight: 400;
+    }
+
+    .trajectory-card.query .trajectory-label strong {
+      color: var(--weatherbridge);
+    }
+
+    .map {
+      overflow: hidden;
+      border: 3px solid #242424;
+      background: #edf0f3;
+      aspect-ratio: 2 / 1;
+    }
+
+    .trajectory-card .map {
+      position: relative;
+      z-index: 3;
+      border-width: 3px;
+      aspect-ratio: 1.72 / 1;
+    }
+
+    .trajectory-card.query .map {
+      border: 4px solid var(--weatherbridge);
+      box-shadow: 0 7px 16px rgb(0 0 0 / 9%);
+    }
+
+    .map img,
+    .mini-map img,
+    .loss-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .trajectory-time {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 54px;
+      line-height: 1.05;
+      text-align: center;
+    }
+
+    .trajectory-time strong {
+      display: block;
+      color: var(--ink);
+      font-size: 60px;
+    }
+
+    .trajectory-card.query .trajectory-time strong {
+      color: var(--weatherbridge);
+    }
+
+    .temperature-scale {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: auto 680px auto;
+      align-items: center;
+      gap: 15px;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 54px;
+      white-space: nowrap;
+    }
+
+    .gradient {
+      height: 22px;
+      border: 1px solid #555b61;
+    }
+
+    .lower {
+      display: block;
+      height: 1290px;
+      padding-top: 32px;
+    }
+
+    .training,
+    .testing {
+      position: relative;
+      min-width: 0;
+    }
+
+    .training {
+      padding-right: 0;
+    }
+
+    .training .panel-letter { color: var(--training); }
+    .testing .panel-letter { color: var(--testing); }
+
+    .workflow {
+      position: relative;
+      height: 705px;
+      margin-top: 2px;
+    }
+
+    .train-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 980px 90px 360px 90px 500px 90px minmax(760px, 1fr);
+      align-items: center;
+      height: 560px;
+    }
+
+    .triplet-title,
+    .comparison-title,
+    .loss-title {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: 36px;
+      line-height: 1;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .triplet-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+      width: 820px;
+      margin: 0 auto;
+    }
+
+    .conditioning-cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      width: 940px;
+      margin: 20px auto 0;
+    }
+
+    .conditioning-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-sizing: border-box;
+      min-width: 0;
+      height: 158px;
+      padding: 11px 14px;
+      border: 2px solid #b8bdc3;
+      border-radius: 2px;
+      background: #fbfcfd;
+      text-align: center;
+    }
+
+    .conditioning-title {
+      color: #3f454b;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .conditioning-note,
+    .conditioning-formula {
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .conditioning-formula {
+      white-space: nowrap;
+    }
+
+    .conditioning-note {
+      line-height: 1.05;
+    }
+
+    .delta-preview {
+      overflow: hidden;
+      height: 76px;
+      border: 1px solid #81868c;
+      background: #edf0f3;
+    }
+
+    .delta-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .time-axis {
+      position: relative;
+      height: 58px;
+      margin: 0 12px;
+    }
+
+    .time-axis::before {
+      content: "";
+      position: absolute;
+      top: 27px;
+      right: 0;
+      left: 0;
+      height: 3px;
+      background: #6e747a;
+    }
+
+    .time-node {
+      position: absolute;
+      top: 14px;
+      z-index: 1;
+      width: 28px;
+      height: 28px;
+      border: 3px solid #6e747a;
+      border-radius: 50%;
+      background: #fff;
+      color: #363b40;
+      font-family: "FreeSerif", "Times New Roman", serif;
+      font-size: 20px;
+      line-height: 24px;
+      transform: translateX(-50%);
+    }
+
+    .time-node.start { left: 0; }
+    .time-node.query {
+      left: 50%;
+      border-color: var(--weatherbridge);
+      color: var(--weatherbridge);
+      font-weight: 700;
+    }
+    .time-node.end { left: 100%; }
+
+    .static-stack {
+      display: grid;
+      gap: 4px;
+      margin: 1px 0;
+    }
+
+    .static-row {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      align-items: center;
+      gap: 8px;
+      color: #555b61;
+      font-size: 21px;
+      line-height: 1;
+      text-align: left;
+    }
+
+    .static-swatch {
+      height: 16px;
+      border: 1px solid #8b9096;
+    }
+
+    .static-swatch.sea-land {
+      background: linear-gradient(90deg, #8ecae6 0 46%, #5a9367 46% 100%);
+    }
+
+    .static-swatch.orography {
+      background: linear-gradient(90deg, #f1f1ed, #a6a58f, #4f5148);
+    }
+
+    .static-swatch.latitude {
+      background: linear-gradient(90deg, #d9eaf3, #2979a6, #d9eaf3);
+    }
+
+    .mini-map {
+      position: relative;
+      overflow: hidden;
+      border: 2px solid #4c5157;
+      background: #edf0f3;
+      aspect-ratio: 2 / 1;
+    }
+
+    .mini-map.target { border: 3px dashed var(--training); }
+    .mini-map.predicted { border-color: var(--weatherbridge); }
+
+    .mini-map-label {
+      margin-top: 9px;
+      font-size: 60px;
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    .mini-map-label em {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 48px;
+      font-style: normal;
+    }
+
+    .arrow {
+      position: relative;
+      height: 4px;
+      background: #555b61;
+    }
+
+    .arrow::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -1px;
+      width: 0;
+      height: 0;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 20px solid #555b61;
+      transform: translateY(-50%);
+    }
+
+    .train-arrow {
+      height: 30px;
+      margin: 0 5px;
+      background: transparent;
+    }
+
+    .train-arrow::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      left: 0;
+      height: 7px;
+      background: #45515a;
+    }
+
+    .train-arrow::after {
+      top: 1px;
+      right: 0;
+      border-top-width: 14px;
+      border-bottom-width: 14px;
+      border-left: 22px solid #45515a;
+      transform: none;
+    }
+
+    .model-core {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 340px;
+      height: 340px;
+      margin: 0 auto;
+      border: 5px solid var(--weatherbridge);
+      border-radius: 4px;
+      background: #fff8f8;
+      text-align: center;
+    }
+
+    .model-core strong {
+      color: var(--weatherbridge);
+      font-size: 41px;
+      line-height: 1.05;
+    }
+
+    .model-core span {
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 34px;
+      line-height: 1.15;
+    }
+
+    .model-core small {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 440px;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .comparison-item {
+      display: flex;
+      flex-direction: column;
+      width: 440px;
+      gap: 9px;
+    }
+
+    .comparison-item .mini-map-label {
+      margin: 0;
+      font-size: 29px;
+      line-height: 1.05;
+      text-align: center;
+    }
+
+    .comparison-item .mini-map-label strong {
+      display: block;
+      font-size: 29px;
+      line-height: 1.08;
+    }
+
+    .comparison-item .mini-map-label em {
+      margin-top: 5px;
+      font-size: 24px;
+      line-height: 1.05;
+    }
+
+    .loss-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .loss-item {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      align-items: center;
+      gap: 15px;
+      min-height: 126px;
+    }
+
+    .loss-image {
+      overflow: hidden;
+      width: 220px;
+      height: 110px;
+      border: 1px solid #555b61;
+      background: #fff;
+    }
+
+    .loss-copy strong {
+      display: block;
+      font-size: 38px;
+      line-height: 1.05;
+    }
+
+    .loss-copy > span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 31px;
+      line-height: 1.1;
+    }
+
+    .loss-math {
+      font-family: "FreeSerif", "Times New Roman", serif;
+      font-style: normal;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .cal-l {
+      display: inline-block;
+      font-size: 1.16em;
+      line-height: 0.8;
+    }
+
+    .math-term {
+      display: inline-flex;
+      align-items: baseline;
+    }
+
+    .math-term > sub {
+      margin-left: 1px;
+      font-size: 0.67em;
+      line-height: 1;
+      transform: translateY(0.30em);
+    }
+
+    .math-scripts {
+      display: inline-grid;
+      grid-template-rows: 0.72em 0.72em;
+      margin-left: 1px;
+      font-size: 0.62em;
+      line-height: 0.72;
+      transform: translateY(0.02em);
+    }
+
+    .math-scripts > sup,
+    .math-scripts > sub {
+      position: static;
+      margin: 0;
+      font-size: 1em;
+      line-height: 0.72;
+      text-align: left;
+    }
+
+    .feedback-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .feedback-label {
+      position: absolute;
+      left: 1780px;
+      bottom: 34px;
+      z-index: 3;
+      padding: 0 14px;
+      background: #fff;
+      color: var(--training);
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    .loss-equation {
+      position: absolute;
+      top: 550px;
+      right: 0;
+      width: 940px;
+      padding-top: 10px;
+      border-top: 3px solid var(--training);
+      color: var(--muted);
+      font-size: 36px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .training-layout {
+      position: relative;
+      height: 1150px;
+      margin-top: 4px;
+    }
+
+    .training-upper {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1180px 80px 740px 80px minmax(0, 1fr);
+      align-items: center;
+      height: 700px;
+    }
+
+    .training-inputs .triplet-row {
+      width: 930px;
+    }
+
+    .training-inputs .conditioning-cards {
+      width: 1120px;
+      grid-template-columns: 0.95fr 0.85fr 1.2fr;
+    }
+
+    .training-inputs .triplet-title {
+      font-size: 64px;
+    }
+
+    .training-inputs .mini-map-label,
+    .supervision-pair .mini-map-label {
+      margin: 0 0 12px;
+    }
+
+    .training-inputs .conditioning-card {
+      height: 280px;
+      padding: 18px 20px;
+    }
+
+    .training-inputs .conditioning-title {
+      font-size: 52px;
+    }
+
+    .training-inputs .conditioning-note,
+    .training-inputs .conditioning-formula {
+      font-size: 48px;
+    }
+
+    .training-inputs .delta-preview {
+      height: 88px;
+    }
+
+    .training-inputs .static-row {
+      font-size: 46px;
+    }
+
+    .model-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 720px;
+    }
+
+    .model-icon {
+      flex: 0 0 auto;
+      width: 150px;
+      height: 150px;
+    }
+
+    .model-icon .network-link {
+      fill: none;
+      stroke: #174b78;
+      stroke-width: 6;
+      stroke-linecap: round;
+    }
+
+    .model-icon .network-node {
+      fill: #eaf3fb;
+      stroke: #174b78;
+      stroke-width: 6;
+    }
+
+    .model-icon .network-node.active {
+      fill: #3f8ee8;
+    }
+
+    .training-upper .model-core {
+      flex-direction: row;
+      gap: 24px;
+      width: 720px;
+      height: 300px;
+      padding: 0 24px;
+      text-align: left;
+    }
+
+    .model-copy {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .training-upper .model-core strong {
+      font-size: 64px;
+    }
+
+    .training-upper .model-core span {
+      font-size: 52px;
+    }
+
+    .training-upper .model-core small {
+      font-size: 38px;
+    }
+
+    .supervision-block {
+      min-width: 0;
+    }
+
+    .supervision-pair {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px minmax(0, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .supervision-pair .comparison-item {
+      width: auto;
+    }
+
+    .supervision-pair .mini-map-label strong {
+      font-size: 64px;
+    }
+
+    .supervision-pair .mini-map-label em {
+      font-size: 50px;
+    }
+
+    .supervision-connector {
+      align-self: center;
+      margin-top: 74px;
+      color: var(--training);
+      text-align: center;
+    }
+
+    .supervision-connector strong {
+      display: block;
+      font-size: 62px;
+      line-height: 0.8;
+    }
+
+    .supervision-connector span {
+      display: block;
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .training-lower-title {
+      position: relative;
+      z-index: 3;
+      width: max-content;
+      margin: 8px auto 24px;
+      padding: 0 30px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 64px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .training-lower {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) 120px minmax(0, 1.35fr);
+      gap: 24px;
+      margin: 0 70px;
+    }
+
+    .loss-group {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1fr) 54px minmax(0, 1fr);
+      gap: 0;
+      min-width: 0;
+    }
+
+    .loss-card,
+    .objective-card {
+      min-height: 320px;
+      padding: 30px;
+      border: 2px solid #b8bdc3;
+      background: #fff;
+    }
+
+    .loss-card {
+      display: grid;
+      grid-template-columns: 285px 1fr;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .loss-plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--training);
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .loss-combine {
+      position: relative;
+      align-self: center;
+      height: 106px;
+    }
+
+    .loss-combine::before {
+      content: "";
+      position: absolute;
+      top: 76px;
+      right: 18px;
+      left: 0;
+      height: 6px;
+      background: var(--training);
+    }
+
+    .loss-combine::after {
+      content: "";
+      position: absolute;
+      top: 63px;
+      right: 0;
+      border-top: 16px solid transparent;
+      border-bottom: 16px solid transparent;
+      border-left: 24px solid var(--training);
+    }
+
+    .loss-combine span {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      color: var(--training);
+      width: 120px;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 0.95;
+      text-align: center;
+      transform: translateX(-50%);
+    }
+
+    .loss-card .loss-image {
+      width: 285px;
+      height: 143px;
+    }
+
+    .loss-card .loss-copy strong {
+      font-size: 60px;
+    }
+
+    .loss-card .loss-copy > span {
+      font-size: 56px;
+    }
+
+    .objective-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-color: var(--training);
+      background: #f7fcfa;
+      color: var(--training);
+      text-align: center;
+    }
+
+    .objective-card strong {
+      font-size: 64px;
+      line-height: 1.05;
+    }
+
+    .objective-card .loss-math {
+      margin-top: 22px;
+      color: #43505a;
+      font-size: 56px;
+    }
+
+    .training-connections {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    .training-feedback-label {
+      position: absolute;
+      left: 1980px;
+      bottom: 24px;
+      z-index: 3;
+      padding: 0 18px;
+      background: #fff;
+      color: var(--training);
+      font-size: 56px;
+      font-weight: 700;
+    }
+
+    .test-protocols {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+      padding-bottom: 30px;
+      border-bottom: 3px solid var(--testing);
+    }
+
+    .protocol {
+      position: relative;
+      min-width: 0;
+      font-size: 27px;
+      line-height: 1.12;
+      text-align: center;
+    }
+
+    .protocol::after {
+      content: "";
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      border: 3px solid var(--testing);
+      border-radius: 50%;
+      background: #fff;
+      transform: translateX(-50%);
+    }
+
+    .protocol strong {
+      display: block;
+      color: var(--testing);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .protocol.heldout {
+      margin: 0 22px;
+      padding: 0 12px;
+      border-right: 2px solid #d8bdda;
+      border-left: 2px solid #d8bdda;
+      background: #fbf7fc;
+    }
+
+    .test-flow {
+      display: grid;
+      grid-template-columns: 235px 48px 540px 48px minmax(260px, 1fr);
+      align-items: center;
+      min-height: 350px;
+      padding-top: 38px;
+    }
+
+    .frozen-core {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 225px;
+      height: 225px;
+      border: 5px solid var(--testing);
+      border-radius: 50%;
+      background: #fbf7fc;
+      text-align: center;
+    }
+
+    .lock-shape {
+      position: relative;
+      display: block;
+      flex: 0 0 auto;
+      width: 52px;
+      height: 52px;
+      margin: 0 0 8px;
+    }
+
+    .lock-shape::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12px;
+      box-sizing: border-box;
+      width: 28px;
+      height: 28px;
+      border: 4px solid var(--testing);
+      border-bottom: 0;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .lock-shape::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 3px;
+      box-sizing: border-box;
+      width: 46px;
+      height: 34px;
+      border: 4px solid var(--testing);
+      background: #fff;
+    }
+
+    .frozen-core strong {
+      color: var(--testing);
+      font-size: 32px;
+      line-height: 1.05;
+    }
+
+    .frozen-core span {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 25px;
+      line-height: 1.05;
+    }
+
+    .paired-fields {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      align-items: start;
+    }
+
+    .paired-fields .mini-map-label {
+      margin-top: 7px;
+      font-size: 21px;
+      line-height: 1.05;
+    }
+
+    .paired-fields .mini-map-label em {
+      margin-top: 4px;
+      font-size: 18px;
+      line-height: 1.05;
+    }
+
+    .error-sample .mini-map {
+      border-color: #74797f;
+    }
+
+    .error-sample .mini-map-label strong {
+      color: var(--weatherbridge);
+      font-size: 22px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 95px 1fr;
+      align-items: baseline;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 4px solid var(--gold);
+    }
+
+    .metric strong {
+      display: block;
+      color: var(--gold);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 21px;
+      line-height: 1.05;
+    }
+
+    .hres-route {
+      display: grid;
+      grid-template-columns: 150px 1fr 34px 1.45fr 34px 0.65fr 34px 1.15fr;
+      align-items: center;
+      gap: 8px;
+      margin-top: 8px;
+      padding-top: 18px;
+      border-top: 3px solid var(--testing);
+      color: #4e3a51;
+    }
+
+    .hres-route > strong {
+      color: var(--testing);
+      font-size: 24px;
+      line-height: 1.05;
+    }
+
+    .hres-step {
+      font-size: 20px;
+      line-height: 1.08;
+      text-align: center;
+    }
+
+    .hres-step b {
+      display: block;
+      color: var(--testing);
+      font-size: 22px;
+      line-height: 1.05;
+    }
+
+    .route-arrow {
+      position: relative;
+      height: 3px;
+      background: var(--testing);
+    }
+
+    .route-arrow::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -1px;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      border-left: 11px solid var(--testing);
+      transform: translateY(-50%);
+    }
+
+    @media print {
+      @page { size: 37.5in 23.020833in; margin: 0; }
+      html, body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <main data-audit-root>
+    <section class="interpolation" data-audit-region="interpolation">
+      <header class="panel-heading">
+        <span class="panel-letter">a)</span>
+        <span>Six-hour weather interpolation</span>
+        <span class="panel-context">850-hPa air temperature (K)</span>
+      </header>
+
+      <div class="interpolation-stage">
+        <div class="trajectory-intro">same two input anchors · independent query-conditioned predictions</div>
+        <div class="trajectory-strip">
+          <article class="trajectory-card anchor" data-audit-box>
+            <div class="trajectory-label"><strong>anchor x<sub>0</sub></strong><span>ERA5 input</span></div>
+            <div class="map"><img src="assets/temperature_anchor0.png" alt="ERA5 temperature anchor at 18 UTC"></div>
+            <div class="trajectory-time"><strong>0 h</strong></div>
+          </article>
+          <article class="trajectory-card query" data-audit-box>
+            <div class="trajectory-label"><strong>x̂<sub>τ1</sub></strong><span>model output</span></div>
+            <div class="map"><img src="assets/temperature_prediction_h1.png" alt="WeatherBridge temperature estimate at query hour 1"></div>
+            <div class="trajectory-time"><strong>1 h</strong></div>
+          </article>
+          <div class="trajectory-gap" aria-label="additional query time">⋯</div>
+          <article class="trajectory-card query" data-audit-box>
+            <div class="trajectory-label"><strong>x̂<sub>τ3</sub></strong><span>model output</span></div>
+            <div class="map"><img src="assets/temperature_prediction_h3.png" alt="WeatherBridge temperature estimate at query hour 3"></div>
+            <div class="trajectory-time"><strong>3 h</strong></div>
+          </article>
+          <div class="trajectory-gap" aria-label="additional query time">⋯</div>
+          <article class="trajectory-card query" data-audit-box>
+            <div class="trajectory-label"><strong>x̂<sub>τ5</sub></strong><span>model output</span></div>
+            <div class="map"><img src="assets/temperature_prediction_h5.png" alt="WeatherBridge temperature estimate at query hour 5"></div>
+            <div class="trajectory-time"><strong>5 h</strong></div>
+          </article>
+          <article class="trajectory-card anchor" data-audit-box>
+            <div class="trajectory-label"><strong>anchor x<sub>T</sub></strong><span>ERA5 input</span></div>
+            <div class="map"><img src="assets/temperature_anchor6.png" alt="ERA5 temperature anchor at 00 UTC"></div>
+            <div class="trajectory-time"><strong>6 h</strong></div>
+          </article>
+        </div>
+
+        <div class="temperature-scale" data-audit-box>
+          <span><span data-scale-min="temperature"></span> K</span>
+          <i class="gradient" data-gradient="temperature"></i>
+          <span><span data-scale-max="temperature"></span> K</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="lower" data-audit-region="research-cycle">
+      <article class="training">
+        <header class="panel-heading">
+          <span class="panel-letter">b)</span>
+          <span>Training</span>
+        </header>
+
+        <div class="training-layout">
+          <div class="training-upper">
+            <div class="training-inputs">
+              <div class="triplet-title">WeatherBridge inputs</div>
+              <div class="triplet-row">
+                <div>
+                  <div class="mini-map-label"><strong>anchor x<sub>0</sub></strong></div>
+                  <div class="mini-map"><img src="assets/temperature_anchor0.png" alt="training left anchor"></div>
+                </div>
+                <div>
+                  <div class="mini-map-label"><strong>anchor x<sub>T</sub></strong></div>
+                  <div class="mini-map"><img src="assets/temperature_anchor6.png" alt="training right anchor"></div>
+                </div>
+              </div>
+              <div class="conditioning-cards">
+                <div class="conditioning-card">
+                  <div class="conditioning-title">difference Δx</div>
+                  <div class="delta-preview"><img src="assets/temperature_anchor_difference.png" alt="temperature difference between the two ERA5 anchors"></div>
+                  <div class="conditioning-formula">Δx = x<sub>T</sub> − x<sub>0</sub></div>
+                </div>
+                <div class="conditioning-card">
+                  <div class="conditioning-title">query time t</div>
+                  <div class="time-axis" aria-label="query time between the two anchors">
+                    <span class="time-node start">0</span>
+                    <span class="time-node query">τ</span>
+                    <span class="time-node end">Δ</span>
+                  </div>
+                  <div class="conditioning-note">t = τ/Δ</div>
+                </div>
+                <div class="conditioning-card">
+                  <div class="conditioning-title">static fields s</div>
+                  <div class="static-stack">
+                    <div class="static-row"><i class="static-swatch sea-land"></i><span>sea-land mask</span></div>
+                    <div class="static-row"><i class="static-swatch orography"></i><span>terrain</span></div>
+                    <div class="static-row"><i class="static-swatch latitude"></i><span>latitude</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="arrow train-arrow" aria-hidden="true"></div>
+
+            <div class="model-stage">
+              <div class="model-core">
+                <svg class="model-icon" viewBox="0 0 160 160" role="img" aria-label="neural network model">
+                  <path class="network-link" d="M28 28L78 45M28 28L78 115M28 80L78 45M28 80L78 115M28 132L78 45M28 132L78 115M78 45L132 80M78 115L132 80"/>
+                  <circle class="network-node" cx="28" cy="28" r="16"/>
+                  <circle class="network-node active" cx="28" cy="80" r="16"/>
+                  <circle class="network-node" cx="28" cy="132" r="16"/>
+                  <circle class="network-node active" cx="78" cy="45" r="16"/>
+                  <circle class="network-node" cx="78" cy="115" r="16"/>
+                  <circle class="network-node active" cx="132" cy="80" r="18"/>
+                </svg>
+                <div class="model-copy">
+                  <small>trainable neural interpolator</small>
+                  <strong>WeatherBridge</strong>
+                  <span>f<sub>θ</sub>(x<sub>0</sub>, x<sub>T</sub>, Δx, s; t)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="arrow train-arrow" aria-hidden="true"></div>
+
+            <div class="supervision-block">
+              <div class="supervision-pair">
+                <div class="comparison-item">
+                  <div class="mini-map-label"><strong>prediction x̂<sub>τ</sub></strong><em>model output</em></div>
+                  <div class="mini-map predicted"><img src="assets/temperature_prediction.png" alt="WeatherBridge training prediction"></div>
+                </div>
+                <div class="supervision-connector" aria-label="compare prediction with target">
+                  <strong>↔</strong>
+                  <span>compare</span>
+                </div>
+                <div class="comparison-item">
+                  <div class="mini-map-label"><strong>ERA5 target x<sub>τ</sub></strong><em>supervision only</em></div>
+                  <div class="mini-map target"><img src="assets/temperature_target.png" alt="ERA5 target used by the objective"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="training-lower-title">Three complementary prediction-target errors</div>
+          <div class="training-lower">
+            <div class="loss-group">
+              <div class="loss-card">
+                <div class="loss-image"><img src="assets/temperature_error.png" alt="signed pixel error"></div>
+                <div class="loss-copy"><strong>Field fidelity</strong><span class="loss-math"><span class="math-term"><span class="cal-l">ℒ</span><sub>pix</sub></span></span></div>
+              </div>
+              <div class="loss-plus" aria-hidden="true">+</div>
+              <div class="loss-card">
+                <div class="loss-image"><img src="assets/temperature_highpass_error.png" alt="local high-pass error"></div>
+                <div class="loss-copy"><strong>Local details</strong><span class="loss-math">0.05&nbsp;<span class="math-term"><span class="cal-l">ℒ</span><sub>HP</sub></span></span></div>
+              </div>
+              <div class="loss-plus" aria-hidden="true">+</div>
+              <div class="loss-card">
+                <div class="loss-image"><img src="assets/temperature_fft.png" alt="target and predicted spectral magnitudes"></div>
+                <div class="loss-copy"><strong>Spectrum</strong><span class="loss-math">0.02&nbsp;<span class="math-term"><span class="cal-l">ℒ</span><span class="math-scripts"><sup>adv</sup><sub>FFT</sub></span></span></span></div>
+              </div>
+            </div>
+            <div class="loss-combine" aria-label="weighted sum"><span>weighted<br>sum</span></div>
+            <div class="objective-card">
+              <strong>WeatherBridge objective</strong>
+              <div class="loss-math"><span class="cal-l">ℒ</span> = <span class="math-term"><span class="cal-l">ℒ</span><sub>pix</sub></span> + 0.05&nbsp;<span class="math-term"><span class="cal-l">ℒ</span><sub>HP</sub></span> + 0.02&nbsp;<span class="math-term"><span class="cal-l">ℒ</span><span class="math-scripts"><sup>adv</sup><sub>FFT</sub></span></span></div>
+            </div>
+          </div>
+
+          <svg class="training-connections" viewBox="0 0 3448 1150" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <marker id="feedback-arrowhead" markerWidth="16" markerHeight="16" refX="12" refY="8" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0,0 L16,8 L0,16 Z" fill="#00796b"/>
+              </marker>
+            </defs>
+            <path d="M3378 974 H3422 V650 H1620 V505" fill="none" stroke="#00796b" stroke-width="7" stroke-linejoin="round" marker-end="url(#feedback-arrowhead)"/>
+            <rect x="2130" y="612" width="760" height="70" fill="#ffffff"/>
+            <text x="2510" y="660" fill="#00796b" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" text-anchor="middle">back-propagation updates θ</text>
+          </svg>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <script src="overview_data.js"></script>
+  <script>
+    (() => {
+      const data = window.OVERVIEW_DATA;
+      const gradient = colours => 'linear-gradient(90deg, ' + colours.map((colour, index) => colour + ' ' + (100 * index / (colours.length - 1)) + '%').join(', ') + ')';
+      document.querySelectorAll('[data-gradient]').forEach(element => {
+        element.style.background = gradient(data.scales[element.dataset.gradient].colors);
+      });
+      document.querySelectorAll('[data-scale-min]').forEach(element => {
+        element.textContent = data.scales[element.dataset.scaleMin].vmin.toFixed(0);
+      });
+      document.querySelectorAll('[data-scale-max]').forEach(element => {
+        element.textContent = data.scales[element.dataset.scaleMax].vmax.toFixed(0);
+      });
+      const root = document.querySelector('[data-audit-root]');
+      const rootRect = root.getBoundingClientRect();
+      const overflows = [];
+      document.querySelectorAll('[data-audit-region], [data-audit-box]').forEach(element => {
+        const rect = element.getBoundingClientRect();
+        if (rect.left < rootRect.left - 1 || rect.top < rootRect.top - 1 || rect.right > rootRect.right + 1 || rect.bottom > rootRect.bottom + 1) {
+          overflows.push(element.getAttribute('data-audit-region') || element.className);
+        }
+      });
+      const regions = Array.from(document.querySelectorAll('[data-audit-region]'));
+      const overlaps = [];
+      for (let first = 0; first < regions.length; first += 1) {
+        const a = regions[first].getBoundingClientRect();
+        for (let second = first + 1; second < regions.length; second += 1) {
+          const b = regions[second].getBoundingClientRect();
+          if (a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top) {
+            overlaps.push(regions[first].dataset.auditRegion + ':' + regions[second].dataset.auditRegion);
+          }
+        }
+      }
+      const legibilitySelectors = [
+        '.panel-heading',
+        '.trajectory-intro',
+        '.trajectory-label',
+        '.trajectory-time',
+        '.temperature-scale',
+        '.triplet-title',
+        '.training-inputs .mini-map-label strong',
+        '.supervision-pair .mini-map-label strong',
+        '.mini-map-label em',
+        '.conditioning-title',
+        '.conditioning-formula',
+        '.conditioning-note',
+        '.static-row',
+        '.model-core strong',
+        '.model-core span',
+        '.training-lower-title',
+        '.loss-copy strong',
+        '.loss-copy > span',
+        '.objective-card strong',
+        '.objective-card .loss-math'
+      ];
+      const smallText = [];
+      document.querySelectorAll(legibilitySelectors.join(',')).forEach(element => {
+        const fontSize = Number.parseFloat(getComputedStyle(element).fontSize);
+        if (fontSize < 46) {
+          smallText.push(element.className + ':' + fontSize);
+        }
+      });
+      const contentOverflows = [];
+      document.querySelectorAll('.conditioning-card, .loss-card, .objective-card').forEach(element => {
+        if (element.scrollWidth > element.clientWidth + 1 || element.scrollHeight > element.clientHeight + 1) {
+          contentOverflows.push(element.className);
+        }
+      });
+      const geometryMismatches = [];
+      const checkMatchedGeometry = (selector, fields) => {
+        const elements = Array.from(document.querySelectorAll(selector));
+        if (elements.length < 2) return;
+        const reference = elements[0].getBoundingClientRect();
+        elements.slice(1).forEach((element, index) => {
+          const rect = element.getBoundingClientRect();
+          fields.forEach(field => {
+            if (Math.abs(rect[field] - reference[field]) > 1) {
+              geometryMismatches.push(selector + ':' + (index + 1) + ':' + field);
+            }
+          });
+        });
+      };
+      checkMatchedGeometry('.trajectory-card .map', ['width', 'height']);
+      checkMatchedGeometry('.supervision-pair .mini-map-label', ['top', 'height']);
+      checkMatchedGeometry('.supervision-pair .mini-map', ['top', 'width', 'height']);
+      document.body.dataset.layoutOverflowCount = String(overflows.length);
+      document.body.dataset.layoutOverflows = overflows.join('|');
+      document.body.dataset.regionOverlapCount = String(overlaps.length);
+      document.body.dataset.regionOverlaps = overlaps.join('|');
+      document.body.dataset.smallTextCount = String(smallText.length);
+      document.body.dataset.smallText = smallText.join('|');
+      document.body.dataset.contentOverflowCount = String(contentOverflows.length);
+      document.body.dataset.contentOverflows = contentOverflows.join('|');
+      document.body.dataset.geometryMismatchCount = String(geometryMismatches.length);
+      document.body.dataset.geometryMismatches = geometryMismatches.join('|');
+      document.body.dataset.renderReady = 'true';
+    })();
+  </script>
+</body>
+</html>

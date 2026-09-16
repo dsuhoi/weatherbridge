@@ -1,0 +1,213 @@
+{
+  "event": "Hurricane Laura",
+  "init_time": "2020-08-27T03:00:00",
+  "display_tau_hours": 3,
+  "field": "10-m wind vector",
+  "evaluation_bbox": {
+    "lat_min": 15.0,
+    "lat_max": 35.0,
+    "lon_min": -110.0,
+    "lon_max": -70.0
+  },
+  "taus_hours": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "metrics": {
+    "Linear Interp.": {
+      "per_tau_vector_rmse_ms-1": {
+        "1": 0.7649595141410828,
+        "2": 1.172065258026123,
+        "3": 1.2490888833999634,
+        "4": 1.0614155530929565,
+        "5": 0.6486414670944214
+      },
+      "mean_all_tau_vector_rmse_ms-1": 0.9792342185974121
+    },
+    "WeatherDCAE-14M": {
+      "per_tau_vector_rmse_ms-1": {
+        "1": 0.5411753058433533,
+        "2": 0.8446428775787354,
+        "3": 0.8722057342529297,
+        "4": 0.7242482304573059,
+        "5": 0.43560734391212463
+      },
+      "mean_all_tau_vector_rmse_ms-1": 0.6835759282112122
+    },
+    "PixelAttn-VFI": {
+      "per_tau_vector_rmse_ms-1": {
+        "1": 0.5515573024749756,
+        "2": 0.8689298629760742,
+        "3": 0.8905012607574463,
+        "4": 0.785561740398407,
+        "5": 0.4973960518836975
+      },
+      "mean_all_tau_vector_rmse_ms-1": 0.7187892198562622
+    },
+    "WeatherBridge": {
+      "per_tau_vector_rmse_ms-1": {
+        "1": 0.46110543608665466,
+        "2": 0.7029713988304138,
+        "3": 0.7781254053115845,
+        "4": 0.7064895629882812,
+        "5": 0.45532938838005066
+      },
+      "mean_all_tau_vector_rmse_ms-1": 0.6208041906356812
+    }
+  },
+  "selection_note": "Additional illustrative case fixed by event identity and landfall window, not selected by model error.",
+  "source_provenance": {
+    "metrics/case_studies_weatherdcae_14m/hurricane_laura_2020/wind10.npz": "6be8f9b404be083932335d8687f0ad65524c4d49acf50114c22067bc73896e1e",
+    "metrics/case_studies_pixelattn_vfi/hurricane_laura_2020/wind10.npz": "99ab352ed572f4f1a20ff253a5578073d825409707dfc5f8cfdf672cefd5b272",
+    "metrics/case_studies_weatherbridge/hurricane_laura_2020/wind10.npz": "c472381ca01809396fdd6a026001379f2742ac80ead738e9ff516fb9a1939af9"
+  },
+  "model_provenance": {
+    "WeatherDCAE-14M": {
+      "checkpoint": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_weatherdcae_14m_6h_6yr_refinev1_s202707_bs4/last.ckpt",
+        "sha256": "3a432daa70870d02c12cef3e21f3d0a998719cf54e555f4d0b8fb0faf45fdf5e",
+        "size_bytes": 172664520
+      },
+      "event": "Hurricane Laura",
+      "exporter": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_spectral_v6/tools/eval/export_laura_wind_comparator_case.py",
+        "sha256": "509537eed2d50fb76e22d70c4777b474c18dc9bdedc8630fe0cabca73bb9c7fa",
+        "size_bytes": 6616
+      },
+      "grid_convention": "wb2_0p25_pair_average_cell_centres_v1",
+      "latitude_sha256": "f0fc8671d4d5fea8c7fc5eedf2268af3ee4a4372c8bc2355146e4d9b6fb51570",
+      "linear_u_sha256": "e65f33e86b907a22ebe7e70009d1596a89b51de99d575fdc04e6cf641c06d394",
+      "linear_v_sha256": "51ac495d4602bd73e61f4ab90ba24fac11326fa785d95a34063bfa12c145a85a",
+      "longitude_sha256": "a517b5fa91c65aaee73e9956ede3ca0a9c1b722f1d4a2971276cf4ad3a913b92",
+      "memmap": {
+        "mtime_ns": 1784321353474176596,
+        "path": "/tmp/wb2_0p5_cache/wb2_2020.bin",
+        "size_bytes": 245895782400
+      },
+      "model_arch": "dcae_14m",
+      "model_label": "WeatherDCAE-14M",
+      "model_type": "capmatched_dcae_14m",
+      "schema_version": 1,
+      "static": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+        "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c",
+        "size_bytes": 3111640
+      },
+      "stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+        "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7",
+        "size_bytes": 6656
+      },
+      "surface_stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+        "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2",
+        "size_bytes": 275
+      },
+      "t0_index": 5739,
+      "truth_u_sha256": "367f74bfc5486529b0a8977e95e76957e3c580260e8c6752be807a335a723ca5",
+      "truth_v_sha256": "548701456e0c47b32cae854d2ee3989c186d53bc1033608defd66a3336fc9ff7",
+      "x0_24_sha256": "1768ba31da341aa7c8f3033b8c47c9b3cce42400bd715efeb14a6d788b5df252",
+      "xT_24_sha256": "457167affb1866d964bbea9d7cd1cf87e22b82891e5cd56144ab5f15c6b77634",
+      "year": 2020
+    },
+    "PixelAttn-VFI": {
+      "checkpoint": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_atmvfi_24ch_6h_2014_19_sparse135_lr1e4_matched/last.ckpt",
+        "sha256": "ca0eb0588812766bab183b7833d3d7ebe63efc52030d7c1fcae7023fb8ac72dc",
+        "size_bytes": 176201736
+      },
+      "event": "Hurricane Laura",
+      "exporter": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_spectral_v6/tools/eval/export_laura_wind_comparator_case.py",
+        "sha256": "509537eed2d50fb76e22d70c4777b474c18dc9bdedc8630fe0cabca73bb9c7fa",
+        "size_bytes": 6616
+      },
+      "grid_convention": "wb2_0p25_pair_average_cell_centres_v1",
+      "latitude_sha256": "f0fc8671d4d5fea8c7fc5eedf2268af3ee4a4372c8bc2355146e4d9b6fb51570",
+      "linear_u_sha256": "e65f33e86b907a22ebe7e70009d1596a89b51de99d575fdc04e6cf641c06d394",
+      "linear_v_sha256": "51ac495d4602bd73e61f4ab90ba24fac11326fa785d95a34063bfa12c145a85a",
+      "longitude_sha256": "a517b5fa91c65aaee73e9956ede3ca0a9c1b722f1d4a2971276cf4ad3a913b92",
+      "memmap": {
+        "mtime_ns": 1784321353474176596,
+        "path": "/tmp/wb2_0p5_cache/wb2_2020.bin",
+        "size_bytes": 245895782400
+      },
+      "model_arch": "atmvfi",
+      "model_label": "PixelAttn-VFI",
+      "model_type": "capmatched_atmvfi",
+      "schema_version": 1,
+      "static": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+        "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c",
+        "size_bytes": 3111640
+      },
+      "stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+        "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7",
+        "size_bytes": 6656
+      },
+      "surface_stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+        "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2",
+        "size_bytes": 275
+      },
+      "t0_index": 5739,
+      "truth_u_sha256": "367f74bfc5486529b0a8977e95e76957e3c580260e8c6752be807a335a723ca5",
+      "truth_v_sha256": "548701456e0c47b32cae854d2ee3989c186d53bc1033608defd66a3336fc9ff7",
+      "x0_24_sha256": "1768ba31da341aa7c8f3033b8c47c9b3cce42400bd715efeb14a6d788b5df252",
+      "xT_24_sha256": "457167affb1866d964bbea9d7cd1cf87e22b82891e5cd56144ab5f15c6b77634",
+      "year": 2020
+    },
+    "WeatherBridge": {
+      "checkpoint": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_flow_pp3_spectral_14m_6h_refinev1_s202707_bs4/last.ckpt",
+        "sha256": "2c2f909325a03924653f168f4ecc2acc300a94b1b892df60d235780a4eac7089",
+        "size_bytes": 173178600
+      },
+      "event": "Hurricane Laura",
+      "exporter": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_spectral_v6/tools/eval/export_laura_wind_comparator_case.py",
+        "sha256": "509537eed2d50fb76e22d70c4777b474c18dc9bdedc8630fe0cabca73bb9c7fa",
+        "size_bytes": 6616
+      },
+      "grid_convention": "wb2_0p25_pair_average_cell_centres_v1",
+      "latitude_sha256": "f0fc8671d4d5fea8c7fc5eedf2268af3ee4a4372c8bc2355146e4d9b6fb51570",
+      "linear_u_sha256": "e65f33e86b907a22ebe7e70009d1596a89b51de99d575fdc04e6cf641c06d394",
+      "linear_v_sha256": "51ac495d4602bd73e61f4ab90ba24fac11326fa785d95a34063bfa12c145a85a",
+      "longitude_sha256": "a517b5fa91c65aaee73e9956ede3ca0a9c1b722f1d4a2971276cf4ad3a913b92",
+      "memmap": {
+        "mtime_ns": 1784321353474176596,
+        "path": "/tmp/wb2_0p5_cache/wb2_2020.bin",
+        "size_bytes": 245895782400
+      },
+      "model_arch": "flow_pp3",
+      "model_label": "WeatherBridge",
+      "model_type": "weatherbridge",
+      "schema_version": 1,
+      "static": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/static_features_0p5.pt",
+        "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c",
+        "size_bytes": 3111640
+      },
+      "stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/json_stats_0p5.nc",
+        "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7",
+        "size_bytes": 6656
+      },
+      "surface_stats": {
+        "path": "/home/jovyan/dsuhoi/weather_time_interpolation/data/surface_stats_0p5.json",
+        "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2",
+        "size_bytes": 275
+      },
+      "t0_index": 5739,
+      "truth_u_sha256": "367f74bfc5486529b0a8977e95e76957e3c580260e8c6752be807a335a723ca5",
+      "truth_v_sha256": "548701456e0c47b32cae854d2ee3989c186d53bc1033608defd66a3336fc9ff7",
+      "x0_24_sha256": "1768ba31da341aa7c8f3033b8c47c9b3cce42400bd715efeb14a6d788b5df252",
+      "xT_24_sha256": "457167affb1866d964bbea9d7cd1cf87e22b82891e5cd56144ab5f15c6b77634",
+      "year": 2020
+    }
+  }
+}
