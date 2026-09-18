@@ -1,0 +1,3443 @@
+{
+  "schema_version": 1,
+  "manifest": {
+    "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/repro/extreme_events_2021.json",
+    "size_bytes": 4310,
+    "sha256": "20d7b2d9c31036ca4d9a143415ab80b70c45e6530cbd0c10a058940af5fba627"
+  },
+  "selection_policy": "Events and six-hour windows were fixed from authoritative event reports before model errors were inspected. Bounding boxes are event-centred and do not depend on either model.",
+  "events": [
+    {
+      "id": "texas_freeze",
+      "label": "Texas cold outbreak",
+      "init_time": "2021-02-15T06:00:00",
+      "bbox": [
+        25.0,
+        37.5,
+        253.0,
+        267.0
+      ],
+      "channels": [
+        "t2m",
+        "T850",
+        "Z700"
+      ],
+      "extremes": [
+        {
+          "name": "minimum_t2m",
+          "kind": "min",
+          "channel": "t2m",
+          "units": "K"
+        }
+      ],
+      "source": {
+        "authority": "NOAA NCEI",
+        "url": "https://www.ncei.noaa.gov/news/great-texas-freeze-february-2021",
+        "evidence": "The historical cold event affected Texas on 11-20 February 2021; the coldest night followed 15 February."
+      }
+    },
+    {
+      "id": "typhoon_surigae",
+      "label": "Typhoon Surigae rapid intensification",
+      "init_time": "2021-04-17T12:00:00",
+      "bbox": [
+        3.0,
+        23.0,
+        118.0,
+        143.0
+      ],
+      "channels": [
+        "mslp",
+        "u10",
+        "v10"
+      ],
+      "extremes": [
+        {
+          "name": "minimum_mslp",
+          "kind": "min",
+          "channel": "mslp",
+          "scale": 0.01,
+          "units": "hPa"
+        },
+        {
+          "name": "maximum_surface_wind",
+          "kind": "max",
+          "derived": "wind_speed",
+          "units": "m s-1"
+        }
+      ],
+      "source": {
+        "authority": "JMA RSMC Tokyo",
+        "url": "https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/AnnualReport/2021/Text/Text2021.pdf",
+        "evidence": "Surigae reached 895 hPa and 120 kt at 18 UTC on 17 April 2021."
+      }
+    },
+    {
+      "id": "pacific_northwest_heatwave",
+      "label": "Pacific Northwest heatwave",
+      "init_time": "2021-06-28T18:00:00",
+      "bbox": [
+        40.0,
+        55.0,
+        230.0,
+        250.0
+      ],
+      "channels": [
+        "t2m",
+        "T850",
+        "Z700"
+      ],
+      "extremes": [
+        {
+          "name": "maximum_t2m",
+          "kind": "max",
+          "channel": "t2m",
+          "units": "K"
+        }
+      ],
+      "source": {
+        "authority": "NOAA Climate.gov",
+        "url": "https://www.climate.gov/news-features/event-tracker/astounding-heat-obliterates-all-time-records-across-pacific-northwest",
+        "evidence": "The record heat peaked west of the Cascades on 28 June 2021."
+      }
+    },
+    {
+      "id": "hurricane_ida",
+      "label": "Hurricane Ida landfall",
+      "init_time": "2021-08-29T12:00:00",
+      "bbox": [
+        19.0,
+        39.0,
+        257.5,
+        282.5
+      ],
+      "channels": [
+        "mslp",
+        "u10",
+        "v10"
+      ],
+      "extremes": [
+        {
+          "name": "minimum_mslp",
+          "kind": "min",
+          "channel": "mslp",
+          "scale": 0.01,
+          "units": "hPa"
+        },
+        {
+          "name": "maximum_surface_wind",
+          "kind": "max",
+          "derived": "wind_speed",
+          "units": "m s-1"
+        }
+      ],
+      "source": {
+        "authority": "NOAA National Hurricane Center",
+        "url": "https://www.nhc.noaa.gov/archive/2021/IDA.shtml",
+        "evidence": "The evaluation window covers the 12-18 UTC intensification and landfall period on 29 August 2021."
+      }
+    },
+    {
+      "id": "typhoon_chanthu",
+      "label": "Typhoon Chanthu peak intensity",
+      "init_time": "2021-09-10T12:00:00",
+      "bbox": [
+        10.0,
+        30.0,
+        112.0,
+        137.0
+      ],
+      "channels": [
+        "mslp",
+        "u10",
+        "v10"
+      ],
+      "extremes": [
+        {
+          "name": "minimum_mslp",
+          "kind": "min",
+          "channel": "mslp",
+          "scale": 0.01,
+          "units": "hPa"
+        },
+        {
+          "name": "maximum_surface_wind",
+          "kind": "max",
+          "derived": "wind_speed",
+          "units": "m s-1"
+        }
+      ],
+      "source": {
+        "authority": "JMA RSMC Tokyo",
+        "url": "https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/AnnualReport/2021/Text/Text2021.pdf",
+        "evidence": "Chanthu deepened from 910 hPa at 06 UTC to 905 hPa at 18 UTC on 10 September 2021."
+      }
+    },
+    {
+      "id": "typhoon_rai",
+      "label": "Typhoon Rai first peak",
+      "init_time": "2021-12-16T00:00:00",
+      "bbox": [
+        0.0,
+        20.0,
+        113.5,
+        138.5
+      ],
+      "channels": [
+        "mslp",
+        "u10",
+        "v10"
+      ],
+      "extremes": [
+        {
+          "name": "minimum_mslp",
+          "kind": "min",
+          "channel": "mslp",
+          "scale": 0.01,
+          "units": "hPa"
+        },
+        {
+          "name": "maximum_surface_wind",
+          "kind": "max",
+          "derived": "wind_speed",
+          "units": "m s-1"
+        }
+      ],
+      "source": {
+        "authority": "JMA RSMC Tokyo",
+        "url": "https://www.jma.go.jp/jma/jma-eng/jma-center/rsmc-hp-pub-eg/AnnualReport/2021/Text/Text2021.pdf",
+        "evidence": "Rai reached its first 915 hPa, 105 kt peak at 06 UTC on 16 December 2021."
+      }
+    }
+  ],
+  "evaluation": {
+    "year": 2021,
+    "taus": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "latitude_weighting": "cosine_cell_centre",
+    "normalization": "training_channel_mean_std",
+    "memmap": {
+      "path": "/tmp/wb2_0p5_cache/wb2_2021.bin",
+      "size_bytes": 245223936000,
+      "mtime_ns": 1784785726143714188
+    },
+    "static": {
+      "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/data/static_features_0p5.pt",
+      "size_bytes": 3111640,
+      "sha256": "4c75dc87f07fcd3407d579ab3fd026868560fa24ca58202bf48267c9ee28345c"
+    },
+    "stats": {
+      "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/data/json_stats_0p5.nc",
+      "size_bytes": 6656,
+      "sha256": "288768d2290db25c5c0080d1f71aea59178b8da012761f30f5d51af300000dc7"
+    },
+    "surface_stats": {
+      "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/data/surface_stats_0p5.json",
+      "size_bytes": 275,
+      "sha256": "fd76b369fb2a5b5293c0660ca09b64625093ee6cbc8b77ffb4eb25f74d1624c2"
+    },
+    "evaluator": {
+      "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/weather_time_interpolation_runtime/tools/eval/evaluate_extreme_events.py",
+      "size_bytes": 20434,
+      "sha256": "c41b49ceaaa1c0f9cbc8a9e324bcbca581de1c1a51aba83ea0c0662e39c5bddc"
+    },
+    "index_sha256": "9b1bee892b44f962ab4910e6af342ac45f9e7e5a2aa8ec39db40401ac954fc31",
+    "input_sha256": {
+      "texas_freeze": {
+        "x0": "253761ece6e39ea1bc8e65b3d071d1b60397f1bff492d0c434c3191c229a499a",
+        "xT": "033f88c1f97d554f29b44c60676a89e8e7e98d12f42b4cf205c9cb232423a609"
+      },
+      "typhoon_surigae": {
+        "x0": "e953557210b58746c5ef9887a08c63bc16e4388e6cca110dd156b54fa49a14da",
+        "xT": "8d401372349ed18e3c2e54eb0293510235d1c1187166b8fffb2e8e5370fa98a1"
+      },
+      "pacific_northwest_heatwave": {
+        "x0": "09e4d4fe4ae76552f05fd78be735ba6e6e74360c66cfa2ba88fda582a4f65cfc",
+        "xT": "46a066772f6c074621fedafbd14a5749d77c374cd8c3bb85d564c036572a9c5f"
+      },
+      "hurricane_ida": {
+        "x0": "0570ee677155ffcd949c90b97b9aedf26debc4597a792cf436cbaf8fba046ec3",
+        "xT": "142d755734e5cfe058d03e8833a2fad9f4f35523a5f035a7ece2e157833ccd89"
+      },
+      "typhoon_chanthu": {
+        "x0": "0dd40ff903169d4a85ea9bd23e6f11ac8838851d6b41098bdc876d4975943b77",
+        "xT": "63919013debfe3e2f7a621d74a77a3e679bd63a4fcf275888990f52bece96e05"
+      },
+      "typhoon_rai": {
+        "x0": "d721f654a4a3ea96d0591bf9556b97384774692e3736378e1d93ad0a7edac31c",
+        "xT": "3179bcf7abf14b0afc547c3a975ce6702abb02e1e89a983df3097f5f2d25cca2"
+      }
+    }
+  },
+  "model_provenance": {
+    "WeatherBridge": {
+      "model_type": "weatherbridge_flow_spectral",
+      "arch": "flow_pp3",
+      "checkpoint": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_flow_pp3_spectral_14m_6h_refinev1_s202707_bs4/last.ckpt",
+        "size_bytes": 173178600,
+        "sha256": "2c2f909325a03924653f168f4ecc2acc300a94b1b892df60d235780a4eac7089"
+      }
+    },
+    "WeatherDCAE-14M": {
+      "model_type": "capmatched_dcae_14m",
+      "arch": "dcae_14m",
+      "checkpoint": {
+        "path": "/home/jovyan/shares/SR006.nfs2/dsuhoi/capmatched_logs/exp_weatherdcae_14m_6h_6yr_refinev1_s202707_bs4/last.ckpt",
+        "size_bytes": 172664520,
+        "sha256": "3a432daa70870d02c12cef3e21f3d0a998719cf54e555f4d0b8fb0faf45fdf5e"
+      }
+    }
+  },
+  "results": {
+    "Linear": {
+      "texas_freeze": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.02838552115148961,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.4938492910431002,
+                "bias": -0.21719029874287585,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.6263124434750122,
+                "bias": 0.11080168796804056,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 23.07365060765546,
+                "bias": -15.674040732776795,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 246.37335205078125,
+                "target": 245.85208129882812,
+                "error": 0.521270751953125,
+                "units": "K"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.037988973770387964,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.5915496026410367,
+                "bias": -0.05070974268113534,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.8738475934527463,
+                "bias": 0.2005480052022934,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 28.402327336540495,
+                "bias": -11.159864513302487,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 245.7576904296875,
+                "target": 245.0894775390625,
+                "error": 0.668212890625,
+                "units": "K"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.04466076118704881,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.7226625970034352,
+                "bias": -0.08084046782933607,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 1.0167912396739327,
+                "bias": 0.2152892460898069,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 32.76306066547624,
+                "bias": -5.054896608117824,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 244.93154907226562,
+                "target": 244.6626739501953,
+                "error": 0.2688751220703125,
+                "units": "K"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.04920740638032966,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.8635746894319111,
+                "bias": 0.5908410224564662,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 1.0594627352965098,
+                "bias": 0.4299257989102763,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 50.25556085618203,
+                "bias": 32.70750377388676,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 244.10537719726562,
+                "target": 244.2926483154297,
+                "error": -0.1872711181640625,
+                "units": "K"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.03563769483801348,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.475263661666789,
+                "bias": 0.3199320000822119,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.8156065408811091,
+                "bias": 0.26423090324950244,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 42.44081653988982,
+                "bias": 30.033663647866977,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 243.2792205810547,
+                "target": 243.45370483398438,
+                "error": -0.1744842529296875,
+                "units": "K"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_surigae": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.12901860846187985,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.6502935368896607,
+                "bias": -0.5622783891117142,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.4684280334223524,
+                "bias": 0.06311255022739988,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5386940689554763,
+                "bias": -0.009688320061999009,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.4789712795829117,
+            "vector_wind_rmse_m_s": 0.7138740236126366,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 976.51578125,
+                "target": 976.01390625,
+                "error": 0.5018750000000409,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 24.31907844543457,
+                "target": 27.521766662597656,
+                "error": -3.202688217163086,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.1995669618559793,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.9384654303934445,
+                "bias": -0.8264832668509259,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.6918362763420594,
+                "bias": 0.09610528398007094,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.8468387130238075,
+                "bias": -0.012982357248090944,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.7163358387596289,
+            "vector_wind_rmse_m_s": 1.093514171320072,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 979.2140625000001,
+                "target": 975.91,
+                "error": 3.3040625000001,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.439302444458008,
+                "target": 27.618371963500977,
+                "error": -4.179069519042969,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.22241278426565725,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.8549778398291663,
+                "bias": -0.7107922752855584,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.7667109091546811,
+                "bias": 0.07749870645202611,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.9567461129786998,
+                "bias": -0.01740226390765629,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.8079101247491839,
+            "vector_wind_rmse_m_s": 1.2260541376734666,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 981.3265625,
+                "target": 973.73140625,
+                "error": 7.595156250000059,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 22.581161499023438,
+                "target": 27.62281036376953,
+                "error": -5.041648864746094,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.19843957880331103,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.5877215925346784,
+                "bias": -0.417333045421429,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.6843606883910092,
+                "bias": 0.06725845271822432,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.862105138736284,
+                "bias": -0.018944701809166534,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.7255690002342503,
+            "vector_wind_rmse_m_s": 1.1007155961857429,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 980.297421875,
+                "target": 973.72109375,
+                "error": 6.576328125000032,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 22.696611404418945,
+                "target": 26.032766342163086,
+                "error": -3.3361549377441406,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.12734116355974434,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.34513939783001507,
+                "bias": -0.16006755757077173,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.43567653829873765,
+                "bias": 0.03776650683691408,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5553896790783818,
+                "bias": -0.018387003327830845,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.47336168719644867,
+            "vector_wind_rmse_m_s": 0.705883660242588,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 977.39546875,
+                "target": 974.226328125,
+                "error": 3.1691406249999545,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 24.295047760009766,
+                "target": 25.769330978393555,
+                "error": -1.474283218383789,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "pacific_northwest_heatwave": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.023757077195366152,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.5031221964432845,
+                "bias": 0.06869740939594675,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.46609952863590354,
+                "bias": -0.20759290780577522,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 22.51843141715253,
+                "bias": -17.360561980148233,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 315.4702453613281,
+                "target": 315.5768127441406,
+                "error": -0.1065673828125,
+                "units": "K"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.05005099841156385,
+            "per_channel": {
+              "t2m": {
+                "rmse": 1.3510721299283293,
+                "bias": -0.9726508248452445,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.782090499759617,
+                "bias": -0.3869119795153129,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 27.569047789416416,
+                "bias": -18.164099864510423,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 316.2947692871094,
+                "target": 317.30133056640625,
+                "error": -1.006561279296875,
+                "units": "K"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.05114979040383792,
+            "per_channel": {
+              "t2m": {
+                "rmse": 1.209081523097293,
+                "bias": -0.8843911552764978,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.9482715115081086,
+                "bias": -0.5066083814383399,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 32.096003483949644,
+                "bias": -24.86274946921902,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 317.1192932128906,
+                "target": 318.45623779296875,
+                "error": -1.336944580078125,
+                "units": "K"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.04540975439237473,
+            "per_channel": {
+              "t2m": {
+                "rmse": 1.2409254749354977,
+                "bias": -0.990925205921505,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.7002104614199165,
+                "bias": -0.33200091459232733,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 20.975950597966303,
+                "bias": -5.649070432656543,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 317.9438171386719,
+                "target": 318.8280029296875,
+                "error": -0.884185791015625,
+                "units": "K"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.02854893332532115,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.7165797493448628,
+                "bias": -0.5365448957848021,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.4877342492888493,
+                "bias": -0.27263840986141363,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 21.143555234409178,
+                "bias": -0.024375525573595385,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 318.8659973144531,
+                "target": 319.4089660644531,
+                "error": -0.54296875,
+                "units": "K"
+              }
+            }
+          }
+        }
+      },
+      "hurricane_ida": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.15803201247428972,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.6364180071310956,
+                "bias": -0.5004505873902086,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.594202694159259,
+                "bias": 0.03442229155412621,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.664881280570743,
+                "bias": 0.060697702213626206,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.6089851452532671,
+            "vector_wind_rmse_m_s": 0.8917084473168578,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 990.7210156250001,
+                "target": 987.063984375,
+                "error": 3.6570312500000455,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 25.60084342956543,
+                "target": 27.257776260375977,
+                "error": -1.6569328308105469,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.23934574050475765,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.9224247647515563,
+                "bias": -0.755290446884455,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.9096182523971265,
+                "bias": 0.08295672184844273,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 1.0066466205203046,
+                "bias": -0.06601251194463859,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.9800931401007227,
+            "vector_wind_rmse_m_s": 1.356739758962824,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 993.112578125,
+                "target": 985.05875,
+                "error": 8.053828124999995,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 24.13361167907715,
+                "target": 28.324373245239258,
+                "error": -4.190761566162109,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.24495284386892577,
+            "per_channel": {
+              "mslp": {
+                "rmse": 1.0770066023475422,
+                "bias": -0.9170042205822658,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.9996134741993418,
+                "bias": 0.037715026731334596,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 1.001345742797843,
+                "bias": -0.09639138164736594,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 1.0207419717970136,
+            "vector_wind_rmse_m_s": 1.4148923613240834,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 993.6265625,
+                "target": 984.7129687500001,
+                "error": 8.913593749999905,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 22.670989990234375,
+                "target": 30.158079147338867,
+                "error": -7.487089157104492,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.21291644295979217,
+            "per_channel": {
+              "mslp": {
+                "rmse": 1.0287501647560457,
+                "bias": -0.9276555208942392,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.8371819389183673,
+                "bias": 0.008183602511786073,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.8737255585011855,
+                "bias": -0.06446506479069578,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.8567179977699099,
+            "vector_wind_rmse_m_s": 1.2100702281876357,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 990.27625,
+                "target": 987.076875,
+                "error": 3.199375000000032,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 21.741985321044922,
+                "target": 29.36658477783203,
+                "error": -7.624599456787109,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.1316767117819212,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.6491517049455852,
+                "bias": -0.5780562123466593,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.500314186010941,
+                "bias": -0.00639329908308475,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5445799135460236,
+                "bias": -0.037904499117734934,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5380829896605471,
+            "vector_wind_rmse_m_s": 0.7395144121604431,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 986.767421875,
+                "target": 985.79921875,
+                "error": 0.9682031249999454,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.965526580810547,
+                "target": 29.03589630126953,
+                "error": -5.070369720458984,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_chanthu": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.1280072213740242,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.6319630458790976,
+                "bias": -0.5614467659307081,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.504514434976227,
+                "bias": 0.1621983887061969,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5239317355237876,
+                "bias": -0.07344513697302016,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5076308755195019,
+            "vector_wind_rmse_m_s": 0.7273508633545476,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 995.1721875000001,
+                "target": 993.807109375,
+                "error": 1.3650781250000819,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 18.932111740112305,
+                "target": 20.71221923828125,
+                "error": -1.7801074981689453,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.19478625206482475,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.8441322720318418,
+                "bias": -0.7296993320110501,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.7641604866063832,
+                "bias": 0.22071074749154493,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.8065459962970685,
+                "bias": -0.13722012521352644,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.7529795452243505,
+            "vector_wind_rmse_m_s": 1.1110615172265643,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 995.933515625,
+                "target": 993.791484375,
+                "error": 2.142031250000059,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 18.14645767211914,
+                "target": 20.649721145629883,
+                "error": -2.503263473510742,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.21369414588433389,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.7427190233460776,
+                "bias": -0.6089690896865297,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.8522456895997053,
+                "bias": 0.19076745571773374,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.8913405516446918,
+                "bias": -0.1847562602117086,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.8283878572590632,
+            "vector_wind_rmse_m_s": 1.2332115351316573,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 996.19578125,
+                "target": 993.5517187500001,
+                "error": 2.6440624999999045,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 17.715242385864258,
+                "target": 20.004308700561523,
+                "error": -2.2890663146972656,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.19826174409155942,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.55367244456415,
+                "bias": -0.40481784920544855,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.821085848708264,
+                "bias": 0.1459194852667286,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.8239037118455594,
+                "bias": -0.178363699032494,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.7749708626328099,
+            "vector_wind_rmse_m_s": 1.163184979513695,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 994.64859375,
+                "target": 993.3605468750001,
+                "error": 1.2880468749999636,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 17.514528274536133,
+                "target": 19.750999450683594,
+                "error": -2.236471176147461,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.12850894005478028,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.3616204471519431,
+                "bias": -0.17639043957719858,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5423095531410712,
+                "bias": 0.06708126060814408,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5306932772044992,
+                "bias": -0.11340251325350066,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.49277128810241233,
+            "vector_wind_rmse_m_s": 0.7587720382668819,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 993.10140625,
+                "target": 991.47546875,
+                "error": 1.6259374999999636,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 17.463823318481445,
+                "target": 19.82477378845215,
+                "error": -2.360950469970703,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_rai": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.1809338555808333,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.7889128866393119,
+                "bias": -0.6536213662009303,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5360844615822083,
+                "bias": 0.06365259387763178,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.7933228798317373,
+                "bias": -0.047983133026488066,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.6025523611804314,
+            "vector_wind_rmse_m_s": 0.9574694460911406,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 988.262109375,
+                "target": 986.0653906250001,
+                "error": 2.1967187499999454,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 21.038028717041016,
+                "target": 24.936941146850586,
+                "error": -3.8989124298095703,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.2833969570821196,
+            "per_channel": {
+              "mslp": {
+                "rmse": 1.109553263307063,
+                "bias": -0.8798693058002955,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.8265713429227652,
+                "bias": 0.09101508239282799,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 1.2527122023184212,
+                "bias": -0.059554248668808346,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.9729050093484081,
+            "vector_wind_rmse_m_s": 1.5008357837473727,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 990.401640625,
+                "target": 983.7534375,
+                "error": 6.648203125000009,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 20.027515411376953,
+                "target": 26.26561164855957,
+                "error": -6.238096237182617,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.31203716270360315,
+            "per_channel": {
+              "mslp": {
+                "rmse": 1.0930961551094907,
+                "bias": -0.8529423053971097,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.9554688178736301,
+                "bias": 0.07912370324847777,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 1.3762920492387591,
+                "bias": -0.05736547900012312,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 1.0867593450313986,
+            "vector_wind_rmse_m_s": 1.6754403751781066,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 990.839453125,
+                "target": 983.8484375,
+                "error": 6.991015624999932,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 19.065414428710938,
+                "target": 26.756322860717773,
+                "error": -7.690908432006836,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.2623427401344766,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.8445505122211274,
+                "bias": -0.5159073253279471,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.8749600961656122,
+                "bias": 0.0331951764696457,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 1.1440993160340542,
+                "bias": -0.05771705934978966,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.9380793011831743,
+            "vector_wind_rmse_m_s": 1.4403188655737749,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 987.749765625,
+                "target": 983.36171875,
+                "error": 4.388046874999986,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 19.487499237060547,
+                "target": 26.732704162597656,
+                "error": -7.245204925537109,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.14946348937619613,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.4218650963107147,
+                "bias": -0.11298616379659522,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5463371273021131,
+                "bias": 5.089613644221587e-05,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.6421566566159326,
+                "bias": -0.0419392273385787,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5586845958433362,
+            "vector_wind_rmse_m_s": 0.8431188721170757,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 984.66,
+                "target": 981.0578125000001,
+                "error": 3.6021874999999,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 22.07823371887207,
+                "target": 27.406187057495117,
+                "error": -5.327953338623047,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "WeatherBridge": {
+      "texas_freeze": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.023892434017150337,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.4915525490615461,
+                "bias": -0.04774707242130237,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.4706485611552406,
+                "bias": 0.059601847503125006,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 25.44838820436338,
+                "bias": -18.22994380147304,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 246.82696533203125,
+                "target": 245.85208129882812,
+                "error": 0.974884033203125,
+                "units": "K"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.034957973095066805,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.7115507898983543,
+                "bias": -0.10475840468231677,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.6767204789362156,
+                "bias": 0.13979466160121254,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 42.7210974870673,
+                "bias": -34.93118947875226,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 246.0821533203125,
+                "target": 245.0894775390625,
+                "error": 0.99267578125,
+                "units": "K"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.042497671126033774,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.8531472848590274,
+                "bias": -0.11467846543496349,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.8667242012947137,
+                "bias": 0.1495473520819045,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 38.92877387361453,
+                "bias": -25.63445767007736,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 245.66281127929688,
+                "target": 244.6626739501953,
+                "error": 1.0001373291015625,
+                "units": "K"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.041789817335173014,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.7360085114071028,
+                "bias": 0.41237014618477336,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.9249821235093231,
+                "bias": 0.30434230803293183,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 29.96494033326153,
+                "bias": 7.7946144741361865,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 244.16407775878906,
+                "target": 244.2926483154297,
+                "error": -0.128570556640625,
+                "units": "K"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.02833193281375687,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.43259232561676336,
+                "bias": 0.09430482803935306,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.6473149180527901,
+                "bias": 0.1713546651076545,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 25.407464047369437,
+                "bias": 5.10317009016477,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 242.95681762695312,
+                "target": 243.45370483398438,
+                "error": -0.49688720703125,
+                "units": "K"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_surigae": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.0739105563311411,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.23686953911412,
+                "bias": -0.008790246777897411,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.3032490135521654,
+                "bias": -0.027157210244218726,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.3066741598740042,
+                "bias": -0.01960763284279533,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.25526536876163997,
+            "vector_wind_rmse_m_s": 0.4312876128492977,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 977.732890625,
+                "target": 976.01390625,
+                "error": 1.718984374999991,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 26.736797332763672,
+                "target": 27.521766662597656,
+                "error": -0.7849693298339844,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.12256503628031738,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.32306990180575523,
+                "bias": -0.17392437905095623,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.4817809995508544,
+                "bias": -0.023852260660083703,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.51798084706446,
+                "bias": -0.012335788410279842,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.3988875123057475,
+            "vector_wind_rmse_m_s": 0.7074016460219739,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 978.70015625,
+                "target": 975.91,
+                "error": 2.7901562499999955,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 25.36591339111328,
+                "target": 27.618371963500977,
+                "error": -2.2524585723876953,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.13099194990596122,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.2643988291021789,
+                "bias": 0.05168525331145891,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5041973446667342,
+                "bias": -0.0580486633948075,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.559450174987067,
+                "bias": -0.013812798170553664,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.43237676295372807,
+            "vector_wind_rmse_m_s": 0.7531264568662948,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 976.6753125,
+                "target": 973.73140625,
+                "error": 2.9439062500000546,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 25.09139633178711,
+                "target": 27.62281036376953,
+                "error": -2.531414031982422,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.1246158314252754,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.33309357722422517,
+                "bias": 0.13235052690005725,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.4706127824664367,
+                "bias": -0.024244758681862474,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5319936732571378,
+                "bias": -0.0027205504322351136,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.41767756301384956,
+            "vector_wind_rmse_m_s": 0.7102771714026727,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 976.969765625,
+                "target": 973.72109375,
+                "error": 3.2486718750000136,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 25.437711715698242,
+                "target": 26.032766342163086,
+                "error": -0.5950546264648438,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.07858327603638794,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.1893536703675862,
+                "bias": -0.028931468119060458,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.30437521792356625,
+                "bias": -0.0003783402655362008,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.3340817075333775,
+                "bias": 0.007261066728904912,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.28581013670692773,
+            "vector_wind_rmse_m_s": 0.4519456391509222,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 976.901640625,
+                "target": 974.226328125,
+                "error": 2.675312500000018,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 25.65289306640625,
+                "target": 25.769330978393555,
+                "error": -0.11643791198730469,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "pacific_northwest_heatwave": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.01995156322662181,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.5090979931338296,
+                "bias": 0.10573041655298192,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.33658294873370564,
+                "bias": 0.028842747106526075,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 13.23854755771281,
+                "bias": -1.8442855766770083,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 315.2123107910156,
+                "target": 315.5768127441406,
+                "error": -0.364501953125,
+                "units": "K"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.03336996804736912,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.8873468331219238,
+                "bias": -0.22523876292585007,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.5263380209416417,
+                "bias": 0.21275570612968187,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 22.831807329018655,
+                "bias": 8.274951938722308,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 316.9297790527344,
+                "target": 317.30133056640625,
+                "error": -0.371551513671875,
+                "units": "K"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.032537721557281796,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.7261316346094414,
+                "bias": 0.023877453889376954,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.6358186841699571,
+                "bias": 0.0015794130406239244,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 19.97290975588112,
+                "bias": 6.082461286735281,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 317.72918701171875,
+                "target": 318.45623779296875,
+                "error": -0.72705078125,
+                "units": "K"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.02882482071986606,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.6589487164870993,
+                "bias": -0.19302352884612303,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.527069351659731,
+                "bias": 0.11876591678261487,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 28.7641380692443,
+                "bias": 22.317558776500533,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 318.6772155761719,
+                "target": 318.8280029296875,
+                "error": -0.150787353515625,
+                "units": "K"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.017721567164931097,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.4060903451723555,
+                "bias": 0.05658208017755301,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.3152516395583587,
+                "bias": 0.03623429964122057,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 20.269305871675265,
+                "bias": 9.423598133387653,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 319.44195556640625,
+                "target": 319.4089660644531,
+                "error": 0.032989501953125,
+                "units": "K"
+              }
+            }
+          }
+        }
+      },
+      "hurricane_ida": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.10362160902272695,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.3328427076150193,
+                "bias": -0.11912980113979404,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.4210953568577335,
+                "bias": 0.024612785820037193,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.43117911155207367,
+                "bias": -0.014875444727028286,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.4218817965405314,
+            "vector_wind_rmse_m_s": 0.6026912355135993,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 990.919453125,
+                "target": 987.063984375,
+                "error": 3.85546875,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 25.189573287963867,
+                "target": 27.257776260375977,
+                "error": -2.0682029724121094,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.1577010171334128,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.37476556653655374,
+                "bias": -0.07013835638314665,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.6718199670316789,
+                "bias": 0.1039841134750073,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.651882650482035,
+                "bias": -0.08173679154001927,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.6700025371526052,
+            "vector_wind_rmse_m_s": 0.9361052615869645,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 989.37609375,
+                "target": 985.05875,
+                "error": 4.317343749999964,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 24.406766891479492,
+                "target": 28.324373245239258,
+                "error": -3.9176063537597656,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.15502234216935845,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.4022006073351746,
+                "bias": -0.07136291056672599,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.7029435442641414,
+                "bias": 0.03879221042536543,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.6250241991646771,
+                "bias": -0.08840480392543959,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.6288497475544883,
+            "vector_wind_rmse_m_s": 0.9406300423800124,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 989.700703125,
+                "target": 984.7129687500001,
+                "error": 4.987734374999945,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.82122802734375,
+                "target": 30.158079147338867,
+                "error": -6.336851119995117,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.13565659888722054,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.4102025748051402,
+                "bias": -0.23058736028685667,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.6132041153613098,
+                "bias": 0.025700710202935205,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5451070136820193,
+                "bias": -0.07072627485769695,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5776464507455671,
+            "vector_wind_rmse_m_s": 0.8204638577883369,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 991.841171875,
+                "target": 987.076875,
+                "error": 4.764296875000014,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 24.173267364501953,
+                "target": 29.36658477783203,
+                "error": -5.193317413330078,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.0860622361562778,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.27312086839761635,
+                "bias": -0.06706839939378013,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.38012928414036706,
+                "bias": 0.019529111251829347,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.34832943688657336,
+                "bias": -0.026567239805020106,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.37014484167392714,
+            "vector_wind_rmse_m_s": 0.5155886631933245,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 989.211953125,
+                "target": 985.79921875,
+                "error": 3.4127343750000136,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 25.96367073059082,
+                "target": 29.03589630126953,
+                "error": -3.072225570678711,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_chanthu": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.07557671814685513,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.19953860616066008,
+                "bias": -0.01861589874720367,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.29428564455711526,
+                "bias": 0.008529859173459737,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.32020530642911477,
+                "bias": -0.023684201221440934,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.2933918190518426,
+            "vector_wind_rmse_m_s": 0.43489708945158095,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 994.93125,
+                "target": 993.807109375,
+                "error": 1.1241406249999955,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 20.585569381713867,
+                "target": 20.71221923828125,
+                "error": -0.1266498565673828,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.11382674855255337,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.2477710345151663,
+                "bias": -0.05548885053736785,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.48338222297597355,
+                "bias": 0.05966245813052279,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.4717951924886999,
+                "bias": 0.020139851535120035,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.4611844265508869,
+            "vector_wind_rmse_m_s": 0.6754621205934178,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 994.797890625,
+                "target": 993.791484375,
+                "error": 1.0064062500000546,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 19.664222717285156,
+                "target": 20.649721145629883,
+                "error": -0.9854984283447266,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.12099270913856988,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.29188499066598217,
+                "bias": 0.1874237471918482,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5169822696884716,
+                "bias": -0.006642565408023729,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.49948159319769797,
+                "bias": -0.00961098852144508,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.4812659234732817,
+            "vector_wind_rmse_m_s": 0.7188550120312591,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 995.047734375,
+                "target": 993.5517187500001,
+                "error": 1.4960156249999272,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 19.02666473388672,
+                "target": 20.004308700561523,
+                "error": -0.9776439666748047,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.11645387705999967,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.28304150460162125,
+                "bias": 0.2020919006061217,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5104673091234732,
+                "bias": 0.021147111518283704,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.4763717263723964,
+                "bias": -0.01884522794984059,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.4673364841502772,
+            "vector_wind_rmse_m_s": 0.6982169408185442,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 995.068984375,
+                "target": 993.3605468750001,
+                "error": 1.7084374999999454,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 19.019269943237305,
+                "target": 19.750999450683594,
+                "error": -0.7317295074462891,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.07480412369519776,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.18327354533551307,
+                "bias": 0.055219240250052454,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.3174648082845792,
+                "bias": 0.0070002923645064484,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.3094085372736673,
+                "bias": 0.008220804132434393,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.3074248229200365,
+            "vector_wind_rmse_m_s": 0.4433029973550878,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 993.101328125,
+                "target": 991.47546875,
+                "error": 1.6258593750000045,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 18.74251937866211,
+                "target": 19.82477378845215,
+                "error": -1.082254409790039,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_rai": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.09159499130747595,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.2055775206027778,
+                "bias": -0.0032691073419875497,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.3051012653825965,
+                "bias": -0.020208908530539756,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.4030036146792715,
+                "bias": -0.002898196902650455,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.3780564158543235,
+            "vector_wind_rmse_m_s": 0.5054687878825073,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 987.899453125,
+                "target": 986.0653906250001,
+                "error": 1.834062499999959,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 21.921842575073242,
+                "target": 24.936941146850586,
+                "error": -3.0150985717773438,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.1468392010663321,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.409100188376986,
+                "bias": -0.26933898133043455,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.4660056477187688,
+                "bias": 0.034315875936651474,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.6486520909181201,
+                "bias": 0.0015707371465188175,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5677652871949295,
+            "vector_wind_rmse_m_s": 0.7986931819830989,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 986.106328125,
+                "target": 983.7534375,
+                "error": 2.3528906249999864,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 21.043413162231445,
+                "target": 26.26561164855957,
+                "error": -5.222198486328125,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.16001133318119481,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.3066010890337113,
+                "bias": -0.09552854512521992,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5224085404239588,
+                "bias": -0.014785324326568094,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.7080681333887213,
+                "bias": 0.030995751006605572,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.6254618437537344,
+            "vector_wind_rmse_m_s": 0.8799267964007843,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 986.782265625,
+                "target": 983.8484375,
+                "error": 2.933828124999991,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 20.857524871826172,
+                "target": 26.756322860717773,
+                "error": -5.898797988891602,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.15035635223940824,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.31780066764945497,
+                "bias": 0.06771006964021506,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5197463927127614,
+                "bias": -0.03546159250008122,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.6575167649581248,
+                "bias": 0.019346175030158577,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5766359550315772,
+            "vector_wind_rmse_m_s": 0.8381316185120014,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 985.53578125,
+                "target": 983.36171875,
+                "error": 2.174062499999991,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 22.088085174560547,
+                "target": 26.732704162597656,
+                "error": -4.644618988037109,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.0919701256676518,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.20306055012874918,
+                "bias": -0.008092311017989087,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.34140674782535985,
+                "bias": -0.0053927109704238075,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.39577647155982343,
+                "bias": 0.00857478141762068,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.37083675639336905,
+            "vector_wind_rmse_m_s": 0.5226830614990587,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 983.0274218750001,
+                "target": 981.0578125000001,
+                "error": 1.9696093750000045,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.697620391845703,
+                "target": 27.406187057495117,
+                "error": -3.708566665649414,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      }
+    },
+    "WeatherDCAE-14M": {
+      "texas_freeze": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.025477295264494465,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.4549725069154602,
+                "bias": -0.09915686212011926,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.554375063625299,
+                "bias": 0.09401013563067778,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 21.70647992139849,
+                "bias": -12.878675553724946,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 246.41583251953125,
+                "target": 245.85208129882812,
+                "error": 0.563751220703125,
+                "units": "K"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.03467940512516304,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.5574014561284348,
+                "bias": 0.017451325867757828,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.7871286620474844,
+                "bias": 0.1719117667009607,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 27.733228321382967,
+                "bias": -9.078770315314783,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 245.87510681152344,
+                "target": 245.0894775390625,
+                "error": 0.7856292724609375,
+                "units": "K"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.04297880181718577,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.7017910177126662,
+                "bias": -0.1194874484481066,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.9622713439873611,
+                "bias": 0.15953049183892726,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 38.61979954102811,
+                "bias": -9.439826013351162,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 245.02444458007812,
+                "target": 244.6626739501953,
+                "error": 0.3617706298828125,
+                "units": "K"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.042050343105772006,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.6799877953522699,
+                "bias": 0.37240972244479265,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.9436157561800372,
+                "bias": 0.2573983539102889,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 38.17528380899514,
+                "bias": 11.91491560169762,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 243.94171142578125,
+                "target": 244.2926483154297,
+                "error": -0.3509368896484375,
+                "units": "K"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.03150206559379264,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.3490613231770725,
+                "bias": 0.04738373579565877,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.7560980228581585,
+                "bias": 0.09356262095697467,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 32.50735400960386,
+                "bias": 8.44499804568742,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "minimum_t2m": {
+                "prediction": 243.08949279785156,
+                "target": 243.45370483398438,
+                "error": -0.3642120361328125,
+                "units": "K"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_surigae": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.08696386707648872,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.25706957484426485,
+                "bias": -0.005414635107717115,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.3582306074420896,
+                "bias": -0.03428928255635368,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.3613854236480404,
+                "bias": -0.027259657507977743,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.29265758353803134,
+            "vector_wind_rmse_m_s": 0.5088502649234059,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 976.6897656250001,
+                "target": 976.01390625,
+                "error": 0.6758593750000728,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 27.607044219970703,
+                "target": 27.521766662597656,
+                "error": 0.08527755737304688,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.13448171038960594,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.3553652859574513,
+                "bias": -0.11836650040541549,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5245611981221233,
+                "bias": -0.031247975257527472,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5694992558945439,
+                "bias": -0.024739804406420558,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.42557756516077194,
+            "vector_wind_rmse_m_s": 0.7742698837405345,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 979.2159375,
+                "target": 975.91,
+                "error": 3.3059375000000273,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 26.072751998901367,
+                "target": 27.618371963500977,
+                "error": -1.5456199645996094,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.15156605963961567,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.3304302917997041,
+                "bias": 0.0525384989171545,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.572596652910064,
+                "bias": -0.05374623192073577,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.6496193914993712,
+                "bias": -0.013963440182554033,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5167440741268347,
+            "vector_wind_rmse_m_s": 0.8659516598651348,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 980.775078125,
+                "target": 973.73140625,
+                "error": 7.043671875000086,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 26.146987915039062,
+                "target": 27.62281036376953,
+                "error": -1.4758224487304688,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.13939613896202133,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.32393047607433906,
+                "bias": 0.00856557267416188,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.529196566533733,
+                "bias": -0.0001746543268484039,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5960825669927663,
+                "bias": -0.004405668593313694,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.48335699545253735,
+            "vector_wind_rmse_m_s": 0.7970968766845355,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 979.816015625,
+                "target": 973.72109375,
+                "error": 6.0949218749999545,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 26.15377426147461,
+                "target": 26.032766342163086,
+                "error": 0.12100791931152344,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.08840481158517362,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.21178695792605934,
+                "bias": 0.030276797960486435,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.346047817785848,
+                "bias": 0.006594116661764761,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.3748247588406698,
+                "bias": 0.002972715485924582,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.3055990484857502,
+            "vector_wind_rmse_m_s": 0.5101398745426511,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 977.255625,
+                "target": 974.226328125,
+                "error": 3.029296875,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 26.777671813964844,
+                "target": 25.769330978393555,
+                "error": 1.008340835571289,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "pacific_northwest_heatwave": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.01857291763592031,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.45956947235561596,
+                "bias": 0.06755693210996716,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.32290026870765975,
+                "bias": 0.036876131792704124,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 13.874276863441885,
+                "bias": -6.100710424738966,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 315.2320861816406,
+                "target": 315.5768127441406,
+                "error": -0.3447265625,
+                "units": "K"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.03662845534874238,
+            "per_channel": {
+              "t2m": {
+                "rmse": 1.0319449492343145,
+                "bias": -0.5452512016341599,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.5223455119860352,
+                "bias": -0.04727892509796543,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 20.72444648188775,
+                "bias": 3.4332459494700287,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 316.4659423828125,
+                "target": 317.30133056640625,
+                "error": -0.83538818359375,
+                "units": "K"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.0313403444920481,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.7071637369359608,
+                "bias": 0.21299626880809433,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.6078267810306491,
+                "bias": -0.06057213335749909,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 18.6909244542093,
+                "bias": 7.201399400321804,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 318.04254150390625,
+                "target": 318.45623779296875,
+                "error": -0.4136962890625,
+                "units": "K"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.02831573193648438,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.5954669437841752,
+                "bias": 0.010382267623621915,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.570615248575098,
+                "bias": 0.09807307639370039,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 21.329512322580303,
+                "bias": 11.607630067790346,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 318.83087158203125,
+                "target": 318.8280029296875,
+                "error": 0.00286865234375,
+                "units": "K"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.01835723961906532,
+            "per_channel": {
+              "t2m": {
+                "rmse": 0.40381719231890667,
+                "bias": 0.040179476315133696,
+                "units": "K"
+              },
+              "T850": {
+                "rmse": 0.3390686005661548,
+                "bias": 0.05396131901732043,
+                "units": "K"
+              },
+              "Z700": {
+                "rmse": 21.08406296320847,
+                "bias": 11.504641383159981,
+                "units": "m s-1"
+              }
+            },
+            "extremes": {
+              "maximum_t2m": {
+                "prediction": 319.4184875488281,
+                "target": 319.4089660644531,
+                "error": 0.009521484375,
+                "units": "K"
+              }
+            }
+          }
+        }
+      },
+      "hurricane_ida": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.10520745637927138,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.31984241391467927,
+                "bias": -0.09536014826028318,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.46585587456459665,
+                "bias": 0.03781332433454919,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.4260842036677241,
+                "bias": 0.0018276257759780434,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.40854821208268316,
+            "vector_wind_rmse_m_s": 0.6313235660123212,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 990.10015625,
+                "target": 987.063984375,
+                "error": 3.0361718750000364,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 28.64856719970703,
+                "target": 27.257776260375977,
+                "error": 1.3907909393310547,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.16651060650249713,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.4181139454006349,
+                "bias": -0.12966875671673278,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.6906583635118312,
+                "bias": 0.09695976325536752,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.6934763682500904,
+                "bias": -0.10144348131302144,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.679573018654495,
+            "vector_wind_rmse_m_s": 0.978733084223098,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 992.395234375,
+                "target": 985.05875,
+                "error": 7.336484374999941,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 27.207876205444336,
+                "target": 28.324373245239258,
+                "error": -1.1164970397949219,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.16160937234023343,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.43387967983594034,
+                "bias": -0.012737264168133852,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.7292433852444855,
+                "bias": 0.07545326236902554,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.6522566986594099,
+                "bias": -0.0698477737893884,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.6695611322414816,
+            "vector_wind_rmse_m_s": 0.9783837259894058,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 992.78734375,
+                "target": 984.7129687500001,
+                "error": 8.074374999999918,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 25.852989196777344,
+                "target": 30.158079147338867,
+                "error": -4.305089950561523,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.14490623970823907,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.41938919547810594,
+                "bias": -0.20418071777120347,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.6172167252249837,
+                "bias": 0.05299151131252481,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5960478228329209,
+                "bias": -0.030316842913994967,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.577928010269817,
+            "vector_wind_rmse_m_s": 0.8580381663318338,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 990.4297656250001,
+                "target": 987.076875,
+                "error": 3.3528906250001,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.217769622802734,
+                "target": 29.36658477783203,
+                "error": -6.148815155029297,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.08927022544108852,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.2562527033422507,
+                "bias": -0.07085339259669561,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.36487796214434653,
+                "bias": 0.02567314093471397,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.37219215175712345,
+                "bias": -0.009679355851816918,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.3547463420409415,
+            "vector_wind_rmse_m_s": 0.5212129358295204,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 987.012265625,
+                "target": 985.79921875,
+                "error": 1.2130468750000318,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 24.784442901611328,
+                "target": 29.03589630126953,
+                "error": -4.251453399658203,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_chanthu": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.0852855442867214,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.19924005684039706,
+                "bias": -0.0019368649901894295,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.34841693259882106,
+                "bias": 0.0013742467298209163,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.35739519532140746,
+                "bias": 0.009187975879204571,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.31283061496154935,
+            "vector_wind_rmse_m_s": 0.4991249191342953,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 995.1428906250001,
+                "target": 993.807109375,
+                "error": 1.3357812500000819,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 21.715702056884766,
+                "target": 20.71221923828125,
+                "error": 1.0034828186035156,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.1267894160441446,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.2684023866701422,
+                "bias": -0.03371693741331569,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5312285760437981,
+                "bias": 0.018067470015526457,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5280822994150223,
+                "bias": 0.003410327833062492,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.4742841349148963,
+            "vector_wind_rmse_m_s": 0.7490492085545662,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 995.403203125,
+                "target": 993.791484375,
+                "error": 1.6117187500000227,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 22.16666603088379,
+                "target": 20.649721145629883,
+                "error": 1.5169448852539062,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.13949233344183612,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.2907281870955211,
+                "bias": 0.153047043546192,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.603308390321696,
+                "bias": -0.007564437776073502,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5749982340545623,
+                "bias": 0.028240345296363545,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5468810523039005,
+            "vector_wind_rmse_m_s": 0.8334290510944199,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 995.858671875,
+                "target": 993.5517187500001,
+                "error": 2.30695312499995,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.120803833007812,
+                "target": 20.004308700561523,
+                "error": 3.116495132446289,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.12704771716630797,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.22771373042709042,
+                "bias": 0.06233626582599751,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5797689280831327,
+                "bias": 0.041431664845074566,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.5143595765966757,
+                "bias": 0.003185642876385096,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.5134099302995151,
+            "vector_wind_rmse_m_s": 0.7750469569305941,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 994.7171875,
+                "target": 993.3605468750001,
+                "error": 1.3566406249999545,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 21.29659080505371,
+                "target": 19.750999450683594,
+                "error": 1.5455913543701172,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.08323245746394313,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.1874951623997337,
+                "bias": 0.0506469186676587,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.38256737021130593,
+                "bias": 0.007402970985375734,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.3347924568600197,
+                "bias": 0.02619026383644312,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.3258927832769576,
+            "vector_wind_rmse_m_s": 0.5083736639839046,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 993.055546875,
+                "target": 991.47546875,
+                "error": 1.580078125,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 19.746784210205078,
+                "target": 19.82477378845215,
+                "error": -0.07798957824707031,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      },
+      "typhoon_rai": {
+        "per_tau": {
+          "1": {
+            "normalized_rmse": 0.1091485090630423,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.31643483885341295,
+                "bias": -0.016651319800445288,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.3823491344581584,
+                "bias": -0.015104513940229134,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.4729697817379947,
+                "bias": -0.02300428713710805,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.350713216266846,
+            "vector_wind_rmse_m_s": 0.6081868762323543,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 988.4996875,
+                "target": 986.0653906250001,
+                "error": 2.4342968749999727,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.18614387512207,
+                "target": 24.936941146850586,
+                "error": -1.7507972717285156,
+                "units": "m s-1"
+              }
+            }
+          },
+          "2": {
+            "normalized_rmse": 0.18277800748588277,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.4837622993228194,
+                "bias": -0.08090584309890582,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.5962578252276952,
+                "bias": -0.003852699258512711,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.8046400959723033,
+                "bias": -0.017266155966723214,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.6013849629721303,
+            "vector_wind_rmse_m_s": 1.0014834337935306,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 990.5853125,
+                "target": 983.7534375,
+                "error": 6.831874999999968,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.115203857421875,
+                "target": 26.26561164855957,
+                "error": -3.1504077911376953,
+                "units": "m s-1"
+              }
+            }
+          },
+          "3": {
+            "normalized_rmse": 0.20474670526896613,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.4939455038344655,
+                "bias": -0.03131134462072375,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.7134333366251866,
+                "bias": 0.006973968896892436,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.8919709800439951,
+                "bias": 0.008225822637980492,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.7319521895254945,
+            "vector_wind_rmse_m_s": 1.1421905911181252,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 991.05859375,
+                "target": 983.8484375,
+                "error": 7.2101562499999545,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 22.432340621948242,
+                "target": 26.756322860717773,
+                "error": -4.323982238769531,
+                "units": "m s-1"
+              }
+            }
+          },
+          "4": {
+            "normalized_rmse": 0.1795547001767277,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.480828728662131,
+                "bias": -0.11469023275184004,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.7111696559594243,
+                "bias": 0.022425682249888453,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.7569437650986899,
+                "bias": 0.004866335146317523,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.6846704664427481,
+            "vector_wind_rmse_m_s": 1.0386174146065994,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 987.8625000000001,
+                "target": 983.36171875,
+                "error": 4.5007812500000455,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 20.735885620117188,
+                "target": 26.732704162597656,
+                "error": -5.996818542480469,
+                "units": "m s-1"
+              }
+            }
+          },
+          "5": {
+            "normalized_rmse": 0.10440377735307528,
+            "per_channel": {
+              "mslp": {
+                "rmse": 0.2864230750007573,
+                "bias": 0.025409979188243188,
+                "units": "hPa"
+              },
+              "u10": {
+                "rmse": 0.4613710518133294,
+                "bias": 0.005322042548856705,
+                "units": "m s-1"
+              },
+              "v10": {
+                "rmse": 0.4245195342709685,
+                "bias": 0.019239378077502357,
+                "units": "m s-1"
+              }
+            },
+            "wind_speed_rmse_m_s": 0.3866995012935667,
+            "vector_wind_rmse_m_s": 0.6269609902367774,
+            "extremes": {
+              "minimum_mslp": {
+                "prediction": 984.503828125,
+                "target": 981.0578125000001,
+                "error": 3.4460156249999727,
+                "units": "hPa"
+              },
+              "maximum_surface_wind": {
+                "prediction": 23.00587272644043,
+                "target": 27.406187057495117,
+                "error": -4.4003143310546875,
+                "units": "m s-1"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "models": {
+      "Linear": {
+        "mean_normalized_rmse": 0.14366440893129143,
+        "mean_wind_speed_rmse_m_s": 0.7361245108214385
+      },
+      "WeatherBridge": {
+        "mean_normalized_rmse": 0.08716773675021897,
+        "mean_wind_speed_rmse_m_s": 0.44939512258916353
+      },
+      "WeatherDCAE-14M": {
+        "mean_normalized_rmse": 0.09735660852378501,
+        "mean_wind_speed_rmse_m_s": 0.4821505417155474
+      }
+    },
+    "event_winners_normalized_rmse": {
+      "texas_freeze": {
+        "winner": "WeatherBridge",
+        "mean_by_model": {
+          "Linear": 0.03917607146545391,
+          "WeatherBridge": 0.03429396567743616,
+          "WeatherDCAE-14M": 0.03533758218128159
+        }
+      },
+      "typhoon_surigae": {
+        "winner": "WeatherBridge",
+        "mean_by_model": {
+          "Linear": 0.17535581938931438,
+          "WeatherBridge": 0.10613332999581662,
+          "WeatherDCAE-14M": 0.12016251753058108
+        }
+      },
+      "pacific_northwest_heatwave": {
+        "winner": "WeatherBridge",
+        "mean_by_model": {
+          "Linear": 0.03978331074569276,
+          "WeatherBridge": 0.02648112814321398,
+          "WeatherDCAE-14M": 0.026642937806452098
+        }
+      },
+      "hurricane_ida": {
+        "winner": "WeatherBridge",
+        "mean_by_model": {
+          "Linear": 0.19738475031793729,
+          "WeatherBridge": 0.1276127606737993,
+          "WeatherDCAE-14M": 0.1335007800742659
+        }
+      },
+      "typhoon_chanthu": {
+        "winner": "WeatherBridge",
+        "mean_by_model": {
+          "Linear": 0.17265166069390453,
+          "WeatherBridge": 0.10033083531863515,
+          "WeatherDCAE-14M": 0.11236949368059064
+        }
+      },
+      "typhoon_rai": {
+        "winner": "WeatherBridge",
+        "mean_by_model": {
+          "Linear": 0.23763484097544577,
+          "WeatherBridge": 0.1281544006924126,
+          "WeatherDCAE-14M": 0.15612633986953883
+        }
+      }
+    }
+  }
+}

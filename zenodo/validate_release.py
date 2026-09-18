@@ -13,9 +13,10 @@ from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "zenodo" / "dist"
-VERSION = "1.0.0"
+VERSION = json.loads((ROOT / "zenodo" / "code_metadata.json").read_text())["metadata"]["version"]
+MODEL_VERSION = json.loads((ROOT / "weatherbridge-release" / "zenodo_metadata.json").read_text())["metadata"]["version"]
 SOURCE = DIST / f"weatherbridge-source-v{VERSION}.tar.gz"
-MODELS = DIST / f"weatherbridge-models-v{VERSION}.tar.gz"
+MODELS = DIST / f"weatherbridge-models-v{MODEL_VERSION}.tar.gz"
 MAX_ZENODO_FILE_BYTES = 50_000_000_000
 
 REQUIRED_SOURCE = {
@@ -72,13 +73,13 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def validate_metadata(path: Path, expected_license: str) -> None:
+def validate_metadata(path: Path, expected_license: str, version: str = VERSION) -> None:
     payload = json.loads(path.read_text())["metadata"]
     required = {"title", "upload_type", "description", "creators", "version", "license"}
     missing = required - payload.keys()
     assert not missing, f"{path}: missing metadata keys {sorted(missing)}"
     assert payload["upload_type"] == "software"
-    assert payload["version"] == VERSION
+    assert payload["version"] == version
     assert payload["license"] == expected_license
     assert len(payload["creators"]) == 5
 
@@ -184,7 +185,7 @@ def main() -> None:
         source_prefix,
     )
     if not args.source_only:
-        validate_metadata(ROOT / "weatherbridge-release" / "zenodo_metadata.json", "MIT")
+        validate_metadata(ROOT / "weatherbridge-release" / "zenodo_metadata.json", "MIT", MODEL_VERSION)
         validate_archive(models, REQUIRED_MODELS, "MANIFEST.sha256")
     paths = (source,) if args.source_only else (source, models)
     validate_external_checksums(args.dist, paths)

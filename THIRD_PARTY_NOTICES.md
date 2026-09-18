@@ -3,11 +3,6 @@
 The Apache-2.0 license in the repository root applies to original
 WeatherBridge project code unless a file or subdirectory states otherwise.
 
-The adapted AMT components under
-`weather_time_interp/model/amt_upstream/` retain their upstream Creative
-Commons Attribution-NonCommercial 4.0 International license. See the nested
-`LICENSE` file in that directory. They are not relicensed under Apache-2.0.
-
 Other bundled third-party components retain their own copyright notices and
 license terms.
 

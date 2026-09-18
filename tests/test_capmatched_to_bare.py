@@ -6,24 +6,14 @@ from tools.eval.capmatched_loader import (
 from tools.train.capmatched_to_bare import checkpoint_arch_meta, resolve_bare_arch
 
 
-def test_public_weatherbridge_bare_alias_selects_detail() -> None:
+def test_public_weatherbridge_bare_aliases_select_paper_variants() -> None:
     assert resolve_bare_arch("weatherbridge") == "flow_pp3"
     assert resolve_bare_arch("weatherbridge_detail") == "flow_pp3_detail"
     assert resolve_bare_arch("weatherbridge_flow_spectral") == "flow_pp3"
-    assert resolve_bare_arch("weatherbridge_fm_detail") == "flow_pp3_detail_fm"
-    assert (
-        resolve_bare_arch("weatherbridge_universal_detail")
-        == "flow_universal_detail"
-    )
-    assert (
-        resolve_bare_arch("weatherbridge_universal_latent")
-        == "flow_universal_latent"
-    )
     assert (
         resolve_bare_arch("weatherbridge_universal_latent_refine")
         == "flow_universal_latent_refine"
     )
-    assert resolve_bare_arch("weatherbridge_universal_fm") == "flow_universal_fm"
 
 
 def test_legacy_single_block_decoder_keys_are_normalized() -> None:
@@ -144,39 +134,3 @@ def test_flow_matching_bare_metadata_separates_universal_controls() -> None:
     refine = checkpoint_arch_meta("flow_universal_latent_refine", {})
     assert refine["kwargs"]["shared_field_controls"] is True
     assert refine["kwargs"]["decoder_blocks_per_level"] == 2
-
-
-def test_weather_amt_bare_metadata_preserves_all_pairs_variant() -> None:
-    meta = checkpoint_arch_meta("amt", {})
-
-    assert meta["cls"] == "WeatherAMTModel"
-    assert meta["kwargs"]["n_static_features"] == 3
-    assert meta["kwargs"]["corr_levels"] == 4
-    assert meta["kwargs"]["corr_radius"] == 3
-    assert meta["kwargs"]["num_flows"] == 5
-    assert meta["kwargs"]["channels"] == (48, 64, 72, 110)
-    assert meta["kwargs"]["skip_channels"] == 48
-    assert meta["kwargs"]["endpoint_envelope"] is True
-
-
-def test_weather_amt_residual_bare_metadata_preserves_scaffold() -> None:
-    meta = checkpoint_arch_meta("amt_residual", {})
-
-    assert meta["cls"] == "WeatherAMTResidualModel"
-    assert meta["kwargs"]["n_static_features"] == 3
-    assert meta["kwargs"]["corr_levels"] == 4
-    assert meta["kwargs"]["corr_radius"] == 3
-    assert meta["kwargs"]["num_flows"] == 5
-    assert meta["kwargs"]["channels"] == (48, 64, 72, 110)
-    assert meta["kwargs"]["skip_channels"] == 48
-    assert "endpoint_envelope" not in meta["kwargs"]
-
-
-def test_spherical_upr_bare_metadata_is_state_compatible() -> None:
-    meta = checkpoint_arch_meta("upr_spherical_implicit_global_14m", {})
-
-    assert meta["cls"] == "WeatherBridgeUPRSphericalModel"
-    assert meta["kwargs"]["hidden"] == 504
-    assert meta["kwargs"]["n_blocks"] == 10
-    assert meta["kwargs"]["n_flow_modes"] == 3
-    assert meta["kwargs"]["global_tokens"] == 32

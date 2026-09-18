@@ -90,25 +90,12 @@ def forecast_evaluation_source_paths() -> dict[str, Path]:
         "train_capacity_matched_6h.py": (
             repo_root / "tools" / "train" / "train_capacity_matched_6h.py"
         ),
-        "weatherbridge_upr_lite_model.py": (
-            model_root / "weatherbridge_upr_lite_model.py"
-        ),
-        "weatherbridge_upr_scaled_model.py": (
-            model_root / "weatherbridge_upr_scaled_model.py"
-        ),
-        "weatherbridge_upr_spherical_model.py": (
-            model_root / "weatherbridge_upr_spherical_model.py"
-        ),
         "weatherbridge_flow_model.py": (
             model_root / "weatherbridge_flow_model.py"
         ),
-        "weather_amt_model.py": model_root / "weather_amt_model.py",
         "dcae_adaln_model.py": model_root / "dcae_adaln_model.py",
         "dcae_adaln_skip_model.py": (
             model_root / "dcae_adaln_skip_model.py"
-        ),
-        "temporal_expert_router.py": (
-            model_root / "temporal_expert_router.py"
         ),
         "train_atm_vfi_12h_oddskip.py": (
             repo_root / "legacy" / "scripts" / "train_atm_vfi_12h_oddskip.py"

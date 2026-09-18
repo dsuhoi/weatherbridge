@@ -63,7 +63,8 @@ def test_index_hash_binds_order_and_all_columns() -> None:
 def test_anchor_exchange_source_manifest_is_complete() -> None:
     sources = anchor_exchange_evaluation_source_paths()
 
-    assert len(sources) >= 22
+    assert "tools/eval/capmatched_loader.py" in sources
+    assert "weather_time_interp/model/weatherbridge_flow_model.py" in sources
     assert all(path.is_file() for path in sources.values())
     assert "tools/eval/eval_anchor_exchange_consistency.py" in sources
     assert "tools/eval/batch_eval_12h_memmap.py" in sources

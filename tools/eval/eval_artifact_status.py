@@ -70,28 +70,9 @@ def _evaluation_source_paths() -> dict[str, Path]:
         "training_protocol.py": (
             repo_root / "tools" / "train" / "training_protocol.py"
         ),
-        "weatherbridge_upr_lite_model.py": (
-            model_root / "weatherbridge_upr_lite_model.py"
-        ),
-        "weatherbridge_upr_scaled_model.py": (
-            model_root / "weatherbridge_upr_scaled_model.py"
-        ),
-        "weatherbridge_upr_spherical_model.py": (
-            model_root / "weatherbridge_upr_spherical_model.py"
-        ),
         "weatherbridge_flow_model.py": (
             model_root / "weatherbridge_flow_model.py"
         ),
-        "weather_amt_model.py": model_root / "weather_amt_model.py",
-        "amt_feat_enc.py": model_root / "amt_upstream" / "feat_enc.py",
-        "amt_flow_utils.py": (
-            model_root / "amt_upstream" / "flow_utils.py"
-        ),
-        "amt_ifrnet.py": model_root / "amt_upstream" / "ifrnet.py",
-        "amt_multi_flow.py": (
-            model_root / "amt_upstream" / "multi_flow.py"
-        ),
-        "amt_raft.py": model_root / "amt_upstream" / "raft.py",
         "dcae_adaln_model.py": model_root / "dcae_adaln_model.py",
         "dcae_adaln_skip_model.py": (
             model_root / "dcae_adaln_skip_model.py"

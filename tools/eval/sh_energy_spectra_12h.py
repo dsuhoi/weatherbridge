@@ -861,52 +861,7 @@ def main() -> None:
         repo_root
         / "weather_time_interp"
         / "model"
-        / "weatherbridge_upr_lite_model.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "weatherbridge_upr_scaled_model.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "weatherbridge_upr_spherical_model.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
         / "weatherbridge_flow_model.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "local_global_wavelet_bridge_model.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "weather_amt_model.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "amt_upstream"
-        / "feat_enc.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "amt_upstream"
-        / "flow_utils.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "amt_upstream"
-        / "ifrnet.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "amt_upstream"
-        / "multi_flow.py",
-        repo_root
-        / "weather_time_interp"
-        / "model"
-        / "amt_upstream"
-        / "raft.py",
         repo_root
         / "weather_time_interp"
         / "model"

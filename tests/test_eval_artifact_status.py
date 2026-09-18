@@ -6,12 +6,19 @@ from pathlib import Path
 
 import numpy as np
 
-from tools.eval.eval_artifact_status import validate_eval_artifact
+from tools.eval.eval_artifact_status import _evaluation_source_paths, validate_eval_artifact
 from tools.train.training_protocol import memmap_dataset_provenance
 from weather_time_interp.metrics.physical_consistency import (
     DIAGNOSTIC_COMPONENTS,
 )
 from weather_time_interp.normalization import STATIC_FEATURES_3
+
+
+def test_release_evaluation_dependencies_exist() -> None:
+    from tools.eval.batch_eval_forecast_anchor import forecast_evaluation_source_paths
+
+    assert all(path.is_file() for path in _evaluation_source_paths().values())
+    assert all(path.is_file() for path in forecast_evaluation_source_paths().values())
 
 
 def _sha256(path: Path) -> str:

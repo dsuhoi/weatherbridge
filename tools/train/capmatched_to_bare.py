@@ -6,8 +6,8 @@ The capacity-matched trainer wraps each backbone in ``CapMatchedLit``
 ``examples/_bare_loader.load_bare`` and the anchor / downstream eval
 scripts.
 
-  python capmatched_to_bare.py --ckpt exp_wb_mamba_14m_6h/last.ckpt \
-    --arch mamba --out weights/wb_mamba_14m_6h_bare.pt
+  python tools/train/capmatched_to_bare.py --ckpt /data/weatherbridge/last.ckpt \
+    --arch weatherbridge --out /data/weatherbridge_bare.pt
 """
 from __future__ import annotations
 
@@ -22,30 +22,8 @@ import torch
 from tools.eval.capmatched_loader import (
     normalize_weatherbridge_decoder_state_dict,
 )
-from weather_time_interp.model.weatherbridge_upr_lite_model import (
-    UPR_LITE_VARIANTS,
-    upr_lite_variant_kwargs,
-)
-from weather_time_interp.model.weatherbridge_upr_scaled_model import (
-    UPR_SCALED_VARIANTS,
-    upr_scaled_variant_kwargs,
-)
 
 ARCH_META = {
-    "mamba": {
-        "cls": "WeatherBridgeMambaModel",
-        "kwargs": dict(in_channels=24, out_channels=24, n_static_features=3,
-                       hidden=64, n_levels=3, d_state=16, lat_crop=0),
-    },
-    "crossframe": {
-        "cls": "WeatherDCAECrossFrameModel",
-        "kwargs": dict(in_channels=24, out_channels=24, n_static_features=3,
-                       latent_channels=32, attention_head_dim=32,
-                       block_type=("ResBlock", "ResBlock", "EfficientViTBlock"),
-                       qkv_multiscales=((), (), (5,)), lat_crop=-8,
-                       block_out_channels=(128, 128, 256, 256),
-                       layers_per_block=(2, 2, 2)),
-    },
     "wb_vanilla": {
         "cls": "WeatherDCAEAdaLNModel",
         "kwargs": dict(in_channels=24, out_channels=24, n_static_features=3,
@@ -90,35 +68,6 @@ ARCH_META = {
     "atmvfi": {
         "cls": "PixelAttentionVFI",
         "kwargs": dict(in_channels=24, hidden=72, n_levels=3),
-    },
-    "amt": {
-        "cls": "WeatherAMTModel",
-        "kwargs": dict(
-            in_channels=24,
-            out_channels=24,
-            n_static_features=3,
-            corr_radius=3,
-            corr_levels=4,
-            num_flows=5,
-            channels=(48, 64, 72, 110),
-            skip_channels=48,
-            endpoint_envelope=True,
-            max_field_displacement=16.0,
-        ),
-    },
-    "amt_residual": {
-        "cls": "WeatherAMTResidualModel",
-        "kwargs": dict(
-            in_channels=24,
-            out_channels=24,
-            n_static_features=3,
-            corr_radius=3,
-            corr_levels=4,
-            num_flows=5,
-            channels=(48, 64, 72, 110),
-            skip_channels=48,
-            max_field_displacement=16.0,
-        ),
     },
 }
 
@@ -259,38 +208,13 @@ for _arch in (
     ARCH_META[_arch] = _flow_meta(_arch)
 
 
-for _arch in UPR_LITE_VARIANTS:
-    ARCH_META[_arch] = {
-        "cls": "WeatherBridgeUPRLiteModel",
-        "kwargs": upr_lite_variant_kwargs(_arch),
-    }
-
-for _arch in UPR_SCALED_VARIANTS:
-    ARCH_META[_arch] = {
-        "cls": "WeatherBridgeUPRLiteModel",
-        "kwargs": upr_scaled_variant_kwargs(_arch),
-    }
-
-ARCH_META["upr_spherical_implicit_global_14m"] = {
-    "cls": "WeatherBridgeUPRSphericalModel",
-    "kwargs": upr_scaled_variant_kwargs("upr_implicit_global_14m"),
-}
-
-
 ARCH_ALIASES = {
     "weatherbridge": "flow_pp3",
     "weatherbridge_detail": "flow_pp3_detail",
     "weatherbridge_flow_spectral": "flow_pp3",
-    "weatherbridge_fm_detail": "flow_pp3_detail_fm",
-    "weatherbridge_universal_detail": "flow_universal_detail",
-    "weatherbridge_universal_latent": "flow_universal_latent",
     "weatherbridge_universal_latent_refine": "flow_universal_latent_refine",
-    "weatherbridge_universal_pyramid": "upr_universal_latent_q4_10m",
-    "weatherbridge_universal_fm": "flow_universal_fm",
     "weatherdcae": "dcae_14m",
     "pixelattn_vfi": "atmvfi",
-    "weatheramt": "amt",
-    "weatheramt_residual": "amt_residual",
 }
 
 

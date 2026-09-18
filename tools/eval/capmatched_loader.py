@@ -88,38 +88,6 @@ def _build_net_for_checkpoint(
     static_path: str,
 ) -> nn.Module:
     """Build the recorded architecture, including the legacy matched Skip arm."""
-    if arch in {
-        "upr_query_match_14m",
-        "upr_local_corr_14m",
-    }:
-        from weather_time_interp.model.weatherbridge_upr_lite_model import (
-            WeatherBridgeUPRLiteModel,
-        )
-        from weather_time_interp.model.weatherbridge_upr_scaled_model import (
-            upr_scaled_variant_kwargs,
-        )
-
-        return WeatherBridgeUPRLiteModel(
-            **upr_scaled_variant_kwargs(arch)
-        )
-
-    if arch == "amt_residual":
-        from weather_time_interp.model.weather_amt_residual_model import (
-            WeatherAMTResidualModel,
-        )
-
-        return WeatherAMTResidualModel(
-            in_channels=24,
-            out_channels=24,
-            n_static_features=3,
-            corr_radius=3,
-            corr_levels=4,
-            num_flows=5,
-            channels=(48, 64, 72, 110),
-            skip_channels=48,
-            max_field_displacement=16.0,
-        )
-
     if (
         arch == "wb_skip"
         and "encoder.conv_in.weight" in net_state
@@ -262,83 +230,22 @@ def load_capmatched_checkpoint(
 
     static_file = Path(static_path)
     state = ckpt.get("state_dict", ckpt)
-    if arch == "temporal_expert_router":
-        from weather_time_interp.model.temporal_expert_router import (
-            TemporalExpertRouter,
+    net_state = {
+        key.removeprefix("net."): value
+        for key, value in state.items()
+        if key.startswith("net.")
+    }
+    if not net_state:
+        raise ValueError(f"{checkpoint_path}: no 'net.' parameters found")
+    net_state = normalize_weatherbridge_decoder_state_dict(net_state)
+    net = _build_net_for_checkpoint(arch, net_state, str(static_file))
+    missing, unexpected = net.load_state_dict(net_state, strict=False)
+    if missing or unexpected:
+        raise RuntimeError(
+            f"{checkpoint_path}: incompatible state "
+            f"(missing={missing[:5]}, unexpected={unexpected[:5]})"
         )
-
-        expert_metadata = hparams.get("router_experts")
-        route_metadata = hparams.get("router_route_by_tau")
-        if (
-            not isinstance(expert_metadata, dict)
-            or not isinstance(route_metadata, dict)
-        ):
-            raise ValueError(
-                f"{checkpoint_path}: missing temporal-router metadata"
-            )
-        experts: dict[str, nn.Module] = {}
-        for name, metadata in expert_metadata.items():
-            if (
-                not isinstance(name, str)
-                or not isinstance(metadata, dict)
-                or not isinstance(metadata.get("arch"), str)
-            ):
-                raise TypeError(
-                    f"{checkpoint_path}: invalid router expert metadata"
-                )
-            prefix = f"net.experts.{name}."
-            expert_state = {
-                key.removeprefix(prefix): value
-                for key, value in state.items()
-                if key.startswith(prefix)
-            }
-            if not expert_state:
-                raise ValueError(
-                    f"{checkpoint_path}: no state for router expert {name}"
-                )
-            expert_state = normalize_weatherbridge_decoder_state_dict(
-                expert_state
-            )
-            expert = _build_net_for_checkpoint(
-                metadata["arch"],
-                expert_state,
-                str(static_file),
-            )
-            missing, unexpected = expert.load_state_dict(
-                expert_state,
-                strict=False,
-            )
-            if missing or unexpected:
-                raise RuntimeError(
-                    f"{checkpoint_path}: incompatible router expert {name} "
-                    f"(missing={missing[:5]}, unexpected={unexpected[:5]})"
-                )
-            experts[name] = expert
-        net = TemporalExpertRouter(
-            experts,
-            {
-                int(hour): str(name)
-                for hour, name in route_metadata.items()
-            },
-            delta_t=float(hparams.get("delta_t", 6.0)),
-        )
-    else:
-        net_state = {
-            key.removeprefix("net."): value
-            for key, value in state.items()
-            if key.startswith("net.")
-        }
-        if not net_state:
-            raise ValueError(f"{checkpoint_path}: no 'net.' parameters found")
-        net_state = normalize_weatherbridge_decoder_state_dict(net_state)
-        net = _build_net_for_checkpoint(arch, net_state, str(static_file))
-        missing, unexpected = net.load_state_dict(net_state, strict=False)
-        if missing or unexpected:
-            raise RuntimeError(
-                f"{checkpoint_path}: incompatible state "
-                f"(missing={missing[:5]}, unexpected={unexpected[:5]})"
-            )
-        _configure_inference_ablations(net)
+    _configure_inference_ablations(net)
 
     static = torch.load(static_file, map_location="cpu", weights_only=False)
     model = CapMatchedInference(

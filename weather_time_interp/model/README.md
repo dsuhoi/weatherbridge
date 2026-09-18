@@ -22,5 +22,6 @@ with shared weights before cross-frame attention.
 S-DYff and ModAFNO are adapted to this study's fields, grid and interpolation
 task. Their results do not reproduce the original forecasting benchmarks.
 
-Other files contain ablations and development variants. See the manuscript's
-architecture and training tables for the evaluated configurations.
+Other retained files provide shared blocks, checkpoint compatibility and the
+paper's ablations. The matched trainer exposes the paper architectures and
+transport controls; separate exploratory model families are not distributed.

@@ -257,7 +257,12 @@ def test_region_model_parser_is_strict_and_environment_is_scoped(
 def test_region_source_manifest_contains_existing_dependencies() -> None:
     sources = region_season_evaluation_source_paths()
 
-    assert len(sources) >= 20
+    assert {
+        "tools/eval/capmatched_loader.py",
+        "tools/train/train_capacity_matched_6h.py",
+        "weather_time_interp/model/weatherbridge_flow_model.py",
+        "weather_time_interp/model/dcae_adaln_model.py",
+    } <= set(sources)
     assert all(path.is_file() for path in sources.values())
     assert "weather_time_interp/memmap_dataset.py" in sources
     assert "legacy/scripts/train_atm_vfi_12h_oddskip.py" in sources

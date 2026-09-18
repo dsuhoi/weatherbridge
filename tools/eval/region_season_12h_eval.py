@@ -147,47 +147,14 @@ def region_season_evaluation_source_paths() -> dict[str, Path]:
         "weather_time_interp/normalization.py": (
             repo_root / "weather_time_interp" / "normalization.py"
         ),
-        "weather_time_interp/model/weatherbridge_upr_lite_model.py": (
-            model_root / "weatherbridge_upr_lite_model.py"
-        ),
-        "weather_time_interp/model/weatherbridge_upr_scaled_model.py": (
-            model_root / "weatherbridge_upr_scaled_model.py"
-        ),
-        "weather_time_interp/model/weatherbridge_upr_spherical_model.py": (
-            model_root / "weatherbridge_upr_spherical_model.py"
-        ),
         "weather_time_interp/model/weatherbridge_flow_model.py": (
             model_root / "weatherbridge_flow_model.py"
-        ),
-        "weather_time_interp/model/weather_amt_model.py": (
-            model_root / "weather_amt_model.py"
-        ),
-        "weather_time_interp/model/weather_amt_residual_model.py": (
-            model_root / "weather_amt_residual_model.py"
-        ),
-        "weather_time_interp/model/temporal_expert_router.py": (
-            model_root / "temporal_expert_router.py"
         ),
         "weather_time_interp/model/dcae_adaln_model.py": (
             model_root / "dcae_adaln_model.py"
         ),
         "weather_time_interp/model/dcae_adaln_skip_model.py": (
             model_root / "dcae_adaln_skip_model.py"
-        ),
-        "weather_time_interp/model/amt_upstream/feat_enc.py": (
-            model_root / "amt_upstream" / "feat_enc.py"
-        ),
-        "weather_time_interp/model/amt_upstream/flow_utils.py": (
-            model_root / "amt_upstream" / "flow_utils.py"
-        ),
-        "weather_time_interp/model/amt_upstream/ifrnet.py": (
-            model_root / "amt_upstream" / "ifrnet.py"
-        ),
-        "weather_time_interp/model/amt_upstream/multi_flow.py": (
-            model_root / "amt_upstream" / "multi_flow.py"
-        ),
-        "weather_time_interp/model/amt_upstream/raft.py": (
-            model_root / "amt_upstream" / "raft.py"
         ),
         "legacy/scripts/train_atm_vfi_12h_oddskip.py": (
             repo_root

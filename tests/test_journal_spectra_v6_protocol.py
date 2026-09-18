@@ -229,7 +229,9 @@ def test_architecture_figure_matches_weatherbridge_path() -> None:
     for label in (
         "Three-scale lat--lon U-Net",
         "Encoder $E_1$",
-        "Decoder $D_2$",
+        "Decoder $1/4$ res.",
+        "Decoder $1/2$ res.",
+        "Decoder full res.",
         "Conv block",
         "Skip connection",
         "Anchor transport",

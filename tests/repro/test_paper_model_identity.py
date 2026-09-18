@@ -210,15 +210,6 @@ def test_paper_uses_canonical_model_names() -> None:
     assert "flow\\_pp3" not in code_availability
 
 
-def test_production_manifest_uses_canonical_model_name() -> None:
-    source = (
-        ROOT / "production" / "weatherbridge_app" / "worker.py"
-    ).read_text()
-
-    assert '"model": "WeatherBridge"' in source
-    assert "WeatherBridge-Detail" not in source
-
-
 def test_paper_uses_published_dcae_reference() -> None:
     references = (ROOT / "paper" / "references.bib").read_text()
     entry = references.split("@inproceedings{cai2024dcae,", 1)[1].split("\n}", 1)[0]

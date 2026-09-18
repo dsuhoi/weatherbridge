@@ -56,9 +56,18 @@ training tables and metric manifests.
 The generic Hydra recipes in `conf/` include earlier experiments. Their
 PixelAttn-VFI and WeatherDCAE recipes differ from the paper's matched presets.
 
+## Repository scope
+
+The release retains the paper models, ablations, evaluation tools and figure
+inputs. Separate UPR, AMT, Mamba, wavelet and latent-VFI experiments, search
+queues and the web application have been removed. Historical trainer and
+model snapshots under `legacy/` are retained for checkpoint provenance;
+they are not additional models in the comparison. Shared trainer options
+remain where removing them would change the code used by the paper runs.
+
 ## Data and weights
 
-The [code and weights snapshot](https://github.com/dsuhoi/weatherbridge/tree/weights-v1.0.0)
+The [code and weights snapshot](https://github.com/dsuhoi/weatherbridge/tree/v1.0.1)
 contains seven checkpoints through Git LFS:
 WeatherBridge at 6 h and 12 h, and five 6 h comparators, with normalization,
 static fields and one ERA5 test window. Other 12 h comparators, full-query

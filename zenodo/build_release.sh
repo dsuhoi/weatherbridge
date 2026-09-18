@@ -7,7 +7,8 @@ OUT="${OUT_DIR:-$ROOT/zenodo/dist}"
 PREFIX="weatherbridge-source-v${VERSION}"
 SOURCE_ARCHIVE="$OUT/${PREFIX}.tar.gz"
 MODEL_RELEASE="$ROOT/weatherbridge-release"
-MODEL_ARCHIVE="$MODEL_RELEASE/dist/weatherbridge-models-v${VERSION}.tar.gz"
+MODEL_VERSION="$(sed -n 's/^version = "\(.*\)"/\1/p' "$MODEL_RELEASE/pyproject.toml" | head -1)"
+MODEL_ARCHIVE="$MODEL_RELEASE/dist/weatherbridge-models-v${MODEL_VERSION}.tar.gz"
 
 if [[ -z "$VERSION" ]]; then
   printf 'Cannot read version from CITATION.cff\n' >&2
@@ -36,7 +37,7 @@ git -C "$ROOT" ls-files --cached --others --exclude-standard | while IFS= read -
     .dockerignore|.gitignore|CITATION.cff|LICENSE|Makefile|PROJECT_MAP.md|THIRD_PARTY_NOTICES.md|pyproject.toml|uv.lock|requirements-hydra.txt|requirements-publication.txt|dataset.py|eval.py|evaluate_baselines.py|train.py|trainer.py|trainer_weather_hermite.py)
       printf '%s\n' "$path"
       ;;
-    LICENSES/*|conf/*|data/*|demo/*.py|demo/*.json|demo/requirements.txt|examples/*|latent_vfi/*|legacy/*|production/*|repro/*|scripts/*|tests/*|tools/*|weather_time_interp/*|zenodo/*|weatherbridge-release/*)
+    LICENSES/*|conf/*|data/*|demo/*.py|demo/*.json|examples/*|legacy/*|repro/*|scripts/*|tests/*|tools/*|weather_time_interp/*|zenodo/*|weatherbridge-release/*)
       case "$path" in
         zenodo/dist/*|weatherbridge-release/dist/*|weatherbridge-release/weights/*.pt|weatherbridge-release/data/sample_era5_2020070100.npz|*.pyc|*/__pycache__/*|*/.pytest_cache/*|*/.ruff_cache/*)
           ;;

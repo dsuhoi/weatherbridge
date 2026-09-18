@@ -1,10 +1,8 @@
 """Matched-protocol interpolation trainer for WeatherBridge ablations.
 
-All architectures use the same recipe (LR, batch size, epochs, data,
-tau sampling, latitude-weighted reconstruction loss, and validation
-protocol). The established baselines are approximately 14M parameters;
-UPR-Lite is an explicit sub-2M efficiency family whose parameter count and
-latency are reported as separate Pareto objectives.
+The paper presets set the data, query hours, update budget and loss for
+WeatherBridge, WeatherDCAE-14M and PixelAttn-VFI. The remaining architecture
+flags cover the transport ablations and HRES adaptation controls.
 
 Public CLI names:
 
@@ -50,54 +48,15 @@ from weather_time_interp.normalization import file_provenance
 
 CANONICAL_ARCH_NAMES = {
     "dcae_14m": "WeatherDCAE",
-    "dcae_fm_14m": "WeatherDCAE-FM",
-    "dcae_fm_control_14m": "WeatherDCAE-FM-Control",
     "wb_vanilla": "WeatherDCAE",
     "wb_skip": "WeatherDCAE-Skip",
     "atmvfi": "PixelAttn-VFI",
-    "amt": "WeatherAMT-L",
-    "amt_residual": "WeatherAMT-Residual-L",
     "flow_pp3": "WeatherBridge",
     "flow_pp3_hres_aug": "WeatherBridge-HRES-FEA",
     "flow_pp3_hres_residual": "WeatherBridge-HRES-Residual",
     "flow_pp3_nodiff": "WeatherBridge-NoDiff",
-    "flow_pp3_spherical": "WeatherBridge-Spherical",
-    "flow_pp3_multiband": "WeatherBridge-Multiband",
     "flow_pp3_detail": "Legacy Detail Ablation",
-    "flow_pp3_detail_fm": "WeatherBridge-FM-Detail",
-    "flow_universal_detail": "WeatherBridge-Universal-Detail",
-    "flow_universal_latent": "WeatherBridge-Universal-Latent",
     "flow_universal_latent_refine": "WeatherBridge-Universal-Latent-Refine",
-    "flow_universal_content_refine": "WeatherBridge-Universal-Content-Refine",
-    "flow_universal_pareto_refine": "WeatherBridge-Universal-Pareto-Refine",
-    "flow_universal_fm": "WeatherBridge-Universal-FM",
-    "flow_pp3_compact_l": "WeatherBridge-PP3-Compact-L",
-    "flow_msf_pareto_l": "WeatherBridge-MSF-L",
-    "flow_geo_msf_l": "WeatherBridge-GeoMSF-L",
-    "flow_spherical_ep": "WeatherBridge-Spherical-EP",
-    "flow_compact_vp3": "WeatherBridge-Compact-VP3",
-    "flow_compact_vp3_m": "WeatherBridge-Compact-VP3-M",
-    "flow_compact_vp3_l": "WeatherBridge-Compact-VP3-L",
-    "flow_compact_hermite_l": "WeatherBridge-Compact-Hermite-L",
-    "flow_compact_lagrange_l": "WeatherBridge-Compact-Lagrange-L",
-    "upr_lite": "WeatherBridge-UPR-Lite",
-    "upr_lite_lap": "WeatherBridge-UPR-Lite-Lap",
-    "upr_lite_column": "WeatherBridge-UPR-Lite-Column",
-    "upr_lite_continuous": "WeatherBridge-UPR-Lite-Continuous",
-    "upr_lite_continuous_m": "WeatherBridge-UPR-Lite-Continuous-M",
-    "upr_lite_implicit_global": "WeatherBridge-UPR-Lite-Implicit-Global",
-    "upr_lite_implicit_global_q4": "WeatherBridge-UPR-Lite-Implicit-Global-Q4",
-    "upr_implicit_global_14m": "WeatherBridge-UPR-Implicit-Global-14M",
-    "upr_endpoint_implicit_global_14m": (
-        "WeatherBridge-UPR-Endpoint-Implicit-Global-14M"
-    ),
-    "upr_local_corr_14m": "WeatherBridge-UPR-LocalCorr-14M",
-    "upr_query_match_14m": "WeatherBridge-UPR-QueryMatch-14M",
-    "upr_universal_latent_q4_10m": "WeatherBridge-Universal-Pyramid-9.5M",
-    "upr_spherical_implicit_global_14m": (
-        "WeatherBridge-UPR-Spherical-Implicit-Global-14M"
-    ),
-    "lg_wavelet_10m": "Local-Global Wavelet Bridge-10M",
 }
 
 FLOW_COMPACT_ARCHES = {
@@ -251,19 +210,9 @@ PAPER_CHANNEL_NAMES = tuple(
 
 ARCH_ALIASES = {
     "weatherbridge": "flow_pp3",
-    "weatherbridge_universal_detail": "flow_universal_detail",
-    "weatherbridge_universal_latent": "flow_universal_latent",
     "weatherbridge_universal_latent_refine": "flow_universal_latent_refine",
-    "weatherbridge_universal_content_refine": "flow_universal_content_refine",
-    "weatherbridge_universal_pareto_refine": "flow_universal_pareto_refine",
-    "weatherbridge_universal_pyramid": "upr_universal_latent_q4_10m",
-    "weatherbridge_universal_fm": "flow_universal_fm",
     "weatherdcae": "dcae_14m",
-    "weatherdcae_fm": "dcae_fm_14m",
-    "weatherdcae_fm_control": "dcae_fm_control_14m",
     "pixelattn_vfi": "atmvfi",
-    "weatheramt": "amt",
-    "weatheramt_residual": "amt_residual",
 }
 
 ARCH_CLI_CHOICES = tuple(
@@ -271,15 +220,12 @@ ARCH_CLI_CHOICES = tuple(
         {
             *CANONICAL_ARCH_NAMES,
             *ARCH_ALIASES,
-            "crossframe",
-            "mamba",
             "flow",
             "flow_noskip",
             "flow_ungated",
             "flow_accel",
             "flow_pp",
             "flow_pp2",
-            "flow_dual",
             "flow_pp3_degrade",
         }
     )
@@ -1022,23 +968,13 @@ class ATMVFIStaticNet(nn.Module):
 def build_net(arch: str, static_path: str):
     """Return (net, is_atmvfi, needs_cond_static)."""
     arch = resolve_arch(arch)
+    if arch not in ARCH_CLI_CHOICES:
+        raise ValueError(f"architecture is not part of the paper release: {arch}")
     degradation_aware = arch in HRES_DEGRADE_ARCHES
     if degradation_aware:
         # Reuse the FEA configuration verbatim so the only difference is
         # the reliability branch and its zero-init gains.
         arch = "flow_pp3_hres_aug"
-    if arch == "crossframe":
-        from weather_time_interp.model.weatherbridge_crossframe_model import (
-            WeatherDCAECrossFrameModel,
-        )
-        net = WeatherDCAECrossFrameModel(
-            in_channels=24, out_channels=24, n_static_features=3,
-            latent_channels=32, attention_head_dim=32,
-            block_type=("ResBlock", "ResBlock", "EfficientViTBlock"),
-            qkv_multiscales=((), (), (5,)), lat_crop=-8,
-            block_out_channels=(128, 128, 256, 256), layers_per_block=(2, 2, 2),
-        )
-        return net, False, True
     if arch == "wb_vanilla":
         from weather_time_interp.model.dcae_adaln_model import WeatherDCAEAdaLNModel
         net = WeatherDCAEAdaLNModel(
@@ -1064,27 +1000,6 @@ def build_net(arch: str, static_path: str):
             lat_crop=-8,
             block_out_channels=(64, 128, 256),
             layers_per_block=(3, 3, 3),
-        )
-        return net, False, True
-    if arch in ("dcae_fm_14m", "dcae_fm_control_14m"):
-        from weather_time_interp.model.dcae_flow_matching_model import (
-            WeatherDCAEFlowMatchingModel,
-        )
-
-        net = WeatherDCAEFlowMatchingModel(
-            in_channels=24,
-            out_channels=24,
-            n_static_features=3,
-            latent_channels=256,
-            attention_head_dim=32,
-            block_type=("ResBlock", "ResBlock", "EfficientViTBlock"),
-            qkv_multiscales=((), (), (5,)),
-            lat_crop=-8,
-            block_out_channels=(64, 128, 256),
-            layers_per_block=(3, 3, 3),
-            flow_matching=(arch == "dcae_fm_14m"),
-            flow_matching_steps=4,
-            endpoint_preserving=True,
         )
         return net, False, True
     if arch == "wb_skip":
@@ -1114,112 +1029,6 @@ def build_net(arch: str, static_path: str):
         # diurnal response; residual + bilinear scaffold stay 24ch. Trained
         # with static like the WB-family for a fair capacity-matched compare.
         net = ATMVFIStaticNet(hidden=72, n_levels=3, n_static=3)
-        return net, False, True
-    if arch == "amt":
-        from weather_time_interp.model.weather_amt_model import WeatherAMTModel
-
-        net = WeatherAMTModel(
-            in_channels=24,
-            out_channels=24,
-            n_static_features=3,
-            corr_radius=3,
-            corr_levels=4,
-            num_flows=5,
-            channels=(48, 64, 72, 110),
-            skip_channels=48,
-            endpoint_envelope=True,
-            max_field_displacement=16.0,
-        )
-        return net, False, True
-    if arch == "amt_residual":
-        from weather_time_interp.model.weather_amt_residual_model import (
-            WeatherAMTResidualModel,
-        )
-
-        net = WeatherAMTResidualModel(
-            in_channels=24,
-            out_channels=24,
-            n_static_features=3,
-            corr_radius=3,
-            corr_levels=4,
-            num_flows=5,
-            channels=(48, 64, 72, 110),
-            skip_channels=48,
-            max_field_displacement=16.0,
-        )
-        return net, False, True
-    if arch == "mamba":
-        # WeatherBridge-Mamba: VFIMamba Mixed-SSM backbone (NeurIPS 2024).
-        # hidden=64 → 13.68M, matched to ATM-VFI 14.67M / WB-XF 13.37M.
-        from weather_time_interp.model.weatherbridge_mamba_model import (
-            WeatherBridgeMambaModel,
-        )
-        net = WeatherBridgeMambaModel(
-            in_channels=24, out_channels=24, n_static_features=3,
-            hidden=64, n_levels=3, d_state=16, lat_crop=0)
-        return net, False, True
-    if arch in (
-        "upr_lite",
-        "upr_lite_lap",
-        "upr_lite_column",
-        "upr_lite_continuous",
-        "upr_lite_continuous_m",
-        "upr_lite_implicit_global",
-        "upr_lite_implicit_global_q4",
-    ):
-        from weather_time_interp.model.weatherbridge_upr_lite_model import (
-            WeatherBridgeUPRLiteModel,
-            upr_lite_variant_kwargs,
-        )
-        net = WeatherBridgeUPRLiteModel(**upr_lite_variant_kwargs(arch))
-        return net, False, True
-    if arch in (
-        "upr_implicit_global_14m",
-        "upr_endpoint_implicit_global_14m",
-        "upr_local_corr_14m",
-        "upr_query_match_14m",
-        "upr_universal_latent_q4_10m",
-    ):
-        from weather_time_interp.model.weatherbridge_upr_lite_model import (
-            WeatherBridgeUPRLiteModel,
-        )
-        from weather_time_interp.model.weatherbridge_upr_scaled_model import (
-            upr_scaled_variant_kwargs,
-        )
-        net = WeatherBridgeUPRLiteModel(
-            **upr_scaled_variant_kwargs(arch)
-        )
-        return net, False, True
-    if arch == "upr_spherical_implicit_global_14m":
-        from weather_time_interp.model.weatherbridge_upr_scaled_model import (
-            upr_scaled_variant_kwargs,
-        )
-        from weather_time_interp.model.weatherbridge_upr_spherical_model import (
-            WeatherBridgeUPRSphericalModel,
-        )
-
-        net = WeatherBridgeUPRSphericalModel(
-            **upr_scaled_variant_kwargs("upr_implicit_global_14m")
-        )
-        return net, False, True
-    if arch == "lg_wavelet_10m":
-        from weather_time_interp.model.local_global_wavelet_bridge_model import (
-            LocalGlobalWaveletBridgeModel,
-        )
-
-        net = LocalGlobalWaveletBridgeModel(
-            in_channels=24,
-            out_channels=24,
-            n_static_features=3,
-            widths=(336, 200, 120),
-            endpoint_widths=(96, 72, 56),
-            band_widths=(160, 96, 80),
-            static_widths=(32, 24, 16),
-            blocks=(4, 2, 2),
-            global_width=36,
-            global_modes=20,
-            base_grid=(360, 720),
-        )
         return net, False, True
     if arch in (
         "flow",
@@ -3656,55 +3465,6 @@ def main():
             / "model"
             / "dcae_adaln_model.py"
         )
-    if args.arch in {"dcae_fm_14m", "dcae_fm_control_14m"}:
-        training_sources["dcae_flow_matching_model.py"] = (
-            repo_root
-            / "weather_time_interp"
-            / "model"
-            / "dcae_flow_matching_model.py"
-        )
-    if args.arch in (
-        "upr_lite",
-        "upr_lite_lap",
-        "upr_lite_column",
-        "upr_lite_continuous",
-        "upr_lite_continuous_m",
-        "upr_lite_implicit_global",
-        "upr_lite_implicit_global_q4",
-        "upr_implicit_global_14m",
-        "upr_endpoint_implicit_global_14m",
-        "upr_local_corr_14m",
-        "upr_query_match_14m",
-        "upr_universal_latent_q4_10m",
-        "upr_spherical_implicit_global_14m",
-    ):
-        training_sources["weatherbridge_upr_lite_model.py"] = (
-            Path(__file__).resolve().parents[2]
-            / "weather_time_interp"
-            / "model"
-            / "weatherbridge_upr_lite_model.py"
-        )
-    if args.arch in (
-        "upr_implicit_global_14m",
-        "upr_endpoint_implicit_global_14m",
-        "upr_local_corr_14m",
-        "upr_query_match_14m",
-        "upr_universal_latent_q4_10m",
-        "upr_spherical_implicit_global_14m",
-    ):
-        training_sources["weatherbridge_upr_scaled_model.py"] = (
-            Path(__file__).resolve().parents[2]
-            / "weather_time_interp"
-            / "model"
-            / "weatherbridge_upr_scaled_model.py"
-        )
-    if args.arch == "upr_spherical_implicit_global_14m":
-        training_sources["weatherbridge_upr_spherical_model.py"] = (
-            Path(__file__).resolve().parents[2]
-            / "weather_time_interp"
-            / "model"
-            / "weatherbridge_upr_spherical_model.py"
-        )
     if args.arch in (
         "flow",
         "flow_noskip",
@@ -3730,54 +3490,10 @@ def main():
             / "model"
             / "weatherbridge_flow_model.py"
         )
-    if args.arch in WAVELET_ARCHES:
-        training_sources["local_global_wavelet_bridge_model.py"] = (
-            repo_root
-            / "weather_time_interp"
-            / "model"
-            / "local_global_wavelet_bridge_model.py"
-        )
-        training_sources["weatherbridge_flow_model.py"] = (
-            repo_root
-            / "weather_time_interp"
-            / "model"
-            / "weatherbridge_flow_model.py"
-        )
     if args.arch == "atmvfi":
         training_sources["train_atm_vfi_12h_oddskip.py"] = _atmvfi_source(
             Path(__file__).resolve().parents[2]
         )
-    if args.arch in ("amt", "amt_residual"):
-        amt_root = (
-            repo_root
-            / "weather_time_interp"
-            / "model"
-            / "amt_upstream"
-        )
-        training_sources["weather_amt_model.py"] = (
-            repo_root
-            / "weather_time_interp"
-            / "model"
-            / "weather_amt_model.py"
-        )
-        if args.arch == "amt_residual":
-            training_sources["weather_amt_residual_model.py"] = (
-                repo_root
-                / "weather_time_interp"
-                / "model"
-                / "weather_amt_residual_model.py"
-            )
-        for source_name in (
-            "__init__.py",
-            "feat_enc.py",
-            "flow_utils.py",
-            "ifrnet.py",
-            "multi_flow.py",
-            "raft.py",
-        ):
-            training_sources[f"amt_upstream/{source_name}"] = (
-                amt_root / source_name
-            )
     model.hparams["training_code_sha256"] = {
         name: hashlib.sha256(path.read_bytes()).hexdigest()
         for name, path in training_sources.items()

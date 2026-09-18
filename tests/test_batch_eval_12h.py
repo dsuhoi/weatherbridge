@@ -118,7 +118,8 @@ def test_evaluator_and_validator_share_source_manifest(m12h):
     provenance = m12h._evaluation_code_provenance(sources)
 
     assert set(provenance) == set(sources)
-    assert len(provenance) >= 20
+    assert "capmatched_loader.py" in provenance
+    assert "weatherbridge_flow_model.py" in provenance
 
 
 def test_catmull_rom_passes_through_anchors(m12h):

@@ -471,20 +471,10 @@ def test_edge_profile_reweights_only_seen_endpoint_hours() -> None:
     assert torch.equal(edge, torch.tensor((1.35, 1.0, 1.35, 1.35, 1.0, 1.35)))
 
 
-def test_base_knot_scope_freezes_every_other_parameter() -> None:
-    model, _, _ = build_net("flow_compact_lagrange_l", "")
-
-    apply_trainable_scope(model, "base_knot_head")
-
-    trainable = {
-        name
-        for name, parameter in model.named_parameters()
-        if parameter.requires_grad
-    }
-    assert trainable == {
-        "base_knot_head.weight",
-        "base_knot_head.bias",
-    }
+@pytest.mark.parametrize("arch", ["upr_lite", "amt", "mamba", "flow_compact_lagrange_l"])
+def test_release_rejects_exploratory_architectures(arch: str) -> None:
+    with pytest.raises(ValueError, match="not part of the paper release"):
+        build_net(arch, "")
 
 
 def test_q_output_head_scope_masks_every_non_moisture_row() -> None:
@@ -553,35 +543,10 @@ def test_schedule_preserves_12h_optimizer_steps_across_batch_fallbacks(
     (
         ("dcae_14m", 14_365_049),
         ("atmvfi", 14_675_616),
-        ("amt", 14_255_541),
-        ("amt_residual", 14_255_565),
-        ("upr_implicit_global_14m", 14_261_409),
-        ("upr_endpoint_implicit_global_14m", 14_261_409),
-        ("upr_local_corr_14m", 14_290_137),
-        ("upr_query_match_14m", 14_258_369),
-        ("upr_universal_latent_q4_10m", 9_500_460),
-        ("upr_spherical_implicit_global_14m", 14_261_409),
         ("flow_pp3", 14_260_565),
         ("flow_pp3_nodiff", 14_245_013),
-        ("flow_pp3_spherical", 14_260_565),
-        ("flow_pp3_multiband", 14_279_069),
         ("flow_pp3_detail", 14_266_733),
-        ("flow_pp3_detail_fm", 14_350_381),
-        ("flow_universal_latent", 12_100_232),
         ("flow_universal_latent_refine", 13_651_208),
-        ("flow_universal_content_refine", 13_651_386),
-        ("flow_universal_pareto_refine", 13_659_644),
-        ("flow_universal_fm", 12_182_152),
-        ("flow_pp3_compact_l", 8_838_773),
-        ("flow_msf_pareto_l", 8_884_205),
-        ("flow_geo_msf_l", 8_884_205),
-        ("flow_spherical_ep", 14_260_565),
-        ("flow_compact_vp3", 3_057_013),
-        ("flow_compact_vp3_m", 4_626_341),
-        ("flow_compact_vp3_l", 8_752_261),
-        ("flow_compact_hermite_l", 8_776_501),
-        ("flow_compact_lagrange_l", 8_806_801),
-        ("lg_wavelet_10m", 9_685_168),
     ),
 )
 def test_capacity_matched_architecture_parameter_contract(
